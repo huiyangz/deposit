@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbRestraintControlDetailsMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbRestraintControlDetails">
+        <id column="RESTRAINT_TYPE" property="restraintType" jdbcType="VARCHAR" />
+        <id column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+        <id column="TRAN_TYPE_LINK" property="tranTypeLink" jdbcType="VARCHAR" />
+        <id column="BATCH_FLAG" property="batchFlag" jdbcType="VARCHAR" />
+        <id column="RES_BRANCH_RANGE" property="resBranchRange" jdbcType="VARCHAR" />
+        <id column="COUNTER_FLAG" property="counterFlag" jdbcType="VARCHAR" />
+        <result column="CHANNEL_MUSTER" property="channelMuster" jdbcType="VARCHAR" />
+        <result column="NARRATIVE_CODE" property="narrativeCode" jdbcType="VARCHAR" />
+        <result column="EXPRESSION" property="expression" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        RESTRAINT_TYPE,        PROD_TYPE,        CHANNEL_MUSTER,        TRAN_TYPE_LINK,        NARRATIVE_CODE,        BATCH_FLAG,        RES_BRANCH_RANGE,        COUNTER_FLAG,        EXPRESSION,        STATUS,        COMPANY,        TRAN_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbRestraintControlDetailsExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_RESTRAINT_CONTROL_DETAILS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_RESTRAINT_CONTROL_DETAILS
+        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+          and PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and TRAN_TYPE_LINK = #{tranTypeLink,jdbcType=VARCHAR}
+          and BATCH_FLAG = #{batchFlag,jdbcType=VARCHAR}
+          and RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR}
+          and COUNTER_FLAG = #{counterFlag,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_RESTRAINT_CONTROL_DETAILS
+        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+          and PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and TRAN_TYPE_LINK = #{tranTypeLink,jdbcType=VARCHAR}
+          and BATCH_FLAG = #{batchFlag,jdbcType=VARCHAR}
+          and RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR}
+          and COUNTER_FLAG = #{counterFlag,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbRestraintControlDetailsExample">
+        delete from RB_RESTRAINT_CONTROL_DETAILS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbRestraintControlDetails">
+        insert into RB_RESTRAINT_CONTROL_DETAILS
+        (
+            RESTRAINT_TYPE,            PROD_TYPE,            CHANNEL_MUSTER,            TRAN_TYPE_LINK,            NARRATIVE_CODE,            BATCH_FLAG,            RES_BRANCH_RANGE,            COUNTER_FLAG,            EXPRESSION,            STATUS,            COMPANY,            TRAN_TIMESTAMP        )
+        values
+        (
+            #{restraintType,jdbcType=VARCHAR},            #{prodType,jdbcType=VARCHAR},            #{channelMuster,jdbcType=VARCHAR},            #{tranTypeLink,jdbcType=VARCHAR},            #{narrativeCode,jdbcType=VARCHAR},            #{batchFlag,jdbcType=VARCHAR},            #{resBranchRange,jdbcType=VARCHAR},            #{counterFlag,jdbcType=VARCHAR},            #{expression,jdbcType=VARCHAR},            #{status,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbRestraintControlDetails">
+        insert into RB_RESTRAINT_CONTROL_DETAILS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="restraintType != null">
+                RESTRAINT_TYPE,
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="channelMuster != null">
+                CHANNEL_MUSTER,
+            </if>
+            <if test="tranTypeLink != null">
+                TRAN_TYPE_LINK,
+            </if>
+            <if test="narrativeCode != null">
+                NARRATIVE_CODE,
+            </if>
+            <if test="batchFlag != null">
+                BATCH_FLAG,
+            </if>
+            <if test="resBranchRange != null">
+                RES_BRANCH_RANGE,
+            </if>
+            <if test="counterFlag != null">
+                COUNTER_FLAG,
+            </if>
+            <if test="expression != null">
+                EXPRESSION,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="restraintType != null">
+                #{restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="channelMuster != null">
+                #{channelMuster,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTypeLink != null">
+                #{tranTypeLink,jdbcType=VARCHAR},
+            </if>
+            <if test="narrativeCode != null">
+                #{narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFlag != null">
+                #{batchFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="resBranchRange != null">
+                #{resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="counterFlag != null">
+                #{counterFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="expression != null">
+                #{expression,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbRestraintControlDetailsExample" resultType="java.lang.Long">
+        select count(*) from RB_RESTRAINT_CONTROL_DETAILS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_RESTRAINT_CONTROL_DETAILS
+        <set>
+            <if test="row.restraintType != null">
+                RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodType != null">
+                PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.channelMuster != null">
+                CHANNEL_MUSTER = #{row.channelMuster,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTypeLink != null">
+                TRAN_TYPE_LINK = #{row.tranTypeLink,jdbcType=VARCHAR},
+            </if>
+            <if test="row.narrativeCode != null">
+                NARRATIVE_CODE = #{row.narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.batchFlag != null">
+                BATCH_FLAG = #{row.batchFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resBranchRange != null">
+                RES_BRANCH_RANGE = #{row.resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="row.counterFlag != null">
+                COUNTER_FLAG = #{row.counterFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.expression != null">
+                EXPRESSION = #{row.expression,jdbcType=VARCHAR},
+            </if>
+            <if test="row.status != null">
+                STATUS = #{row.status,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_RESTRAINT_CONTROL_DETAILS
+        set
+            RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},            PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},            CHANNEL_MUSTER = #{row.channelMuster,jdbcType=VARCHAR},            TRAN_TYPE_LINK = #{row.tranTypeLink,jdbcType=VARCHAR},            NARRATIVE_CODE = #{row.narrativeCode,jdbcType=VARCHAR},            BATCH_FLAG = #{row.batchFlag,jdbcType=VARCHAR},            RES_BRANCH_RANGE = #{row.resBranchRange,jdbcType=VARCHAR},            COUNTER_FLAG = #{row.counterFlag,jdbcType=VARCHAR},            EXPRESSION = #{row.expression,jdbcType=VARCHAR},            STATUS = #{row.status,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbRestraintControlDetails">
+        update RB_RESTRAINT_CONTROL_DETAILS
+        <set>
+            <if test="channelMuster != null">
+                CHANNEL_MUSTER = #{channelMuster,jdbcType=VARCHAR},
+            </if>
+            <if test="narrativeCode != null">
+                NARRATIVE_CODE = #{narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="expression != null">
+                EXPRESSION = #{expression,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+          and PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and TRAN_TYPE_LINK = #{tranTypeLink,jdbcType=VARCHAR}
+          and BATCH_FLAG = #{batchFlag,jdbcType=VARCHAR}
+          and RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR}
+          and COUNTER_FLAG = #{counterFlag,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbRestraintControlDetails">
+        update RB_RESTRAINT_CONTROL_DETAILS
+        set
+            CHANNEL_MUSTER = #{channelMuster,jdbcType=VARCHAR},            NARRATIVE_CODE = #{narrativeCode,jdbcType=VARCHAR},            EXPRESSION = #{expression,jdbcType=VARCHAR},            STATUS = #{status,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+          and PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and TRAN_TYPE_LINK = #{tranTypeLink,jdbcType=VARCHAR}
+          and BATCH_FLAG = #{batchFlag,jdbcType=VARCHAR}
+          and RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR}
+          and COUNTER_FLAG = #{counterFlag,jdbcType=VARCHAR}
+    </update>
+</mapper>

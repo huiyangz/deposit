@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.FmFtaBranchMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.FmFtaBranch">
+        <id column="FTA_CODE" property="ftaCode" jdbcType="VARCHAR" />
+        <result column="FTA_DESC" property="ftaDesc" jdbcType="VARCHAR" />
+        <result column="FTA_TYPE" property="ftaType" jdbcType="VARCHAR" />
+        <result column="FTA_RATE_TYPE" property="ftaRateType" jdbcType="VARCHAR" />
+        <result column="FTA_NATURE" property="ftaNature" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        FTA_CODE,        FTA_DESC,        FTA_TYPE,        FTA_RATE_TYPE,        FTA_NATURE,        TRAN_TIMESTAMP,        COMPANY    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.FmFtaBranchExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from FM_FTA_BRANCH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from FM_FTA_BRANCH
+        where FTA_CODE = #{ftaCode,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from FM_FTA_BRANCH
+        where FTA_CODE = #{ftaCode,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.FmFtaBranchExample">
+        delete from FM_FTA_BRANCH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.FmFtaBranch">
+        insert into FM_FTA_BRANCH
+        (
+            FTA_CODE,            FTA_DESC,            FTA_TYPE,            FTA_RATE_TYPE,            FTA_NATURE,            TRAN_TIMESTAMP,            COMPANY        )
+        values
+        (
+            #{ftaCode,jdbcType=VARCHAR},            #{ftaDesc,jdbcType=VARCHAR},            #{ftaType,jdbcType=VARCHAR},            #{ftaRateType,jdbcType=VARCHAR},            #{ftaNature,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.FmFtaBranch">
+        insert into FM_FTA_BRANCH
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ftaCode != null">
+                FTA_CODE,
+            </if>
+            <if test="ftaDesc != null">
+                FTA_DESC,
+            </if>
+            <if test="ftaType != null">
+                FTA_TYPE,
+            </if>
+            <if test="ftaRateType != null">
+                FTA_RATE_TYPE,
+            </if>
+            <if test="ftaNature != null">
+                FTA_NATURE,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ftaCode != null">
+                #{ftaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaDesc != null">
+                #{ftaDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaType != null">
+                #{ftaType,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaRateType != null">
+                #{ftaRateType,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaNature != null">
+                #{ftaNature,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.FmFtaBranchExample" resultType="java.lang.Long">
+        select count(*) from FM_FTA_BRANCH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update FM_FTA_BRANCH
+        <set>
+            <if test="row.ftaCode != null">
+                FTA_CODE = #{row.ftaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ftaDesc != null">
+                FTA_DESC = #{row.ftaDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ftaType != null">
+                FTA_TYPE = #{row.ftaType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ftaRateType != null">
+                FTA_RATE_TYPE = #{row.ftaRateType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ftaNature != null">
+                FTA_NATURE = #{row.ftaNature,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update FM_FTA_BRANCH
+        set
+            FTA_CODE = #{row.ftaCode,jdbcType=VARCHAR},            FTA_DESC = #{row.ftaDesc,jdbcType=VARCHAR},            FTA_TYPE = #{row.ftaType,jdbcType=VARCHAR},            FTA_RATE_TYPE = #{row.ftaRateType,jdbcType=VARCHAR},            FTA_NATURE = #{row.ftaNature,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.FmFtaBranch">
+        update FM_FTA_BRANCH
+        <set>
+            <if test="ftaDesc != null">
+                FTA_DESC = #{ftaDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaType != null">
+                FTA_TYPE = #{ftaType,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaRateType != null">
+                FTA_RATE_TYPE = #{ftaRateType,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaNature != null">
+                FTA_NATURE = #{ftaNature,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where FTA_CODE = #{ftaCode,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.FmFtaBranch">
+        update FM_FTA_BRANCH
+        set
+            FTA_DESC = #{ftaDesc,jdbcType=VARCHAR},            FTA_TYPE = #{ftaType,jdbcType=VARCHAR},            FTA_RATE_TYPE = #{ftaRateType,jdbcType=VARCHAR},            FTA_NATURE = #{ftaNature,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR}        where FTA_CODE = #{ftaCode,jdbcType=VARCHAR}
+    </update>
+</mapper>
