@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbExchangeTranAttachMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbExchangeTranAttach">
+        <id column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="FORE_ACCT" property="foreAcct" jdbcType="VARCHAR" />
+        <result column="CHANNEL_SEQ_NO" property="channelSeqNo" jdbcType="VARCHAR" />
+        <result column="DOCUMENT_ID" property="documentId" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_SUPPLY_REASON" property="exchangeSupplyReason" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_AMOUNT_NATURE" property="exchangeAmountNature" jdbcType="VARCHAR" />
+        <result column="AGENCY_CORP_NAME" property="agencyCorpName" jdbcType="VARCHAR" />
+        <result column="CNY_ACCT_NO" property="cnyAcctNo" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_CHANGE_REASON" property="exchangeChangeReason" jdbcType="VARCHAR" />
+        <result column="DOCUMENT_TYPE" property="documentType" jdbcType="VARCHAR" />
+        <result column="ISS_COUNTRY" property="issCountry" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_CANCEL_REASON" property="exchangeCancelReason" jdbcType="VARCHAR" />
+        <result column="SUPPLY_REMARK" property="supplyRemark" jdbcType="VARCHAR" />
+        <result column="APPR_LETTER_NO" property="apprLetterNo" jdbcType="VARCHAR" />
+        <result column="INDIVIDUAL_BUSI_ORG_CODE" property="individualBusiOrgCode" jdbcType="VARCHAR" />
+        <result column="INDIVIDUAL_BUSI_NAME" property="individualBusiName" jdbcType="VARCHAR" />
+        <result column="CLIENT_NAME" property="clientName" jdbcType="VARCHAR" />
+        <result column="SUPPLY_DOCUMENT_ID" property="supplyDocumentId" jdbcType="VARCHAR" />
+        <result column="AGENCY_CORP_ORG_CODE" property="agencyCorpOrgCode" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_AMOUNT_TYPE" property="exchangeAmountType" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_CLASS" property="exchangeClass" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_REPORT_TYPE" property="exchangeReportType" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_REPORT_NO" property="exchangeReportNo" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TRAN_CODE" property="exchangeTranCode" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TRAN_CODET" property="exchangeTranCodet" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TYPE" property="exchangeType" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TRAN_STATUS" property="exchangeTranStatus" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_PURPOSE" property="exchangePurpose" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_PURPOSE_DETAILS" property="exchangePurposeDetails" jdbcType="VARCHAR" />
+        <result column="SOURCE_MODULE" property="sourceModule" jdbcType="VARCHAR" />
+        <result column="APPR_USER_ID" property="apprUserId" jdbcType="VARCHAR" />
+        <result column="APPROVAL_DATE" property="approvalDate" jdbcType="TIMESTAMP" />
+        <result column="TRAN_DATE" property="tranDate" jdbcType="TIMESTAMP" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="DISCOUNT_VALUE" property="discountValue" jdbcType="DECIMAL" />
+        <result column="LAST_CHANGE_USER_ID" property="lastChangeUserId" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="CASH_FROM_CODE" property="cashFromCode" jdbcType="VARCHAR" />
+        <result column="CASH_FROM_COUNTRY" property="cashFromCountry" jdbcType="VARCHAR" />
+        <result column="CASH_TO_CODE" property="cashToCode" jdbcType="VARCHAR" />
+        <result column="CASH_TO_COUNTRY" property="cashToCountry" jdbcType="VARCHAR" />
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        SEQ_NO,        CLIENT_NO,        FORE_ACCT,        CHANNEL_SEQ_NO,        DOCUMENT_ID,        EXCHANGE_SUPPLY_REASON,        EXCHANGE_AMOUNT_NATURE,        AGENCY_CORP_NAME,        CNY_ACCT_NO,        EXCHANGE_CHANGE_REASON,        DOCUMENT_TYPE,        ISS_COUNTRY,        EXCHANGE_CANCEL_REASON,        SUPPLY_REMARK,        APPR_LETTER_NO,        INDIVIDUAL_BUSI_ORG_CODE,        INDIVIDUAL_BUSI_NAME,        CLIENT_NAME,        SUPPLY_DOCUMENT_ID,        AGENCY_CORP_ORG_CODE,        EXCHANGE_AMOUNT_TYPE,        EXCHANGE_CLASS,        EXCHANGE_REPORT_TYPE,        EXCHANGE_REPORT_NO,        EXCHANGE_TRAN_CODE,        EXCHANGE_TRAN_CODET,        EXCHANGE_TYPE,        EXCHANGE_TRAN_STATUS,        EXCHANGE_PURPOSE,        EXCHANGE_PURPOSE_DETAILS,        SOURCE_MODULE,        APPR_USER_ID,        APPROVAL_DATE,        TRAN_DATE,        TRAN_TIMESTAMP,        LAST_CHANGE_DATE,        DISCOUNT_VALUE,        LAST_CHANGE_USER_ID,        COMPANY,        CASH_FROM_CODE,        CASH_FROM_COUNTRY,        CASH_TO_CODE,        CASH_TO_COUNTRY,        REMARK,        CREATE_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbExchangeTranAttachExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_EXCHANGE_TRAN_ATTACH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_EXCHANGE_TRAN_ATTACH
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_EXCHANGE_TRAN_ATTACH
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbExchangeTranAttachExample">
+        delete from RB_EXCHANGE_TRAN_ATTACH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbExchangeTranAttach">
+        insert into RB_EXCHANGE_TRAN_ATTACH
+        (
+            SEQ_NO,            CLIENT_NO,            FORE_ACCT,            CHANNEL_SEQ_NO,            DOCUMENT_ID,            EXCHANGE_SUPPLY_REASON,            EXCHANGE_AMOUNT_NATURE,            AGENCY_CORP_NAME,            CNY_ACCT_NO,            EXCHANGE_CHANGE_REASON,            DOCUMENT_TYPE,            ISS_COUNTRY,            EXCHANGE_CANCEL_REASON,            SUPPLY_REMARK,            APPR_LETTER_NO,            INDIVIDUAL_BUSI_ORG_CODE,            INDIVIDUAL_BUSI_NAME,            CLIENT_NAME,            SUPPLY_DOCUMENT_ID,            AGENCY_CORP_ORG_CODE,            EXCHANGE_AMOUNT_TYPE,            EXCHANGE_CLASS,            EXCHANGE_REPORT_TYPE,            EXCHANGE_REPORT_NO,            EXCHANGE_TRAN_CODE,            EXCHANGE_TRAN_CODET,            EXCHANGE_TYPE,            EXCHANGE_TRAN_STATUS,            EXCHANGE_PURPOSE,            EXCHANGE_PURPOSE_DETAILS,            SOURCE_MODULE,            APPR_USER_ID,            APPROVAL_DATE,            TRAN_DATE,            TRAN_TIMESTAMP,            LAST_CHANGE_DATE,            DISCOUNT_VALUE,            LAST_CHANGE_USER_ID,            COMPANY,            CASH_FROM_CODE,            CASH_FROM_COUNTRY,            CASH_TO_CODE,            CASH_TO_COUNTRY,            REMARK,            CREATE_TIMESTAMP        )
+        values
+        (
+            #{seqNo,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{foreAcct,jdbcType=VARCHAR},            #{channelSeqNo,jdbcType=VARCHAR},            #{documentId,jdbcType=VARCHAR},            #{exchangeSupplyReason,jdbcType=VARCHAR},            #{exchangeAmountNature,jdbcType=VARCHAR},            #{agencyCorpName,jdbcType=VARCHAR},            #{cnyAcctNo,jdbcType=VARCHAR},            #{exchangeChangeReason,jdbcType=VARCHAR},            #{documentType,jdbcType=VARCHAR},            #{issCountry,jdbcType=VARCHAR},            #{exchangeCancelReason,jdbcType=VARCHAR},            #{supplyRemark,jdbcType=VARCHAR},            #{apprLetterNo,jdbcType=VARCHAR},            #{individualBusiOrgCode,jdbcType=VARCHAR},            #{individualBusiName,jdbcType=VARCHAR},            #{clientName,jdbcType=VARCHAR},            #{supplyDocumentId,jdbcType=VARCHAR},            #{agencyCorpOrgCode,jdbcType=VARCHAR},            #{exchangeAmountType,jdbcType=VARCHAR},            #{exchangeClass,jdbcType=VARCHAR},            #{exchangeReportType,jdbcType=VARCHAR},            #{exchangeReportNo,jdbcType=VARCHAR},            #{exchangeTranCode,jdbcType=VARCHAR},            #{exchangeTranCodet,jdbcType=VARCHAR},            #{exchangeType,jdbcType=VARCHAR},            #{exchangeTranStatus,jdbcType=VARCHAR},            #{exchangePurpose,jdbcType=VARCHAR},            #{exchangePurposeDetails,jdbcType=VARCHAR},            #{sourceModule,jdbcType=VARCHAR},            #{apprUserId,jdbcType=VARCHAR},            #{approvalDate,jdbcType=TIMESTAMP},            #{tranDate,jdbcType=TIMESTAMP},            #{tranTimestamp,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{discountValue,jdbcType=DECIMAL},            #{lastChangeUserId,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{cashFromCode,jdbcType=VARCHAR},            #{cashFromCountry,jdbcType=VARCHAR},            #{cashToCode,jdbcType=VARCHAR},            #{cashToCountry,jdbcType=VARCHAR},            #{remark,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbExchangeTranAttach">
+        insert into RB_EXCHANGE_TRAN_ATTACH
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="foreAcct != null">
+                FORE_ACCT,
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO,
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID,
+            </if>
+            <if test="exchangeSupplyReason != null">
+                EXCHANGE_SUPPLY_REASON,
+            </if>
+            <if test="exchangeAmountNature != null">
+                EXCHANGE_AMOUNT_NATURE,
+            </if>
+            <if test="agencyCorpName != null">
+                AGENCY_CORP_NAME,
+            </if>
+            <if test="cnyAcctNo != null">
+                CNY_ACCT_NO,
+            </if>
+            <if test="exchangeChangeReason != null">
+                EXCHANGE_CHANGE_REASON,
+            </if>
+            <if test="documentType != null">
+                DOCUMENT_TYPE,
+            </if>
+            <if test="issCountry != null">
+                ISS_COUNTRY,
+            </if>
+            <if test="exchangeCancelReason != null">
+                EXCHANGE_CANCEL_REASON,
+            </if>
+            <if test="supplyRemark != null">
+                SUPPLY_REMARK,
+            </if>
+            <if test="apprLetterNo != null">
+                APPR_LETTER_NO,
+            </if>
+            <if test="individualBusiOrgCode != null">
+                INDIVIDUAL_BUSI_ORG_CODE,
+            </if>
+            <if test="individualBusiName != null">
+                INDIVIDUAL_BUSI_NAME,
+            </if>
+            <if test="clientName != null">
+                CLIENT_NAME,
+            </if>
+            <if test="supplyDocumentId != null">
+                SUPPLY_DOCUMENT_ID,
+            </if>
+            <if test="agencyCorpOrgCode != null">
+                AGENCY_CORP_ORG_CODE,
+            </if>
+            <if test="exchangeAmountType != null">
+                EXCHANGE_AMOUNT_TYPE,
+            </if>
+            <if test="exchangeClass != null">
+                EXCHANGE_CLASS,
+            </if>
+            <if test="exchangeReportType != null">
+                EXCHANGE_REPORT_TYPE,
+            </if>
+            <if test="exchangeReportNo != null">
+                EXCHANGE_REPORT_NO,
+            </if>
+            <if test="exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE,
+            </if>
+            <if test="exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET,
+            </if>
+            <if test="exchangeType != null">
+                EXCHANGE_TYPE,
+            </if>
+            <if test="exchangeTranStatus != null">
+                EXCHANGE_TRAN_STATUS,
+            </if>
+            <if test="exchangePurpose != null">
+                EXCHANGE_PURPOSE,
+            </if>
+            <if test="exchangePurposeDetails != null">
+                EXCHANGE_PURPOSE_DETAILS,
+            </if>
+            <if test="sourceModule != null">
+                SOURCE_MODULE,
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID,
+            </if>
+            <if test="approvalDate != null">
+                APPROVAL_DATE,
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="discountValue != null">
+                DISCOUNT_VALUE,
+            </if>
+            <if test="lastChangeUserId != null">
+                LAST_CHANGE_USER_ID,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="cashFromCode != null">
+                CASH_FROM_CODE,
+            </if>
+            <if test="cashFromCountry != null">
+                CASH_FROM_COUNTRY,
+            </if>
+            <if test="cashToCode != null">
+                CASH_TO_CODE,
+            </if>
+            <if test="cashToCountry != null">
+                CASH_TO_COUNTRY,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="foreAcct != null">
+                #{foreAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="documentId != null">
+                #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeSupplyReason != null">
+                #{exchangeSupplyReason,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeAmountNature != null">
+                #{exchangeAmountNature,jdbcType=VARCHAR},
+            </if>
+            <if test="agencyCorpName != null">
+                #{agencyCorpName,jdbcType=VARCHAR},
+            </if>
+            <if test="cnyAcctNo != null">
+                #{cnyAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeChangeReason != null">
+                #{exchangeChangeReason,jdbcType=VARCHAR},
+            </if>
+            <if test="documentType != null">
+                #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="issCountry != null">
+                #{issCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeCancelReason != null">
+                #{exchangeCancelReason,jdbcType=VARCHAR},
+            </if>
+            <if test="supplyRemark != null">
+                #{supplyRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="apprLetterNo != null">
+                #{apprLetterNo,jdbcType=VARCHAR},
+            </if>
+            <if test="individualBusiOrgCode != null">
+                #{individualBusiOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="individualBusiName != null">
+                #{individualBusiName,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="supplyDocumentId != null">
+                #{supplyDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="agencyCorpOrgCode != null">
+                #{agencyCorpOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeAmountType != null">
+                #{exchangeAmountType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeClass != null">
+                #{exchangeClass,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeReportType != null">
+                #{exchangeReportType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeReportNo != null">
+                #{exchangeReportNo,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCode != null">
+                #{exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCodet != null">
+                #{exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeType != null">
+                #{exchangeType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranStatus != null">
+                #{exchangeTranStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangePurpose != null">
+                #{exchangePurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangePurposeDetails != null">
+                #{exchangePurposeDetails,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceModule != null">
+                #{sourceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalDate != null">
+                #{approvalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranDate != null">
+                #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="discountValue != null">
+                #{discountValue,jdbcType=DECIMAL},
+            </if>
+            <if test="lastChangeUserId != null">
+                #{lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCode != null">
+                #{cashFromCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCountry != null">
+                #{cashFromCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCode != null">
+                #{cashToCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCountry != null">
+                #{cashToCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbExchangeTranAttachExample" resultType="java.lang.Long">
+        select count(*) from RB_EXCHANGE_TRAN_ATTACH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_EXCHANGE_TRAN_ATTACH
+        <set>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.foreAcct != null">
+                FORE_ACCT = #{row.foreAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="row.channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.documentId != null">
+                DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeSupplyReason != null">
+                EXCHANGE_SUPPLY_REASON = #{row.exchangeSupplyReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeAmountNature != null">
+                EXCHANGE_AMOUNT_NATURE = #{row.exchangeAmountNature,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agencyCorpName != null">
+                AGENCY_CORP_NAME = #{row.agencyCorpName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cnyAcctNo != null">
+                CNY_ACCT_NO = #{row.cnyAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeChangeReason != null">
+                EXCHANGE_CHANGE_REASON = #{row.exchangeChangeReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.documentType != null">
+                DOCUMENT_TYPE = #{row.documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.issCountry != null">
+                ISS_COUNTRY = #{row.issCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeCancelReason != null">
+                EXCHANGE_CANCEL_REASON = #{row.exchangeCancelReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.supplyRemark != null">
+                SUPPLY_REMARK = #{row.supplyRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="row.apprLetterNo != null">
+                APPR_LETTER_NO = #{row.apprLetterNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.individualBusiOrgCode != null">
+                INDIVIDUAL_BUSI_ORG_CODE = #{row.individualBusiOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.individualBusiName != null">
+                INDIVIDUAL_BUSI_NAME = #{row.individualBusiName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientName != null">
+                CLIENT_NAME = #{row.clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.supplyDocumentId != null">
+                SUPPLY_DOCUMENT_ID = #{row.supplyDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agencyCorpOrgCode != null">
+                AGENCY_CORP_ORG_CODE = #{row.agencyCorpOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeAmountType != null">
+                EXCHANGE_AMOUNT_TYPE = #{row.exchangeAmountType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeClass != null">
+                EXCHANGE_CLASS = #{row.exchangeClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeReportType != null">
+                EXCHANGE_REPORT_TYPE = #{row.exchangeReportType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeReportNo != null">
+                EXCHANGE_REPORT_NO = #{row.exchangeReportNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE = #{row.exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET = #{row.exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeType != null">
+                EXCHANGE_TYPE = #{row.exchangeType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeTranStatus != null">
+                EXCHANGE_TRAN_STATUS = #{row.exchangeTranStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangePurpose != null">
+                EXCHANGE_PURPOSE = #{row.exchangePurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangePurposeDetails != null">
+                EXCHANGE_PURPOSE_DETAILS = #{row.exchangePurposeDetails,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sourceModule != null">
+                SOURCE_MODULE = #{row.sourceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="row.apprUserId != null">
+                APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.approvalDate != null">
+                APPROVAL_DATE = #{row.approvalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.tranDate != null">
+                TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.discountValue != null">
+                DISCOUNT_VALUE = #{row.discountValue,jdbcType=DECIMAL},
+            </if>
+            <if test="row.lastChangeUserId != null">
+                LAST_CHANGE_USER_ID = #{row.lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashFromCode != null">
+                CASH_FROM_CODE = #{row.cashFromCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashFromCountry != null">
+                CASH_FROM_COUNTRY = #{row.cashFromCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashToCode != null">
+                CASH_TO_CODE = #{row.cashToCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashToCountry != null">
+                CASH_TO_COUNTRY = #{row.cashToCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.remark != null">
+                REMARK = #{row.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_EXCHANGE_TRAN_ATTACH
+        set
+            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            FORE_ACCT = #{row.foreAcct,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},            DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},            EXCHANGE_SUPPLY_REASON = #{row.exchangeSupplyReason,jdbcType=VARCHAR},            EXCHANGE_AMOUNT_NATURE = #{row.exchangeAmountNature,jdbcType=VARCHAR},            AGENCY_CORP_NAME = #{row.agencyCorpName,jdbcType=VARCHAR},            CNY_ACCT_NO = #{row.cnyAcctNo,jdbcType=VARCHAR},            EXCHANGE_CHANGE_REASON = #{row.exchangeChangeReason,jdbcType=VARCHAR},            DOCUMENT_TYPE = #{row.documentType,jdbcType=VARCHAR},            ISS_COUNTRY = #{row.issCountry,jdbcType=VARCHAR},            EXCHANGE_CANCEL_REASON = #{row.exchangeCancelReason,jdbcType=VARCHAR},            SUPPLY_REMARK = #{row.supplyRemark,jdbcType=VARCHAR},            APPR_LETTER_NO = #{row.apprLetterNo,jdbcType=VARCHAR},            INDIVIDUAL_BUSI_ORG_CODE = #{row.individualBusiOrgCode,jdbcType=VARCHAR},            INDIVIDUAL_BUSI_NAME = #{row.individualBusiName,jdbcType=VARCHAR},            CLIENT_NAME = #{row.clientName,jdbcType=VARCHAR},            SUPPLY_DOCUMENT_ID = #{row.supplyDocumentId,jdbcType=VARCHAR},            AGENCY_CORP_ORG_CODE = #{row.agencyCorpOrgCode,jdbcType=VARCHAR},            EXCHANGE_AMOUNT_TYPE = #{row.exchangeAmountType,jdbcType=VARCHAR},            EXCHANGE_CLASS = #{row.exchangeClass,jdbcType=VARCHAR},            EXCHANGE_REPORT_TYPE = #{row.exchangeReportType,jdbcType=VARCHAR},            EXCHANGE_REPORT_NO = #{row.exchangeReportNo,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODE = #{row.exchangeTranCode,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODET = #{row.exchangeTranCodet,jdbcType=VARCHAR},            EXCHANGE_TYPE = #{row.exchangeType,jdbcType=VARCHAR},            EXCHANGE_TRAN_STATUS = #{row.exchangeTranStatus,jdbcType=VARCHAR},            EXCHANGE_PURPOSE = #{row.exchangePurpose,jdbcType=VARCHAR},            EXCHANGE_PURPOSE_DETAILS = #{row.exchangePurposeDetails,jdbcType=VARCHAR},            SOURCE_MODULE = #{row.sourceModule,jdbcType=VARCHAR},            APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},            APPROVAL_DATE = #{row.approvalDate,jdbcType=TIMESTAMP},            TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            DISCOUNT_VALUE = #{row.discountValue,jdbcType=DECIMAL},            LAST_CHANGE_USER_ID = #{row.lastChangeUserId,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            CASH_FROM_CODE = #{row.cashFromCode,jdbcType=VARCHAR},            CASH_FROM_COUNTRY = #{row.cashFromCountry,jdbcType=VARCHAR},            CASH_TO_CODE = #{row.cashToCode,jdbcType=VARCHAR},            CASH_TO_COUNTRY = #{row.cashToCountry,jdbcType=VARCHAR},            REMARK = #{row.remark,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbExchangeTranAttach">
+        update RB_EXCHANGE_TRAN_ATTACH
+        <set>
+            <if test="foreAcct != null">
+                FORE_ACCT = #{foreAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeSupplyReason != null">
+                EXCHANGE_SUPPLY_REASON = #{exchangeSupplyReason,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeAmountNature != null">
+                EXCHANGE_AMOUNT_NATURE = #{exchangeAmountNature,jdbcType=VARCHAR},
+            </if>
+            <if test="agencyCorpName != null">
+                AGENCY_CORP_NAME = #{agencyCorpName,jdbcType=VARCHAR},
+            </if>
+            <if test="cnyAcctNo != null">
+                CNY_ACCT_NO = #{cnyAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeChangeReason != null">
+                EXCHANGE_CHANGE_REASON = #{exchangeChangeReason,jdbcType=VARCHAR},
+            </if>
+            <if test="documentType != null">
+                DOCUMENT_TYPE = #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="issCountry != null">
+                ISS_COUNTRY = #{issCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeCancelReason != null">
+                EXCHANGE_CANCEL_REASON = #{exchangeCancelReason,jdbcType=VARCHAR},
+            </if>
+            <if test="supplyRemark != null">
+                SUPPLY_REMARK = #{supplyRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="apprLetterNo != null">
+                APPR_LETTER_NO = #{apprLetterNo,jdbcType=VARCHAR},
+            </if>
+            <if test="individualBusiOrgCode != null">
+                INDIVIDUAL_BUSI_ORG_CODE = #{individualBusiOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="individualBusiName != null">
+                INDIVIDUAL_BUSI_NAME = #{individualBusiName,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                CLIENT_NAME = #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="supplyDocumentId != null">
+                SUPPLY_DOCUMENT_ID = #{supplyDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="agencyCorpOrgCode != null">
+                AGENCY_CORP_ORG_CODE = #{agencyCorpOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeAmountType != null">
+                EXCHANGE_AMOUNT_TYPE = #{exchangeAmountType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeClass != null">
+                EXCHANGE_CLASS = #{exchangeClass,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeReportType != null">
+                EXCHANGE_REPORT_TYPE = #{exchangeReportType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeReportNo != null">
+                EXCHANGE_REPORT_NO = #{exchangeReportNo,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE = #{exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET = #{exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeType != null">
+                EXCHANGE_TYPE = #{exchangeType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranStatus != null">
+                EXCHANGE_TRAN_STATUS = #{exchangeTranStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangePurpose != null">
+                EXCHANGE_PURPOSE = #{exchangePurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangePurposeDetails != null">
+                EXCHANGE_PURPOSE_DETAILS = #{exchangePurposeDetails,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceModule != null">
+                SOURCE_MODULE = #{sourceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalDate != null">
+                APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="discountValue != null">
+                DISCOUNT_VALUE = #{discountValue,jdbcType=DECIMAL},
+            </if>
+            <if test="lastChangeUserId != null">
+                LAST_CHANGE_USER_ID = #{lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCode != null">
+                CASH_FROM_CODE = #{cashFromCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCountry != null">
+                CASH_FROM_COUNTRY = #{cashFromCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCode != null">
+                CASH_TO_CODE = #{cashToCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCountry != null">
+                CASH_TO_COUNTRY = #{cashToCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbExchangeTranAttach">
+        update RB_EXCHANGE_TRAN_ATTACH
+        set
+            FORE_ACCT = #{foreAcct,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},            DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},            EXCHANGE_SUPPLY_REASON = #{exchangeSupplyReason,jdbcType=VARCHAR},            EXCHANGE_AMOUNT_NATURE = #{exchangeAmountNature,jdbcType=VARCHAR},            AGENCY_CORP_NAME = #{agencyCorpName,jdbcType=VARCHAR},            CNY_ACCT_NO = #{cnyAcctNo,jdbcType=VARCHAR},            EXCHANGE_CHANGE_REASON = #{exchangeChangeReason,jdbcType=VARCHAR},            DOCUMENT_TYPE = #{documentType,jdbcType=VARCHAR},            ISS_COUNTRY = #{issCountry,jdbcType=VARCHAR},            EXCHANGE_CANCEL_REASON = #{exchangeCancelReason,jdbcType=VARCHAR},            SUPPLY_REMARK = #{supplyRemark,jdbcType=VARCHAR},            APPR_LETTER_NO = #{apprLetterNo,jdbcType=VARCHAR},            INDIVIDUAL_BUSI_ORG_CODE = #{individualBusiOrgCode,jdbcType=VARCHAR},            INDIVIDUAL_BUSI_NAME = #{individualBusiName,jdbcType=VARCHAR},            CLIENT_NAME = #{clientName,jdbcType=VARCHAR},            SUPPLY_DOCUMENT_ID = #{supplyDocumentId,jdbcType=VARCHAR},            AGENCY_CORP_ORG_CODE = #{agencyCorpOrgCode,jdbcType=VARCHAR},            EXCHANGE_AMOUNT_TYPE = #{exchangeAmountType,jdbcType=VARCHAR},            EXCHANGE_CLASS = #{exchangeClass,jdbcType=VARCHAR},            EXCHANGE_REPORT_TYPE = #{exchangeReportType,jdbcType=VARCHAR},            EXCHANGE_REPORT_NO = #{exchangeReportNo,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODE = #{exchangeTranCode,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODET = #{exchangeTranCodet,jdbcType=VARCHAR},            EXCHANGE_TYPE = #{exchangeType,jdbcType=VARCHAR},            EXCHANGE_TRAN_STATUS = #{exchangeTranStatus,jdbcType=VARCHAR},            EXCHANGE_PURPOSE = #{exchangePurpose,jdbcType=VARCHAR},            EXCHANGE_PURPOSE_DETAILS = #{exchangePurposeDetails,jdbcType=VARCHAR},            SOURCE_MODULE = #{sourceModule,jdbcType=VARCHAR},            APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},            APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},            TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            DISCOUNT_VALUE = #{discountValue,jdbcType=DECIMAL},            LAST_CHANGE_USER_ID = #{lastChangeUserId,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            CASH_FROM_CODE = #{cashFromCode,jdbcType=VARCHAR},            CASH_FROM_COUNTRY = #{cashFromCountry,jdbcType=VARCHAR},            CASH_TO_CODE = #{cashToCode,jdbcType=VARCHAR},            CASH_TO_COUNTRY = #{cashToCountry,jdbcType=VARCHAR},            REMARK = #{remark,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR}        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

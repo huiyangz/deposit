@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.ClAcctNatureDefMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.ClAcctNatureDef">
+        <id column="ACCT_NATURE" property="acctNature" jdbcType="VARCHAR" />
+        <result column="ACCT_NATURE_DESC" property="acctNatureDesc" jdbcType="VARCHAR" />
+        <result column="NATURE_CLASS" property="natureClass" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        ACCT_NATURE,        ACCT_NATURE_DESC,        NATURE_CLASS,        TRAN_TIMESTAMP,        COMPANY,        DESCRIPTION    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.ClAcctNatureDefExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from CL_ACCT_NATURE_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from CL_ACCT_NATURE_DEF
+        where ACCT_NATURE = #{acctNature,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from CL_ACCT_NATURE_DEF
+        where ACCT_NATURE = #{acctNature,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.ClAcctNatureDefExample">
+        delete from CL_ACCT_NATURE_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.ClAcctNatureDef">
+        insert into CL_ACCT_NATURE_DEF
+        (
+            ACCT_NATURE,            ACCT_NATURE_DESC,            NATURE_CLASS,            TRAN_TIMESTAMP,            COMPANY,            DESCRIPTION        )
+        values
+        (
+            #{acctNature,jdbcType=VARCHAR},            #{acctNatureDesc,jdbcType=VARCHAR},            #{natureClass,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{description,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.ClAcctNatureDef">
+        insert into CL_ACCT_NATURE_DEF
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="acctNature != null">
+                ACCT_NATURE,
+            </if>
+            <if test="acctNatureDesc != null">
+                ACCT_NATURE_DESC,
+            </if>
+            <if test="natureClass != null">
+                NATURE_CLASS,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="description != null">
+                DESCRIPTION,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="acctNature != null">
+                #{acctNature,jdbcType=VARCHAR},
+            </if>
+            <if test="acctNatureDesc != null">
+                #{acctNatureDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="natureClass != null">
+                #{natureClass,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.ClAcctNatureDefExample" resultType="java.lang.Long">
+        select count(*) from CL_ACCT_NATURE_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update CL_ACCT_NATURE_DEF
+        <set>
+            <if test="row.acctNature != null">
+                ACCT_NATURE = #{row.acctNature,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctNatureDesc != null">
+                ACCT_NATURE_DESC = #{row.acctNatureDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.natureClass != null">
+                NATURE_CLASS = #{row.natureClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.description != null">
+                DESCRIPTION = #{row.description,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update CL_ACCT_NATURE_DEF
+        set
+            ACCT_NATURE = #{row.acctNature,jdbcType=VARCHAR},            ACCT_NATURE_DESC = #{row.acctNatureDesc,jdbcType=VARCHAR},            NATURE_CLASS = #{row.natureClass,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            DESCRIPTION = #{row.description,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.ClAcctNatureDef">
+        update CL_ACCT_NATURE_DEF
+        <set>
+            <if test="acctNatureDesc != null">
+                ACCT_NATURE_DESC = #{acctNatureDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="natureClass != null">
+                NATURE_CLASS = #{natureClass,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                DESCRIPTION = #{description,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ACCT_NATURE = #{acctNature,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.ClAcctNatureDef">
+        update CL_ACCT_NATURE_DEF
+        set
+            ACCT_NATURE_DESC = #{acctNatureDesc,jdbcType=VARCHAR},            NATURE_CLASS = #{natureClass,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            DESCRIPTION = #{description,jdbcType=VARCHAR}        where ACCT_NATURE = #{acctNature,jdbcType=VARCHAR}
+    </update>
+</mapper>

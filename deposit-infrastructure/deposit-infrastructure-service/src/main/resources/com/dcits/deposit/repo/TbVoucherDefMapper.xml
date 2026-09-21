@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.TbVoucherDefMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.TbVoucherDef">
+        <id column="DOC_TYPE" property="docType" jdbcType="VARCHAR" />
+        <result column="DOC_TYPE_DESC" property="docTypeDesc" jdbcType="VARCHAR" />
+        <result column="DOC_CLASS" property="docClass" jdbcType="VARCHAR" />
+        <result column="VOUCHER_BILL_IND" property="voucherBillInd" jdbcType="VARCHAR" />
+        <result column="VOUCHER_LENGTH" property="voucherLength" jdbcType="VARCHAR" />
+        <result column="PREFIX_REQ" property="prefixReq" jdbcType="VARCHAR" />
+        <result column="IS_CASH_CHEQUE" property="isCashCheque" jdbcType="VARCHAR" />
+        <result column="CHEQUE_BOOK_FLAG" property="chequeBookFlag" jdbcType="VARCHAR" />
+        <result column="HAVE_NUMBER" property="haveNumber" jdbcType="VARCHAR" />
+        <result column="IN_CONTROL" property="inControl" jdbcType="VARCHAR" />
+        <result column="BRANCH_RESTRAINT_FLAG" property="branchRestraintFlag" jdbcType="VARCHAR" />
+        <result column="ALLOW_DISTR_FLAG" property="allowDistrFlag" jdbcType="VARCHAR" />
+        <result column="SALE_FLAG" property="saleFlag" jdbcType="VARCHAR" />
+        <result column="VOU_LOST_DAYS" property="vouLostDays" jdbcType="INTEGER" />
+        <result column="VOU_LOST_REISSUE_DAYS" property="vouLostReissueDays" jdbcType="INTEGER" />
+        <result column="COMMISSION_VOU_LOST_DAYS" property="commissionVouLostDays" jdbcType="INTEGER" />
+        <result column="EXPIRE_DATE" property="expireDate" jdbcType="TIMESTAMP" />
+        <result column="EFFECT_DATE" property="effectDate" jdbcType="TIMESTAMP" />
+        <result column="USE_BY_ORDER_FLAG" property="useByOrderFlag" jdbcType="VARCHAR" />
+        <result column="DEPOSIT_TYPE" property="depositType" jdbcType="VARCHAR" />
+        <result column="OTHER_BANK_FLAG" property="otherBankFlag" jdbcType="VARCHAR" />
+        <result column="PROFIT_CENTER" property="profitCenter" jdbcType="VARCHAR" />
+        <result column="VOUCHER_APPROVE_STATUS" property="voucherApproveStatus" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+        <result column="APPR_USER_ID" property="apprUserId" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_USER_ID" property="lastChangeUserId" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="OPEN_ACCT_FLAG" property="openAcctFlag" jdbcType="VARCHAR" />
+        <result column="VOU_LOST_STOP_FLAG" property="vouLostStopFlag" jdbcType="VARCHAR" />
+        <result column="VOU_LOST_ALLOW_CHANNEL" property="vouLostAllowChannel" jdbcType="VARCHAR" />
+        <result column="LOST_STOP_FLAG" property="lostStopFlag" jdbcType="VARCHAR" />
+        <result column="LOST_ALLOW_CHANNEL" property="lostAllowChannel" jdbcType="VARCHAR" />
+        <result column="LOST_DAYS" property="lostDays" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        DOC_TYPE,        DOC_TYPE_DESC,        DOC_CLASS,        VOUCHER_BILL_IND,        VOUCHER_LENGTH,        PREFIX_REQ,        IS_CASH_CHEQUE,        CHEQUE_BOOK_FLAG,        HAVE_NUMBER,        IN_CONTROL,        BRANCH_RESTRAINT_FLAG,        ALLOW_DISTR_FLAG,        SALE_FLAG,        VOU_LOST_DAYS,        VOU_LOST_REISSUE_DAYS,        COMMISSION_VOU_LOST_DAYS,        EXPIRE_DATE,        EFFECT_DATE,        USE_BY_ORDER_FLAG,        DEPOSIT_TYPE,        OTHER_BANK_FLAG,        PROFIT_CENTER,        VOUCHER_APPROVE_STATUS,        TRAN_TIMESTAMP,        USER_ID,        APPR_USER_ID,        LAST_CHANGE_USER_ID,        LAST_CHANGE_DATE,        COMPANY,        OPEN_ACCT_FLAG,        VOU_LOST_STOP_FLAG,        VOU_LOST_ALLOW_CHANNEL,        LOST_STOP_FLAG,        LOST_ALLOW_CHANNEL,        LOST_DAYS    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.TbVoucherDefExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from TB_VOUCHER_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from TB_VOUCHER_DEF
+        where DOC_TYPE = #{docType,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from TB_VOUCHER_DEF
+        where DOC_TYPE = #{docType,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.TbVoucherDefExample">
+        delete from TB_VOUCHER_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.TbVoucherDef">
+        insert into TB_VOUCHER_DEF
+        (
+            DOC_TYPE,            DOC_TYPE_DESC,            DOC_CLASS,            VOUCHER_BILL_IND,            VOUCHER_LENGTH,            PREFIX_REQ,            IS_CASH_CHEQUE,            CHEQUE_BOOK_FLAG,            HAVE_NUMBER,            IN_CONTROL,            BRANCH_RESTRAINT_FLAG,            ALLOW_DISTR_FLAG,            SALE_FLAG,            VOU_LOST_DAYS,            VOU_LOST_REISSUE_DAYS,            COMMISSION_VOU_LOST_DAYS,            EXPIRE_DATE,            EFFECT_DATE,            USE_BY_ORDER_FLAG,            DEPOSIT_TYPE,            OTHER_BANK_FLAG,            PROFIT_CENTER,            VOUCHER_APPROVE_STATUS,            TRAN_TIMESTAMP,            USER_ID,            APPR_USER_ID,            LAST_CHANGE_USER_ID,            LAST_CHANGE_DATE,            COMPANY,            OPEN_ACCT_FLAG,            VOU_LOST_STOP_FLAG,            VOU_LOST_ALLOW_CHANNEL,            LOST_STOP_FLAG,            LOST_ALLOW_CHANNEL,            LOST_DAYS        )
+        values
+        (
+            #{docType,jdbcType=VARCHAR},            #{docTypeDesc,jdbcType=VARCHAR},            #{docClass,jdbcType=VARCHAR},            #{voucherBillInd,jdbcType=VARCHAR},            #{voucherLength,jdbcType=VARCHAR},            #{prefixReq,jdbcType=VARCHAR},            #{isCashCheque,jdbcType=VARCHAR},            #{chequeBookFlag,jdbcType=VARCHAR},            #{haveNumber,jdbcType=VARCHAR},            #{inControl,jdbcType=VARCHAR},            #{branchRestraintFlag,jdbcType=VARCHAR},            #{allowDistrFlag,jdbcType=VARCHAR},            #{saleFlag,jdbcType=VARCHAR},            #{vouLostDays,jdbcType=INTEGER},            #{vouLostReissueDays,jdbcType=INTEGER},            #{commissionVouLostDays,jdbcType=INTEGER},            #{expireDate,jdbcType=TIMESTAMP},            #{effectDate,jdbcType=TIMESTAMP},            #{useByOrderFlag,jdbcType=VARCHAR},            #{depositType,jdbcType=VARCHAR},            #{otherBankFlag,jdbcType=VARCHAR},            #{profitCenter,jdbcType=VARCHAR},            #{voucherApproveStatus,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{userId,jdbcType=VARCHAR},            #{apprUserId,jdbcType=VARCHAR},            #{lastChangeUserId,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{company,jdbcType=VARCHAR},            #{openAcctFlag,jdbcType=VARCHAR},            #{vouLostStopFlag,jdbcType=VARCHAR},            #{vouLostAllowChannel,jdbcType=VARCHAR},            #{lostStopFlag,jdbcType=VARCHAR},            #{lostAllowChannel,jdbcType=VARCHAR},            #{lostDays,jdbcType=INTEGER}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.TbVoucherDef">
+        insert into TB_VOUCHER_DEF
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="docType != null">
+                DOC_TYPE,
+            </if>
+            <if test="docTypeDesc != null">
+                DOC_TYPE_DESC,
+            </if>
+            <if test="docClass != null">
+                DOC_CLASS,
+            </if>
+            <if test="voucherBillInd != null">
+                VOUCHER_BILL_IND,
+            </if>
+            <if test="voucherLength != null">
+                VOUCHER_LENGTH,
+            </if>
+            <if test="prefixReq != null">
+                PREFIX_REQ,
+            </if>
+            <if test="isCashCheque != null">
+                IS_CASH_CHEQUE,
+            </if>
+            <if test="chequeBookFlag != null">
+                CHEQUE_BOOK_FLAG,
+            </if>
+            <if test="haveNumber != null">
+                HAVE_NUMBER,
+            </if>
+            <if test="inControl != null">
+                IN_CONTROL,
+            </if>
+            <if test="branchRestraintFlag != null">
+                BRANCH_RESTRAINT_FLAG,
+            </if>
+            <if test="allowDistrFlag != null">
+                ALLOW_DISTR_FLAG,
+            </if>
+            <if test="saleFlag != null">
+                SALE_FLAG,
+            </if>
+            <if test="vouLostDays != null">
+                VOU_LOST_DAYS,
+            </if>
+            <if test="vouLostReissueDays != null">
+                VOU_LOST_REISSUE_DAYS,
+            </if>
+            <if test="commissionVouLostDays != null">
+                COMMISSION_VOU_LOST_DAYS,
+            </if>
+            <if test="expireDate != null">
+                EXPIRE_DATE,
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE,
+            </if>
+            <if test="useByOrderFlag != null">
+                USE_BY_ORDER_FLAG,
+            </if>
+            <if test="depositType != null">
+                DEPOSIT_TYPE,
+            </if>
+            <if test="otherBankFlag != null">
+                OTHER_BANK_FLAG,
+            </if>
+            <if test="profitCenter != null">
+                PROFIT_CENTER,
+            </if>
+            <if test="voucherApproveStatus != null">
+                VOUCHER_APPROVE_STATUS,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID,
+            </if>
+            <if test="lastChangeUserId != null">
+                LAST_CHANGE_USER_ID,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="openAcctFlag != null">
+                OPEN_ACCT_FLAG,
+            </if>
+            <if test="vouLostStopFlag != null">
+                VOU_LOST_STOP_FLAG,
+            </if>
+            <if test="vouLostAllowChannel != null">
+                VOU_LOST_ALLOW_CHANNEL,
+            </if>
+            <if test="lostStopFlag != null">
+                LOST_STOP_FLAG,
+            </if>
+            <if test="lostAllowChannel != null">
+                LOST_ALLOW_CHANNEL,
+            </if>
+            <if test="lostDays != null">
+                LOST_DAYS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="docType != null">
+                #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="docTypeDesc != null">
+                #{docTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="docClass != null">
+                #{docClass,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherBillInd != null">
+                #{voucherBillInd,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherLength != null">
+                #{voucherLength,jdbcType=VARCHAR},
+            </if>
+            <if test="prefixReq != null">
+                #{prefixReq,jdbcType=VARCHAR},
+            </if>
+            <if test="isCashCheque != null">
+                #{isCashCheque,jdbcType=VARCHAR},
+            </if>
+            <if test="chequeBookFlag != null">
+                #{chequeBookFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="haveNumber != null">
+                #{haveNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="inControl != null">
+                #{inControl,jdbcType=VARCHAR},
+            </if>
+            <if test="branchRestraintFlag != null">
+                #{branchRestraintFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="allowDistrFlag != null">
+                #{allowDistrFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="saleFlag != null">
+                #{saleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="vouLostDays != null">
+                #{vouLostDays,jdbcType=INTEGER},
+            </if>
+            <if test="vouLostReissueDays != null">
+                #{vouLostReissueDays,jdbcType=INTEGER},
+            </if>
+            <if test="commissionVouLostDays != null">
+                #{commissionVouLostDays,jdbcType=INTEGER},
+            </if>
+            <if test="expireDate != null">
+                #{expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="effectDate != null">
+                #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useByOrderFlag != null">
+                #{useByOrderFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="depositType != null">
+                #{depositType,jdbcType=VARCHAR},
+            </if>
+            <if test="otherBankFlag != null">
+                #{otherBankFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="profitCenter != null">
+                #{profitCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherApproveStatus != null">
+                #{voucherApproveStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeUserId != null">
+                #{lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="openAcctFlag != null">
+                #{openAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="vouLostStopFlag != null">
+                #{vouLostStopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="vouLostAllowChannel != null">
+                #{vouLostAllowChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="lostStopFlag != null">
+                #{lostStopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="lostAllowChannel != null">
+                #{lostAllowChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="lostDays != null">
+                #{lostDays,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.TbVoucherDefExample" resultType="java.lang.Long">
+        select count(*) from TB_VOUCHER_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update TB_VOUCHER_DEF
+        <set>
+            <if test="row.docType != null">
+                DOC_TYPE = #{row.docType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.docTypeDesc != null">
+                DOC_TYPE_DESC = #{row.docTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.docClass != null">
+                DOC_CLASS = #{row.docClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.voucherBillInd != null">
+                VOUCHER_BILL_IND = #{row.voucherBillInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.voucherLength != null">
+                VOUCHER_LENGTH = #{row.voucherLength,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prefixReq != null">
+                PREFIX_REQ = #{row.prefixReq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isCashCheque != null">
+                IS_CASH_CHEQUE = #{row.isCashCheque,jdbcType=VARCHAR},
+            </if>
+            <if test="row.chequeBookFlag != null">
+                CHEQUE_BOOK_FLAG = #{row.chequeBookFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.haveNumber != null">
+                HAVE_NUMBER = #{row.haveNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="row.inControl != null">
+                IN_CONTROL = #{row.inControl,jdbcType=VARCHAR},
+            </if>
+            <if test="row.branchRestraintFlag != null">
+                BRANCH_RESTRAINT_FLAG = #{row.branchRestraintFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.allowDistrFlag != null">
+                ALLOW_DISTR_FLAG = #{row.allowDistrFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.saleFlag != null">
+                SALE_FLAG = #{row.saleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.vouLostDays != null">
+                VOU_LOST_DAYS = #{row.vouLostDays,jdbcType=INTEGER},
+            </if>
+            <if test="row.vouLostReissueDays != null">
+                VOU_LOST_REISSUE_DAYS = #{row.vouLostReissueDays,jdbcType=INTEGER},
+            </if>
+            <if test="row.commissionVouLostDays != null">
+                COMMISSION_VOU_LOST_DAYS = #{row.commissionVouLostDays,jdbcType=INTEGER},
+            </if>
+            <if test="row.expireDate != null">
+                EXPIRE_DATE = #{row.expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.effectDate != null">
+                EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.useByOrderFlag != null">
+                USE_BY_ORDER_FLAG = #{row.useByOrderFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.depositType != null">
+                DEPOSIT_TYPE = #{row.depositType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.otherBankFlag != null">
+                OTHER_BANK_FLAG = #{row.otherBankFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.profitCenter != null">
+                PROFIT_CENTER = #{row.profitCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="row.voucherApproveStatus != null">
+                VOUCHER_APPROVE_STATUS = #{row.voucherApproveStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.userId != null">
+                USER_ID = #{row.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.apprUserId != null">
+                APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeUserId != null">
+                LAST_CHANGE_USER_ID = #{row.lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.openAcctFlag != null">
+                OPEN_ACCT_FLAG = #{row.openAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.vouLostStopFlag != null">
+                VOU_LOST_STOP_FLAG = #{row.vouLostStopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.vouLostAllowChannel != null">
+                VOU_LOST_ALLOW_CHANNEL = #{row.vouLostAllowChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lostStopFlag != null">
+                LOST_STOP_FLAG = #{row.lostStopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lostAllowChannel != null">
+                LOST_ALLOW_CHANNEL = #{row.lostAllowChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lostDays != null">
+                LOST_DAYS = #{row.lostDays,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update TB_VOUCHER_DEF
+        set
+            DOC_TYPE = #{row.docType,jdbcType=VARCHAR},            DOC_TYPE_DESC = #{row.docTypeDesc,jdbcType=VARCHAR},            DOC_CLASS = #{row.docClass,jdbcType=VARCHAR},            VOUCHER_BILL_IND = #{row.voucherBillInd,jdbcType=VARCHAR},            VOUCHER_LENGTH = #{row.voucherLength,jdbcType=VARCHAR},            PREFIX_REQ = #{row.prefixReq,jdbcType=VARCHAR},            IS_CASH_CHEQUE = #{row.isCashCheque,jdbcType=VARCHAR},            CHEQUE_BOOK_FLAG = #{row.chequeBookFlag,jdbcType=VARCHAR},            HAVE_NUMBER = #{row.haveNumber,jdbcType=VARCHAR},            IN_CONTROL = #{row.inControl,jdbcType=VARCHAR},            BRANCH_RESTRAINT_FLAG = #{row.branchRestraintFlag,jdbcType=VARCHAR},            ALLOW_DISTR_FLAG = #{row.allowDistrFlag,jdbcType=VARCHAR},            SALE_FLAG = #{row.saleFlag,jdbcType=VARCHAR},            VOU_LOST_DAYS = #{row.vouLostDays,jdbcType=INTEGER},            VOU_LOST_REISSUE_DAYS = #{row.vouLostReissueDays,jdbcType=INTEGER},            COMMISSION_VOU_LOST_DAYS = #{row.commissionVouLostDays,jdbcType=INTEGER},            EXPIRE_DATE = #{row.expireDate,jdbcType=TIMESTAMP},            EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},            USE_BY_ORDER_FLAG = #{row.useByOrderFlag,jdbcType=VARCHAR},            DEPOSIT_TYPE = #{row.depositType,jdbcType=VARCHAR},            OTHER_BANK_FLAG = #{row.otherBankFlag,jdbcType=VARCHAR},            PROFIT_CENTER = #{row.profitCenter,jdbcType=VARCHAR},            VOUCHER_APPROVE_STATUS = #{row.voucherApproveStatus,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            USER_ID = #{row.userId,jdbcType=VARCHAR},            APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},            LAST_CHANGE_USER_ID = #{row.lastChangeUserId,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            COMPANY = #{row.company,jdbcType=VARCHAR},            OPEN_ACCT_FLAG = #{row.openAcctFlag,jdbcType=VARCHAR},            VOU_LOST_STOP_FLAG = #{row.vouLostStopFlag,jdbcType=VARCHAR},            VOU_LOST_ALLOW_CHANNEL = #{row.vouLostAllowChannel,jdbcType=VARCHAR},            LOST_STOP_FLAG = #{row.lostStopFlag,jdbcType=VARCHAR},            LOST_ALLOW_CHANNEL = #{row.lostAllowChannel,jdbcType=VARCHAR},            LOST_DAYS = #{row.lostDays,jdbcType=INTEGER}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.TbVoucherDef">
+        update TB_VOUCHER_DEF
+        <set>
+            <if test="docTypeDesc != null">
+                DOC_TYPE_DESC = #{docTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="docClass != null">
+                DOC_CLASS = #{docClass,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherBillInd != null">
+                VOUCHER_BILL_IND = #{voucherBillInd,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherLength != null">
+                VOUCHER_LENGTH = #{voucherLength,jdbcType=VARCHAR},
+            </if>
+            <if test="prefixReq != null">
+                PREFIX_REQ = #{prefixReq,jdbcType=VARCHAR},
+            </if>
+            <if test="isCashCheque != null">
+                IS_CASH_CHEQUE = #{isCashCheque,jdbcType=VARCHAR},
+            </if>
+            <if test="chequeBookFlag != null">
+                CHEQUE_BOOK_FLAG = #{chequeBookFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="haveNumber != null">
+                HAVE_NUMBER = #{haveNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="inControl != null">
+                IN_CONTROL = #{inControl,jdbcType=VARCHAR},
+            </if>
+            <if test="branchRestraintFlag != null">
+                BRANCH_RESTRAINT_FLAG = #{branchRestraintFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="allowDistrFlag != null">
+                ALLOW_DISTR_FLAG = #{allowDistrFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="saleFlag != null">
+                SALE_FLAG = #{saleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="vouLostDays != null">
+                VOU_LOST_DAYS = #{vouLostDays,jdbcType=INTEGER},
+            </if>
+            <if test="vouLostReissueDays != null">
+                VOU_LOST_REISSUE_DAYS = #{vouLostReissueDays,jdbcType=INTEGER},
+            </if>
+            <if test="commissionVouLostDays != null">
+                COMMISSION_VOU_LOST_DAYS = #{commissionVouLostDays,jdbcType=INTEGER},
+            </if>
+            <if test="expireDate != null">
+                EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useByOrderFlag != null">
+                USE_BY_ORDER_FLAG = #{useByOrderFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="depositType != null">
+                DEPOSIT_TYPE = #{depositType,jdbcType=VARCHAR},
+            </if>
+            <if test="otherBankFlag != null">
+                OTHER_BANK_FLAG = #{otherBankFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="profitCenter != null">
+                PROFIT_CENTER = #{profitCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherApproveStatus != null">
+                VOUCHER_APPROVE_STATUS = #{voucherApproveStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeUserId != null">
+                LAST_CHANGE_USER_ID = #{lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="openAcctFlag != null">
+                OPEN_ACCT_FLAG = #{openAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="vouLostStopFlag != null">
+                VOU_LOST_STOP_FLAG = #{vouLostStopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="vouLostAllowChannel != null">
+                VOU_LOST_ALLOW_CHANNEL = #{vouLostAllowChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="lostStopFlag != null">
+                LOST_STOP_FLAG = #{lostStopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="lostAllowChannel != null">
+                LOST_ALLOW_CHANNEL = #{lostAllowChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="lostDays != null">
+                LOST_DAYS = #{lostDays,jdbcType=INTEGER},
+            </if>
+        </set>
+        where DOC_TYPE = #{docType,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.TbVoucherDef">
+        update TB_VOUCHER_DEF
+        set
+            DOC_TYPE_DESC = #{docTypeDesc,jdbcType=VARCHAR},            DOC_CLASS = #{docClass,jdbcType=VARCHAR},            VOUCHER_BILL_IND = #{voucherBillInd,jdbcType=VARCHAR},            VOUCHER_LENGTH = #{voucherLength,jdbcType=VARCHAR},            PREFIX_REQ = #{prefixReq,jdbcType=VARCHAR},            IS_CASH_CHEQUE = #{isCashCheque,jdbcType=VARCHAR},            CHEQUE_BOOK_FLAG = #{chequeBookFlag,jdbcType=VARCHAR},            HAVE_NUMBER = #{haveNumber,jdbcType=VARCHAR},            IN_CONTROL = #{inControl,jdbcType=VARCHAR},            BRANCH_RESTRAINT_FLAG = #{branchRestraintFlag,jdbcType=VARCHAR},            ALLOW_DISTR_FLAG = #{allowDistrFlag,jdbcType=VARCHAR},            SALE_FLAG = #{saleFlag,jdbcType=VARCHAR},            VOU_LOST_DAYS = #{vouLostDays,jdbcType=INTEGER},            VOU_LOST_REISSUE_DAYS = #{vouLostReissueDays,jdbcType=INTEGER},            COMMISSION_VOU_LOST_DAYS = #{commissionVouLostDays,jdbcType=INTEGER},            EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},            EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},            USE_BY_ORDER_FLAG = #{useByOrderFlag,jdbcType=VARCHAR},            DEPOSIT_TYPE = #{depositType,jdbcType=VARCHAR},            OTHER_BANK_FLAG = #{otherBankFlag,jdbcType=VARCHAR},            PROFIT_CENTER = #{profitCenter,jdbcType=VARCHAR},            VOUCHER_APPROVE_STATUS = #{voucherApproveStatus,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            USER_ID = #{userId,jdbcType=VARCHAR},            APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},            LAST_CHANGE_USER_ID = #{lastChangeUserId,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            COMPANY = #{company,jdbcType=VARCHAR},            OPEN_ACCT_FLAG = #{openAcctFlag,jdbcType=VARCHAR},            VOU_LOST_STOP_FLAG = #{vouLostStopFlag,jdbcType=VARCHAR},            VOU_LOST_ALLOW_CHANNEL = #{vouLostAllowChannel,jdbcType=VARCHAR},            LOST_STOP_FLAG = #{lostStopFlag,jdbcType=VARCHAR},            LOST_ALLOW_CHANNEL = #{lostAllowChannel,jdbcType=VARCHAR},            LOST_DAYS = #{lostDays,jdbcType=INTEGER}        where DOC_TYPE = #{docType,jdbcType=VARCHAR}
+    </update>
+</mapper>

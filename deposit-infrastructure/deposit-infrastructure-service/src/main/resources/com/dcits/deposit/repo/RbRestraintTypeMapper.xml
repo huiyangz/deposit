@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbRestraintTypeMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbRestraintType">
+        <id column="RESTRAINT_TYPE" property="restraintType" jdbcType="VARCHAR" />
+        <result column="RESTRAINT_TYPE_DESC" property="restraintTypeDesc" jdbcType="VARCHAR" />
+        <result column="RES_PRIORITY" property="resPriority" jdbcType="VARCHAR" />
+        <result column="SYSTEM_USE_FLAG" property="systemUseFlag" jdbcType="VARCHAR" />
+        <result column="AH_BU_FLAG" property="ahBuFlag" jdbcType="VARCHAR" />
+        <result column="MANUAL_RES_FLAG" property="manualResFlag" jdbcType="VARCHAR" />
+        <result column="MANUAL_UNRES_FLAG" property="manualUnresFlag" jdbcType="VARCHAR" />
+        <result column="DR_CR_CTL_FLAG" property="drCrCtlFlag" jdbcType="VARCHAR" />
+        <result column="CASH_FLAG" property="cashFlag" jdbcType="VARCHAR" />
+        <result column="TRANSFER_FLAG" property="transferFlag" jdbcType="VARCHAR" />
+        <result column="STOP_FLAG" property="stopFlag" jdbcType="VARCHAR" />
+        <result column="RESTRAINT_AMT_FLAG" property="restraintAmtFlag" jdbcType="VARCHAR" />
+        <result column="RES_BRANCH_RANGE" property="resBranchRange" jdbcType="VARCHAR" />
+        <result column="UN_MAINT_BRANCH_RANGE" property="unMaintBranchRange" jdbcType="VARCHAR" />
+        <result column="ALLOW_REPEAT_FLAG" property="allowRepeatFlag" jdbcType="VARCHAR" />
+        <result column="CLOSE_ACCT_FLAG" property="closeAcctFlag" jdbcType="VARCHAR" />
+        <result column="PLEDGED_FLAG" property="pledgedFlag" jdbcType="VARCHAR" />
+        <result column="FIN_FROZEN_FLAG" property="finFrozenFlag" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        RESTRAINT_TYPE,        RESTRAINT_TYPE_DESC,        RES_PRIORITY,        SYSTEM_USE_FLAG,        AH_BU_FLAG,        MANUAL_RES_FLAG,        MANUAL_UNRES_FLAG,        DR_CR_CTL_FLAG,        CASH_FLAG,        TRANSFER_FLAG,        STOP_FLAG,        RESTRAINT_AMT_FLAG,        RES_BRANCH_RANGE,        UN_MAINT_BRANCH_RANGE,        ALLOW_REPEAT_FLAG,        CLOSE_ACCT_FLAG,        PLEDGED_FLAG,        FIN_FROZEN_FLAG,        STATUS,        COMPANY,        TRAN_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbRestraintTypeExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_RESTRAINT_TYPE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_RESTRAINT_TYPE
+        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_RESTRAINT_TYPE
+        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbRestraintTypeExample">
+        delete from RB_RESTRAINT_TYPE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbRestraintType">
+        insert into RB_RESTRAINT_TYPE
+        (
+            RESTRAINT_TYPE,            RESTRAINT_TYPE_DESC,            RES_PRIORITY,            SYSTEM_USE_FLAG,            AH_BU_FLAG,            MANUAL_RES_FLAG,            MANUAL_UNRES_FLAG,            DR_CR_CTL_FLAG,            CASH_FLAG,            TRANSFER_FLAG,            STOP_FLAG,            RESTRAINT_AMT_FLAG,            RES_BRANCH_RANGE,            UN_MAINT_BRANCH_RANGE,            ALLOW_REPEAT_FLAG,            CLOSE_ACCT_FLAG,            PLEDGED_FLAG,            FIN_FROZEN_FLAG,            STATUS,            COMPANY,            TRAN_TIMESTAMP        )
+        values
+        (
+            #{restraintType,jdbcType=VARCHAR},            #{restraintTypeDesc,jdbcType=VARCHAR},            #{resPriority,jdbcType=VARCHAR},            #{systemUseFlag,jdbcType=VARCHAR},            #{ahBuFlag,jdbcType=VARCHAR},            #{manualResFlag,jdbcType=VARCHAR},            #{manualUnresFlag,jdbcType=VARCHAR},            #{drCrCtlFlag,jdbcType=VARCHAR},            #{cashFlag,jdbcType=VARCHAR},            #{transferFlag,jdbcType=VARCHAR},            #{stopFlag,jdbcType=VARCHAR},            #{restraintAmtFlag,jdbcType=VARCHAR},            #{resBranchRange,jdbcType=VARCHAR},            #{unMaintBranchRange,jdbcType=VARCHAR},            #{allowRepeatFlag,jdbcType=VARCHAR},            #{closeAcctFlag,jdbcType=VARCHAR},            #{pledgedFlag,jdbcType=VARCHAR},            #{finFrozenFlag,jdbcType=VARCHAR},            #{status,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbRestraintType">
+        insert into RB_RESTRAINT_TYPE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="restraintType != null">
+                RESTRAINT_TYPE,
+            </if>
+            <if test="restraintTypeDesc != null">
+                RESTRAINT_TYPE_DESC,
+            </if>
+            <if test="resPriority != null">
+                RES_PRIORITY,
+            </if>
+            <if test="systemUseFlag != null">
+                SYSTEM_USE_FLAG,
+            </if>
+            <if test="ahBuFlag != null">
+                AH_BU_FLAG,
+            </if>
+            <if test="manualResFlag != null">
+                MANUAL_RES_FLAG,
+            </if>
+            <if test="manualUnresFlag != null">
+                MANUAL_UNRES_FLAG,
+            </if>
+            <if test="drCrCtlFlag != null">
+                DR_CR_CTL_FLAG,
+            </if>
+            <if test="cashFlag != null">
+                CASH_FLAG,
+            </if>
+            <if test="transferFlag != null">
+                TRANSFER_FLAG,
+            </if>
+            <if test="stopFlag != null">
+                STOP_FLAG,
+            </if>
+            <if test="restraintAmtFlag != null">
+                RESTRAINT_AMT_FLAG,
+            </if>
+            <if test="resBranchRange != null">
+                RES_BRANCH_RANGE,
+            </if>
+            <if test="unMaintBranchRange != null">
+                UN_MAINT_BRANCH_RANGE,
+            </if>
+            <if test="allowRepeatFlag != null">
+                ALLOW_REPEAT_FLAG,
+            </if>
+            <if test="closeAcctFlag != null">
+                CLOSE_ACCT_FLAG,
+            </if>
+            <if test="pledgedFlag != null">
+                PLEDGED_FLAG,
+            </if>
+            <if test="finFrozenFlag != null">
+                FIN_FROZEN_FLAG,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="restraintType != null">
+                #{restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="restraintTypeDesc != null">
+                #{restraintTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="resPriority != null">
+                #{resPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="systemUseFlag != null">
+                #{systemUseFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ahBuFlag != null">
+                #{ahBuFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="manualResFlag != null">
+                #{manualResFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="manualUnresFlag != null">
+                #{manualUnresFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="drCrCtlFlag != null">
+                #{drCrCtlFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFlag != null">
+                #{cashFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="transferFlag != null">
+                #{transferFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="stopFlag != null">
+                #{stopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="restraintAmtFlag != null">
+                #{restraintAmtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="resBranchRange != null">
+                #{resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="unMaintBranchRange != null">
+                #{unMaintBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="allowRepeatFlag != null">
+                #{allowRepeatFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="closeAcctFlag != null">
+                #{closeAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="pledgedFlag != null">
+                #{pledgedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="finFrozenFlag != null">
+                #{finFrozenFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbRestraintTypeExample" resultType="java.lang.Long">
+        select count(*) from RB_RESTRAINT_TYPE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_RESTRAINT_TYPE
+        <set>
+            <if test="row.restraintType != null">
+                RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.restraintTypeDesc != null">
+                RESTRAINT_TYPE_DESC = #{row.restraintTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resPriority != null">
+                RES_PRIORITY = #{row.resPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="row.systemUseFlag != null">
+                SYSTEM_USE_FLAG = #{row.systemUseFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ahBuFlag != null">
+                AH_BU_FLAG = #{row.ahBuFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.manualResFlag != null">
+                MANUAL_RES_FLAG = #{row.manualResFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.manualUnresFlag != null">
+                MANUAL_UNRES_FLAG = #{row.manualUnresFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.drCrCtlFlag != null">
+                DR_CR_CTL_FLAG = #{row.drCrCtlFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashFlag != null">
+                CASH_FLAG = #{row.cashFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.transferFlag != null">
+                TRANSFER_FLAG = #{row.transferFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.stopFlag != null">
+                STOP_FLAG = #{row.stopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.restraintAmtFlag != null">
+                RESTRAINT_AMT_FLAG = #{row.restraintAmtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resBranchRange != null">
+                RES_BRANCH_RANGE = #{row.resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="row.unMaintBranchRange != null">
+                UN_MAINT_BRANCH_RANGE = #{row.unMaintBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="row.allowRepeatFlag != null">
+                ALLOW_REPEAT_FLAG = #{row.allowRepeatFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.closeAcctFlag != null">
+                CLOSE_ACCT_FLAG = #{row.closeAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.pledgedFlag != null">
+                PLEDGED_FLAG = #{row.pledgedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.finFrozenFlag != null">
+                FIN_FROZEN_FLAG = #{row.finFrozenFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.status != null">
+                STATUS = #{row.status,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_RESTRAINT_TYPE
+        set
+            RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},            RESTRAINT_TYPE_DESC = #{row.restraintTypeDesc,jdbcType=VARCHAR},            RES_PRIORITY = #{row.resPriority,jdbcType=VARCHAR},            SYSTEM_USE_FLAG = #{row.systemUseFlag,jdbcType=VARCHAR},            AH_BU_FLAG = #{row.ahBuFlag,jdbcType=VARCHAR},            MANUAL_RES_FLAG = #{row.manualResFlag,jdbcType=VARCHAR},            MANUAL_UNRES_FLAG = #{row.manualUnresFlag,jdbcType=VARCHAR},            DR_CR_CTL_FLAG = #{row.drCrCtlFlag,jdbcType=VARCHAR},            CASH_FLAG = #{row.cashFlag,jdbcType=VARCHAR},            TRANSFER_FLAG = #{row.transferFlag,jdbcType=VARCHAR},            STOP_FLAG = #{row.stopFlag,jdbcType=VARCHAR},            RESTRAINT_AMT_FLAG = #{row.restraintAmtFlag,jdbcType=VARCHAR},            RES_BRANCH_RANGE = #{row.resBranchRange,jdbcType=VARCHAR},            UN_MAINT_BRANCH_RANGE = #{row.unMaintBranchRange,jdbcType=VARCHAR},            ALLOW_REPEAT_FLAG = #{row.allowRepeatFlag,jdbcType=VARCHAR},            CLOSE_ACCT_FLAG = #{row.closeAcctFlag,jdbcType=VARCHAR},            PLEDGED_FLAG = #{row.pledgedFlag,jdbcType=VARCHAR},            FIN_FROZEN_FLAG = #{row.finFrozenFlag,jdbcType=VARCHAR},            STATUS = #{row.status,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbRestraintType">
+        update RB_RESTRAINT_TYPE
+        <set>
+            <if test="restraintTypeDesc != null">
+                RESTRAINT_TYPE_DESC = #{restraintTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="resPriority != null">
+                RES_PRIORITY = #{resPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="systemUseFlag != null">
+                SYSTEM_USE_FLAG = #{systemUseFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ahBuFlag != null">
+                AH_BU_FLAG = #{ahBuFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="manualResFlag != null">
+                MANUAL_RES_FLAG = #{manualResFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="manualUnresFlag != null">
+                MANUAL_UNRES_FLAG = #{manualUnresFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="drCrCtlFlag != null">
+                DR_CR_CTL_FLAG = #{drCrCtlFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFlag != null">
+                CASH_FLAG = #{cashFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="transferFlag != null">
+                TRANSFER_FLAG = #{transferFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="stopFlag != null">
+                STOP_FLAG = #{stopFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="restraintAmtFlag != null">
+                RESTRAINT_AMT_FLAG = #{restraintAmtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="resBranchRange != null">
+                RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="unMaintBranchRange != null">
+                UN_MAINT_BRANCH_RANGE = #{unMaintBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="allowRepeatFlag != null">
+                ALLOW_REPEAT_FLAG = #{allowRepeatFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="closeAcctFlag != null">
+                CLOSE_ACCT_FLAG = #{closeAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="pledgedFlag != null">
+                PLEDGED_FLAG = #{pledgedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="finFrozenFlag != null">
+                FIN_FROZEN_FLAG = #{finFrozenFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbRestraintType">
+        update RB_RESTRAINT_TYPE
+        set
+            RESTRAINT_TYPE_DESC = #{restraintTypeDesc,jdbcType=VARCHAR},            RES_PRIORITY = #{resPriority,jdbcType=VARCHAR},            SYSTEM_USE_FLAG = #{systemUseFlag,jdbcType=VARCHAR},            AH_BU_FLAG = #{ahBuFlag,jdbcType=VARCHAR},            MANUAL_RES_FLAG = #{manualResFlag,jdbcType=VARCHAR},            MANUAL_UNRES_FLAG = #{manualUnresFlag,jdbcType=VARCHAR},            DR_CR_CTL_FLAG = #{drCrCtlFlag,jdbcType=VARCHAR},            CASH_FLAG = #{cashFlag,jdbcType=VARCHAR},            TRANSFER_FLAG = #{transferFlag,jdbcType=VARCHAR},            STOP_FLAG = #{stopFlag,jdbcType=VARCHAR},            RESTRAINT_AMT_FLAG = #{restraintAmtFlag,jdbcType=VARCHAR},            RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR},            UN_MAINT_BRANCH_RANGE = #{unMaintBranchRange,jdbcType=VARCHAR},            ALLOW_REPEAT_FLAG = #{allowRepeatFlag,jdbcType=VARCHAR},            CLOSE_ACCT_FLAG = #{closeAcctFlag,jdbcType=VARCHAR},            PLEDGED_FLAG = #{pledgedFlag,jdbcType=VARCHAR},            FIN_FROZEN_FLAG = #{finFrozenFlag,jdbcType=VARCHAR},            STATUS = #{status,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}        where RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR}
+    </update>
+</mapper>

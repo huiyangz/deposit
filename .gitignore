@@ -1,0 +1,7 @@
+target/
+inputs/
+outputs/
+docparse-artifacts/
+.m2/
+.DS_Store
+*.class
