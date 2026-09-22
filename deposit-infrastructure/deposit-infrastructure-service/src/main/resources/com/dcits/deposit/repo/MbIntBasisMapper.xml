@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.MbIntBasisMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.MbIntBasis">
+        <id column="INT_BASIS" property="intBasis" jdbcType="VARCHAR" />
+        <result column="INT_BASIS_DESC" property="intBasisDesc" jdbcType="VARCHAR" />
+        <result column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        INT_BASIS,        INT_BASIS_DESC,        CLIENT_NO,        COMPANY,        TRAN_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.MbIntBasisExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from MB_INT_BASIS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MB_INT_BASIS
+        where INT_BASIS = #{intBasis,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from MB_INT_BASIS
+        where INT_BASIS = #{intBasis,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.MbIntBasisExample">
+        delete from MB_INT_BASIS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.MbIntBasis">
+        insert into MB_INT_BASIS
+        (
+            INT_BASIS,            INT_BASIS_DESC,            CLIENT_NO,            COMPANY,            TRAN_TIMESTAMP        )
+        values
+        (
+            #{intBasis,jdbcType=VARCHAR},            #{intBasisDesc,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.MbIntBasis">
+        insert into MB_INT_BASIS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="intBasis != null">
+                INT_BASIS,
+            </if>
+            <if test="intBasisDesc != null">
+                INT_BASIS_DESC,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="intBasis != null">
+                #{intBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="intBasisDesc != null">
+                #{intBasisDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.MbIntBasisExample" resultType="java.lang.Long">
+        select count(*) from MB_INT_BASIS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update MB_INT_BASIS
+        <set>
+            <if test="row.intBasis != null">
+                INT_BASIS = #{row.intBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intBasisDesc != null">
+                INT_BASIS_DESC = #{row.intBasisDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update MB_INT_BASIS
+        set
+            INT_BASIS = #{row.intBasis,jdbcType=VARCHAR},            INT_BASIS_DESC = #{row.intBasisDesc,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.MbIntBasis">
+        update MB_INT_BASIS
+        <set>
+            <if test="intBasisDesc != null">
+                INT_BASIS_DESC = #{intBasisDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO = #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where INT_BASIS = #{intBasis,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.MbIntBasis">
+        update MB_INT_BASIS
+        set
+            INT_BASIS_DESC = #{intBasisDesc,jdbcType=VARCHAR},            CLIENT_NO = #{clientNo,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}        where INT_BASIS = #{intBasis,jdbcType=VARCHAR}
+    </update>
+</mapper>

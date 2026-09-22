@@ -1,0 +1,1366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbAcctAttachMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbAcctAttach">
+        <id column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="COUNTER_CRO_BRCH_DEBT_FLAG" property="counterCroBrchDebtFlag" jdbcType="VARCHAR" />
+        <result column="COUNTER_CRO_BRCH_CRET_FLAG" property="counterCroBrchCretFlag" jdbcType="VARCHAR" />
+        <result column="GL_CODE" property="glCode" jdbcType="VARCHAR" />
+        <result column="ACCT_PROOF_REASON" property="acctProofReason" jdbcType="VARCHAR" />
+        <result column="ACCT_PROPERTY" property="acctProperty" jdbcType="VARCHAR" />
+        <result column="BAL_CHG_IND" property="balChgInd" jdbcType="VARCHAR" />
+        <result column="BAL_UPD_TYPE" property="balUpdType" jdbcType="VARCHAR" />
+        <result column="BALANCE_WAY" property="balanceWay" jdbcType="VARCHAR" />
+        <result column="OD_FACILITY" property="odFacility" jdbcType="VARCHAR" />
+        <result column="CYCLE_INT_FLAG" property="cycleIntFlag" jdbcType="VARCHAR" />
+        <result column="AUTO_SETTLE_FLAG" property="autoSettleFlag" jdbcType="VARCHAR" />
+        <result column="AUTO_DEP" property="autoDep" jdbcType="VARCHAR" />
+        <result column="MANUAL_ACCOUNT_FLAG" property="manualAccountFlag" jdbcType="VARCHAR" />
+        <result column="FTA_ACCT_FLAG" property="ftaAcctFlag" jdbcType="VARCHAR" />
+        <result column="FTA_CODE" property="ftaCode" jdbcType="VARCHAR" />
+        <result column="HANG_WRITE_OFF_FLAG" property="hangWriteOffFlag" jdbcType="VARCHAR" />
+        <result column="HANG_TERM" property="hangTerm" jdbcType="VARCHAR" />
+        <result column="UN_BIND_DEP_FLAG" property="unBindDepFlag" jdbcType="VARCHAR" />
+        <result column="PROD_CLASS" property="prodClass" jdbcType="VARCHAR" />
+        <result column="SPECIAL_PROD_CLASS" property="specialProdClass" jdbcType="VARCHAR" />
+        <result column="STAGE_CODE" property="stageCode" jdbcType="VARCHAR" />
+        <result column="ANNUAL_FLAG" property="annualFlag" jdbcType="VARCHAR" />
+        <result column="ANNUAL_STATUS" property="annualStatus" jdbcType="VARCHAR" />
+        <result column="LAST_RESET_DATE" property="lastResetDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_STOP_DATE" property="lastStopDate" jdbcType="TIMESTAMP" />
+        <result column="BLACKLIST_STATUS" property="blacklistStatus" jdbcType="VARCHAR" />
+        <result column="LAST_BLACKLIST_DATE" property="lastBlacklistDate" jdbcType="TIMESTAMP" />
+        <result column="FREE_SUM" property="freeSum" jdbcType="INTEGER" />
+        <result column="MSG_STATUS" property="msgStatus" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="AUTO_RENEW_TERM" property="autoRenewTerm" jdbcType="VARCHAR" />
+        <result column="AUTO_RENEW_TERM_TYPE" property="autoRenewTermType" jdbcType="VARCHAR" />
+        <result column="TOTAL_DRAW_AMT" property="totalDrawAmt" jdbcType="DECIMAL" />
+        <result column="ALL_DRA_INT_BRANCH" property="allDraIntBranch" jdbcType="VARCHAR" />
+        <result column="ALLOW_SUSPEND_FLAG" property="allowSuspendFlag" jdbcType="VARCHAR" />
+        <result column="DEPOSIT_NATURE" property="depositNature" jdbcType="VARCHAR" />
+        <result column="IS_SELL_CHEQUE" property="isSellCheque" jdbcType="VARCHAR" />
+        <result column="CASE_INVOLVED_FLAG" property="caseInvolvedFlag" jdbcType="VARCHAR" />
+        <result column="PRE_DEBT_DATE" property="preDebtDate" jdbcType="TIMESTAMP" />
+        <result column="APPROVAL_NO" property="approvalNo" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_ID" property="agreementId" jdbcType="VARCHAR" />
+        <result column="ACCT_OPEN_MODE" property="acctOpenMode" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_DEPOSIT_TYPE" property="agreementDepositType" jdbcType="VARCHAR" />
+        <result column="NEXT_DEP_DAY" property="nextDepDay" jdbcType="VARCHAR" />
+        <result column="RE_OPEN_DATE" property="reOpenDate" jdbcType="TIMESTAMP" />
+        <result column="ACCT_OPEN_TYPE" property="acctOpenType" jdbcType="VARCHAR" />
+        <result column="TAX_RATE" property="taxRate" jdbcType="DECIMAL" />
+        <result column="MANAGE_FLAG" property="manageFlag" jdbcType="VARCHAR" />
+        <result column="INT_TAX_LEVY" property="intTaxLevy" jdbcType="VARCHAR" />
+        <result column="ACCT_RISK_LEVEL" property="acctRiskLevel" jdbcType="VARCHAR" />
+        <result column="FARMER_FLAG" property="farmerFlag" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="CHECK_CERTIFICATE_AMT" property="checkCertificateAmt" jdbcType="DECIMAL" />
+        <result column="MANAGE_CONTENT" property="manageContent" jdbcType="VARCHAR" />
+        <result column="TAX_DISCOUNT_MATURITY_DATE" property="taxDiscountMaturityDate" jdbcType="TIMESTAMP" />
+        <result column="AMOUNT_NATURE" property="amountNature" jdbcType="VARCHAR" />
+        <result column="MANAGE_TYPE" property="manageType" jdbcType="VARCHAR" />
+        <result column="ACCT_CHANNEL_FLAG" property="acctChannelFlag" jdbcType="VARCHAR" />
+        <result column="ACCT_PROPERTY2" property="acctProperty2" jdbcType="VARCHAR" />
+        <result column="CHECK_CERTIFICATE_TYPE" property="checkCertificateType" jdbcType="VARCHAR" />
+        <result column="DELAY_PAY_INT" property="delayPayInt" jdbcType="VARCHAR" />
+        <result column="FAST_OPEN_ACCT_FLAG" property="fastOpenAcctFlag" jdbcType="VARCHAR" />
+        <result column="FIRST_DRAW_DATE" property="firstDrawDate" jdbcType="TIMESTAMP" />
+        <result column="ONLINE_FLAG" property="onlineFlag" jdbcType="VARCHAR" />
+        <result column="SPEC_DAY" property="specDay" jdbcType="VARCHAR" />
+        <result column="TREATMENT" property="treatment" jdbcType="VARCHAR" />
+        <result column="BACK_TO_DATE" property="backToDate" jdbcType="TIMESTAMP" />
+        <result column="BOTH_LIMIT_FLAG" property="bothLimitFlag" jdbcType="VARCHAR" />
+        <result column="CASE_INVOLVED_DATE" property="caseInvolvedDate" jdbcType="TIMESTAMP" />
+        <result column="CASE_INVOLVED_REASON" property="caseInvolvedReason" jdbcType="VARCHAR" />
+        <result column="PRIVATE_ACCT_FLAG" property="privateAcctFlag" jdbcType="VARCHAR" />
+        <result column="ANNUAL_DATE" property="annualDate" jdbcType="TIMESTAMP" />
+        <result column="SECRET_ACCT" property="secretAcct" jdbcType="VARCHAR" />
+        <result column="PROMOTER_NAME" property="promoterName" jdbcType="VARCHAR" />
+        <result column="PROMOTER_CODE" property="promoterCode" jdbcType="VARCHAR" />
+        <result column="ACCT_EXEC_NAME" property="acctExecName" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="ACCT_EXEC_CODE" property="acctExecCode" jdbcType="VARCHAR" />
+        <result column="LINE_OWNER_SHIP" property="lineOwnerShip" jdbcType="VARCHAR" />
+        <result column="IS_ALLOW_CLOSE" property="isAllowClose" jdbcType="VARCHAR" />
+        <result column="STAGE_LIMIT_CLASS" property="stageLimitClass" jdbcType="VARCHAR" />
+        <result column="TERM_LACK" property="termLack" jdbcType="INTEGER" />
+        <result column="ADD_TOTAL_TERM" property="addTotalTerm" jdbcType="INTEGER" />
+        <result column="SIMPLE_ACCT" property="simpleAcct" jdbcType="VARCHAR" />
+        <result column="LOAN_FUND_FLAG" property="loanFundFlag" jdbcType="VARCHAR" />
+        <result column="COLLAT_IND" property="collatInd" jdbcType="VARCHAR" />
+        <result column="ACCT_VERIFY_FLAG" property="acctVerifyFlag" jdbcType="VARCHAR" />
+        <result column="ACCT_VERIFY_RESULT" property="acctVerifyResult" jdbcType="VARCHAR" />
+        <result column="ACCT_PROOF_FLAG" property="acctProofFlag" jdbcType="VARCHAR" />
+        <result column="ACCT_TELLER_SIGN_FLAG" property="acctTellerSignFlag" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        COUNTER_CRO_BRCH_DEBT_FLAG,        COUNTER_CRO_BRCH_CRET_FLAG,        INTERNAL_KEY,        GL_CODE,        ACCT_PROOF_REASON,        ACCT_PROPERTY,        BAL_CHG_IND,        BAL_UPD_TYPE,        BALANCE_WAY,        OD_FACILITY,        CYCLE_INT_FLAG,        AUTO_SETTLE_FLAG,        AUTO_DEP,        MANUAL_ACCOUNT_FLAG,        FTA_ACCT_FLAG,        FTA_CODE,        HANG_WRITE_OFF_FLAG,        HANG_TERM,        UN_BIND_DEP_FLAG,        PROD_CLASS,        SPECIAL_PROD_CLASS,        STAGE_CODE,        ANNUAL_FLAG,        ANNUAL_STATUS,        LAST_RESET_DATE,        LAST_STOP_DATE,        BLACKLIST_STATUS,        LAST_BLACKLIST_DATE,        FREE_SUM,        MSG_STATUS,        CLIENT_NO,        TRAN_TIMESTAMP,        COMPANY,        AUTO_RENEW_TERM,        AUTO_RENEW_TERM_TYPE,        TOTAL_DRAW_AMT,        ALL_DRA_INT_BRANCH,        ALLOW_SUSPEND_FLAG,        DEPOSIT_NATURE,        IS_SELL_CHEQUE,        CASE_INVOLVED_FLAG,        PRE_DEBT_DATE,        APPROVAL_NO,        AGREEMENT_ID,        ACCT_OPEN_MODE,        AGREEMENT_DEPOSIT_TYPE,        NEXT_DEP_DAY,        RE_OPEN_DATE,        ACCT_OPEN_TYPE,        TAX_RATE,        MANAGE_FLAG,        INT_TAX_LEVY,        ACCT_RISK_LEVEL,        FARMER_FLAG,        LAST_CHANGE_DATE,        CHECK_CERTIFICATE_AMT,        MANAGE_CONTENT,        TAX_DISCOUNT_MATURITY_DATE,        AMOUNT_NATURE,        MANAGE_TYPE,        ACCT_CHANNEL_FLAG,        ACCT_PROPERTY2,        CHECK_CERTIFICATE_TYPE,        DELAY_PAY_INT,        FAST_OPEN_ACCT_FLAG,        FIRST_DRAW_DATE,        ONLINE_FLAG,        SPEC_DAY,        TREATMENT,        BACK_TO_DATE,        BOTH_LIMIT_FLAG,        CASE_INVOLVED_DATE,        CASE_INVOLVED_REASON,        PRIVATE_ACCT_FLAG,        ANNUAL_DATE,        SECRET_ACCT,        PROMOTER_NAME,        PROMOTER_CODE,        ACCT_EXEC_NAME,        CREATE_TIMESTAMP,        ACCT_EXEC_CODE,        LINE_OWNER_SHIP,        IS_ALLOW_CLOSE,        STAGE_LIMIT_CLASS,        TERM_LACK,        ADD_TOTAL_TERM,        SIMPLE_ACCT,        LOAN_FUND_FLAG,        COLLAT_IND,        ACCT_VERIFY_FLAG,        ACCT_VERIFY_RESULT,        ACCT_PROOF_FLAG,        ACCT_TELLER_SIGN_FLAG    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbAcctAttachExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_ACCT_ATTACH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_ACCT_ATTACH
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_ACCT_ATTACH
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbAcctAttachExample">
+        delete from RB_ACCT_ATTACH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbAcctAttach">
+        insert into RB_ACCT_ATTACH
+        (
+            COUNTER_CRO_BRCH_DEBT_FLAG,            COUNTER_CRO_BRCH_CRET_FLAG,            INTERNAL_KEY,            GL_CODE,            ACCT_PROOF_REASON,            ACCT_PROPERTY,            BAL_CHG_IND,            BAL_UPD_TYPE,            BALANCE_WAY,            OD_FACILITY,            CYCLE_INT_FLAG,            AUTO_SETTLE_FLAG,            AUTO_DEP,            MANUAL_ACCOUNT_FLAG,            FTA_ACCT_FLAG,            FTA_CODE,            HANG_WRITE_OFF_FLAG,            HANG_TERM,            UN_BIND_DEP_FLAG,            PROD_CLASS,            SPECIAL_PROD_CLASS,            STAGE_CODE,            ANNUAL_FLAG,            ANNUAL_STATUS,            LAST_RESET_DATE,            LAST_STOP_DATE,            BLACKLIST_STATUS,            LAST_BLACKLIST_DATE,            FREE_SUM,            MSG_STATUS,            CLIENT_NO,            TRAN_TIMESTAMP,            COMPANY,            AUTO_RENEW_TERM,            AUTO_RENEW_TERM_TYPE,            TOTAL_DRAW_AMT,            ALL_DRA_INT_BRANCH,            ALLOW_SUSPEND_FLAG,            DEPOSIT_NATURE,            IS_SELL_CHEQUE,            CASE_INVOLVED_FLAG,            PRE_DEBT_DATE,            APPROVAL_NO,            AGREEMENT_ID,            ACCT_OPEN_MODE,            AGREEMENT_DEPOSIT_TYPE,            NEXT_DEP_DAY,            RE_OPEN_DATE,            ACCT_OPEN_TYPE,            TAX_RATE,            MANAGE_FLAG,            INT_TAX_LEVY,            ACCT_RISK_LEVEL,            FARMER_FLAG,            LAST_CHANGE_DATE,            CHECK_CERTIFICATE_AMT,            MANAGE_CONTENT,            TAX_DISCOUNT_MATURITY_DATE,            AMOUNT_NATURE,            MANAGE_TYPE,            ACCT_CHANNEL_FLAG,            ACCT_PROPERTY2,            CHECK_CERTIFICATE_TYPE,            DELAY_PAY_INT,            FAST_OPEN_ACCT_FLAG,            FIRST_DRAW_DATE,            ONLINE_FLAG,            SPEC_DAY,            TREATMENT,            BACK_TO_DATE,            BOTH_LIMIT_FLAG,            CASE_INVOLVED_DATE,            CASE_INVOLVED_REASON,            PRIVATE_ACCT_FLAG,            ANNUAL_DATE,            SECRET_ACCT,            PROMOTER_NAME,            PROMOTER_CODE,            ACCT_EXEC_NAME,            CREATE_TIMESTAMP,            ACCT_EXEC_CODE,            LINE_OWNER_SHIP,            IS_ALLOW_CLOSE,            STAGE_LIMIT_CLASS,            TERM_LACK,            ADD_TOTAL_TERM,            SIMPLE_ACCT,            LOAN_FUND_FLAG,            COLLAT_IND,            ACCT_VERIFY_FLAG,            ACCT_VERIFY_RESULT,            ACCT_PROOF_FLAG,            ACCT_TELLER_SIGN_FLAG        )
+        values
+        (
+            #{counterCroBrchDebtFlag,jdbcType=VARCHAR},            #{counterCroBrchCretFlag,jdbcType=VARCHAR},            #{internalKey,jdbcType=INTEGER},            #{glCode,jdbcType=VARCHAR},            #{acctProofReason,jdbcType=VARCHAR},            #{acctProperty,jdbcType=VARCHAR},            #{balChgInd,jdbcType=VARCHAR},            #{balUpdType,jdbcType=VARCHAR},            #{balanceWay,jdbcType=VARCHAR},            #{odFacility,jdbcType=VARCHAR},            #{cycleIntFlag,jdbcType=VARCHAR},            #{autoSettleFlag,jdbcType=VARCHAR},            #{autoDep,jdbcType=VARCHAR},            #{manualAccountFlag,jdbcType=VARCHAR},            #{ftaAcctFlag,jdbcType=VARCHAR},            #{ftaCode,jdbcType=VARCHAR},            #{hangWriteOffFlag,jdbcType=VARCHAR},            #{hangTerm,jdbcType=VARCHAR},            #{unBindDepFlag,jdbcType=VARCHAR},            #{prodClass,jdbcType=VARCHAR},            #{specialProdClass,jdbcType=VARCHAR},            #{stageCode,jdbcType=VARCHAR},            #{annualFlag,jdbcType=VARCHAR},            #{annualStatus,jdbcType=VARCHAR},            #{lastResetDate,jdbcType=TIMESTAMP},            #{lastStopDate,jdbcType=TIMESTAMP},            #{blacklistStatus,jdbcType=VARCHAR},            #{lastBlacklistDate,jdbcType=TIMESTAMP},            #{freeSum,jdbcType=INTEGER},            #{msgStatus,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{autoRenewTerm,jdbcType=VARCHAR},            #{autoRenewTermType,jdbcType=VARCHAR},            #{totalDrawAmt,jdbcType=DECIMAL},            #{allDraIntBranch,jdbcType=VARCHAR},            #{allowSuspendFlag,jdbcType=VARCHAR},            #{depositNature,jdbcType=VARCHAR},            #{isSellCheque,jdbcType=VARCHAR},            #{caseInvolvedFlag,jdbcType=VARCHAR},            #{preDebtDate,jdbcType=TIMESTAMP},            #{approvalNo,jdbcType=VARCHAR},            #{agreementId,jdbcType=VARCHAR},            #{acctOpenMode,jdbcType=VARCHAR},            #{agreementDepositType,jdbcType=VARCHAR},            #{nextDepDay,jdbcType=VARCHAR},            #{reOpenDate,jdbcType=TIMESTAMP},            #{acctOpenType,jdbcType=VARCHAR},            #{taxRate,jdbcType=DECIMAL},            #{manageFlag,jdbcType=VARCHAR},            #{intTaxLevy,jdbcType=VARCHAR},            #{acctRiskLevel,jdbcType=VARCHAR},            #{farmerFlag,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{checkCertificateAmt,jdbcType=DECIMAL},            #{manageContent,jdbcType=VARCHAR},            #{taxDiscountMaturityDate,jdbcType=TIMESTAMP},            #{amountNature,jdbcType=VARCHAR},            #{manageType,jdbcType=VARCHAR},            #{acctChannelFlag,jdbcType=VARCHAR},            #{acctProperty2,jdbcType=VARCHAR},            #{checkCertificateType,jdbcType=VARCHAR},            #{delayPayInt,jdbcType=VARCHAR},            #{fastOpenAcctFlag,jdbcType=VARCHAR},            #{firstDrawDate,jdbcType=TIMESTAMP},            #{onlineFlag,jdbcType=VARCHAR},            #{specDay,jdbcType=VARCHAR},            #{treatment,jdbcType=VARCHAR},            #{backToDate,jdbcType=TIMESTAMP},            #{bothLimitFlag,jdbcType=VARCHAR},            #{caseInvolvedDate,jdbcType=TIMESTAMP},            #{caseInvolvedReason,jdbcType=VARCHAR},            #{privateAcctFlag,jdbcType=VARCHAR},            #{annualDate,jdbcType=TIMESTAMP},            #{secretAcct,jdbcType=VARCHAR},            #{promoterName,jdbcType=VARCHAR},            #{promoterCode,jdbcType=VARCHAR},            #{acctExecName,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{acctExecCode,jdbcType=VARCHAR},            #{lineOwnerShip,jdbcType=VARCHAR},            #{isAllowClose,jdbcType=VARCHAR},            #{stageLimitClass,jdbcType=VARCHAR},            #{termLack,jdbcType=INTEGER},            #{addTotalTerm,jdbcType=INTEGER},            #{simpleAcct,jdbcType=VARCHAR},            #{loanFundFlag,jdbcType=VARCHAR},            #{collatInd,jdbcType=VARCHAR},            #{acctVerifyFlag,jdbcType=VARCHAR},            #{acctVerifyResult,jdbcType=VARCHAR},            #{acctProofFlag,jdbcType=VARCHAR},            #{acctTellerSignFlag,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbAcctAttach">
+        insert into RB_ACCT_ATTACH
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="counterCroBrchDebtFlag != null">
+                COUNTER_CRO_BRCH_DEBT_FLAG,
+            </if>
+            <if test="counterCroBrchCretFlag != null">
+                COUNTER_CRO_BRCH_CRET_FLAG,
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="glCode != null">
+                GL_CODE,
+            </if>
+            <if test="acctProofReason != null">
+                ACCT_PROOF_REASON,
+            </if>
+            <if test="acctProperty != null">
+                ACCT_PROPERTY,
+            </if>
+            <if test="balChgInd != null">
+                BAL_CHG_IND,
+            </if>
+            <if test="balUpdType != null">
+                BAL_UPD_TYPE,
+            </if>
+            <if test="balanceWay != null">
+                BALANCE_WAY,
+            </if>
+            <if test="odFacility != null">
+                OD_FACILITY,
+            </if>
+            <if test="cycleIntFlag != null">
+                CYCLE_INT_FLAG,
+            </if>
+            <if test="autoSettleFlag != null">
+                AUTO_SETTLE_FLAG,
+            </if>
+            <if test="autoDep != null">
+                AUTO_DEP,
+            </if>
+            <if test="manualAccountFlag != null">
+                MANUAL_ACCOUNT_FLAG,
+            </if>
+            <if test="ftaAcctFlag != null">
+                FTA_ACCT_FLAG,
+            </if>
+            <if test="ftaCode != null">
+                FTA_CODE,
+            </if>
+            <if test="hangWriteOffFlag != null">
+                HANG_WRITE_OFF_FLAG,
+            </if>
+            <if test="hangTerm != null">
+                HANG_TERM,
+            </if>
+            <if test="unBindDepFlag != null">
+                UN_BIND_DEP_FLAG,
+            </if>
+            <if test="prodClass != null">
+                PROD_CLASS,
+            </if>
+            <if test="specialProdClass != null">
+                SPECIAL_PROD_CLASS,
+            </if>
+            <if test="stageCode != null">
+                STAGE_CODE,
+            </if>
+            <if test="annualFlag != null">
+                ANNUAL_FLAG,
+            </if>
+            <if test="annualStatus != null">
+                ANNUAL_STATUS,
+            </if>
+            <if test="lastResetDate != null">
+                LAST_RESET_DATE,
+            </if>
+            <if test="lastStopDate != null">
+                LAST_STOP_DATE,
+            </if>
+            <if test="blacklistStatus != null">
+                BLACKLIST_STATUS,
+            </if>
+            <if test="lastBlacklistDate != null">
+                LAST_BLACKLIST_DATE,
+            </if>
+            <if test="freeSum != null">
+                FREE_SUM,
+            </if>
+            <if test="msgStatus != null">
+                MSG_STATUS,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="autoRenewTerm != null">
+                AUTO_RENEW_TERM,
+            </if>
+            <if test="autoRenewTermType != null">
+                AUTO_RENEW_TERM_TYPE,
+            </if>
+            <if test="totalDrawAmt != null">
+                TOTAL_DRAW_AMT,
+            </if>
+            <if test="allDraIntBranch != null">
+                ALL_DRA_INT_BRANCH,
+            </if>
+            <if test="allowSuspendFlag != null">
+                ALLOW_SUSPEND_FLAG,
+            </if>
+            <if test="depositNature != null">
+                DEPOSIT_NATURE,
+            </if>
+            <if test="isSellCheque != null">
+                IS_SELL_CHEQUE,
+            </if>
+            <if test="caseInvolvedFlag != null">
+                CASE_INVOLVED_FLAG,
+            </if>
+            <if test="preDebtDate != null">
+                PRE_DEBT_DATE,
+            </if>
+            <if test="approvalNo != null">
+                APPROVAL_NO,
+            </if>
+            <if test="agreementId != null">
+                AGREEMENT_ID,
+            </if>
+            <if test="acctOpenMode != null">
+                ACCT_OPEN_MODE,
+            </if>
+            <if test="agreementDepositType != null">
+                AGREEMENT_DEPOSIT_TYPE,
+            </if>
+            <if test="nextDepDay != null">
+                NEXT_DEP_DAY,
+            </if>
+            <if test="reOpenDate != null">
+                RE_OPEN_DATE,
+            </if>
+            <if test="acctOpenType != null">
+                ACCT_OPEN_TYPE,
+            </if>
+            <if test="taxRate != null">
+                TAX_RATE,
+            </if>
+            <if test="manageFlag != null">
+                MANAGE_FLAG,
+            </if>
+            <if test="intTaxLevy != null">
+                INT_TAX_LEVY,
+            </if>
+            <if test="acctRiskLevel != null">
+                ACCT_RISK_LEVEL,
+            </if>
+            <if test="farmerFlag != null">
+                FARMER_FLAG,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="checkCertificateAmt != null">
+                CHECK_CERTIFICATE_AMT,
+            </if>
+            <if test="manageContent != null">
+                MANAGE_CONTENT,
+            </if>
+            <if test="taxDiscountMaturityDate != null">
+                TAX_DISCOUNT_MATURITY_DATE,
+            </if>
+            <if test="amountNature != null">
+                AMOUNT_NATURE,
+            </if>
+            <if test="manageType != null">
+                MANAGE_TYPE,
+            </if>
+            <if test="acctChannelFlag != null">
+                ACCT_CHANNEL_FLAG,
+            </if>
+            <if test="acctProperty2 != null">
+                ACCT_PROPERTY2,
+            </if>
+            <if test="checkCertificateType != null">
+                CHECK_CERTIFICATE_TYPE,
+            </if>
+            <if test="delayPayInt != null">
+                DELAY_PAY_INT,
+            </if>
+            <if test="fastOpenAcctFlag != null">
+                FAST_OPEN_ACCT_FLAG,
+            </if>
+            <if test="firstDrawDate != null">
+                FIRST_DRAW_DATE,
+            </if>
+            <if test="onlineFlag != null">
+                ONLINE_FLAG,
+            </if>
+            <if test="specDay != null">
+                SPEC_DAY,
+            </if>
+            <if test="treatment != null">
+                TREATMENT,
+            </if>
+            <if test="backToDate != null">
+                BACK_TO_DATE,
+            </if>
+            <if test="bothLimitFlag != null">
+                BOTH_LIMIT_FLAG,
+            </if>
+            <if test="caseInvolvedDate != null">
+                CASE_INVOLVED_DATE,
+            </if>
+            <if test="caseInvolvedReason != null">
+                CASE_INVOLVED_REASON,
+            </if>
+            <if test="privateAcctFlag != null">
+                PRIVATE_ACCT_FLAG,
+            </if>
+            <if test="annualDate != null">
+                ANNUAL_DATE,
+            </if>
+            <if test="secretAcct != null">
+                SECRET_ACCT,
+            </if>
+            <if test="promoterName != null">
+                PROMOTER_NAME,
+            </if>
+            <if test="promoterCode != null">
+                PROMOTER_CODE,
+            </if>
+            <if test="acctExecName != null">
+                ACCT_EXEC_NAME,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="acctExecCode != null">
+                ACCT_EXEC_CODE,
+            </if>
+            <if test="lineOwnerShip != null">
+                LINE_OWNER_SHIP,
+            </if>
+            <if test="isAllowClose != null">
+                IS_ALLOW_CLOSE,
+            </if>
+            <if test="stageLimitClass != null">
+                STAGE_LIMIT_CLASS,
+            </if>
+            <if test="termLack != null">
+                TERM_LACK,
+            </if>
+            <if test="addTotalTerm != null">
+                ADD_TOTAL_TERM,
+            </if>
+            <if test="simpleAcct != null">
+                SIMPLE_ACCT,
+            </if>
+            <if test="loanFundFlag != null">
+                LOAN_FUND_FLAG,
+            </if>
+            <if test="collatInd != null">
+                COLLAT_IND,
+            </if>
+            <if test="acctVerifyFlag != null">
+                ACCT_VERIFY_FLAG,
+            </if>
+            <if test="acctVerifyResult != null">
+                ACCT_VERIFY_RESULT,
+            </if>
+            <if test="acctProofFlag != null">
+                ACCT_PROOF_FLAG,
+            </if>
+            <if test="acctTellerSignFlag != null">
+                ACCT_TELLER_SIGN_FLAG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="counterCroBrchDebtFlag != null">
+                #{counterCroBrchDebtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="counterCroBrchCretFlag != null">
+                #{counterCroBrchCretFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="glCode != null">
+                #{glCode,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProofReason != null">
+                #{acctProofReason,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProperty != null">
+                #{acctProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="balChgInd != null">
+                #{balChgInd,jdbcType=VARCHAR},
+            </if>
+            <if test="balUpdType != null">
+                #{balUpdType,jdbcType=VARCHAR},
+            </if>
+            <if test="balanceWay != null">
+                #{balanceWay,jdbcType=VARCHAR},
+            </if>
+            <if test="odFacility != null">
+                #{odFacility,jdbcType=VARCHAR},
+            </if>
+            <if test="cycleIntFlag != null">
+                #{cycleIntFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="autoSettleFlag != null">
+                #{autoSettleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="autoDep != null">
+                #{autoDep,jdbcType=VARCHAR},
+            </if>
+            <if test="manualAccountFlag != null">
+                #{manualAccountFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaAcctFlag != null">
+                #{ftaAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaCode != null">
+                #{ftaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hangWriteOffFlag != null">
+                #{hangWriteOffFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="hangTerm != null">
+                #{hangTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="unBindDepFlag != null">
+                #{unBindDepFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="prodClass != null">
+                #{prodClass,jdbcType=VARCHAR},
+            </if>
+            <if test="specialProdClass != null">
+                #{specialProdClass,jdbcType=VARCHAR},
+            </if>
+            <if test="stageCode != null">
+                #{stageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="annualFlag != null">
+                #{annualFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="annualStatus != null">
+                #{annualStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="lastResetDate != null">
+                #{lastResetDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastStopDate != null">
+                #{lastStopDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="blacklistStatus != null">
+                #{blacklistStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="lastBlacklistDate != null">
+                #{lastBlacklistDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="freeSum != null">
+                #{freeSum,jdbcType=INTEGER},
+            </if>
+            <if test="msgStatus != null">
+                #{msgStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="autoRenewTerm != null">
+                #{autoRenewTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="autoRenewTermType != null">
+                #{autoRenewTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="totalDrawAmt != null">
+                #{totalDrawAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="allDraIntBranch != null">
+                #{allDraIntBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="allowSuspendFlag != null">
+                #{allowSuspendFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="depositNature != null">
+                #{depositNature,jdbcType=VARCHAR},
+            </if>
+            <if test="isSellCheque != null">
+                #{isSellCheque,jdbcType=VARCHAR},
+            </if>
+            <if test="caseInvolvedFlag != null">
+                #{caseInvolvedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="preDebtDate != null">
+                #{preDebtDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="approvalNo != null">
+                #{approvalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementId != null">
+                #{agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctOpenMode != null">
+                #{acctOpenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementDepositType != null">
+                #{agreementDepositType,jdbcType=VARCHAR},
+            </if>
+            <if test="nextDepDay != null">
+                #{nextDepDay,jdbcType=VARCHAR},
+            </if>
+            <if test="reOpenDate != null">
+                #{reOpenDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctOpenType != null">
+                #{acctOpenType,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRate != null">
+                #{taxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="manageFlag != null">
+                #{manageFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intTaxLevy != null">
+                #{intTaxLevy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctRiskLevel != null">
+                #{acctRiskLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="farmerFlag != null">
+                #{farmerFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkCertificateAmt != null">
+                #{checkCertificateAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="manageContent != null">
+                #{manageContent,jdbcType=VARCHAR},
+            </if>
+            <if test="taxDiscountMaturityDate != null">
+                #{taxDiscountMaturityDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="amountNature != null">
+                #{amountNature,jdbcType=VARCHAR},
+            </if>
+            <if test="manageType != null">
+                #{manageType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctChannelFlag != null">
+                #{acctChannelFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProperty2 != null">
+                #{acctProperty2,jdbcType=VARCHAR},
+            </if>
+            <if test="checkCertificateType != null">
+                #{checkCertificateType,jdbcType=VARCHAR},
+            </if>
+            <if test="delayPayInt != null">
+                #{delayPayInt,jdbcType=VARCHAR},
+            </if>
+            <if test="fastOpenAcctFlag != null">
+                #{fastOpenAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="firstDrawDate != null">
+                #{firstDrawDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="onlineFlag != null">
+                #{onlineFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="specDay != null">
+                #{specDay,jdbcType=VARCHAR},
+            </if>
+            <if test="treatment != null">
+                #{treatment,jdbcType=VARCHAR},
+            </if>
+            <if test="backToDate != null">
+                #{backToDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bothLimitFlag != null">
+                #{bothLimitFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="caseInvolvedDate != null">
+                #{caseInvolvedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caseInvolvedReason != null">
+                #{caseInvolvedReason,jdbcType=VARCHAR},
+            </if>
+            <if test="privateAcctFlag != null">
+                #{privateAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="annualDate != null">
+                #{annualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="secretAcct != null">
+                #{secretAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="promoterName != null">
+                #{promoterName,jdbcType=VARCHAR},
+            </if>
+            <if test="promoterCode != null">
+                #{promoterCode,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExecName != null">
+                #{acctExecName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExecCode != null">
+                #{acctExecCode,jdbcType=VARCHAR},
+            </if>
+            <if test="lineOwnerShip != null">
+                #{lineOwnerShip,jdbcType=VARCHAR},
+            </if>
+            <if test="isAllowClose != null">
+                #{isAllowClose,jdbcType=VARCHAR},
+            </if>
+            <if test="stageLimitClass != null">
+                #{stageLimitClass,jdbcType=VARCHAR},
+            </if>
+            <if test="termLack != null">
+                #{termLack,jdbcType=INTEGER},
+            </if>
+            <if test="addTotalTerm != null">
+                #{addTotalTerm,jdbcType=INTEGER},
+            </if>
+            <if test="simpleAcct != null">
+                #{simpleAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="loanFundFlag != null">
+                #{loanFundFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="collatInd != null">
+                #{collatInd,jdbcType=VARCHAR},
+            </if>
+            <if test="acctVerifyFlag != null">
+                #{acctVerifyFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctVerifyResult != null">
+                #{acctVerifyResult,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProofFlag != null">
+                #{acctProofFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctTellerSignFlag != null">
+                #{acctTellerSignFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbAcctAttachExample" resultType="java.lang.Long">
+        select count(*) from RB_ACCT_ATTACH
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_ACCT_ATTACH
+        <set>
+            <if test="row.counterCroBrchDebtFlag != null">
+                COUNTER_CRO_BRCH_DEBT_FLAG = #{row.counterCroBrchDebtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.counterCroBrchCretFlag != null">
+                COUNTER_CRO_BRCH_CRET_FLAG = #{row.counterCroBrchCretFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.glCode != null">
+                GL_CODE = #{row.glCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctProofReason != null">
+                ACCT_PROOF_REASON = #{row.acctProofReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctProperty != null">
+                ACCT_PROPERTY = #{row.acctProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="row.balChgInd != null">
+                BAL_CHG_IND = #{row.balChgInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.balUpdType != null">
+                BAL_UPD_TYPE = #{row.balUpdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.balanceWay != null">
+                BALANCE_WAY = #{row.balanceWay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odFacility != null">
+                OD_FACILITY = #{row.odFacility,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cycleIntFlag != null">
+                CYCLE_INT_FLAG = #{row.cycleIntFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoSettleFlag != null">
+                AUTO_SETTLE_FLAG = #{row.autoSettleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoDep != null">
+                AUTO_DEP = #{row.autoDep,jdbcType=VARCHAR},
+            </if>
+            <if test="row.manualAccountFlag != null">
+                MANUAL_ACCOUNT_FLAG = #{row.manualAccountFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ftaAcctFlag != null">
+                FTA_ACCT_FLAG = #{row.ftaAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ftaCode != null">
+                FTA_CODE = #{row.ftaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.hangWriteOffFlag != null">
+                HANG_WRITE_OFF_FLAG = #{row.hangWriteOffFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.hangTerm != null">
+                HANG_TERM = #{row.hangTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="row.unBindDepFlag != null">
+                UN_BIND_DEP_FLAG = #{row.unBindDepFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodClass != null">
+                PROD_CLASS = #{row.prodClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.specialProdClass != null">
+                SPECIAL_PROD_CLASS = #{row.specialProdClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.stageCode != null">
+                STAGE_CODE = #{row.stageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.annualFlag != null">
+                ANNUAL_FLAG = #{row.annualFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.annualStatus != null">
+                ANNUAL_STATUS = #{row.annualStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastResetDate != null">
+                LAST_RESET_DATE = #{row.lastResetDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastStopDate != null">
+                LAST_STOP_DATE = #{row.lastStopDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.blacklistStatus != null">
+                BLACKLIST_STATUS = #{row.blacklistStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastBlacklistDate != null">
+                LAST_BLACKLIST_DATE = #{row.lastBlacklistDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.freeSum != null">
+                FREE_SUM = #{row.freeSum,jdbcType=INTEGER},
+            </if>
+            <if test="row.msgStatus != null">
+                MSG_STATUS = #{row.msgStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoRenewTerm != null">
+                AUTO_RENEW_TERM = #{row.autoRenewTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoRenewTermType != null">
+                AUTO_RENEW_TERM_TYPE = #{row.autoRenewTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.totalDrawAmt != null">
+                TOTAL_DRAW_AMT = #{row.totalDrawAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.allDraIntBranch != null">
+                ALL_DRA_INT_BRANCH = #{row.allDraIntBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.allowSuspendFlag != null">
+                ALLOW_SUSPEND_FLAG = #{row.allowSuspendFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.depositNature != null">
+                DEPOSIT_NATURE = #{row.depositNature,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isSellCheque != null">
+                IS_SELL_CHEQUE = #{row.isSellCheque,jdbcType=VARCHAR},
+            </if>
+            <if test="row.caseInvolvedFlag != null">
+                CASE_INVOLVED_FLAG = #{row.caseInvolvedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.preDebtDate != null">
+                PRE_DEBT_DATE = #{row.preDebtDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.approvalNo != null">
+                APPROVAL_NO = #{row.approvalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementId != null">
+                AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctOpenMode != null">
+                ACCT_OPEN_MODE = #{row.acctOpenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementDepositType != null">
+                AGREEMENT_DEPOSIT_TYPE = #{row.agreementDepositType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.nextDepDay != null">
+                NEXT_DEP_DAY = #{row.nextDepDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reOpenDate != null">
+                RE_OPEN_DATE = #{row.reOpenDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.acctOpenType != null">
+                ACCT_OPEN_TYPE = #{row.acctOpenType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.taxRate != null">
+                TAX_RATE = #{row.taxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.manageFlag != null">
+                MANAGE_FLAG = #{row.manageFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intTaxLevy != null">
+                INT_TAX_LEVY = #{row.intTaxLevy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctRiskLevel != null">
+                ACCT_RISK_LEVEL = #{row.acctRiskLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.farmerFlag != null">
+                FARMER_FLAG = #{row.farmerFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.checkCertificateAmt != null">
+                CHECK_CERTIFICATE_AMT = #{row.checkCertificateAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.manageContent != null">
+                MANAGE_CONTENT = #{row.manageContent,jdbcType=VARCHAR},
+            </if>
+            <if test="row.taxDiscountMaturityDate != null">
+                TAX_DISCOUNT_MATURITY_DATE = #{row.taxDiscountMaturityDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.amountNature != null">
+                AMOUNT_NATURE = #{row.amountNature,jdbcType=VARCHAR},
+            </if>
+            <if test="row.manageType != null">
+                MANAGE_TYPE = #{row.manageType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctChannelFlag != null">
+                ACCT_CHANNEL_FLAG = #{row.acctChannelFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctProperty2 != null">
+                ACCT_PROPERTY2 = #{row.acctProperty2,jdbcType=VARCHAR},
+            </if>
+            <if test="row.checkCertificateType != null">
+                CHECK_CERTIFICATE_TYPE = #{row.checkCertificateType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.delayPayInt != null">
+                DELAY_PAY_INT = #{row.delayPayInt,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fastOpenAcctFlag != null">
+                FAST_OPEN_ACCT_FLAG = #{row.fastOpenAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.firstDrawDate != null">
+                FIRST_DRAW_DATE = #{row.firstDrawDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.onlineFlag != null">
+                ONLINE_FLAG = #{row.onlineFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.specDay != null">
+                SPEC_DAY = #{row.specDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.treatment != null">
+                TREATMENT = #{row.treatment,jdbcType=VARCHAR},
+            </if>
+            <if test="row.backToDate != null">
+                BACK_TO_DATE = #{row.backToDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.bothLimitFlag != null">
+                BOTH_LIMIT_FLAG = #{row.bothLimitFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.caseInvolvedDate != null">
+                CASE_INVOLVED_DATE = #{row.caseInvolvedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.caseInvolvedReason != null">
+                CASE_INVOLVED_REASON = #{row.caseInvolvedReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.privateAcctFlag != null">
+                PRIVATE_ACCT_FLAG = #{row.privateAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.annualDate != null">
+                ANNUAL_DATE = #{row.annualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.secretAcct != null">
+                SECRET_ACCT = #{row.secretAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="row.promoterName != null">
+                PROMOTER_NAME = #{row.promoterName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.promoterCode != null">
+                PROMOTER_CODE = #{row.promoterCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctExecName != null">
+                ACCT_EXEC_NAME = #{row.acctExecName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctExecCode != null">
+                ACCT_EXEC_CODE = #{row.acctExecCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lineOwnerShip != null">
+                LINE_OWNER_SHIP = #{row.lineOwnerShip,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isAllowClose != null">
+                IS_ALLOW_CLOSE = #{row.isAllowClose,jdbcType=VARCHAR},
+            </if>
+            <if test="row.stageLimitClass != null">
+                STAGE_LIMIT_CLASS = #{row.stageLimitClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.termLack != null">
+                TERM_LACK = #{row.termLack,jdbcType=INTEGER},
+            </if>
+            <if test="row.addTotalTerm != null">
+                ADD_TOTAL_TERM = #{row.addTotalTerm,jdbcType=INTEGER},
+            </if>
+            <if test="row.simpleAcct != null">
+                SIMPLE_ACCT = #{row.simpleAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="row.loanFundFlag != null">
+                LOAN_FUND_FLAG = #{row.loanFundFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.collatInd != null">
+                COLLAT_IND = #{row.collatInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctVerifyFlag != null">
+                ACCT_VERIFY_FLAG = #{row.acctVerifyFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctVerifyResult != null">
+                ACCT_VERIFY_RESULT = #{row.acctVerifyResult,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctProofFlag != null">
+                ACCT_PROOF_FLAG = #{row.acctProofFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctTellerSignFlag != null">
+                ACCT_TELLER_SIGN_FLAG = #{row.acctTellerSignFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_ACCT_ATTACH
+        set
+            COUNTER_CRO_BRCH_DEBT_FLAG = #{row.counterCroBrchDebtFlag,jdbcType=VARCHAR},            COUNTER_CRO_BRCH_CRET_FLAG = #{row.counterCroBrchCretFlag,jdbcType=VARCHAR},            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            GL_CODE = #{row.glCode,jdbcType=VARCHAR},            ACCT_PROOF_REASON = #{row.acctProofReason,jdbcType=VARCHAR},            ACCT_PROPERTY = #{row.acctProperty,jdbcType=VARCHAR},            BAL_CHG_IND = #{row.balChgInd,jdbcType=VARCHAR},            BAL_UPD_TYPE = #{row.balUpdType,jdbcType=VARCHAR},            BALANCE_WAY = #{row.balanceWay,jdbcType=VARCHAR},            OD_FACILITY = #{row.odFacility,jdbcType=VARCHAR},            CYCLE_INT_FLAG = #{row.cycleIntFlag,jdbcType=VARCHAR},            AUTO_SETTLE_FLAG = #{row.autoSettleFlag,jdbcType=VARCHAR},            AUTO_DEP = #{row.autoDep,jdbcType=VARCHAR},            MANUAL_ACCOUNT_FLAG = #{row.manualAccountFlag,jdbcType=VARCHAR},            FTA_ACCT_FLAG = #{row.ftaAcctFlag,jdbcType=VARCHAR},            FTA_CODE = #{row.ftaCode,jdbcType=VARCHAR},            HANG_WRITE_OFF_FLAG = #{row.hangWriteOffFlag,jdbcType=VARCHAR},            HANG_TERM = #{row.hangTerm,jdbcType=VARCHAR},            UN_BIND_DEP_FLAG = #{row.unBindDepFlag,jdbcType=VARCHAR},            PROD_CLASS = #{row.prodClass,jdbcType=VARCHAR},            SPECIAL_PROD_CLASS = #{row.specialProdClass,jdbcType=VARCHAR},            STAGE_CODE = #{row.stageCode,jdbcType=VARCHAR},            ANNUAL_FLAG = #{row.annualFlag,jdbcType=VARCHAR},            ANNUAL_STATUS = #{row.annualStatus,jdbcType=VARCHAR},            LAST_RESET_DATE = #{row.lastResetDate,jdbcType=TIMESTAMP},            LAST_STOP_DATE = #{row.lastStopDate,jdbcType=TIMESTAMP},            BLACKLIST_STATUS = #{row.blacklistStatus,jdbcType=VARCHAR},            LAST_BLACKLIST_DATE = #{row.lastBlacklistDate,jdbcType=TIMESTAMP},            FREE_SUM = #{row.freeSum,jdbcType=INTEGER},            MSG_STATUS = #{row.msgStatus,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            AUTO_RENEW_TERM = #{row.autoRenewTerm,jdbcType=VARCHAR},            AUTO_RENEW_TERM_TYPE = #{row.autoRenewTermType,jdbcType=VARCHAR},            TOTAL_DRAW_AMT = #{row.totalDrawAmt,jdbcType=DECIMAL},            ALL_DRA_INT_BRANCH = #{row.allDraIntBranch,jdbcType=VARCHAR},            ALLOW_SUSPEND_FLAG = #{row.allowSuspendFlag,jdbcType=VARCHAR},            DEPOSIT_NATURE = #{row.depositNature,jdbcType=VARCHAR},            IS_SELL_CHEQUE = #{row.isSellCheque,jdbcType=VARCHAR},            CASE_INVOLVED_FLAG = #{row.caseInvolvedFlag,jdbcType=VARCHAR},            PRE_DEBT_DATE = #{row.preDebtDate,jdbcType=TIMESTAMP},            APPROVAL_NO = #{row.approvalNo,jdbcType=VARCHAR},            AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},            ACCT_OPEN_MODE = #{row.acctOpenMode,jdbcType=VARCHAR},            AGREEMENT_DEPOSIT_TYPE = #{row.agreementDepositType,jdbcType=VARCHAR},            NEXT_DEP_DAY = #{row.nextDepDay,jdbcType=VARCHAR},            RE_OPEN_DATE = #{row.reOpenDate,jdbcType=TIMESTAMP},            ACCT_OPEN_TYPE = #{row.acctOpenType,jdbcType=VARCHAR},            TAX_RATE = #{row.taxRate,jdbcType=DECIMAL},            MANAGE_FLAG = #{row.manageFlag,jdbcType=VARCHAR},            INT_TAX_LEVY = #{row.intTaxLevy,jdbcType=VARCHAR},            ACCT_RISK_LEVEL = #{row.acctRiskLevel,jdbcType=VARCHAR},            FARMER_FLAG = #{row.farmerFlag,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            CHECK_CERTIFICATE_AMT = #{row.checkCertificateAmt,jdbcType=DECIMAL},            MANAGE_CONTENT = #{row.manageContent,jdbcType=VARCHAR},            TAX_DISCOUNT_MATURITY_DATE = #{row.taxDiscountMaturityDate,jdbcType=TIMESTAMP},            AMOUNT_NATURE = #{row.amountNature,jdbcType=VARCHAR},            MANAGE_TYPE = #{row.manageType,jdbcType=VARCHAR},            ACCT_CHANNEL_FLAG = #{row.acctChannelFlag,jdbcType=VARCHAR},            ACCT_PROPERTY2 = #{row.acctProperty2,jdbcType=VARCHAR},            CHECK_CERTIFICATE_TYPE = #{row.checkCertificateType,jdbcType=VARCHAR},            DELAY_PAY_INT = #{row.delayPayInt,jdbcType=VARCHAR},            FAST_OPEN_ACCT_FLAG = #{row.fastOpenAcctFlag,jdbcType=VARCHAR},            FIRST_DRAW_DATE = #{row.firstDrawDate,jdbcType=TIMESTAMP},            ONLINE_FLAG = #{row.onlineFlag,jdbcType=VARCHAR},            SPEC_DAY = #{row.specDay,jdbcType=VARCHAR},            TREATMENT = #{row.treatment,jdbcType=VARCHAR},            BACK_TO_DATE = #{row.backToDate,jdbcType=TIMESTAMP},            BOTH_LIMIT_FLAG = #{row.bothLimitFlag,jdbcType=VARCHAR},            CASE_INVOLVED_DATE = #{row.caseInvolvedDate,jdbcType=TIMESTAMP},            CASE_INVOLVED_REASON = #{row.caseInvolvedReason,jdbcType=VARCHAR},            PRIVATE_ACCT_FLAG = #{row.privateAcctFlag,jdbcType=VARCHAR},            ANNUAL_DATE = #{row.annualDate,jdbcType=TIMESTAMP},            SECRET_ACCT = #{row.secretAcct,jdbcType=VARCHAR},            PROMOTER_NAME = #{row.promoterName,jdbcType=VARCHAR},            PROMOTER_CODE = #{row.promoterCode,jdbcType=VARCHAR},            ACCT_EXEC_NAME = #{row.acctExecName,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            ACCT_EXEC_CODE = #{row.acctExecCode,jdbcType=VARCHAR},            LINE_OWNER_SHIP = #{row.lineOwnerShip,jdbcType=VARCHAR},            IS_ALLOW_CLOSE = #{row.isAllowClose,jdbcType=VARCHAR},            STAGE_LIMIT_CLASS = #{row.stageLimitClass,jdbcType=VARCHAR},            TERM_LACK = #{row.termLack,jdbcType=INTEGER},            ADD_TOTAL_TERM = #{row.addTotalTerm,jdbcType=INTEGER},            SIMPLE_ACCT = #{row.simpleAcct,jdbcType=VARCHAR},            LOAN_FUND_FLAG = #{row.loanFundFlag,jdbcType=VARCHAR},            COLLAT_IND = #{row.collatInd,jdbcType=VARCHAR},            ACCT_VERIFY_FLAG = #{row.acctVerifyFlag,jdbcType=VARCHAR},            ACCT_VERIFY_RESULT = #{row.acctVerifyResult,jdbcType=VARCHAR},            ACCT_PROOF_FLAG = #{row.acctProofFlag,jdbcType=VARCHAR},            ACCT_TELLER_SIGN_FLAG = #{row.acctTellerSignFlag,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbAcctAttach">
+        update RB_ACCT_ATTACH
+        <set>
+            <if test="counterCroBrchDebtFlag != null">
+                COUNTER_CRO_BRCH_DEBT_FLAG = #{counterCroBrchDebtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="counterCroBrchCretFlag != null">
+                COUNTER_CRO_BRCH_CRET_FLAG = #{counterCroBrchCretFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="glCode != null">
+                GL_CODE = #{glCode,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProofReason != null">
+                ACCT_PROOF_REASON = #{acctProofReason,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProperty != null">
+                ACCT_PROPERTY = #{acctProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="balChgInd != null">
+                BAL_CHG_IND = #{balChgInd,jdbcType=VARCHAR},
+            </if>
+            <if test="balUpdType != null">
+                BAL_UPD_TYPE = #{balUpdType,jdbcType=VARCHAR},
+            </if>
+            <if test="balanceWay != null">
+                BALANCE_WAY = #{balanceWay,jdbcType=VARCHAR},
+            </if>
+            <if test="odFacility != null">
+                OD_FACILITY = #{odFacility,jdbcType=VARCHAR},
+            </if>
+            <if test="cycleIntFlag != null">
+                CYCLE_INT_FLAG = #{cycleIntFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="autoSettleFlag != null">
+                AUTO_SETTLE_FLAG = #{autoSettleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="autoDep != null">
+                AUTO_DEP = #{autoDep,jdbcType=VARCHAR},
+            </if>
+            <if test="manualAccountFlag != null">
+                MANUAL_ACCOUNT_FLAG = #{manualAccountFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaAcctFlag != null">
+                FTA_ACCT_FLAG = #{ftaAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ftaCode != null">
+                FTA_CODE = #{ftaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hangWriteOffFlag != null">
+                HANG_WRITE_OFF_FLAG = #{hangWriteOffFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="hangTerm != null">
+                HANG_TERM = #{hangTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="unBindDepFlag != null">
+                UN_BIND_DEP_FLAG = #{unBindDepFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="prodClass != null">
+                PROD_CLASS = #{prodClass,jdbcType=VARCHAR},
+            </if>
+            <if test="specialProdClass != null">
+                SPECIAL_PROD_CLASS = #{specialProdClass,jdbcType=VARCHAR},
+            </if>
+            <if test="stageCode != null">
+                STAGE_CODE = #{stageCode,jdbcType=VARCHAR},
+            </if>
+            <if test="annualFlag != null">
+                ANNUAL_FLAG = #{annualFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="annualStatus != null">
+                ANNUAL_STATUS = #{annualStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="lastResetDate != null">
+                LAST_RESET_DATE = #{lastResetDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastStopDate != null">
+                LAST_STOP_DATE = #{lastStopDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="blacklistStatus != null">
+                BLACKLIST_STATUS = #{blacklistStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="lastBlacklistDate != null">
+                LAST_BLACKLIST_DATE = #{lastBlacklistDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="freeSum != null">
+                FREE_SUM = #{freeSum,jdbcType=INTEGER},
+            </if>
+            <if test="msgStatus != null">
+                MSG_STATUS = #{msgStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="autoRenewTerm != null">
+                AUTO_RENEW_TERM = #{autoRenewTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="autoRenewTermType != null">
+                AUTO_RENEW_TERM_TYPE = #{autoRenewTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="totalDrawAmt != null">
+                TOTAL_DRAW_AMT = #{totalDrawAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="allDraIntBranch != null">
+                ALL_DRA_INT_BRANCH = #{allDraIntBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="allowSuspendFlag != null">
+                ALLOW_SUSPEND_FLAG = #{allowSuspendFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="depositNature != null">
+                DEPOSIT_NATURE = #{depositNature,jdbcType=VARCHAR},
+            </if>
+            <if test="isSellCheque != null">
+                IS_SELL_CHEQUE = #{isSellCheque,jdbcType=VARCHAR},
+            </if>
+            <if test="caseInvolvedFlag != null">
+                CASE_INVOLVED_FLAG = #{caseInvolvedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="preDebtDate != null">
+                PRE_DEBT_DATE = #{preDebtDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="approvalNo != null">
+                APPROVAL_NO = #{approvalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementId != null">
+                AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctOpenMode != null">
+                ACCT_OPEN_MODE = #{acctOpenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementDepositType != null">
+                AGREEMENT_DEPOSIT_TYPE = #{agreementDepositType,jdbcType=VARCHAR},
+            </if>
+            <if test="nextDepDay != null">
+                NEXT_DEP_DAY = #{nextDepDay,jdbcType=VARCHAR},
+            </if>
+            <if test="reOpenDate != null">
+                RE_OPEN_DATE = #{reOpenDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctOpenType != null">
+                ACCT_OPEN_TYPE = #{acctOpenType,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRate != null">
+                TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="manageFlag != null">
+                MANAGE_FLAG = #{manageFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intTaxLevy != null">
+                INT_TAX_LEVY = #{intTaxLevy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctRiskLevel != null">
+                ACCT_RISK_LEVEL = #{acctRiskLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="farmerFlag != null">
+                FARMER_FLAG = #{farmerFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkCertificateAmt != null">
+                CHECK_CERTIFICATE_AMT = #{checkCertificateAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="manageContent != null">
+                MANAGE_CONTENT = #{manageContent,jdbcType=VARCHAR},
+            </if>
+            <if test="taxDiscountMaturityDate != null">
+                TAX_DISCOUNT_MATURITY_DATE = #{taxDiscountMaturityDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="amountNature != null">
+                AMOUNT_NATURE = #{amountNature,jdbcType=VARCHAR},
+            </if>
+            <if test="manageType != null">
+                MANAGE_TYPE = #{manageType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctChannelFlag != null">
+                ACCT_CHANNEL_FLAG = #{acctChannelFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProperty2 != null">
+                ACCT_PROPERTY2 = #{acctProperty2,jdbcType=VARCHAR},
+            </if>
+            <if test="checkCertificateType != null">
+                CHECK_CERTIFICATE_TYPE = #{checkCertificateType,jdbcType=VARCHAR},
+            </if>
+            <if test="delayPayInt != null">
+                DELAY_PAY_INT = #{delayPayInt,jdbcType=VARCHAR},
+            </if>
+            <if test="fastOpenAcctFlag != null">
+                FAST_OPEN_ACCT_FLAG = #{fastOpenAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="firstDrawDate != null">
+                FIRST_DRAW_DATE = #{firstDrawDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="onlineFlag != null">
+                ONLINE_FLAG = #{onlineFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="specDay != null">
+                SPEC_DAY = #{specDay,jdbcType=VARCHAR},
+            </if>
+            <if test="treatment != null">
+                TREATMENT = #{treatment,jdbcType=VARCHAR},
+            </if>
+            <if test="backToDate != null">
+                BACK_TO_DATE = #{backToDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bothLimitFlag != null">
+                BOTH_LIMIT_FLAG = #{bothLimitFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="caseInvolvedDate != null">
+                CASE_INVOLVED_DATE = #{caseInvolvedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caseInvolvedReason != null">
+                CASE_INVOLVED_REASON = #{caseInvolvedReason,jdbcType=VARCHAR},
+            </if>
+            <if test="privateAcctFlag != null">
+                PRIVATE_ACCT_FLAG = #{privateAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="annualDate != null">
+                ANNUAL_DATE = #{annualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="secretAcct != null">
+                SECRET_ACCT = #{secretAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="promoterName != null">
+                PROMOTER_NAME = #{promoterName,jdbcType=VARCHAR},
+            </if>
+            <if test="promoterCode != null">
+                PROMOTER_CODE = #{promoterCode,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExecName != null">
+                ACCT_EXEC_NAME = #{acctExecName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExecCode != null">
+                ACCT_EXEC_CODE = #{acctExecCode,jdbcType=VARCHAR},
+            </if>
+            <if test="lineOwnerShip != null">
+                LINE_OWNER_SHIP = #{lineOwnerShip,jdbcType=VARCHAR},
+            </if>
+            <if test="isAllowClose != null">
+                IS_ALLOW_CLOSE = #{isAllowClose,jdbcType=VARCHAR},
+            </if>
+            <if test="stageLimitClass != null">
+                STAGE_LIMIT_CLASS = #{stageLimitClass,jdbcType=VARCHAR},
+            </if>
+            <if test="termLack != null">
+                TERM_LACK = #{termLack,jdbcType=INTEGER},
+            </if>
+            <if test="addTotalTerm != null">
+                ADD_TOTAL_TERM = #{addTotalTerm,jdbcType=INTEGER},
+            </if>
+            <if test="simpleAcct != null">
+                SIMPLE_ACCT = #{simpleAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="loanFundFlag != null">
+                LOAN_FUND_FLAG = #{loanFundFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="collatInd != null">
+                COLLAT_IND = #{collatInd,jdbcType=VARCHAR},
+            </if>
+            <if test="acctVerifyFlag != null">
+                ACCT_VERIFY_FLAG = #{acctVerifyFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctVerifyResult != null">
+                ACCT_VERIFY_RESULT = #{acctVerifyResult,jdbcType=VARCHAR},
+            </if>
+            <if test="acctProofFlag != null">
+                ACCT_PROOF_FLAG = #{acctProofFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctTellerSignFlag != null">
+                ACCT_TELLER_SIGN_FLAG = #{acctTellerSignFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbAcctAttach">
+        update RB_ACCT_ATTACH
+        set
+            COUNTER_CRO_BRCH_DEBT_FLAG = #{counterCroBrchDebtFlag,jdbcType=VARCHAR},            COUNTER_CRO_BRCH_CRET_FLAG = #{counterCroBrchCretFlag,jdbcType=VARCHAR},            GL_CODE = #{glCode,jdbcType=VARCHAR},            ACCT_PROOF_REASON = #{acctProofReason,jdbcType=VARCHAR},            ACCT_PROPERTY = #{acctProperty,jdbcType=VARCHAR},            BAL_CHG_IND = #{balChgInd,jdbcType=VARCHAR},            BAL_UPD_TYPE = #{balUpdType,jdbcType=VARCHAR},            BALANCE_WAY = #{balanceWay,jdbcType=VARCHAR},            OD_FACILITY = #{odFacility,jdbcType=VARCHAR},            CYCLE_INT_FLAG = #{cycleIntFlag,jdbcType=VARCHAR},            AUTO_SETTLE_FLAG = #{autoSettleFlag,jdbcType=VARCHAR},            AUTO_DEP = #{autoDep,jdbcType=VARCHAR},            MANUAL_ACCOUNT_FLAG = #{manualAccountFlag,jdbcType=VARCHAR},            FTA_ACCT_FLAG = #{ftaAcctFlag,jdbcType=VARCHAR},            FTA_CODE = #{ftaCode,jdbcType=VARCHAR},            HANG_WRITE_OFF_FLAG = #{hangWriteOffFlag,jdbcType=VARCHAR},            HANG_TERM = #{hangTerm,jdbcType=VARCHAR},            UN_BIND_DEP_FLAG = #{unBindDepFlag,jdbcType=VARCHAR},            PROD_CLASS = #{prodClass,jdbcType=VARCHAR},            SPECIAL_PROD_CLASS = #{specialProdClass,jdbcType=VARCHAR},            STAGE_CODE = #{stageCode,jdbcType=VARCHAR},            ANNUAL_FLAG = #{annualFlag,jdbcType=VARCHAR},            ANNUAL_STATUS = #{annualStatus,jdbcType=VARCHAR},            LAST_RESET_DATE = #{lastResetDate,jdbcType=TIMESTAMP},            LAST_STOP_DATE = #{lastStopDate,jdbcType=TIMESTAMP},            BLACKLIST_STATUS = #{blacklistStatus,jdbcType=VARCHAR},            LAST_BLACKLIST_DATE = #{lastBlacklistDate,jdbcType=TIMESTAMP},            FREE_SUM = #{freeSum,jdbcType=INTEGER},            MSG_STATUS = #{msgStatus,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            AUTO_RENEW_TERM = #{autoRenewTerm,jdbcType=VARCHAR},            AUTO_RENEW_TERM_TYPE = #{autoRenewTermType,jdbcType=VARCHAR},            TOTAL_DRAW_AMT = #{totalDrawAmt,jdbcType=DECIMAL},            ALL_DRA_INT_BRANCH = #{allDraIntBranch,jdbcType=VARCHAR},            ALLOW_SUSPEND_FLAG = #{allowSuspendFlag,jdbcType=VARCHAR},            DEPOSIT_NATURE = #{depositNature,jdbcType=VARCHAR},            IS_SELL_CHEQUE = #{isSellCheque,jdbcType=VARCHAR},            CASE_INVOLVED_FLAG = #{caseInvolvedFlag,jdbcType=VARCHAR},            PRE_DEBT_DATE = #{preDebtDate,jdbcType=TIMESTAMP},            APPROVAL_NO = #{approvalNo,jdbcType=VARCHAR},            AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR},            ACCT_OPEN_MODE = #{acctOpenMode,jdbcType=VARCHAR},            AGREEMENT_DEPOSIT_TYPE = #{agreementDepositType,jdbcType=VARCHAR},            NEXT_DEP_DAY = #{nextDepDay,jdbcType=VARCHAR},            RE_OPEN_DATE = #{reOpenDate,jdbcType=TIMESTAMP},            ACCT_OPEN_TYPE = #{acctOpenType,jdbcType=VARCHAR},            TAX_RATE = #{taxRate,jdbcType=DECIMAL},            MANAGE_FLAG = #{manageFlag,jdbcType=VARCHAR},            INT_TAX_LEVY = #{intTaxLevy,jdbcType=VARCHAR},            ACCT_RISK_LEVEL = #{acctRiskLevel,jdbcType=VARCHAR},            FARMER_FLAG = #{farmerFlag,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            CHECK_CERTIFICATE_AMT = #{checkCertificateAmt,jdbcType=DECIMAL},            MANAGE_CONTENT = #{manageContent,jdbcType=VARCHAR},            TAX_DISCOUNT_MATURITY_DATE = #{taxDiscountMaturityDate,jdbcType=TIMESTAMP},            AMOUNT_NATURE = #{amountNature,jdbcType=VARCHAR},            MANAGE_TYPE = #{manageType,jdbcType=VARCHAR},            ACCT_CHANNEL_FLAG = #{acctChannelFlag,jdbcType=VARCHAR},            ACCT_PROPERTY2 = #{acctProperty2,jdbcType=VARCHAR},            CHECK_CERTIFICATE_TYPE = #{checkCertificateType,jdbcType=VARCHAR},            DELAY_PAY_INT = #{delayPayInt,jdbcType=VARCHAR},            FAST_OPEN_ACCT_FLAG = #{fastOpenAcctFlag,jdbcType=VARCHAR},            FIRST_DRAW_DATE = #{firstDrawDate,jdbcType=TIMESTAMP},            ONLINE_FLAG = #{onlineFlag,jdbcType=VARCHAR},            SPEC_DAY = #{specDay,jdbcType=VARCHAR},            TREATMENT = #{treatment,jdbcType=VARCHAR},            BACK_TO_DATE = #{backToDate,jdbcType=TIMESTAMP},            BOTH_LIMIT_FLAG = #{bothLimitFlag,jdbcType=VARCHAR},            CASE_INVOLVED_DATE = #{caseInvolvedDate,jdbcType=TIMESTAMP},            CASE_INVOLVED_REASON = #{caseInvolvedReason,jdbcType=VARCHAR},            PRIVATE_ACCT_FLAG = #{privateAcctFlag,jdbcType=VARCHAR},            ANNUAL_DATE = #{annualDate,jdbcType=TIMESTAMP},            SECRET_ACCT = #{secretAcct,jdbcType=VARCHAR},            PROMOTER_NAME = #{promoterName,jdbcType=VARCHAR},            PROMOTER_CODE = #{promoterCode,jdbcType=VARCHAR},            ACCT_EXEC_NAME = #{acctExecName,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            ACCT_EXEC_CODE = #{acctExecCode,jdbcType=VARCHAR},            LINE_OWNER_SHIP = #{lineOwnerShip,jdbcType=VARCHAR},            IS_ALLOW_CLOSE = #{isAllowClose,jdbcType=VARCHAR},            STAGE_LIMIT_CLASS = #{stageLimitClass,jdbcType=VARCHAR},            TERM_LACK = #{termLack,jdbcType=INTEGER},            ADD_TOTAL_TERM = #{addTotalTerm,jdbcType=INTEGER},            SIMPLE_ACCT = #{simpleAcct,jdbcType=VARCHAR},            LOAN_FUND_FLAG = #{loanFundFlag,jdbcType=VARCHAR},            COLLAT_IND = #{collatInd,jdbcType=VARCHAR},            ACCT_VERIFY_FLAG = #{acctVerifyFlag,jdbcType=VARCHAR},            ACCT_VERIFY_RESULT = #{acctVerifyResult,jdbcType=VARCHAR},            ACCT_PROOF_FLAG = #{acctProofFlag,jdbcType=VARCHAR},            ACCT_TELLER_SIGN_FLAG = #{acctTellerSignFlag,jdbcType=VARCHAR}        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

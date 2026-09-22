@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbChannelControlMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbChannelControl">
+        <id column="CONTROL_SEQ_NO" property="controlSeqNo" jdbcType="VARCHAR" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="CONTROL_TYPE" property="controlType" jdbcType="VARCHAR" />
+        <result column="CONTROL_STATUS" property="controlStatus" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        CONTROL_SEQ_NO,        CLIENT_NO,        CONTROL_TYPE,        CONTROL_STATUS    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbChannelControlExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_CHANNEL_CONTROL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_CHANNEL_CONTROL
+        where CONTROL_SEQ_NO = #{controlSeqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_CHANNEL_CONTROL
+        where CONTROL_SEQ_NO = #{controlSeqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbChannelControlExample">
+        delete from RB_CHANNEL_CONTROL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbChannelControl">
+        insert into RB_CHANNEL_CONTROL
+        (
+            CONTROL_SEQ_NO,            CLIENT_NO,            CONTROL_TYPE,            CONTROL_STATUS        )
+        values
+        (
+            #{controlSeqNo,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{controlType,jdbcType=VARCHAR},            #{controlStatus,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbChannelControl">
+        insert into RB_CHANNEL_CONTROL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="controlSeqNo != null">
+                CONTROL_SEQ_NO,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="controlType != null">
+                CONTROL_TYPE,
+            </if>
+            <if test="controlStatus != null">
+                CONTROL_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="controlSeqNo != null">
+                #{controlSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="controlType != null">
+                #{controlType,jdbcType=VARCHAR},
+            </if>
+            <if test="controlStatus != null">
+                #{controlStatus,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbChannelControlExample" resultType="java.lang.Long">
+        select count(*) from RB_CHANNEL_CONTROL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_CHANNEL_CONTROL
+        <set>
+            <if test="row.controlSeqNo != null">
+                CONTROL_SEQ_NO = #{row.controlSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.controlType != null">
+                CONTROL_TYPE = #{row.controlType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.controlStatus != null">
+                CONTROL_STATUS = #{row.controlStatus,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_CHANNEL_CONTROL
+        set
+            CONTROL_SEQ_NO = #{row.controlSeqNo,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            CONTROL_TYPE = #{row.controlType,jdbcType=VARCHAR},            CONTROL_STATUS = #{row.controlStatus,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbChannelControl">
+        update RB_CHANNEL_CONTROL
+        <set>
+            <if test="controlType != null">
+                CONTROL_TYPE = #{controlType,jdbcType=VARCHAR},
+            </if>
+            <if test="controlStatus != null">
+                CONTROL_STATUS = #{controlStatus,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where CONTROL_SEQ_NO = #{controlSeqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbChannelControl">
+        update RB_CHANNEL_CONTROL
+        set
+            CONTROL_TYPE = #{controlType,jdbcType=VARCHAR},            CONTROL_STATUS = #{controlStatus,jdbcType=VARCHAR}        where CONTROL_SEQ_NO = #{controlSeqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

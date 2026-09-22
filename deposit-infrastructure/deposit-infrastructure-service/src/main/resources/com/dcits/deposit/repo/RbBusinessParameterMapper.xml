@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbBusinessParameterMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbBusinessParameter">
+        <id column="PARA_KEY" property="paraKey" jdbcType="VARCHAR" />
+        <result column="PARA_DESC" property="paraDesc" jdbcType="VARCHAR" />
+        <result column="PARA_VALUE" property="paraValue" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        PARA_KEY,        PARA_DESC,        PARA_VALUE,        TRAN_TIMESTAMP,        COMPANY    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbBusinessParameterExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BUSINESS_PARAMETER
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BUSINESS_PARAMETER
+        where PARA_KEY = #{paraKey,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BUSINESS_PARAMETER
+        where PARA_KEY = #{paraKey,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbBusinessParameterExample">
+        delete from RB_BUSINESS_PARAMETER
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbBusinessParameter">
+        insert into RB_BUSINESS_PARAMETER
+        (
+            PARA_KEY,            PARA_DESC,            PARA_VALUE,            TRAN_TIMESTAMP,            COMPANY        )
+        values
+        (
+            #{paraKey,jdbcType=VARCHAR},            #{paraDesc,jdbcType=VARCHAR},            #{paraValue,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbBusinessParameter">
+        insert into RB_BUSINESS_PARAMETER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="paraKey != null">
+                PARA_KEY,
+            </if>
+            <if test="paraDesc != null">
+                PARA_DESC,
+            </if>
+            <if test="paraValue != null">
+                PARA_VALUE,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="paraKey != null">
+                #{paraKey,jdbcType=VARCHAR},
+            </if>
+            <if test="paraDesc != null">
+                #{paraDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="paraValue != null">
+                #{paraValue,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbBusinessParameterExample" resultType="java.lang.Long">
+        select count(*) from RB_BUSINESS_PARAMETER
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BUSINESS_PARAMETER
+        <set>
+            <if test="row.paraKey != null">
+                PARA_KEY = #{row.paraKey,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paraDesc != null">
+                PARA_DESC = #{row.paraDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paraValue != null">
+                PARA_VALUE = #{row.paraValue,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BUSINESS_PARAMETER
+        set
+            PARA_KEY = #{row.paraKey,jdbcType=VARCHAR},            PARA_DESC = #{row.paraDesc,jdbcType=VARCHAR},            PARA_VALUE = #{row.paraValue,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbBusinessParameter">
+        update RB_BUSINESS_PARAMETER
+        <set>
+            <if test="paraDesc != null">
+                PARA_DESC = #{paraDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="paraValue != null">
+                PARA_VALUE = #{paraValue,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where PARA_KEY = #{paraKey,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbBusinessParameter">
+        update RB_BUSINESS_PARAMETER
+        set
+            PARA_DESC = #{paraDesc,jdbcType=VARCHAR},            PARA_VALUE = #{paraValue,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR}        where PARA_KEY = #{paraKey,jdbcType=VARCHAR}
+    </update>
+</mapper>

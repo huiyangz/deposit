@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbLimitCtrlCustomInfoMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbLimitCtrlCustomInfo">
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <id column="LIMIT_SCENE_NO" property="limitSceneNo" jdbcType="VARCHAR" />
+        <id column="CHECK_OBJ_VAL" property="checkObjVal" jdbcType="VARCHAR" />
+        <result column="CTRL_ITEM_TYPE" property="ctrlItemType" jdbcType="VARCHAR" />
+        <result column="LIMIT_CTRL_NUM" property="limitCtrlNum" jdbcType="INTEGER" />
+        <result column="LIMIT_CTRL_AMT" property="limitCtrlAmt" jdbcType="DECIMAL" />
+        <result column="TEMP_LIMIT_FLAG" property="tempLimitFlag" jdbcType="VARCHAR" />
+        <result column="EFFECT_DATE" property="effectDate" jdbcType="TIMESTAMP" />
+        <result column="EXPIRE_DATE" property="expireDate" jdbcType="TIMESTAMP" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        CLIENT_NO,        LIMIT_SCENE_NO,        CHECK_OBJ_VAL,        CTRL_ITEM_TYPE,        LIMIT_CTRL_NUM,        LIMIT_CTRL_AMT,        TEMP_LIMIT_FLAG,        EFFECT_DATE,        EXPIRE_DATE,        COMPANY,        TRAN_TIMESTAMP,        UPDATE_DATE,        CREATE_DATE,        CREATE_TIMESTAMP,        LAST_CHANGE_DATE    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfoExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_LIMIT_CTRL_CUSTOM_INFO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_LIMIT_CTRL_CUSTOM_INFO
+        where CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and LIMIT_SCENE_NO = #{limitSceneNo,jdbcType=VARCHAR}
+          and CHECK_OBJ_VAL = #{checkObjVal,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_LIMIT_CTRL_CUSTOM_INFO
+        where CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and LIMIT_SCENE_NO = #{limitSceneNo,jdbcType=VARCHAR}
+          and CHECK_OBJ_VAL = #{checkObjVal,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfoExample">
+        delete from RB_LIMIT_CTRL_CUSTOM_INFO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfo">
+        insert into RB_LIMIT_CTRL_CUSTOM_INFO
+        (
+            CLIENT_NO,            LIMIT_SCENE_NO,            CHECK_OBJ_VAL,            CTRL_ITEM_TYPE,            LIMIT_CTRL_NUM,            LIMIT_CTRL_AMT,            TEMP_LIMIT_FLAG,            EFFECT_DATE,            EXPIRE_DATE,            COMPANY,            TRAN_TIMESTAMP,            UPDATE_DATE,            CREATE_DATE,            CREATE_TIMESTAMP,            LAST_CHANGE_DATE        )
+        values
+        (
+            #{clientNo,jdbcType=VARCHAR},            #{limitSceneNo,jdbcType=VARCHAR},            #{checkObjVal,jdbcType=VARCHAR},            #{ctrlItemType,jdbcType=VARCHAR},            #{limitCtrlNum,jdbcType=INTEGER},            #{limitCtrlAmt,jdbcType=DECIMAL},            #{tempLimitFlag,jdbcType=VARCHAR},            #{effectDate,jdbcType=TIMESTAMP},            #{expireDate,jdbcType=TIMESTAMP},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{updateDate,jdbcType=TIMESTAMP},            #{createDate,jdbcType=TIMESTAMP},            #{createTimestamp,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfo">
+        insert into RB_LIMIT_CTRL_CUSTOM_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="limitSceneNo != null">
+                LIMIT_SCENE_NO,
+            </if>
+            <if test="checkObjVal != null">
+                CHECK_OBJ_VAL,
+            </if>
+            <if test="ctrlItemType != null">
+                CTRL_ITEM_TYPE,
+            </if>
+            <if test="limitCtrlNum != null">
+                LIMIT_CTRL_NUM,
+            </if>
+            <if test="limitCtrlAmt != null">
+                LIMIT_CTRL_AMT,
+            </if>
+            <if test="tempLimitFlag != null">
+                TEMP_LIMIT_FLAG,
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE,
+            </if>
+            <if test="expireDate != null">
+                EXPIRE_DATE,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="updateDate != null">
+                UPDATE_DATE,
+            </if>
+            <if test="createDate != null">
+                CREATE_DATE,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="limitSceneNo != null">
+                #{limitSceneNo,jdbcType=VARCHAR},
+            </if>
+            <if test="checkObjVal != null">
+                #{checkObjVal,jdbcType=VARCHAR},
+            </if>
+            <if test="ctrlItemType != null">
+                #{ctrlItemType,jdbcType=VARCHAR},
+            </if>
+            <if test="limitCtrlNum != null">
+                #{limitCtrlNum,jdbcType=INTEGER},
+            </if>
+            <if test="limitCtrlAmt != null">
+                #{limitCtrlAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tempLimitFlag != null">
+                #{tempLimitFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDate != null">
+                #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expireDate != null">
+                #{expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfoExample" resultType="java.lang.Long">
+        select count(*) from RB_LIMIT_CTRL_CUSTOM_INFO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_LIMIT_CTRL_CUSTOM_INFO
+        <set>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.limitSceneNo != null">
+                LIMIT_SCENE_NO = #{row.limitSceneNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.checkObjVal != null">
+                CHECK_OBJ_VAL = #{row.checkObjVal,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ctrlItemType != null">
+                CTRL_ITEM_TYPE = #{row.ctrlItemType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.limitCtrlNum != null">
+                LIMIT_CTRL_NUM = #{row.limitCtrlNum,jdbcType=INTEGER},
+            </if>
+            <if test="row.limitCtrlAmt != null">
+                LIMIT_CTRL_AMT = #{row.limitCtrlAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tempLimitFlag != null">
+                TEMP_LIMIT_FLAG = #{row.tempLimitFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.effectDate != null">
+                EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.expireDate != null">
+                EXPIRE_DATE = #{row.expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.updateDate != null">
+                UPDATE_DATE = #{row.updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.createDate != null">
+                CREATE_DATE = #{row.createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_LIMIT_CTRL_CUSTOM_INFO
+        set
+            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            LIMIT_SCENE_NO = #{row.limitSceneNo,jdbcType=VARCHAR},            CHECK_OBJ_VAL = #{row.checkObjVal,jdbcType=VARCHAR},            CTRL_ITEM_TYPE = #{row.ctrlItemType,jdbcType=VARCHAR},            LIMIT_CTRL_NUM = #{row.limitCtrlNum,jdbcType=INTEGER},            LIMIT_CTRL_AMT = #{row.limitCtrlAmt,jdbcType=DECIMAL},            TEMP_LIMIT_FLAG = #{row.tempLimitFlag,jdbcType=VARCHAR},            EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},            EXPIRE_DATE = #{row.expireDate,jdbcType=TIMESTAMP},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            UPDATE_DATE = #{row.updateDate,jdbcType=TIMESTAMP},            CREATE_DATE = #{row.createDate,jdbcType=TIMESTAMP},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfo">
+        update RB_LIMIT_CTRL_CUSTOM_INFO
+        <set>
+            <if test="ctrlItemType != null">
+                CTRL_ITEM_TYPE = #{ctrlItemType,jdbcType=VARCHAR},
+            </if>
+            <if test="limitCtrlNum != null">
+                LIMIT_CTRL_NUM = #{limitCtrlNum,jdbcType=INTEGER},
+            </if>
+            <if test="limitCtrlAmt != null">
+                LIMIT_CTRL_AMT = #{limitCtrlAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tempLimitFlag != null">
+                TEMP_LIMIT_FLAG = #{tempLimitFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expireDate != null">
+                EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createDate != null">
+                CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and LIMIT_SCENE_NO = #{limitSceneNo,jdbcType=VARCHAR}
+          and CHECK_OBJ_VAL = #{checkObjVal,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbLimitCtrlCustomInfo">
+        update RB_LIMIT_CTRL_CUSTOM_INFO
+        set
+            CTRL_ITEM_TYPE = #{ctrlItemType,jdbcType=VARCHAR},            LIMIT_CTRL_NUM = #{limitCtrlNum,jdbcType=INTEGER},            LIMIT_CTRL_AMT = #{limitCtrlAmt,jdbcType=DECIMAL},            TEMP_LIMIT_FLAG = #{tempLimitFlag,jdbcType=VARCHAR},            EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},            EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},            CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP}        where CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and LIMIT_SCENE_NO = #{limitSceneNo,jdbcType=VARCHAR}
+          and CHECK_OBJ_VAL = #{checkObjVal,jdbcType=VARCHAR}
+    </update>
+</mapper>
