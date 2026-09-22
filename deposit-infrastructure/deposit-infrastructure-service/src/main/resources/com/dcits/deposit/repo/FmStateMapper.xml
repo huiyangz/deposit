@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.FmStateMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.FmState">
+        <id column="COUNTRY" property="country" jdbcType="VARCHAR" />
+        <id column="STATE" property="state" jdbcType="VARCHAR" />
+        <result column="STATE_DESC" property="stateDesc" jdbcType="VARCHAR" />
+        <result column="WEEKEND1" property="weekend1" jdbcType="VARCHAR" />
+        <result column="WEEKEND2" property="weekend2" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        COUNTRY,        STATE,        STATE_DESC,        WEEKEND1,        WEEKEND2,        COMPANY,        TRAN_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.FmStateExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from FM_STATE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from FM_STATE
+        where COUNTRY = #{country,jdbcType=VARCHAR}
+          and STATE = #{state,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from FM_STATE
+        where COUNTRY = #{country,jdbcType=VARCHAR}
+          and STATE = #{state,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.FmStateExample">
+        delete from FM_STATE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.FmState">
+        insert into FM_STATE
+        (
+            COUNTRY,            STATE,            STATE_DESC,            WEEKEND1,            WEEKEND2,            COMPANY,            TRAN_TIMESTAMP        )
+        values
+        (
+            #{country,jdbcType=VARCHAR},            #{state,jdbcType=VARCHAR},            #{stateDesc,jdbcType=VARCHAR},            #{weekend1,jdbcType=VARCHAR},            #{weekend2,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.FmState">
+        insert into FM_STATE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="country != null">
+                COUNTRY,
+            </if>
+            <if test="state != null">
+                STATE,
+            </if>
+            <if test="stateDesc != null">
+                STATE_DESC,
+            </if>
+            <if test="weekend1 != null">
+                WEEKEND1,
+            </if>
+            <if test="weekend2 != null">
+                WEEKEND2,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="stateDesc != null">
+                #{stateDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="weekend1 != null">
+                #{weekend1,jdbcType=VARCHAR},
+            </if>
+            <if test="weekend2 != null">
+                #{weekend2,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.FmStateExample" resultType="java.lang.Long">
+        select count(*) from FM_STATE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update FM_STATE
+        <set>
+            <if test="row.country != null">
+                COUNTRY = #{row.country,jdbcType=VARCHAR},
+            </if>
+            <if test="row.state != null">
+                STATE = #{row.state,jdbcType=VARCHAR},
+            </if>
+            <if test="row.stateDesc != null">
+                STATE_DESC = #{row.stateDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.weekend1 != null">
+                WEEKEND1 = #{row.weekend1,jdbcType=VARCHAR},
+            </if>
+            <if test="row.weekend2 != null">
+                WEEKEND2 = #{row.weekend2,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update FM_STATE
+        set
+            COUNTRY = #{row.country,jdbcType=VARCHAR},            STATE = #{row.state,jdbcType=VARCHAR},            STATE_DESC = #{row.stateDesc,jdbcType=VARCHAR},            WEEKEND1 = #{row.weekend1,jdbcType=VARCHAR},            WEEKEND2 = #{row.weekend2,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.FmState">
+        update FM_STATE
+        <set>
+            <if test="stateDesc != null">
+                STATE_DESC = #{stateDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="weekend1 != null">
+                WEEKEND1 = #{weekend1,jdbcType=VARCHAR},
+            </if>
+            <if test="weekend2 != null">
+                WEEKEND2 = #{weekend2,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where COUNTRY = #{country,jdbcType=VARCHAR}
+          and STATE = #{state,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.FmState">
+        update FM_STATE
+        set
+            STATE_DESC = #{stateDesc,jdbcType=VARCHAR},            WEEKEND1 = #{weekend1,jdbcType=VARCHAR},            WEEKEND2 = #{weekend2,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}        where COUNTRY = #{country,jdbcType=VARCHAR}
+          and STATE = #{state,jdbcType=VARCHAR}
+    </update>
+</mapper>
