@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbControlTranRelationMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbControlTranRelation">
+        <id column="CONTROL_CLASS" property="controlClass" jdbcType="VARCHAR" />
+        <id column="TRAN_TYPE" property="tranType" jdbcType="VARCHAR" />
+        <id column="SERVICE_NO" property="serviceNo" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="EFFECT_FLAG" property="effectFlag" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        CONTROL_CLASS,        TRAN_TYPE,        SERVICE_NO,        COMPANY,        TRAN_TIMESTAMP,        EFFECT_FLAG    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbControlTranRelationExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_CONTROL_TRAN_RELATION
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_CONTROL_TRAN_RELATION
+        where CONTROL_CLASS = #{controlClass,jdbcType=VARCHAR}
+          and TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+          and SERVICE_NO = #{serviceNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_CONTROL_TRAN_RELATION
+        where CONTROL_CLASS = #{controlClass,jdbcType=VARCHAR}
+          and TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+          and SERVICE_NO = #{serviceNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbControlTranRelationExample">
+        delete from RB_CONTROL_TRAN_RELATION
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbControlTranRelation">
+        insert into RB_CONTROL_TRAN_RELATION
+        (
+            CONTROL_CLASS,            TRAN_TYPE,            SERVICE_NO,            COMPANY,            TRAN_TIMESTAMP,            EFFECT_FLAG        )
+        values
+        (
+            #{controlClass,jdbcType=VARCHAR},            #{tranType,jdbcType=VARCHAR},            #{serviceNo,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{effectFlag,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbControlTranRelation">
+        insert into RB_CONTROL_TRAN_RELATION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="controlClass != null">
+                CONTROL_CLASS,
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE,
+            </if>
+            <if test="serviceNo != null">
+                SERVICE_NO,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="effectFlag != null">
+                EFFECT_FLAG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="controlClass != null">
+                #{controlClass,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceNo != null">
+                #{serviceNo,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="effectFlag != null">
+                #{effectFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbControlTranRelationExample" resultType="java.lang.Long">
+        select count(*) from RB_CONTROL_TRAN_RELATION
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_CONTROL_TRAN_RELATION
+        <set>
+            <if test="row.controlClass != null">
+                CONTROL_CLASS = #{row.controlClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranType != null">
+                TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.serviceNo != null">
+                SERVICE_NO = #{row.serviceNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.effectFlag != null">
+                EFFECT_FLAG = #{row.effectFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_CONTROL_TRAN_RELATION
+        set
+            CONTROL_CLASS = #{row.controlClass,jdbcType=VARCHAR},            TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},            SERVICE_NO = #{row.serviceNo,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            EFFECT_FLAG = #{row.effectFlag,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbControlTranRelation">
+        update RB_CONTROL_TRAN_RELATION
+        <set>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="effectFlag != null">
+                EFFECT_FLAG = #{effectFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where CONTROL_CLASS = #{controlClass,jdbcType=VARCHAR}
+          and TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+          and SERVICE_NO = #{serviceNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbControlTranRelation">
+        update RB_CONTROL_TRAN_RELATION
+        set
+            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            EFFECT_FLAG = #{effectFlag,jdbcType=VARCHAR}        where CONTROL_CLASS = #{controlClass,jdbcType=VARCHAR}
+          and TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+          and SERVICE_NO = #{serviceNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

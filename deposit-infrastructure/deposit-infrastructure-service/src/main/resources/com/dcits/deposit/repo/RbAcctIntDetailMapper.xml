@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbAcctIntDetailMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbAcctIntDetail">
+        <id column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <id column="INT_CLASS" property="intClass" jdbcType="VARCHAR" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="NEXT_ACCR_DATE" property="nextAccrDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_ACCRUAL_DATE" property="lastAccrualDate" jdbcType="TIMESTAMP" />
+        <result column="CYCLE_FLAG" property="cycleFlag" jdbcType="VARCHAR" />
+        <result column="INT_CAP_FLAG" property="intCapFlag" jdbcType="VARCHAR" />
+        <result column="NEXT_CYCLE_DATE" property="nextCycleDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_CYCLE_DATE" property="lastCycleDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_TRUE_CYCLE_DATE" property="lastTrueCycleDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_CYCLE_DATE_PRE" property="lastCycleDatePre" jdbcType="TIMESTAMP" />
+        <result column="CYCLE_FREQ" property="cycleFreq" jdbcType="VARCHAR" />
+        <result column="INT_DAY" property="intDay" jdbcType="VARCHAR" />
+        <result column="INT_TYPE" property="intType" jdbcType="VARCHAR" />
+        <result column="ACTUAL_RATE" property="actualRate" jdbcType="DECIMAL" />
+        <result column="FLOAT_TYPE" property="floatType" jdbcType="VARCHAR" />
+        <result column="FLOAT_RATE" property="floatRate" jdbcType="DECIMAL" />
+        <result column="SPREAD_PERCENT" property="spreadPercent" jdbcType="DECIMAL" />
+        <result column="SPREAD_RATE" property="spreadRate" jdbcType="DECIMAL" />
+        <result column="ACCT_FIXED_RATE" property="acctFixedRate" jdbcType="DECIMAL" />
+        <result column="ACCT_PERCENT_RATE" property="acctPercentRate" jdbcType="DECIMAL" />
+        <result column="ACCT_SPREAD_RATE" property="acctSpreadRate" jdbcType="DECIMAL" />
+        <result column="REAL_RATE" property="realRate" jdbcType="DECIMAL" />
+        <result column="SPLIT_RATE_FLAG" property="splitRateFlag" jdbcType="VARCHAR" />
+        <result column="MIN_INT_RATE" property="minIntRate" jdbcType="DECIMAL" />
+        <result column="MAX_INT_RATE" property="maxIntRate" jdbcType="DECIMAL" />
+        <result column="MONTH_BASIS" property="monthBasis" jdbcType="VARCHAR" />
+        <result column="YEAR_BASIS" property="yearBasis" jdbcType="VARCHAR" />
+        <result column="INT_ACCRUED" property="intAccrued" jdbcType="DECIMAL" />
+        <result column="AGG" property="agg" jdbcType="DECIMAL" />
+        <result column="INT_ACCRUED_CALC_CTD" property="intAccruedCalcCtd" jdbcType="DECIMAL" />
+        <result column="INT_ACCRUED_CTD" property="intAccruedCtd" jdbcType="DECIMAL" />
+        <result column="INT_ACCRUED_DIFF" property="intAccruedDiff" jdbcType="DECIMAL" />
+        <result column="INT_ACCRUED_PREV" property="intAccruedPrev" jdbcType="DECIMAL" />
+        <result column="INT_ACCRUED_LAST_PREV" property="intAccruedLastPrev" jdbcType="DECIMAL" />
+        <result column="INT_ADJ" property="intAdj" jdbcType="DECIMAL" />
+        <result column="INT_ADJ_CTD" property="intAdjCtd" jdbcType="DECIMAL" />
+        <result column="INT_ADJ_PREV" property="intAdjPrev" jdbcType="DECIMAL" />
+        <result column="INT_ADJ_LAST_PREV" property="intAdjLastPrev" jdbcType="DECIMAL" />
+        <result column="INT_CALC_BAL" property="intCalcBal" jdbcType="VARCHAR" />
+        <result column="INT_PAST_DUE" property="intPastDue" jdbcType="DECIMAL" />
+        <result column="INT_POSTED" property="intPosted" jdbcType="DECIMAL" />
+        <result column="INT_POSTED_CTD" property="intPostedCtd" jdbcType="DECIMAL" />
+        <result column="DISCNT_INT" property="discntInt" jdbcType="DECIMAL" />
+        <result column="DISCNT_INT_PREV" property="discntIntPrev" jdbcType="DECIMAL" />
+        <result column="DISCNT_INT_LAST_PREV" property="discntIntLastPrev" jdbcType="DECIMAL" />
+        <result column="DISCNT_RETAIN_INT" property="discntRetainInt" jdbcType="DECIMAL" />
+        <result column="DISCNT_UI_FLAG" property="discntUiFlag" jdbcType="VARCHAR" />
+        <result column="CALC_BEGIN_DATE" property="calcBeginDate" jdbcType="TIMESTAMP" />
+        <result column="CALC_END_DATE" property="calcEndDate" jdbcType="TIMESTAMP" />
+        <result column="INT_APPL_TYPE" property="intApplType" jdbcType="VARCHAR" />
+        <result column="INT_APPL_TYPE_PREV" property="intApplTypePrev" jdbcType="VARCHAR" />
+        <result column="ROLL_DAY" property="rollDay" jdbcType="VARCHAR" />
+        <result column="ROLL_FREQ" property="rollFreq" jdbcType="VARCHAR" />
+        <result column="CALC_BY_INT" property="calcByInt" jdbcType="VARCHAR" />
+        <result column="LAST_ROLL_DATE" property="lastRollDate" jdbcType="TIMESTAMP" />
+        <result column="NEXT_ROLL_DATE" property="nextRollDate" jdbcType="TIMESTAMP" />
+        <result column="TD_INT_NUM_DAYS" property="tdIntNumDays" jdbcType="INTEGER" />
+        <result column="INT_AMT" property="intAmt" jdbcType="DECIMAL" />
+        <result column="LAST_INT_PAST_DUE" property="lastIntPastDue" jdbcType="DECIMAL" />
+        <result column="TAX_TYPE" property="taxType" jdbcType="VARCHAR" />
+        <result column="TAX_RATE" property="taxRate" jdbcType="DECIMAL" />
+        <result column="TAX_ACCRUED" property="taxAccrued" jdbcType="DECIMAL" />
+        <result column="TAX_ACCRUED_CALC_CTD" property="taxAccruedCalcCtd" jdbcType="DECIMAL" />
+        <result column="TAX_ACCRUED_CTD" property="taxAccruedCtd" jdbcType="DECIMAL" />
+        <result column="TAX_ACCRUED_DIFF" property="taxAccruedDiff" jdbcType="DECIMAL" />
+        <result column="TAX_POSTED_CTD" property="taxPostedCtd" jdbcType="DECIMAL" />
+        <result column="TAX_POSTED" property="taxPosted" jdbcType="DECIMAL" />
+        <result column="INT_TAX_T" property="intTaxT" jdbcType="DECIMAL" />
+        <result column="RETRY_FLAG" property="retryFlag" jdbcType="VARCHAR" />
+        <result column="AGREE_AGG" property="agreeAgg" jdbcType="DECIMAL" />
+        <result column="LAYER_AGREEMENT" property="layerAgreement" jdbcType="VARCHAR" />
+        <result column="INT_FLAG" property="intFlag" jdbcType="VARCHAR" />
+        <result column="DAC_VALUE" property="dacValue" jdbcType="VARCHAR" />
+        <result column="SYSTEM_ID" property="systemId" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_USER_ID" property="lastChangeUserId" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="ADJ_UPD_LAST_DATE" property="adjUpdLastDate" jdbcType="TIMESTAMP" />
+        <result column="ADV_UPD_LAST_DATE" property="advUpdLastDate" jdbcType="TIMESTAMP" />
+        <result column="PAST_FAD_RATE" property="pastFadRate" jdbcType="DECIMAL" />
+        <result column="TOTAL_AGG" property="totalAgg" jdbcType="DECIMAL" />
+        <result column="DELAY_TOTAL_AMT" property="delayTotalAmt" jdbcType="DECIMAL" />
+        <result column="DELAY_INT_AMT" property="delayIntAmt" jdbcType="DECIMAL" />
+        <result column="DELAY_INT_AMT_PREV" property="delayIntAmtPrev" jdbcType="DECIMAL" />
+        <result column="DELAY_INT_AMT_LAST_PREV" property="delayIntAmtLastPrev" jdbcType="DECIMAL" />
+        <result column="LAST_PRE_ACCRUAL_DATE" property="lastPreAccrualDate" jdbcType="TIMESTAMP" />
+        <result column="INT_UPD_LAST_DATE" property="intUpdLastDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        INTERNAL_KEY,        INT_CLASS,        NEXT_ACCR_DATE,        LAST_ACCRUAL_DATE,        CYCLE_FLAG,        INT_CAP_FLAG,        NEXT_CYCLE_DATE,        LAST_CYCLE_DATE,        LAST_TRUE_CYCLE_DATE,        LAST_CYCLE_DATE_PRE,        CYCLE_FREQ,        INT_DAY,        INT_TYPE,        ACTUAL_RATE,        FLOAT_TYPE,        FLOAT_RATE,        SPREAD_PERCENT,        SPREAD_RATE,        ACCT_FIXED_RATE,        ACCT_PERCENT_RATE,        ACCT_SPREAD_RATE,        REAL_RATE,        SPLIT_RATE_FLAG,        MIN_INT_RATE,        MAX_INT_RATE,        MONTH_BASIS,        YEAR_BASIS,        INT_ACCRUED,        AGG,        INT_ACCRUED_CALC_CTD,        INT_ACCRUED_CTD,        INT_ACCRUED_DIFF,        INT_ACCRUED_PREV,        INT_ACCRUED_LAST_PREV,        INT_ADJ,        INT_ADJ_CTD,        INT_ADJ_PREV,        INT_ADJ_LAST_PREV,        INT_CALC_BAL,        INT_PAST_DUE,        INT_POSTED,        INT_POSTED_CTD,        DISCNT_INT,        DISCNT_INT_PREV,        DISCNT_INT_LAST_PREV,        DISCNT_RETAIN_INT,        DISCNT_UI_FLAG,        CALC_BEGIN_DATE,        CALC_END_DATE,        INT_APPL_TYPE,        INT_APPL_TYPE_PREV,        ROLL_DAY,        ROLL_FREQ,        CALC_BY_INT,        LAST_ROLL_DATE,        NEXT_ROLL_DATE,        TD_INT_NUM_DAYS,        INT_AMT,        LAST_INT_PAST_DUE,        TAX_TYPE,        TAX_RATE,        TAX_ACCRUED,        TAX_ACCRUED_CALC_CTD,        TAX_ACCRUED_CTD,        TAX_ACCRUED_DIFF,        TAX_POSTED_CTD,        TAX_POSTED,        INT_TAX_T,        RETRY_FLAG,        AGREE_AGG,        LAYER_AGREEMENT,        INT_FLAG,        DAC_VALUE,        SYSTEM_ID,        LAST_CHANGE_DATE,        CREATE_TIMESTAMP,        LAST_CHANGE_USER_ID,        CLIENT_NO,        TRAN_TIMESTAMP,        COMPANY,        ADJ_UPD_LAST_DATE,        ADV_UPD_LAST_DATE,        PAST_FAD_RATE,        TOTAL_AGG,        DELAY_TOTAL_AMT,        DELAY_INT_AMT,        DELAY_INT_AMT_PREV,        DELAY_INT_AMT_LAST_PREV,        LAST_PRE_ACCRUAL_DATE,        INT_UPD_LAST_DATE    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbAcctIntDetailExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_ACCT_INT_DETAIL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_ACCT_INT_DETAIL
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_ACCT_INT_DETAIL
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbAcctIntDetailExample">
+        delete from RB_ACCT_INT_DETAIL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbAcctIntDetail">
+        insert into RB_ACCT_INT_DETAIL
+        (
+            INTERNAL_KEY,            INT_CLASS,            NEXT_ACCR_DATE,            LAST_ACCRUAL_DATE,            CYCLE_FLAG,            INT_CAP_FLAG,            NEXT_CYCLE_DATE,            LAST_CYCLE_DATE,            LAST_TRUE_CYCLE_DATE,            LAST_CYCLE_DATE_PRE,            CYCLE_FREQ,            INT_DAY,            INT_TYPE,            ACTUAL_RATE,            FLOAT_TYPE,            FLOAT_RATE,            SPREAD_PERCENT,            SPREAD_RATE,            ACCT_FIXED_RATE,            ACCT_PERCENT_RATE,            ACCT_SPREAD_RATE,            REAL_RATE,            SPLIT_RATE_FLAG,            MIN_INT_RATE,            MAX_INT_RATE,            MONTH_BASIS,            YEAR_BASIS,            INT_ACCRUED,            AGG,            INT_ACCRUED_CALC_CTD,            INT_ACCRUED_CTD,            INT_ACCRUED_DIFF,            INT_ACCRUED_PREV,            INT_ACCRUED_LAST_PREV,            INT_ADJ,            INT_ADJ_CTD,            INT_ADJ_PREV,            INT_ADJ_LAST_PREV,            INT_CALC_BAL,            INT_PAST_DUE,            INT_POSTED,            INT_POSTED_CTD,            DISCNT_INT,            DISCNT_INT_PREV,            DISCNT_INT_LAST_PREV,            DISCNT_RETAIN_INT,            DISCNT_UI_FLAG,            CALC_BEGIN_DATE,            CALC_END_DATE,            INT_APPL_TYPE,            INT_APPL_TYPE_PREV,            ROLL_DAY,            ROLL_FREQ,            CALC_BY_INT,            LAST_ROLL_DATE,            NEXT_ROLL_DATE,            TD_INT_NUM_DAYS,            INT_AMT,            LAST_INT_PAST_DUE,            TAX_TYPE,            TAX_RATE,            TAX_ACCRUED,            TAX_ACCRUED_CALC_CTD,            TAX_ACCRUED_CTD,            TAX_ACCRUED_DIFF,            TAX_POSTED_CTD,            TAX_POSTED,            INT_TAX_T,            RETRY_FLAG,            AGREE_AGG,            LAYER_AGREEMENT,            INT_FLAG,            DAC_VALUE,            SYSTEM_ID,            LAST_CHANGE_DATE,            CREATE_TIMESTAMP,            LAST_CHANGE_USER_ID,            CLIENT_NO,            TRAN_TIMESTAMP,            COMPANY,            ADJ_UPD_LAST_DATE,            ADV_UPD_LAST_DATE,            PAST_FAD_RATE,            TOTAL_AGG,            DELAY_TOTAL_AMT,            DELAY_INT_AMT,            DELAY_INT_AMT_PREV,            DELAY_INT_AMT_LAST_PREV,            LAST_PRE_ACCRUAL_DATE,            INT_UPD_LAST_DATE        )
+        values
+        (
+            #{internalKey,jdbcType=INTEGER},            #{intClass,jdbcType=VARCHAR},            #{nextAccrDate,jdbcType=TIMESTAMP},            #{lastAccrualDate,jdbcType=TIMESTAMP},            #{cycleFlag,jdbcType=VARCHAR},            #{intCapFlag,jdbcType=VARCHAR},            #{nextCycleDate,jdbcType=TIMESTAMP},            #{lastCycleDate,jdbcType=TIMESTAMP},            #{lastTrueCycleDate,jdbcType=TIMESTAMP},            #{lastCycleDatePre,jdbcType=TIMESTAMP},            #{cycleFreq,jdbcType=VARCHAR},            #{intDay,jdbcType=VARCHAR},            #{intType,jdbcType=VARCHAR},            #{actualRate,jdbcType=DECIMAL},            #{floatType,jdbcType=VARCHAR},            #{floatRate,jdbcType=DECIMAL},            #{spreadPercent,jdbcType=DECIMAL},            #{spreadRate,jdbcType=DECIMAL},            #{acctFixedRate,jdbcType=DECIMAL},            #{acctPercentRate,jdbcType=DECIMAL},            #{acctSpreadRate,jdbcType=DECIMAL},            #{realRate,jdbcType=DECIMAL},            #{splitRateFlag,jdbcType=VARCHAR},            #{minIntRate,jdbcType=DECIMAL},            #{maxIntRate,jdbcType=DECIMAL},            #{monthBasis,jdbcType=VARCHAR},            #{yearBasis,jdbcType=VARCHAR},            #{intAccrued,jdbcType=DECIMAL},            #{agg,jdbcType=DECIMAL},            #{intAccruedCalcCtd,jdbcType=DECIMAL},            #{intAccruedCtd,jdbcType=DECIMAL},            #{intAccruedDiff,jdbcType=DECIMAL},            #{intAccruedPrev,jdbcType=DECIMAL},            #{intAccruedLastPrev,jdbcType=DECIMAL},            #{intAdj,jdbcType=DECIMAL},            #{intAdjCtd,jdbcType=DECIMAL},            #{intAdjPrev,jdbcType=DECIMAL},            #{intAdjLastPrev,jdbcType=DECIMAL},            #{intCalcBal,jdbcType=VARCHAR},            #{intPastDue,jdbcType=DECIMAL},            #{intPosted,jdbcType=DECIMAL},            #{intPostedCtd,jdbcType=DECIMAL},            #{discntInt,jdbcType=DECIMAL},            #{discntIntPrev,jdbcType=DECIMAL},            #{discntIntLastPrev,jdbcType=DECIMAL},            #{discntRetainInt,jdbcType=DECIMAL},            #{discntUiFlag,jdbcType=VARCHAR},            #{calcBeginDate,jdbcType=TIMESTAMP},            #{calcEndDate,jdbcType=TIMESTAMP},            #{intApplType,jdbcType=VARCHAR},            #{intApplTypePrev,jdbcType=VARCHAR},            #{rollDay,jdbcType=VARCHAR},            #{rollFreq,jdbcType=VARCHAR},            #{calcByInt,jdbcType=VARCHAR},            #{lastRollDate,jdbcType=TIMESTAMP},            #{nextRollDate,jdbcType=TIMESTAMP},            #{tdIntNumDays,jdbcType=INTEGER},            #{intAmt,jdbcType=DECIMAL},            #{lastIntPastDue,jdbcType=DECIMAL},            #{taxType,jdbcType=VARCHAR},            #{taxRate,jdbcType=DECIMAL},            #{taxAccrued,jdbcType=DECIMAL},            #{taxAccruedCalcCtd,jdbcType=DECIMAL},            #{taxAccruedCtd,jdbcType=DECIMAL},            #{taxAccruedDiff,jdbcType=DECIMAL},            #{taxPostedCtd,jdbcType=DECIMAL},            #{taxPosted,jdbcType=DECIMAL},            #{intTaxT,jdbcType=DECIMAL},            #{retryFlag,jdbcType=VARCHAR},            #{agreeAgg,jdbcType=DECIMAL},            #{layerAgreement,jdbcType=VARCHAR},            #{intFlag,jdbcType=VARCHAR},            #{dacValue,jdbcType=VARCHAR},            #{systemId,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{createTimestamp,jdbcType=VARCHAR},            #{lastChangeUserId,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{adjUpdLastDate,jdbcType=TIMESTAMP},            #{advUpdLastDate,jdbcType=TIMESTAMP},            #{pastFadRate,jdbcType=DECIMAL},            #{totalAgg,jdbcType=DECIMAL},            #{delayTotalAmt,jdbcType=DECIMAL},            #{delayIntAmt,jdbcType=DECIMAL},            #{delayIntAmtPrev,jdbcType=DECIMAL},            #{delayIntAmtLastPrev,jdbcType=DECIMAL},            #{lastPreAccrualDate,jdbcType=TIMESTAMP},            #{intUpdLastDate,jdbcType=TIMESTAMP}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbAcctIntDetail">
+        insert into RB_ACCT_INT_DETAIL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="intClass != null">
+                INT_CLASS,
+            </if>
+            <if test="nextAccrDate != null">
+                NEXT_ACCR_DATE,
+            </if>
+            <if test="lastAccrualDate != null">
+                LAST_ACCRUAL_DATE,
+            </if>
+            <if test="cycleFlag != null">
+                CYCLE_FLAG,
+            </if>
+            <if test="intCapFlag != null">
+                INT_CAP_FLAG,
+            </if>
+            <if test="nextCycleDate != null">
+                NEXT_CYCLE_DATE,
+            </if>
+            <if test="lastCycleDate != null">
+                LAST_CYCLE_DATE,
+            </if>
+            <if test="lastTrueCycleDate != null">
+                LAST_TRUE_CYCLE_DATE,
+            </if>
+            <if test="lastCycleDatePre != null">
+                LAST_CYCLE_DATE_PRE,
+            </if>
+            <if test="cycleFreq != null">
+                CYCLE_FREQ,
+            </if>
+            <if test="intDay != null">
+                INT_DAY,
+            </if>
+            <if test="intType != null">
+                INT_TYPE,
+            </if>
+            <if test="actualRate != null">
+                ACTUAL_RATE,
+            </if>
+            <if test="floatType != null">
+                FLOAT_TYPE,
+            </if>
+            <if test="floatRate != null">
+                FLOAT_RATE,
+            </if>
+            <if test="spreadPercent != null">
+                SPREAD_PERCENT,
+            </if>
+            <if test="spreadRate != null">
+                SPREAD_RATE,
+            </if>
+            <if test="acctFixedRate != null">
+                ACCT_FIXED_RATE,
+            </if>
+            <if test="acctPercentRate != null">
+                ACCT_PERCENT_RATE,
+            </if>
+            <if test="acctSpreadRate != null">
+                ACCT_SPREAD_RATE,
+            </if>
+            <if test="realRate != null">
+                REAL_RATE,
+            </if>
+            <if test="splitRateFlag != null">
+                SPLIT_RATE_FLAG,
+            </if>
+            <if test="minIntRate != null">
+                MIN_INT_RATE,
+            </if>
+            <if test="maxIntRate != null">
+                MAX_INT_RATE,
+            </if>
+            <if test="monthBasis != null">
+                MONTH_BASIS,
+            </if>
+            <if test="yearBasis != null">
+                YEAR_BASIS,
+            </if>
+            <if test="intAccrued != null">
+                INT_ACCRUED,
+            </if>
+            <if test="agg != null">
+                AGG,
+            </if>
+            <if test="intAccruedCalcCtd != null">
+                INT_ACCRUED_CALC_CTD,
+            </if>
+            <if test="intAccruedCtd != null">
+                INT_ACCRUED_CTD,
+            </if>
+            <if test="intAccruedDiff != null">
+                INT_ACCRUED_DIFF,
+            </if>
+            <if test="intAccruedPrev != null">
+                INT_ACCRUED_PREV,
+            </if>
+            <if test="intAccruedLastPrev != null">
+                INT_ACCRUED_LAST_PREV,
+            </if>
+            <if test="intAdj != null">
+                INT_ADJ,
+            </if>
+            <if test="intAdjCtd != null">
+                INT_ADJ_CTD,
+            </if>
+            <if test="intAdjPrev != null">
+                INT_ADJ_PREV,
+            </if>
+            <if test="intAdjLastPrev != null">
+                INT_ADJ_LAST_PREV,
+            </if>
+            <if test="intCalcBal != null">
+                INT_CALC_BAL,
+            </if>
+            <if test="intPastDue != null">
+                INT_PAST_DUE,
+            </if>
+            <if test="intPosted != null">
+                INT_POSTED,
+            </if>
+            <if test="intPostedCtd != null">
+                INT_POSTED_CTD,
+            </if>
+            <if test="discntInt != null">
+                DISCNT_INT,
+            </if>
+            <if test="discntIntPrev != null">
+                DISCNT_INT_PREV,
+            </if>
+            <if test="discntIntLastPrev != null">
+                DISCNT_INT_LAST_PREV,
+            </if>
+            <if test="discntRetainInt != null">
+                DISCNT_RETAIN_INT,
+            </if>
+            <if test="discntUiFlag != null">
+                DISCNT_UI_FLAG,
+            </if>
+            <if test="calcBeginDate != null">
+                CALC_BEGIN_DATE,
+            </if>
+            <if test="calcEndDate != null">
+                CALC_END_DATE,
+            </if>
+            <if test="intApplType != null">
+                INT_APPL_TYPE,
+            </if>
+            <if test="intApplTypePrev != null">
+                INT_APPL_TYPE_PREV,
+            </if>
+            <if test="rollDay != null">
+                ROLL_DAY,
+            </if>
+            <if test="rollFreq != null">
+                ROLL_FREQ,
+            </if>
+            <if test="calcByInt != null">
+                CALC_BY_INT,
+            </if>
+            <if test="lastRollDate != null">
+                LAST_ROLL_DATE,
+            </if>
+            <if test="nextRollDate != null">
+                NEXT_ROLL_DATE,
+            </if>
+            <if test="tdIntNumDays != null">
+                TD_INT_NUM_DAYS,
+            </if>
+            <if test="intAmt != null">
+                INT_AMT,
+            </if>
+            <if test="lastIntPastDue != null">
+                LAST_INT_PAST_DUE,
+            </if>
+            <if test="taxType != null">
+                TAX_TYPE,
+            </if>
+            <if test="taxRate != null">
+                TAX_RATE,
+            </if>
+            <if test="taxAccrued != null">
+                TAX_ACCRUED,
+            </if>
+            <if test="taxAccruedCalcCtd != null">
+                TAX_ACCRUED_CALC_CTD,
+            </if>
+            <if test="taxAccruedCtd != null">
+                TAX_ACCRUED_CTD,
+            </if>
+            <if test="taxAccruedDiff != null">
+                TAX_ACCRUED_DIFF,
+            </if>
+            <if test="taxPostedCtd != null">
+                TAX_POSTED_CTD,
+            </if>
+            <if test="taxPosted != null">
+                TAX_POSTED,
+            </if>
+            <if test="intTaxT != null">
+                INT_TAX_T,
+            </if>
+            <if test="retryFlag != null">
+                RETRY_FLAG,
+            </if>
+            <if test="agreeAgg != null">
+                AGREE_AGG,
+            </if>
+            <if test="layerAgreement != null">
+                LAYER_AGREEMENT,
+            </if>
+            <if test="intFlag != null">
+                INT_FLAG,
+            </if>
+            <if test="dacValue != null">
+                DAC_VALUE,
+            </if>
+            <if test="systemId != null">
+                SYSTEM_ID,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="lastChangeUserId != null">
+                LAST_CHANGE_USER_ID,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="adjUpdLastDate != null">
+                ADJ_UPD_LAST_DATE,
+            </if>
+            <if test="advUpdLastDate != null">
+                ADV_UPD_LAST_DATE,
+            </if>
+            <if test="pastFadRate != null">
+                PAST_FAD_RATE,
+            </if>
+            <if test="totalAgg != null">
+                TOTAL_AGG,
+            </if>
+            <if test="delayTotalAmt != null">
+                DELAY_TOTAL_AMT,
+            </if>
+            <if test="delayIntAmt != null">
+                DELAY_INT_AMT,
+            </if>
+            <if test="delayIntAmtPrev != null">
+                DELAY_INT_AMT_PREV,
+            </if>
+            <if test="delayIntAmtLastPrev != null">
+                DELAY_INT_AMT_LAST_PREV,
+            </if>
+            <if test="lastPreAccrualDate != null">
+                LAST_PRE_ACCRUAL_DATE,
+            </if>
+            <if test="intUpdLastDate != null">
+                INT_UPD_LAST_DATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="intClass != null">
+                #{intClass,jdbcType=VARCHAR},
+            </if>
+            <if test="nextAccrDate != null">
+                #{nextAccrDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastAccrualDate != null">
+                #{lastAccrualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cycleFlag != null">
+                #{cycleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intCapFlag != null">
+                #{intCapFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="nextCycleDate != null">
+                #{nextCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastCycleDate != null">
+                #{lastCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastTrueCycleDate != null">
+                #{lastTrueCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastCycleDatePre != null">
+                #{lastCycleDatePre,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cycleFreq != null">
+                #{cycleFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="intDay != null">
+                #{intDay,jdbcType=VARCHAR},
+            </if>
+            <if test="intType != null">
+                #{intType,jdbcType=VARCHAR},
+            </if>
+            <if test="actualRate != null">
+                #{actualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="floatType != null">
+                #{floatType,jdbcType=VARCHAR},
+            </if>
+            <if test="floatRate != null">
+                #{floatRate,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadPercent != null">
+                #{spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadRate != null">
+                #{spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="acctFixedRate != null">
+                #{acctFixedRate,jdbcType=DECIMAL},
+            </if>
+            <if test="acctPercentRate != null">
+                #{acctPercentRate,jdbcType=DECIMAL},
+            </if>
+            <if test="acctSpreadRate != null">
+                #{acctSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="realRate != null">
+                #{realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="splitRateFlag != null">
+                #{splitRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="minIntRate != null">
+                #{minIntRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxIntRate != null">
+                #{maxIntRate,jdbcType=DECIMAL},
+            </if>
+            <if test="monthBasis != null">
+                #{monthBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="yearBasis != null">
+                #{yearBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="intAccrued != null">
+                #{intAccrued,jdbcType=DECIMAL},
+            </if>
+            <if test="agg != null">
+                #{agg,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedCalcCtd != null">
+                #{intAccruedCalcCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedCtd != null">
+                #{intAccruedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedDiff != null">
+                #{intAccruedDiff,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedPrev != null">
+                #{intAccruedPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedLastPrev != null">
+                #{intAccruedLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdj != null">
+                #{intAdj,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdjCtd != null">
+                #{intAdjCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdjPrev != null">
+                #{intAdjPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdjLastPrev != null">
+                #{intAdjLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intCalcBal != null">
+                #{intCalcBal,jdbcType=VARCHAR},
+            </if>
+            <if test="intPastDue != null">
+                #{intPastDue,jdbcType=DECIMAL},
+            </if>
+            <if test="intPosted != null">
+                #{intPosted,jdbcType=DECIMAL},
+            </if>
+            <if test="intPostedCtd != null">
+                #{intPostedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="discntInt != null">
+                #{discntInt,jdbcType=DECIMAL},
+            </if>
+            <if test="discntIntPrev != null">
+                #{discntIntPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="discntIntLastPrev != null">
+                #{discntIntLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="discntRetainInt != null">
+                #{discntRetainInt,jdbcType=DECIMAL},
+            </if>
+            <if test="discntUiFlag != null">
+                #{discntUiFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="calcBeginDate != null">
+                #{calcBeginDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="calcEndDate != null">
+                #{calcEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="intApplType != null">
+                #{intApplType,jdbcType=VARCHAR},
+            </if>
+            <if test="intApplTypePrev != null">
+                #{intApplTypePrev,jdbcType=VARCHAR},
+            </if>
+            <if test="rollDay != null">
+                #{rollDay,jdbcType=VARCHAR},
+            </if>
+            <if test="rollFreq != null">
+                #{rollFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="calcByInt != null">
+                #{calcByInt,jdbcType=VARCHAR},
+            </if>
+            <if test="lastRollDate != null">
+                #{lastRollDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nextRollDate != null">
+                #{nextRollDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tdIntNumDays != null">
+                #{tdIntNumDays,jdbcType=INTEGER},
+            </if>
+            <if test="intAmt != null">
+                #{intAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="lastIntPastDue != null">
+                #{lastIntPastDue,jdbcType=DECIMAL},
+            </if>
+            <if test="taxType != null">
+                #{taxType,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRate != null">
+                #{taxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccrued != null">
+                #{taxAccrued,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccruedCalcCtd != null">
+                #{taxAccruedCalcCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccruedCtd != null">
+                #{taxAccruedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccruedDiff != null">
+                #{taxAccruedDiff,jdbcType=DECIMAL},
+            </if>
+            <if test="taxPostedCtd != null">
+                #{taxPostedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="taxPosted != null">
+                #{taxPosted,jdbcType=DECIMAL},
+            </if>
+            <if test="intTaxT != null">
+                #{intTaxT,jdbcType=DECIMAL},
+            </if>
+            <if test="retryFlag != null">
+                #{retryFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="agreeAgg != null">
+                #{agreeAgg,jdbcType=DECIMAL},
+            </if>
+            <if test="layerAgreement != null">
+                #{layerAgreement,jdbcType=VARCHAR},
+            </if>
+            <if test="intFlag != null">
+                #{intFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="dacValue != null">
+                #{dacValue,jdbcType=VARCHAR},
+            </if>
+            <if test="systemId != null">
+                #{systemId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeUserId != null">
+                #{lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="adjUpdLastDate != null">
+                #{adjUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="advUpdLastDate != null">
+                #{advUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="pastFadRate != null">
+                #{pastFadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="totalAgg != null">
+                #{totalAgg,jdbcType=DECIMAL},
+            </if>
+            <if test="delayTotalAmt != null">
+                #{delayTotalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="delayIntAmt != null">
+                #{delayIntAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="delayIntAmtPrev != null">
+                #{delayIntAmtPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="delayIntAmtLastPrev != null">
+                #{delayIntAmtLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="lastPreAccrualDate != null">
+                #{lastPreAccrualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="intUpdLastDate != null">
+                #{intUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbAcctIntDetailExample" resultType="java.lang.Long">
+        select count(*) from RB_ACCT_INT_DETAIL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_ACCT_INT_DETAIL
+        <set>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.intClass != null">
+                INT_CLASS = #{row.intClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.nextAccrDate != null">
+                NEXT_ACCR_DATE = #{row.nextAccrDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastAccrualDate != null">
+                LAST_ACCRUAL_DATE = #{row.lastAccrualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.cycleFlag != null">
+                CYCLE_FLAG = #{row.cycleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intCapFlag != null">
+                INT_CAP_FLAG = #{row.intCapFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.nextCycleDate != null">
+                NEXT_CYCLE_DATE = #{row.nextCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastCycleDate != null">
+                LAST_CYCLE_DATE = #{row.lastCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastTrueCycleDate != null">
+                LAST_TRUE_CYCLE_DATE = #{row.lastTrueCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastCycleDatePre != null">
+                LAST_CYCLE_DATE_PRE = #{row.lastCycleDatePre,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.cycleFreq != null">
+                CYCLE_FREQ = #{row.cycleFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intDay != null">
+                INT_DAY = #{row.intDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intType != null">
+                INT_TYPE = #{row.intType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.actualRate != null">
+                ACTUAL_RATE = #{row.actualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.floatType != null">
+                FLOAT_TYPE = #{row.floatType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.floatRate != null">
+                FLOAT_RATE = #{row.floatRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.spreadPercent != null">
+                SPREAD_PERCENT = #{row.spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.spreadRate != null">
+                SPREAD_RATE = #{row.spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.acctFixedRate != null">
+                ACCT_FIXED_RATE = #{row.acctFixedRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.acctPercentRate != null">
+                ACCT_PERCENT_RATE = #{row.acctPercentRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.acctSpreadRate != null">
+                ACCT_SPREAD_RATE = #{row.acctSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.realRate != null">
+                REAL_RATE = #{row.realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.splitRateFlag != null">
+                SPLIT_RATE_FLAG = #{row.splitRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.minIntRate != null">
+                MIN_INT_RATE = #{row.minIntRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.maxIntRate != null">
+                MAX_INT_RATE = #{row.maxIntRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.monthBasis != null">
+                MONTH_BASIS = #{row.monthBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="row.yearBasis != null">
+                YEAR_BASIS = #{row.yearBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intAccrued != null">
+                INT_ACCRUED = #{row.intAccrued,jdbcType=DECIMAL},
+            </if>
+            <if test="row.agg != null">
+                AGG = #{row.agg,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAccruedCalcCtd != null">
+                INT_ACCRUED_CALC_CTD = #{row.intAccruedCalcCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAccruedCtd != null">
+                INT_ACCRUED_CTD = #{row.intAccruedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAccruedDiff != null">
+                INT_ACCRUED_DIFF = #{row.intAccruedDiff,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAccruedPrev != null">
+                INT_ACCRUED_PREV = #{row.intAccruedPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAccruedLastPrev != null">
+                INT_ACCRUED_LAST_PREV = #{row.intAccruedLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAdj != null">
+                INT_ADJ = #{row.intAdj,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAdjCtd != null">
+                INT_ADJ_CTD = #{row.intAdjCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAdjPrev != null">
+                INT_ADJ_PREV = #{row.intAdjPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAdjLastPrev != null">
+                INT_ADJ_LAST_PREV = #{row.intAdjLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intCalcBal != null">
+                INT_CALC_BAL = #{row.intCalcBal,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intPastDue != null">
+                INT_PAST_DUE = #{row.intPastDue,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intPosted != null">
+                INT_POSTED = #{row.intPosted,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intPostedCtd != null">
+                INT_POSTED_CTD = #{row.intPostedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.discntInt != null">
+                DISCNT_INT = #{row.discntInt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.discntIntPrev != null">
+                DISCNT_INT_PREV = #{row.discntIntPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.discntIntLastPrev != null">
+                DISCNT_INT_LAST_PREV = #{row.discntIntLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.discntRetainInt != null">
+                DISCNT_RETAIN_INT = #{row.discntRetainInt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.discntUiFlag != null">
+                DISCNT_UI_FLAG = #{row.discntUiFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.calcBeginDate != null">
+                CALC_BEGIN_DATE = #{row.calcBeginDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.calcEndDate != null">
+                CALC_END_DATE = #{row.calcEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.intApplType != null">
+                INT_APPL_TYPE = #{row.intApplType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intApplTypePrev != null">
+                INT_APPL_TYPE_PREV = #{row.intApplTypePrev,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rollDay != null">
+                ROLL_DAY = #{row.rollDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rollFreq != null">
+                ROLL_FREQ = #{row.rollFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.calcByInt != null">
+                CALC_BY_INT = #{row.calcByInt,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastRollDate != null">
+                LAST_ROLL_DATE = #{row.lastRollDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.nextRollDate != null">
+                NEXT_ROLL_DATE = #{row.nextRollDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.tdIntNumDays != null">
+                TD_INT_NUM_DAYS = #{row.tdIntNumDays,jdbcType=INTEGER},
+            </if>
+            <if test="row.intAmt != null">
+                INT_AMT = #{row.intAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.lastIntPastDue != null">
+                LAST_INT_PAST_DUE = #{row.lastIntPastDue,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxType != null">
+                TAX_TYPE = #{row.taxType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.taxRate != null">
+                TAX_RATE = #{row.taxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxAccrued != null">
+                TAX_ACCRUED = #{row.taxAccrued,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxAccruedCalcCtd != null">
+                TAX_ACCRUED_CALC_CTD = #{row.taxAccruedCalcCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxAccruedCtd != null">
+                TAX_ACCRUED_CTD = #{row.taxAccruedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxAccruedDiff != null">
+                TAX_ACCRUED_DIFF = #{row.taxAccruedDiff,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxPostedCtd != null">
+                TAX_POSTED_CTD = #{row.taxPostedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxPosted != null">
+                TAX_POSTED = #{row.taxPosted,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intTaxT != null">
+                INT_TAX_T = #{row.intTaxT,jdbcType=DECIMAL},
+            </if>
+            <if test="row.retryFlag != null">
+                RETRY_FLAG = #{row.retryFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreeAgg != null">
+                AGREE_AGG = #{row.agreeAgg,jdbcType=DECIMAL},
+            </if>
+            <if test="row.layerAgreement != null">
+                LAYER_AGREEMENT = #{row.layerAgreement,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intFlag != null">
+                INT_FLAG = #{row.intFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.dacValue != null">
+                DAC_VALUE = #{row.dacValue,jdbcType=VARCHAR},
+            </if>
+            <if test="row.systemId != null">
+                SYSTEM_ID = #{row.systemId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeUserId != null">
+                LAST_CHANGE_USER_ID = #{row.lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.adjUpdLastDate != null">
+                ADJ_UPD_LAST_DATE = #{row.adjUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.advUpdLastDate != null">
+                ADV_UPD_LAST_DATE = #{row.advUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.pastFadRate != null">
+                PAST_FAD_RATE = #{row.pastFadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.totalAgg != null">
+                TOTAL_AGG = #{row.totalAgg,jdbcType=DECIMAL},
+            </if>
+            <if test="row.delayTotalAmt != null">
+                DELAY_TOTAL_AMT = #{row.delayTotalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.delayIntAmt != null">
+                DELAY_INT_AMT = #{row.delayIntAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.delayIntAmtPrev != null">
+                DELAY_INT_AMT_PREV = #{row.delayIntAmtPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.delayIntAmtLastPrev != null">
+                DELAY_INT_AMT_LAST_PREV = #{row.delayIntAmtLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="row.lastPreAccrualDate != null">
+                LAST_PRE_ACCRUAL_DATE = #{row.lastPreAccrualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.intUpdLastDate != null">
+                INT_UPD_LAST_DATE = #{row.intUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_ACCT_INT_DETAIL
+        set
+            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            INT_CLASS = #{row.intClass,jdbcType=VARCHAR},            NEXT_ACCR_DATE = #{row.nextAccrDate,jdbcType=TIMESTAMP},            LAST_ACCRUAL_DATE = #{row.lastAccrualDate,jdbcType=TIMESTAMP},            CYCLE_FLAG = #{row.cycleFlag,jdbcType=VARCHAR},            INT_CAP_FLAG = #{row.intCapFlag,jdbcType=VARCHAR},            NEXT_CYCLE_DATE = #{row.nextCycleDate,jdbcType=TIMESTAMP},            LAST_CYCLE_DATE = #{row.lastCycleDate,jdbcType=TIMESTAMP},            LAST_TRUE_CYCLE_DATE = #{row.lastTrueCycleDate,jdbcType=TIMESTAMP},            LAST_CYCLE_DATE_PRE = #{row.lastCycleDatePre,jdbcType=TIMESTAMP},            CYCLE_FREQ = #{row.cycleFreq,jdbcType=VARCHAR},            INT_DAY = #{row.intDay,jdbcType=VARCHAR},            INT_TYPE = #{row.intType,jdbcType=VARCHAR},            ACTUAL_RATE = #{row.actualRate,jdbcType=DECIMAL},            FLOAT_TYPE = #{row.floatType,jdbcType=VARCHAR},            FLOAT_RATE = #{row.floatRate,jdbcType=DECIMAL},            SPREAD_PERCENT = #{row.spreadPercent,jdbcType=DECIMAL},            SPREAD_RATE = #{row.spreadRate,jdbcType=DECIMAL},            ACCT_FIXED_RATE = #{row.acctFixedRate,jdbcType=DECIMAL},            ACCT_PERCENT_RATE = #{row.acctPercentRate,jdbcType=DECIMAL},            ACCT_SPREAD_RATE = #{row.acctSpreadRate,jdbcType=DECIMAL},            REAL_RATE = #{row.realRate,jdbcType=DECIMAL},            SPLIT_RATE_FLAG = #{row.splitRateFlag,jdbcType=VARCHAR},            MIN_INT_RATE = #{row.minIntRate,jdbcType=DECIMAL},            MAX_INT_RATE = #{row.maxIntRate,jdbcType=DECIMAL},            MONTH_BASIS = #{row.monthBasis,jdbcType=VARCHAR},            YEAR_BASIS = #{row.yearBasis,jdbcType=VARCHAR},            INT_ACCRUED = #{row.intAccrued,jdbcType=DECIMAL},            AGG = #{row.agg,jdbcType=DECIMAL},            INT_ACCRUED_CALC_CTD = #{row.intAccruedCalcCtd,jdbcType=DECIMAL},            INT_ACCRUED_CTD = #{row.intAccruedCtd,jdbcType=DECIMAL},            INT_ACCRUED_DIFF = #{row.intAccruedDiff,jdbcType=DECIMAL},            INT_ACCRUED_PREV = #{row.intAccruedPrev,jdbcType=DECIMAL},            INT_ACCRUED_LAST_PREV = #{row.intAccruedLastPrev,jdbcType=DECIMAL},            INT_ADJ = #{row.intAdj,jdbcType=DECIMAL},            INT_ADJ_CTD = #{row.intAdjCtd,jdbcType=DECIMAL},            INT_ADJ_PREV = #{row.intAdjPrev,jdbcType=DECIMAL},            INT_ADJ_LAST_PREV = #{row.intAdjLastPrev,jdbcType=DECIMAL},            INT_CALC_BAL = #{row.intCalcBal,jdbcType=VARCHAR},            INT_PAST_DUE = #{row.intPastDue,jdbcType=DECIMAL},            INT_POSTED = #{row.intPosted,jdbcType=DECIMAL},            INT_POSTED_CTD = #{row.intPostedCtd,jdbcType=DECIMAL},            DISCNT_INT = #{row.discntInt,jdbcType=DECIMAL},            DISCNT_INT_PREV = #{row.discntIntPrev,jdbcType=DECIMAL},            DISCNT_INT_LAST_PREV = #{row.discntIntLastPrev,jdbcType=DECIMAL},            DISCNT_RETAIN_INT = #{row.discntRetainInt,jdbcType=DECIMAL},            DISCNT_UI_FLAG = #{row.discntUiFlag,jdbcType=VARCHAR},            CALC_BEGIN_DATE = #{row.calcBeginDate,jdbcType=TIMESTAMP},            CALC_END_DATE = #{row.calcEndDate,jdbcType=TIMESTAMP},            INT_APPL_TYPE = #{row.intApplType,jdbcType=VARCHAR},            INT_APPL_TYPE_PREV = #{row.intApplTypePrev,jdbcType=VARCHAR},            ROLL_DAY = #{row.rollDay,jdbcType=VARCHAR},            ROLL_FREQ = #{row.rollFreq,jdbcType=VARCHAR},            CALC_BY_INT = #{row.calcByInt,jdbcType=VARCHAR},            LAST_ROLL_DATE = #{row.lastRollDate,jdbcType=TIMESTAMP},            NEXT_ROLL_DATE = #{row.nextRollDate,jdbcType=TIMESTAMP},            TD_INT_NUM_DAYS = #{row.tdIntNumDays,jdbcType=INTEGER},            INT_AMT = #{row.intAmt,jdbcType=DECIMAL},            LAST_INT_PAST_DUE = #{row.lastIntPastDue,jdbcType=DECIMAL},            TAX_TYPE = #{row.taxType,jdbcType=VARCHAR},            TAX_RATE = #{row.taxRate,jdbcType=DECIMAL},            TAX_ACCRUED = #{row.taxAccrued,jdbcType=DECIMAL},            TAX_ACCRUED_CALC_CTD = #{row.taxAccruedCalcCtd,jdbcType=DECIMAL},            TAX_ACCRUED_CTD = #{row.taxAccruedCtd,jdbcType=DECIMAL},            TAX_ACCRUED_DIFF = #{row.taxAccruedDiff,jdbcType=DECIMAL},            TAX_POSTED_CTD = #{row.taxPostedCtd,jdbcType=DECIMAL},            TAX_POSTED = #{row.taxPosted,jdbcType=DECIMAL},            INT_TAX_T = #{row.intTaxT,jdbcType=DECIMAL},            RETRY_FLAG = #{row.retryFlag,jdbcType=VARCHAR},            AGREE_AGG = #{row.agreeAgg,jdbcType=DECIMAL},            LAYER_AGREEMENT = #{row.layerAgreement,jdbcType=VARCHAR},            INT_FLAG = #{row.intFlag,jdbcType=VARCHAR},            DAC_VALUE = #{row.dacValue,jdbcType=VARCHAR},            SYSTEM_ID = #{row.systemId,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_USER_ID = #{row.lastChangeUserId,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            ADJ_UPD_LAST_DATE = #{row.adjUpdLastDate,jdbcType=TIMESTAMP},            ADV_UPD_LAST_DATE = #{row.advUpdLastDate,jdbcType=TIMESTAMP},            PAST_FAD_RATE = #{row.pastFadRate,jdbcType=DECIMAL},            TOTAL_AGG = #{row.totalAgg,jdbcType=DECIMAL},            DELAY_TOTAL_AMT = #{row.delayTotalAmt,jdbcType=DECIMAL},            DELAY_INT_AMT = #{row.delayIntAmt,jdbcType=DECIMAL},            DELAY_INT_AMT_PREV = #{row.delayIntAmtPrev,jdbcType=DECIMAL},            DELAY_INT_AMT_LAST_PREV = #{row.delayIntAmtLastPrev,jdbcType=DECIMAL},            LAST_PRE_ACCRUAL_DATE = #{row.lastPreAccrualDate,jdbcType=TIMESTAMP},            INT_UPD_LAST_DATE = #{row.intUpdLastDate,jdbcType=TIMESTAMP}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbAcctIntDetail">
+        update RB_ACCT_INT_DETAIL
+        <set>
+            <if test="nextAccrDate != null">
+                NEXT_ACCR_DATE = #{nextAccrDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastAccrualDate != null">
+                LAST_ACCRUAL_DATE = #{lastAccrualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cycleFlag != null">
+                CYCLE_FLAG = #{cycleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intCapFlag != null">
+                INT_CAP_FLAG = #{intCapFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="nextCycleDate != null">
+                NEXT_CYCLE_DATE = #{nextCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastCycleDate != null">
+                LAST_CYCLE_DATE = #{lastCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastTrueCycleDate != null">
+                LAST_TRUE_CYCLE_DATE = #{lastTrueCycleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastCycleDatePre != null">
+                LAST_CYCLE_DATE_PRE = #{lastCycleDatePre,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cycleFreq != null">
+                CYCLE_FREQ = #{cycleFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="intDay != null">
+                INT_DAY = #{intDay,jdbcType=VARCHAR},
+            </if>
+            <if test="intType != null">
+                INT_TYPE = #{intType,jdbcType=VARCHAR},
+            </if>
+            <if test="actualRate != null">
+                ACTUAL_RATE = #{actualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="floatType != null">
+                FLOAT_TYPE = #{floatType,jdbcType=VARCHAR},
+            </if>
+            <if test="floatRate != null">
+                FLOAT_RATE = #{floatRate,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadPercent != null">
+                SPREAD_PERCENT = #{spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadRate != null">
+                SPREAD_RATE = #{spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="acctFixedRate != null">
+                ACCT_FIXED_RATE = #{acctFixedRate,jdbcType=DECIMAL},
+            </if>
+            <if test="acctPercentRate != null">
+                ACCT_PERCENT_RATE = #{acctPercentRate,jdbcType=DECIMAL},
+            </if>
+            <if test="acctSpreadRate != null">
+                ACCT_SPREAD_RATE = #{acctSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="realRate != null">
+                REAL_RATE = #{realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="splitRateFlag != null">
+                SPLIT_RATE_FLAG = #{splitRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="minIntRate != null">
+                MIN_INT_RATE = #{minIntRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxIntRate != null">
+                MAX_INT_RATE = #{maxIntRate,jdbcType=DECIMAL},
+            </if>
+            <if test="monthBasis != null">
+                MONTH_BASIS = #{monthBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="yearBasis != null">
+                YEAR_BASIS = #{yearBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="intAccrued != null">
+                INT_ACCRUED = #{intAccrued,jdbcType=DECIMAL},
+            </if>
+            <if test="agg != null">
+                AGG = #{agg,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedCalcCtd != null">
+                INT_ACCRUED_CALC_CTD = #{intAccruedCalcCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedCtd != null">
+                INT_ACCRUED_CTD = #{intAccruedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedDiff != null">
+                INT_ACCRUED_DIFF = #{intAccruedDiff,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedPrev != null">
+                INT_ACCRUED_PREV = #{intAccruedPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intAccruedLastPrev != null">
+                INT_ACCRUED_LAST_PREV = #{intAccruedLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdj != null">
+                INT_ADJ = #{intAdj,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdjCtd != null">
+                INT_ADJ_CTD = #{intAdjCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdjPrev != null">
+                INT_ADJ_PREV = #{intAdjPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intAdjLastPrev != null">
+                INT_ADJ_LAST_PREV = #{intAdjLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="intCalcBal != null">
+                INT_CALC_BAL = #{intCalcBal,jdbcType=VARCHAR},
+            </if>
+            <if test="intPastDue != null">
+                INT_PAST_DUE = #{intPastDue,jdbcType=DECIMAL},
+            </if>
+            <if test="intPosted != null">
+                INT_POSTED = #{intPosted,jdbcType=DECIMAL},
+            </if>
+            <if test="intPostedCtd != null">
+                INT_POSTED_CTD = #{intPostedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="discntInt != null">
+                DISCNT_INT = #{discntInt,jdbcType=DECIMAL},
+            </if>
+            <if test="discntIntPrev != null">
+                DISCNT_INT_PREV = #{discntIntPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="discntIntLastPrev != null">
+                DISCNT_INT_LAST_PREV = #{discntIntLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="discntRetainInt != null">
+                DISCNT_RETAIN_INT = #{discntRetainInt,jdbcType=DECIMAL},
+            </if>
+            <if test="discntUiFlag != null">
+                DISCNT_UI_FLAG = #{discntUiFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="calcBeginDate != null">
+                CALC_BEGIN_DATE = #{calcBeginDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="calcEndDate != null">
+                CALC_END_DATE = #{calcEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="intApplType != null">
+                INT_APPL_TYPE = #{intApplType,jdbcType=VARCHAR},
+            </if>
+            <if test="intApplTypePrev != null">
+                INT_APPL_TYPE_PREV = #{intApplTypePrev,jdbcType=VARCHAR},
+            </if>
+            <if test="rollDay != null">
+                ROLL_DAY = #{rollDay,jdbcType=VARCHAR},
+            </if>
+            <if test="rollFreq != null">
+                ROLL_FREQ = #{rollFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="calcByInt != null">
+                CALC_BY_INT = #{calcByInt,jdbcType=VARCHAR},
+            </if>
+            <if test="lastRollDate != null">
+                LAST_ROLL_DATE = #{lastRollDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nextRollDate != null">
+                NEXT_ROLL_DATE = #{nextRollDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tdIntNumDays != null">
+                TD_INT_NUM_DAYS = #{tdIntNumDays,jdbcType=INTEGER},
+            </if>
+            <if test="intAmt != null">
+                INT_AMT = #{intAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="lastIntPastDue != null">
+                LAST_INT_PAST_DUE = #{lastIntPastDue,jdbcType=DECIMAL},
+            </if>
+            <if test="taxType != null">
+                TAX_TYPE = #{taxType,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRate != null">
+                TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccrued != null">
+                TAX_ACCRUED = #{taxAccrued,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccruedCalcCtd != null">
+                TAX_ACCRUED_CALC_CTD = #{taxAccruedCalcCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccruedCtd != null">
+                TAX_ACCRUED_CTD = #{taxAccruedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="taxAccruedDiff != null">
+                TAX_ACCRUED_DIFF = #{taxAccruedDiff,jdbcType=DECIMAL},
+            </if>
+            <if test="taxPostedCtd != null">
+                TAX_POSTED_CTD = #{taxPostedCtd,jdbcType=DECIMAL},
+            </if>
+            <if test="taxPosted != null">
+                TAX_POSTED = #{taxPosted,jdbcType=DECIMAL},
+            </if>
+            <if test="intTaxT != null">
+                INT_TAX_T = #{intTaxT,jdbcType=DECIMAL},
+            </if>
+            <if test="retryFlag != null">
+                RETRY_FLAG = #{retryFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="agreeAgg != null">
+                AGREE_AGG = #{agreeAgg,jdbcType=DECIMAL},
+            </if>
+            <if test="layerAgreement != null">
+                LAYER_AGREEMENT = #{layerAgreement,jdbcType=VARCHAR},
+            </if>
+            <if test="intFlag != null">
+                INT_FLAG = #{intFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="dacValue != null">
+                DAC_VALUE = #{dacValue,jdbcType=VARCHAR},
+            </if>
+            <if test="systemId != null">
+                SYSTEM_ID = #{systemId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeUserId != null">
+                LAST_CHANGE_USER_ID = #{lastChangeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="adjUpdLastDate != null">
+                ADJ_UPD_LAST_DATE = #{adjUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="advUpdLastDate != null">
+                ADV_UPD_LAST_DATE = #{advUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="pastFadRate != null">
+                PAST_FAD_RATE = #{pastFadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="totalAgg != null">
+                TOTAL_AGG = #{totalAgg,jdbcType=DECIMAL},
+            </if>
+            <if test="delayTotalAmt != null">
+                DELAY_TOTAL_AMT = #{delayTotalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="delayIntAmt != null">
+                DELAY_INT_AMT = #{delayIntAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="delayIntAmtPrev != null">
+                DELAY_INT_AMT_PREV = #{delayIntAmtPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="delayIntAmtLastPrev != null">
+                DELAY_INT_AMT_LAST_PREV = #{delayIntAmtLastPrev,jdbcType=DECIMAL},
+            </if>
+            <if test="lastPreAccrualDate != null">
+                LAST_PRE_ACCRUAL_DATE = #{lastPreAccrualDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="intUpdLastDate != null">
+                INT_UPD_LAST_DATE = #{intUpdLastDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbAcctIntDetail">
+        update RB_ACCT_INT_DETAIL
+        set
+            NEXT_ACCR_DATE = #{nextAccrDate,jdbcType=TIMESTAMP},            LAST_ACCRUAL_DATE = #{lastAccrualDate,jdbcType=TIMESTAMP},            CYCLE_FLAG = #{cycleFlag,jdbcType=VARCHAR},            INT_CAP_FLAG = #{intCapFlag,jdbcType=VARCHAR},            NEXT_CYCLE_DATE = #{nextCycleDate,jdbcType=TIMESTAMP},            LAST_CYCLE_DATE = #{lastCycleDate,jdbcType=TIMESTAMP},            LAST_TRUE_CYCLE_DATE = #{lastTrueCycleDate,jdbcType=TIMESTAMP},            LAST_CYCLE_DATE_PRE = #{lastCycleDatePre,jdbcType=TIMESTAMP},            CYCLE_FREQ = #{cycleFreq,jdbcType=VARCHAR},            INT_DAY = #{intDay,jdbcType=VARCHAR},            INT_TYPE = #{intType,jdbcType=VARCHAR},            ACTUAL_RATE = #{actualRate,jdbcType=DECIMAL},            FLOAT_TYPE = #{floatType,jdbcType=VARCHAR},            FLOAT_RATE = #{floatRate,jdbcType=DECIMAL},            SPREAD_PERCENT = #{spreadPercent,jdbcType=DECIMAL},            SPREAD_RATE = #{spreadRate,jdbcType=DECIMAL},            ACCT_FIXED_RATE = #{acctFixedRate,jdbcType=DECIMAL},            ACCT_PERCENT_RATE = #{acctPercentRate,jdbcType=DECIMAL},            ACCT_SPREAD_RATE = #{acctSpreadRate,jdbcType=DECIMAL},            REAL_RATE = #{realRate,jdbcType=DECIMAL},            SPLIT_RATE_FLAG = #{splitRateFlag,jdbcType=VARCHAR},            MIN_INT_RATE = #{minIntRate,jdbcType=DECIMAL},            MAX_INT_RATE = #{maxIntRate,jdbcType=DECIMAL},            MONTH_BASIS = #{monthBasis,jdbcType=VARCHAR},            YEAR_BASIS = #{yearBasis,jdbcType=VARCHAR},            INT_ACCRUED = #{intAccrued,jdbcType=DECIMAL},            AGG = #{agg,jdbcType=DECIMAL},            INT_ACCRUED_CALC_CTD = #{intAccruedCalcCtd,jdbcType=DECIMAL},            INT_ACCRUED_CTD = #{intAccruedCtd,jdbcType=DECIMAL},            INT_ACCRUED_DIFF = #{intAccruedDiff,jdbcType=DECIMAL},            INT_ACCRUED_PREV = #{intAccruedPrev,jdbcType=DECIMAL},            INT_ACCRUED_LAST_PREV = #{intAccruedLastPrev,jdbcType=DECIMAL},            INT_ADJ = #{intAdj,jdbcType=DECIMAL},            INT_ADJ_CTD = #{intAdjCtd,jdbcType=DECIMAL},            INT_ADJ_PREV = #{intAdjPrev,jdbcType=DECIMAL},            INT_ADJ_LAST_PREV = #{intAdjLastPrev,jdbcType=DECIMAL},            INT_CALC_BAL = #{intCalcBal,jdbcType=VARCHAR},            INT_PAST_DUE = #{intPastDue,jdbcType=DECIMAL},            INT_POSTED = #{intPosted,jdbcType=DECIMAL},            INT_POSTED_CTD = #{intPostedCtd,jdbcType=DECIMAL},            DISCNT_INT = #{discntInt,jdbcType=DECIMAL},            DISCNT_INT_PREV = #{discntIntPrev,jdbcType=DECIMAL},            DISCNT_INT_LAST_PREV = #{discntIntLastPrev,jdbcType=DECIMAL},            DISCNT_RETAIN_INT = #{discntRetainInt,jdbcType=DECIMAL},            DISCNT_UI_FLAG = #{discntUiFlag,jdbcType=VARCHAR},            CALC_BEGIN_DATE = #{calcBeginDate,jdbcType=TIMESTAMP},            CALC_END_DATE = #{calcEndDate,jdbcType=TIMESTAMP},            INT_APPL_TYPE = #{intApplType,jdbcType=VARCHAR},            INT_APPL_TYPE_PREV = #{intApplTypePrev,jdbcType=VARCHAR},            ROLL_DAY = #{rollDay,jdbcType=VARCHAR},            ROLL_FREQ = #{rollFreq,jdbcType=VARCHAR},            CALC_BY_INT = #{calcByInt,jdbcType=VARCHAR},            LAST_ROLL_DATE = #{lastRollDate,jdbcType=TIMESTAMP},            NEXT_ROLL_DATE = #{nextRollDate,jdbcType=TIMESTAMP},            TD_INT_NUM_DAYS = #{tdIntNumDays,jdbcType=INTEGER},            INT_AMT = #{intAmt,jdbcType=DECIMAL},            LAST_INT_PAST_DUE = #{lastIntPastDue,jdbcType=DECIMAL},            TAX_TYPE = #{taxType,jdbcType=VARCHAR},            TAX_RATE = #{taxRate,jdbcType=DECIMAL},            TAX_ACCRUED = #{taxAccrued,jdbcType=DECIMAL},            TAX_ACCRUED_CALC_CTD = #{taxAccruedCalcCtd,jdbcType=DECIMAL},            TAX_ACCRUED_CTD = #{taxAccruedCtd,jdbcType=DECIMAL},            TAX_ACCRUED_DIFF = #{taxAccruedDiff,jdbcType=DECIMAL},            TAX_POSTED_CTD = #{taxPostedCtd,jdbcType=DECIMAL},            TAX_POSTED = #{taxPosted,jdbcType=DECIMAL},            INT_TAX_T = #{intTaxT,jdbcType=DECIMAL},            RETRY_FLAG = #{retryFlag,jdbcType=VARCHAR},            AGREE_AGG = #{agreeAgg,jdbcType=DECIMAL},            LAYER_AGREEMENT = #{layerAgreement,jdbcType=VARCHAR},            INT_FLAG = #{intFlag,jdbcType=VARCHAR},            DAC_VALUE = #{dacValue,jdbcType=VARCHAR},            SYSTEM_ID = #{systemId,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_USER_ID = #{lastChangeUserId,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            ADJ_UPD_LAST_DATE = #{adjUpdLastDate,jdbcType=TIMESTAMP},            ADV_UPD_LAST_DATE = #{advUpdLastDate,jdbcType=TIMESTAMP},            PAST_FAD_RATE = #{pastFadRate,jdbcType=DECIMAL},            TOTAL_AGG = #{totalAgg,jdbcType=DECIMAL},            DELAY_TOTAL_AMT = #{delayTotalAmt,jdbcType=DECIMAL},            DELAY_INT_AMT = #{delayIntAmt,jdbcType=DECIMAL},            DELAY_INT_AMT_PREV = #{delayIntAmtPrev,jdbcType=DECIMAL},            DELAY_INT_AMT_LAST_PREV = #{delayIntAmtLastPrev,jdbcType=DECIMAL},            LAST_PRE_ACCRUAL_DATE = #{lastPreAccrualDate,jdbcType=TIMESTAMP},            INT_UPD_LAST_DATE = #{intUpdLastDate,jdbcType=TIMESTAMP}        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

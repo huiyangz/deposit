@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbAcctDossRegMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbAcctDossReg">
+        <id column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="DOSS_OPERATE_TYPE" property="dossOperateType" jdbcType="VARCHAR" />
+        <result column="BATCH_NO" property="batchNo" jdbcType="VARCHAR" />
+        <result column="HAND_FLAG" property="handFlag" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="ACCT_NAME" property="acctName" jdbcType="VARCHAR" />
+        <result column="INDIVIDUAL_FLAG" property="individualFlag" jdbcType="VARCHAR" />
+        <result column="AMT_TYPE" property="amtType" jdbcType="VARCHAR" />
+        <result column="BALANCE" property="balance" jdbcType="DECIMAL" />
+        <result column="INT_AMT" property="intAmt" jdbcType="DECIMAL" />
+        <result column="POR_INT_TOT" property="porIntTot" jdbcType="DECIMAL" />
+        <result column="TRAN_AMT" property="tranAmt" jdbcType="DECIMAL" />
+        <result column="RECORD_AMT" property="recordAmt" jdbcType="DECIMAL" />
+        <result column="TAX_SC" property="taxSc" jdbcType="DECIMAL" />
+        <result column="DOSS_STATUS" property="dossStatus" jdbcType="VARCHAR" />
+        <result column="PREV_DOSS_STATUS" property="prevDossStatus" jdbcType="VARCHAR" />
+        <result column="DOSS_DATE" property="dossDate" jdbcType="TIMESTAMP" />
+        <result column="DOSS_BRANCH" property="dossBranch" jdbcType="VARCHAR" />
+        <result column="DOSS_USER_ID" property="dossUserId" jdbcType="VARCHAR" />
+        <result column="TODOSS_REASON" property="todossReason" jdbcType="VARCHAR" />
+        <result column="ACTIVE_DATE" property="activeDate" jdbcType="TIMESTAMP" />
+        <result column="ACTIVE_BRANCH" property="activeBranch" jdbcType="VARCHAR" />
+        <result column="ACTIVE_USER_ID" property="activeUserId" jdbcType="VARCHAR" />
+        <result column="OUT_BUSI_DATE" property="outBusiDate" jdbcType="TIMESTAMP" />
+        <result column="OUT_BUSI_USER_ID" property="outBusiUserId" jdbcType="VARCHAR" />
+        <result column="WITHDRAWAL_DATE" property="withdrawalDate" jdbcType="TIMESTAMP" />
+        <result column="WITHDRAWAL_BRANCH" property="withdrawalBranch" jdbcType="VARCHAR" />
+        <result column="WITHDRAWAL_USER_ID" property="withdrawalUserId" jdbcType="VARCHAR" />
+        <result column="WITHDRAWAL_REASON" property="withdrawalReason" jdbcType="VARCHAR" />
+        <result column="TO_BASE_ACCT_NO" property="toBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="TO_CCY" property="toCcy" jdbcType="VARCHAR" />
+        <result column="TO_ACCT_SEQ_NO" property="toAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="TO_ACCT_NAME" property="toAcctName" jdbcType="VARCHAR" />
+        <result column="TO_PROD_TYPE" property="toProdType" jdbcType="VARCHAR" />
+        <result column="TO_ACCT_TYPE" property="toAcctType" jdbcType="VARCHAR" />
+        <result column="TO_BANK_IND" property="toBankInd" jdbcType="VARCHAR" />
+        <result column="RES_SEQ_NO" property="resSeqNo" jdbcType="VARCHAR" />
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+        <result column="REFERENCE" property="reference" jdbcType="VARCHAR" />
+        <result column="AUTH_USER_ID" property="authUserId" jdbcType="VARCHAR" />
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+        <result column="SOURCE_TYPE" property="sourceType" jdbcType="VARCHAR" />
+        <result column="BRANCH" property="branch" jdbcType="VARCHAR" />
+        <result column="TRAN_DATE" property="tranDate" jdbcType="TIMESTAMP" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        DOSS_OPERATE_TYPE,        BATCH_NO,        HAND_FLAG,        INTERNAL_KEY,        CLIENT_NO,        BASE_ACCT_NO,        PROD_TYPE,        ACCT_CCY,        ACCT_SEQ_NO,        ACCT_NAME,        INDIVIDUAL_FLAG,        AMT_TYPE,        BALANCE,        INT_AMT,        POR_INT_TOT,        TRAN_AMT,        RECORD_AMT,        TAX_SC,        DOSS_STATUS,        PREV_DOSS_STATUS,        DOSS_DATE,        DOSS_BRANCH,        DOSS_USER_ID,        TODOSS_REASON,        ACTIVE_DATE,        ACTIVE_BRANCH,        ACTIVE_USER_ID,        OUT_BUSI_DATE,        OUT_BUSI_USER_ID,        WITHDRAWAL_DATE,        WITHDRAWAL_BRANCH,        WITHDRAWAL_USER_ID,        WITHDRAWAL_REASON,        TO_BASE_ACCT_NO,        TO_CCY,        TO_ACCT_SEQ_NO,        TO_ACCT_NAME,        TO_PROD_TYPE,        TO_ACCT_TYPE,        TO_BANK_IND,        RES_SEQ_NO,        REMARK,        REFERENCE,        AUTH_USER_ID,        USER_ID,        SOURCE_TYPE,        BRANCH,        TRAN_DATE,        CREATE_TIMESTAMP,        TRAN_TIMESTAMP,        LAST_CHANGE_DATE,        COMPANY    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbAcctDossRegExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_ACCT_DOSS_REG
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_ACCT_DOSS_REG
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_ACCT_DOSS_REG
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbAcctDossRegExample">
+        delete from RB_ACCT_DOSS_REG
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbAcctDossReg">
+        insert into RB_ACCT_DOSS_REG
+        (
+            DOSS_OPERATE_TYPE,            BATCH_NO,            HAND_FLAG,            INTERNAL_KEY,            CLIENT_NO,            BASE_ACCT_NO,            PROD_TYPE,            ACCT_CCY,            ACCT_SEQ_NO,            ACCT_NAME,            INDIVIDUAL_FLAG,            AMT_TYPE,            BALANCE,            INT_AMT,            POR_INT_TOT,            TRAN_AMT,            RECORD_AMT,            TAX_SC,            DOSS_STATUS,            PREV_DOSS_STATUS,            DOSS_DATE,            DOSS_BRANCH,            DOSS_USER_ID,            TODOSS_REASON,            ACTIVE_DATE,            ACTIVE_BRANCH,            ACTIVE_USER_ID,            OUT_BUSI_DATE,            OUT_BUSI_USER_ID,            WITHDRAWAL_DATE,            WITHDRAWAL_BRANCH,            WITHDRAWAL_USER_ID,            WITHDRAWAL_REASON,            TO_BASE_ACCT_NO,            TO_CCY,            TO_ACCT_SEQ_NO,            TO_ACCT_NAME,            TO_PROD_TYPE,            TO_ACCT_TYPE,            TO_BANK_IND,            RES_SEQ_NO,            REMARK,            REFERENCE,            AUTH_USER_ID,            USER_ID,            SOURCE_TYPE,            BRANCH,            TRAN_DATE,            CREATE_TIMESTAMP,            TRAN_TIMESTAMP,            LAST_CHANGE_DATE,            COMPANY        )
+        values
+        (
+            #{dossOperateType,jdbcType=VARCHAR},            #{batchNo,jdbcType=VARCHAR},            #{handFlag,jdbcType=VARCHAR},            #{internalKey,jdbcType=INTEGER},            #{clientNo,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{prodType,jdbcType=VARCHAR},            #{acctCcy,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{acctName,jdbcType=VARCHAR},            #{individualFlag,jdbcType=VARCHAR},            #{amtType,jdbcType=VARCHAR},            #{balance,jdbcType=DECIMAL},            #{intAmt,jdbcType=DECIMAL},            #{porIntTot,jdbcType=DECIMAL},            #{tranAmt,jdbcType=DECIMAL},            #{recordAmt,jdbcType=DECIMAL},            #{taxSc,jdbcType=DECIMAL},            #{dossStatus,jdbcType=VARCHAR},            #{prevDossStatus,jdbcType=VARCHAR},            #{dossDate,jdbcType=TIMESTAMP},            #{dossBranch,jdbcType=VARCHAR},            #{dossUserId,jdbcType=VARCHAR},            #{todossReason,jdbcType=VARCHAR},            #{activeDate,jdbcType=TIMESTAMP},            #{activeBranch,jdbcType=VARCHAR},            #{activeUserId,jdbcType=VARCHAR},            #{outBusiDate,jdbcType=TIMESTAMP},            #{outBusiUserId,jdbcType=VARCHAR},            #{withdrawalDate,jdbcType=TIMESTAMP},            #{withdrawalBranch,jdbcType=VARCHAR},            #{withdrawalUserId,jdbcType=VARCHAR},            #{withdrawalReason,jdbcType=VARCHAR},            #{toBaseAcctNo,jdbcType=VARCHAR},            #{toCcy,jdbcType=VARCHAR},            #{toAcctSeqNo,jdbcType=VARCHAR},            #{toAcctName,jdbcType=VARCHAR},            #{toProdType,jdbcType=VARCHAR},            #{toAcctType,jdbcType=VARCHAR},            #{toBankInd,jdbcType=VARCHAR},            #{resSeqNo,jdbcType=VARCHAR},            #{remark,jdbcType=VARCHAR},            #{reference,jdbcType=VARCHAR},            #{authUserId,jdbcType=VARCHAR},            #{userId,jdbcType=VARCHAR},            #{sourceType,jdbcType=VARCHAR},            #{branch,jdbcType=VARCHAR},            #{tranDate,jdbcType=TIMESTAMP},            #{createTimestamp,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{company,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbAcctDossReg">
+        insert into RB_ACCT_DOSS_REG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dossOperateType != null">
+                DOSS_OPERATE_TYPE,
+            </if>
+            <if test="batchNo != null">
+                BATCH_NO,
+            </if>
+            <if test="handFlag != null">
+                HAND_FLAG,
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME,
+            </if>
+            <if test="individualFlag != null">
+                INDIVIDUAL_FLAG,
+            </if>
+            <if test="amtType != null">
+                AMT_TYPE,
+            </if>
+            <if test="balance != null">
+                BALANCE,
+            </if>
+            <if test="intAmt != null">
+                INT_AMT,
+            </if>
+            <if test="porIntTot != null">
+                POR_INT_TOT,
+            </if>
+            <if test="tranAmt != null">
+                TRAN_AMT,
+            </if>
+            <if test="recordAmt != null">
+                RECORD_AMT,
+            </if>
+            <if test="taxSc != null">
+                TAX_SC,
+            </if>
+            <if test="dossStatus != null">
+                DOSS_STATUS,
+            </if>
+            <if test="prevDossStatus != null">
+                PREV_DOSS_STATUS,
+            </if>
+            <if test="dossDate != null">
+                DOSS_DATE,
+            </if>
+            <if test="dossBranch != null">
+                DOSS_BRANCH,
+            </if>
+            <if test="dossUserId != null">
+                DOSS_USER_ID,
+            </if>
+            <if test="todossReason != null">
+                TODOSS_REASON,
+            </if>
+            <if test="activeDate != null">
+                ACTIVE_DATE,
+            </if>
+            <if test="activeBranch != null">
+                ACTIVE_BRANCH,
+            </if>
+            <if test="activeUserId != null">
+                ACTIVE_USER_ID,
+            </if>
+            <if test="outBusiDate != null">
+                OUT_BUSI_DATE,
+            </if>
+            <if test="outBusiUserId != null">
+                OUT_BUSI_USER_ID,
+            </if>
+            <if test="withdrawalDate != null">
+                WITHDRAWAL_DATE,
+            </if>
+            <if test="withdrawalBranch != null">
+                WITHDRAWAL_BRANCH,
+            </if>
+            <if test="withdrawalUserId != null">
+                WITHDRAWAL_USER_ID,
+            </if>
+            <if test="withdrawalReason != null">
+                WITHDRAWAL_REASON,
+            </if>
+            <if test="toBaseAcctNo != null">
+                TO_BASE_ACCT_NO,
+            </if>
+            <if test="toCcy != null">
+                TO_CCY,
+            </if>
+            <if test="toAcctSeqNo != null">
+                TO_ACCT_SEQ_NO,
+            </if>
+            <if test="toAcctName != null">
+                TO_ACCT_NAME,
+            </if>
+            <if test="toProdType != null">
+                TO_PROD_TYPE,
+            </if>
+            <if test="toAcctType != null">
+                TO_ACCT_TYPE,
+            </if>
+            <if test="toBankInd != null">
+                TO_BANK_IND,
+            </if>
+            <if test="resSeqNo != null">
+                RES_SEQ_NO,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="reference != null">
+                REFERENCE,
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE,
+            </if>
+            <if test="branch != null">
+                BRANCH,
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dossOperateType != null">
+                #{dossOperateType,jdbcType=VARCHAR},
+            </if>
+            <if test="batchNo != null">
+                #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="handFlag != null">
+                #{handFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="individualFlag != null">
+                #{individualFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="amtType != null">
+                #{amtType,jdbcType=VARCHAR},
+            </if>
+            <if test="balance != null">
+                #{balance,jdbcType=DECIMAL},
+            </if>
+            <if test="intAmt != null">
+                #{intAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="porIntTot != null">
+                #{porIntTot,jdbcType=DECIMAL},
+            </if>
+            <if test="tranAmt != null">
+                #{tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="recordAmt != null">
+                #{recordAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="taxSc != null">
+                #{taxSc,jdbcType=DECIMAL},
+            </if>
+            <if test="dossStatus != null">
+                #{dossStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="prevDossStatus != null">
+                #{prevDossStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="dossDate != null">
+                #{dossDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dossBranch != null">
+                #{dossBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="dossUserId != null">
+                #{dossUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="todossReason != null">
+                #{todossReason,jdbcType=VARCHAR},
+            </if>
+            <if test="activeDate != null">
+                #{activeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activeBranch != null">
+                #{activeBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="activeUserId != null">
+                #{activeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="outBusiDate != null">
+                #{outBusiDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="outBusiUserId != null">
+                #{outBusiUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalDate != null">
+                #{withdrawalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="withdrawalBranch != null">
+                #{withdrawalBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalUserId != null">
+                #{withdrawalUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalReason != null">
+                #{withdrawalReason,jdbcType=VARCHAR},
+            </if>
+            <if test="toBaseAcctNo != null">
+                #{toBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="toCcy != null">
+                #{toCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="toAcctSeqNo != null">
+                #{toAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="toAcctName != null">
+                #{toAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="toProdType != null">
+                #{toProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="toAcctType != null">
+                #{toAcctType,jdbcType=VARCHAR},
+            </if>
+            <if test="toBankInd != null">
+                #{toBankInd,jdbcType=VARCHAR},
+            </if>
+            <if test="resSeqNo != null">
+                #{resSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="branch != null">
+                #{branch,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDate != null">
+                #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbAcctDossRegExample" resultType="java.lang.Long">
+        select count(*) from RB_ACCT_DOSS_REG
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_ACCT_DOSS_REG
+        <set>
+            <if test="row.dossOperateType != null">
+                DOSS_OPERATE_TYPE = #{row.dossOperateType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.batchNo != null">
+                BATCH_NO = #{row.batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.handFlag != null">
+                HAND_FLAG = #{row.handFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodType != null">
+                PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctName != null">
+                ACCT_NAME = #{row.acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.individualFlag != null">
+                INDIVIDUAL_FLAG = #{row.individualFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amtType != null">
+                AMT_TYPE = #{row.amtType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.balance != null">
+                BALANCE = #{row.balance,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intAmt != null">
+                INT_AMT = #{row.intAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.porIntTot != null">
+                POR_INT_TOT = #{row.porIntTot,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tranAmt != null">
+                TRAN_AMT = #{row.tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.recordAmt != null">
+                RECORD_AMT = #{row.recordAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.taxSc != null">
+                TAX_SC = #{row.taxSc,jdbcType=DECIMAL},
+            </if>
+            <if test="row.dossStatus != null">
+                DOSS_STATUS = #{row.dossStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prevDossStatus != null">
+                PREV_DOSS_STATUS = #{row.prevDossStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.dossDate != null">
+                DOSS_DATE = #{row.dossDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.dossBranch != null">
+                DOSS_BRANCH = #{row.dossBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.dossUserId != null">
+                DOSS_USER_ID = #{row.dossUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.todossReason != null">
+                TODOSS_REASON = #{row.todossReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.activeDate != null">
+                ACTIVE_DATE = #{row.activeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.activeBranch != null">
+                ACTIVE_BRANCH = #{row.activeBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.activeUserId != null">
+                ACTIVE_USER_ID = #{row.activeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.outBusiDate != null">
+                OUT_BUSI_DATE = #{row.outBusiDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.outBusiUserId != null">
+                OUT_BUSI_USER_ID = #{row.outBusiUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.withdrawalDate != null">
+                WITHDRAWAL_DATE = #{row.withdrawalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.withdrawalBranch != null">
+                WITHDRAWAL_BRANCH = #{row.withdrawalBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.withdrawalUserId != null">
+                WITHDRAWAL_USER_ID = #{row.withdrawalUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.withdrawalReason != null">
+                WITHDRAWAL_REASON = #{row.withdrawalReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toBaseAcctNo != null">
+                TO_BASE_ACCT_NO = #{row.toBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toCcy != null">
+                TO_CCY = #{row.toCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toAcctSeqNo != null">
+                TO_ACCT_SEQ_NO = #{row.toAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toAcctName != null">
+                TO_ACCT_NAME = #{row.toAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toProdType != null">
+                TO_PROD_TYPE = #{row.toProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toAcctType != null">
+                TO_ACCT_TYPE = #{row.toAcctType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toBankInd != null">
+                TO_BANK_IND = #{row.toBankInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resSeqNo != null">
+                RES_SEQ_NO = #{row.resSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.remark != null">
+                REMARK = #{row.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reference != null">
+                REFERENCE = #{row.reference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.authUserId != null">
+                AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.userId != null">
+                USER_ID = #{row.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sourceType != null">
+                SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.branch != null">
+                BRANCH = #{row.branch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranDate != null">
+                TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_ACCT_DOSS_REG
+        set
+            DOSS_OPERATE_TYPE = #{row.dossOperateType,jdbcType=VARCHAR},            BATCH_NO = #{row.batchNo,jdbcType=VARCHAR},            HAND_FLAG = #{row.handFlag,jdbcType=VARCHAR},            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            ACCT_NAME = #{row.acctName,jdbcType=VARCHAR},            INDIVIDUAL_FLAG = #{row.individualFlag,jdbcType=VARCHAR},            AMT_TYPE = #{row.amtType,jdbcType=VARCHAR},            BALANCE = #{row.balance,jdbcType=DECIMAL},            INT_AMT = #{row.intAmt,jdbcType=DECIMAL},            POR_INT_TOT = #{row.porIntTot,jdbcType=DECIMAL},            TRAN_AMT = #{row.tranAmt,jdbcType=DECIMAL},            RECORD_AMT = #{row.recordAmt,jdbcType=DECIMAL},            TAX_SC = #{row.taxSc,jdbcType=DECIMAL},            DOSS_STATUS = #{row.dossStatus,jdbcType=VARCHAR},            PREV_DOSS_STATUS = #{row.prevDossStatus,jdbcType=VARCHAR},            DOSS_DATE = #{row.dossDate,jdbcType=TIMESTAMP},            DOSS_BRANCH = #{row.dossBranch,jdbcType=VARCHAR},            DOSS_USER_ID = #{row.dossUserId,jdbcType=VARCHAR},            TODOSS_REASON = #{row.todossReason,jdbcType=VARCHAR},            ACTIVE_DATE = #{row.activeDate,jdbcType=TIMESTAMP},            ACTIVE_BRANCH = #{row.activeBranch,jdbcType=VARCHAR},            ACTIVE_USER_ID = #{row.activeUserId,jdbcType=VARCHAR},            OUT_BUSI_DATE = #{row.outBusiDate,jdbcType=TIMESTAMP},            OUT_BUSI_USER_ID = #{row.outBusiUserId,jdbcType=VARCHAR},            WITHDRAWAL_DATE = #{row.withdrawalDate,jdbcType=TIMESTAMP},            WITHDRAWAL_BRANCH = #{row.withdrawalBranch,jdbcType=VARCHAR},            WITHDRAWAL_USER_ID = #{row.withdrawalUserId,jdbcType=VARCHAR},            WITHDRAWAL_REASON = #{row.withdrawalReason,jdbcType=VARCHAR},            TO_BASE_ACCT_NO = #{row.toBaseAcctNo,jdbcType=VARCHAR},            TO_CCY = #{row.toCcy,jdbcType=VARCHAR},            TO_ACCT_SEQ_NO = #{row.toAcctSeqNo,jdbcType=VARCHAR},            TO_ACCT_NAME = #{row.toAcctName,jdbcType=VARCHAR},            TO_PROD_TYPE = #{row.toProdType,jdbcType=VARCHAR},            TO_ACCT_TYPE = #{row.toAcctType,jdbcType=VARCHAR},            TO_BANK_IND = #{row.toBankInd,jdbcType=VARCHAR},            RES_SEQ_NO = #{row.resSeqNo,jdbcType=VARCHAR},            REMARK = #{row.remark,jdbcType=VARCHAR},            REFERENCE = #{row.reference,jdbcType=VARCHAR},            AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},            USER_ID = #{row.userId,jdbcType=VARCHAR},            SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},            BRANCH = #{row.branch,jdbcType=VARCHAR},            TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            COMPANY = #{row.company,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbAcctDossReg">
+        update RB_ACCT_DOSS_REG
+        <set>
+            <if test="dossOperateType != null">
+                DOSS_OPERATE_TYPE = #{dossOperateType,jdbcType=VARCHAR},
+            </if>
+            <if test="batchNo != null">
+                BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="handFlag != null">
+                HAND_FLAG = #{handFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE = #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="individualFlag != null">
+                INDIVIDUAL_FLAG = #{individualFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="amtType != null">
+                AMT_TYPE = #{amtType,jdbcType=VARCHAR},
+            </if>
+            <if test="balance != null">
+                BALANCE = #{balance,jdbcType=DECIMAL},
+            </if>
+            <if test="intAmt != null">
+                INT_AMT = #{intAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="porIntTot != null">
+                POR_INT_TOT = #{porIntTot,jdbcType=DECIMAL},
+            </if>
+            <if test="tranAmt != null">
+                TRAN_AMT = #{tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="recordAmt != null">
+                RECORD_AMT = #{recordAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="taxSc != null">
+                TAX_SC = #{taxSc,jdbcType=DECIMAL},
+            </if>
+            <if test="dossStatus != null">
+                DOSS_STATUS = #{dossStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="prevDossStatus != null">
+                PREV_DOSS_STATUS = #{prevDossStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="dossDate != null">
+                DOSS_DATE = #{dossDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dossBranch != null">
+                DOSS_BRANCH = #{dossBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="dossUserId != null">
+                DOSS_USER_ID = #{dossUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="todossReason != null">
+                TODOSS_REASON = #{todossReason,jdbcType=VARCHAR},
+            </if>
+            <if test="activeDate != null">
+                ACTIVE_DATE = #{activeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activeBranch != null">
+                ACTIVE_BRANCH = #{activeBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="activeUserId != null">
+                ACTIVE_USER_ID = #{activeUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="outBusiDate != null">
+                OUT_BUSI_DATE = #{outBusiDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="outBusiUserId != null">
+                OUT_BUSI_USER_ID = #{outBusiUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalDate != null">
+                WITHDRAWAL_DATE = #{withdrawalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="withdrawalBranch != null">
+                WITHDRAWAL_BRANCH = #{withdrawalBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalUserId != null">
+                WITHDRAWAL_USER_ID = #{withdrawalUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalReason != null">
+                WITHDRAWAL_REASON = #{withdrawalReason,jdbcType=VARCHAR},
+            </if>
+            <if test="toBaseAcctNo != null">
+                TO_BASE_ACCT_NO = #{toBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="toCcy != null">
+                TO_CCY = #{toCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="toAcctSeqNo != null">
+                TO_ACCT_SEQ_NO = #{toAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="toAcctName != null">
+                TO_ACCT_NAME = #{toAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="toProdType != null">
+                TO_PROD_TYPE = #{toProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="toAcctType != null">
+                TO_ACCT_TYPE = #{toAcctType,jdbcType=VARCHAR},
+            </if>
+            <if test="toBankInd != null">
+                TO_BANK_IND = #{toBankInd,jdbcType=VARCHAR},
+            </if>
+            <if test="resSeqNo != null">
+                RES_SEQ_NO = #{resSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                REFERENCE = #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="branch != null">
+                BRANCH = #{branch,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbAcctDossReg">
+        update RB_ACCT_DOSS_REG
+        set
+            DOSS_OPERATE_TYPE = #{dossOperateType,jdbcType=VARCHAR},            BATCH_NO = #{batchNo,jdbcType=VARCHAR},            HAND_FLAG = #{handFlag,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            PROD_TYPE = #{prodType,jdbcType=VARCHAR},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            ACCT_NAME = #{acctName,jdbcType=VARCHAR},            INDIVIDUAL_FLAG = #{individualFlag,jdbcType=VARCHAR},            AMT_TYPE = #{amtType,jdbcType=VARCHAR},            BALANCE = #{balance,jdbcType=DECIMAL},            INT_AMT = #{intAmt,jdbcType=DECIMAL},            POR_INT_TOT = #{porIntTot,jdbcType=DECIMAL},            TRAN_AMT = #{tranAmt,jdbcType=DECIMAL},            RECORD_AMT = #{recordAmt,jdbcType=DECIMAL},            TAX_SC = #{taxSc,jdbcType=DECIMAL},            DOSS_STATUS = #{dossStatus,jdbcType=VARCHAR},            PREV_DOSS_STATUS = #{prevDossStatus,jdbcType=VARCHAR},            DOSS_DATE = #{dossDate,jdbcType=TIMESTAMP},            DOSS_BRANCH = #{dossBranch,jdbcType=VARCHAR},            DOSS_USER_ID = #{dossUserId,jdbcType=VARCHAR},            TODOSS_REASON = #{todossReason,jdbcType=VARCHAR},            ACTIVE_DATE = #{activeDate,jdbcType=TIMESTAMP},            ACTIVE_BRANCH = #{activeBranch,jdbcType=VARCHAR},            ACTIVE_USER_ID = #{activeUserId,jdbcType=VARCHAR},            OUT_BUSI_DATE = #{outBusiDate,jdbcType=TIMESTAMP},            OUT_BUSI_USER_ID = #{outBusiUserId,jdbcType=VARCHAR},            WITHDRAWAL_DATE = #{withdrawalDate,jdbcType=TIMESTAMP},            WITHDRAWAL_BRANCH = #{withdrawalBranch,jdbcType=VARCHAR},            WITHDRAWAL_USER_ID = #{withdrawalUserId,jdbcType=VARCHAR},            WITHDRAWAL_REASON = #{withdrawalReason,jdbcType=VARCHAR},            TO_BASE_ACCT_NO = #{toBaseAcctNo,jdbcType=VARCHAR},            TO_CCY = #{toCcy,jdbcType=VARCHAR},            TO_ACCT_SEQ_NO = #{toAcctSeqNo,jdbcType=VARCHAR},            TO_ACCT_NAME = #{toAcctName,jdbcType=VARCHAR},            TO_PROD_TYPE = #{toProdType,jdbcType=VARCHAR},            TO_ACCT_TYPE = #{toAcctType,jdbcType=VARCHAR},            TO_BANK_IND = #{toBankInd,jdbcType=VARCHAR},            RES_SEQ_NO = #{resSeqNo,jdbcType=VARCHAR},            REMARK = #{remark,jdbcType=VARCHAR},            REFERENCE = #{reference,jdbcType=VARCHAR},            AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},            USER_ID = #{userId,jdbcType=VARCHAR},            SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},            BRANCH = #{branch,jdbcType=VARCHAR},            TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            COMPANY = #{company,jdbcType=VARCHAR}        where INTERNAL_KEY = #{internalKey,jdbcType=INTEGER}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

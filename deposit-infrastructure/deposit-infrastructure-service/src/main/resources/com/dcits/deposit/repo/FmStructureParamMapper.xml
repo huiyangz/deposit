@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.FmStructureParamMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.FmStructureParam">
+        <id column="STRUCTURE_TYPE" property="structureType" jdbcType="VARCHAR" />
+        <id column="PARAM_TYPE" property="paramType" jdbcType="VARCHAR" />
+        <id column="START_POS" property="startPos" jdbcType="VARCHAR" />
+        <result column="LENGTH" property="length" jdbcType="VARCHAR" />
+        <result column="END_POS" property="endPos" jdbcType="VARCHAR" />
+        <result column="PADDING_CHAR" property="paddingChar" jdbcType="VARCHAR" />
+        <result column="SEQ_TYPE" property="seqType" jdbcType="VARCHAR" />
+        <result column="STRING_VALUE" property="stringValue" jdbcType="VARCHAR" />
+        <result column="START_INDEX" property="startIndex" jdbcType="INTEGER" />
+        <result column="END_INDEX" property="endIndex" jdbcType="INTEGER" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        STRUCTURE_TYPE,        PARAM_TYPE,        LENGTH,        START_POS,        END_POS,        PADDING_CHAR,        SEQ_TYPE,        STRING_VALUE,        START_INDEX,        END_INDEX,        COMPANY,        TRAN_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.FmStructureParamExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from FM_STRUCTURE_PARAM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from FM_STRUCTURE_PARAM
+        where STRUCTURE_TYPE = #{structureType,jdbcType=VARCHAR}
+          and PARAM_TYPE = #{paramType,jdbcType=VARCHAR}
+          and START_POS = #{startPos,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from FM_STRUCTURE_PARAM
+        where STRUCTURE_TYPE = #{structureType,jdbcType=VARCHAR}
+          and PARAM_TYPE = #{paramType,jdbcType=VARCHAR}
+          and START_POS = #{startPos,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.FmStructureParamExample">
+        delete from FM_STRUCTURE_PARAM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.FmStructureParam">
+        insert into FM_STRUCTURE_PARAM
+        (
+            STRUCTURE_TYPE,            PARAM_TYPE,            LENGTH,            START_POS,            END_POS,            PADDING_CHAR,            SEQ_TYPE,            STRING_VALUE,            START_INDEX,            END_INDEX,            COMPANY,            TRAN_TIMESTAMP        )
+        values
+        (
+            #{structureType,jdbcType=VARCHAR},            #{paramType,jdbcType=VARCHAR},            #{length,jdbcType=VARCHAR},            #{startPos,jdbcType=VARCHAR},            #{endPos,jdbcType=VARCHAR},            #{paddingChar,jdbcType=VARCHAR},            #{seqType,jdbcType=VARCHAR},            #{stringValue,jdbcType=VARCHAR},            #{startIndex,jdbcType=INTEGER},            #{endIndex,jdbcType=INTEGER},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.FmStructureParam">
+        insert into FM_STRUCTURE_PARAM
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="structureType != null">
+                STRUCTURE_TYPE,
+            </if>
+            <if test="paramType != null">
+                PARAM_TYPE,
+            </if>
+            <if test="length != null">
+                LENGTH,
+            </if>
+            <if test="startPos != null">
+                START_POS,
+            </if>
+            <if test="endPos != null">
+                END_POS,
+            </if>
+            <if test="paddingChar != null">
+                PADDING_CHAR,
+            </if>
+            <if test="seqType != null">
+                SEQ_TYPE,
+            </if>
+            <if test="stringValue != null">
+                STRING_VALUE,
+            </if>
+            <if test="startIndex != null">
+                START_INDEX,
+            </if>
+            <if test="endIndex != null">
+                END_INDEX,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="structureType != null">
+                #{structureType,jdbcType=VARCHAR},
+            </if>
+            <if test="paramType != null">
+                #{paramType,jdbcType=VARCHAR},
+            </if>
+            <if test="length != null">
+                #{length,jdbcType=VARCHAR},
+            </if>
+            <if test="startPos != null">
+                #{startPos,jdbcType=VARCHAR},
+            </if>
+            <if test="endPos != null">
+                #{endPos,jdbcType=VARCHAR},
+            </if>
+            <if test="paddingChar != null">
+                #{paddingChar,jdbcType=VARCHAR},
+            </if>
+            <if test="seqType != null">
+                #{seqType,jdbcType=VARCHAR},
+            </if>
+            <if test="stringValue != null">
+                #{stringValue,jdbcType=VARCHAR},
+            </if>
+            <if test="startIndex != null">
+                #{startIndex,jdbcType=INTEGER},
+            </if>
+            <if test="endIndex != null">
+                #{endIndex,jdbcType=INTEGER},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.FmStructureParamExample" resultType="java.lang.Long">
+        select count(*) from FM_STRUCTURE_PARAM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update FM_STRUCTURE_PARAM
+        <set>
+            <if test="row.structureType != null">
+                STRUCTURE_TYPE = #{row.structureType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paramType != null">
+                PARAM_TYPE = #{row.paramType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.length != null">
+                LENGTH = #{row.length,jdbcType=VARCHAR},
+            </if>
+            <if test="row.startPos != null">
+                START_POS = #{row.startPos,jdbcType=VARCHAR},
+            </if>
+            <if test="row.endPos != null">
+                END_POS = #{row.endPos,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paddingChar != null">
+                PADDING_CHAR = #{row.paddingChar,jdbcType=VARCHAR},
+            </if>
+            <if test="row.seqType != null">
+                SEQ_TYPE = #{row.seqType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.stringValue != null">
+                STRING_VALUE = #{row.stringValue,jdbcType=VARCHAR},
+            </if>
+            <if test="row.startIndex != null">
+                START_INDEX = #{row.startIndex,jdbcType=INTEGER},
+            </if>
+            <if test="row.endIndex != null">
+                END_INDEX = #{row.endIndex,jdbcType=INTEGER},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update FM_STRUCTURE_PARAM
+        set
+            STRUCTURE_TYPE = #{row.structureType,jdbcType=VARCHAR},            PARAM_TYPE = #{row.paramType,jdbcType=VARCHAR},            LENGTH = #{row.length,jdbcType=VARCHAR},            START_POS = #{row.startPos,jdbcType=VARCHAR},            END_POS = #{row.endPos,jdbcType=VARCHAR},            PADDING_CHAR = #{row.paddingChar,jdbcType=VARCHAR},            SEQ_TYPE = #{row.seqType,jdbcType=VARCHAR},            STRING_VALUE = #{row.stringValue,jdbcType=VARCHAR},            START_INDEX = #{row.startIndex,jdbcType=INTEGER},            END_INDEX = #{row.endIndex,jdbcType=INTEGER},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.FmStructureParam">
+        update FM_STRUCTURE_PARAM
+        <set>
+            <if test="length != null">
+                LENGTH = #{length,jdbcType=VARCHAR},
+            </if>
+            <if test="endPos != null">
+                END_POS = #{endPos,jdbcType=VARCHAR},
+            </if>
+            <if test="paddingChar != null">
+                PADDING_CHAR = #{paddingChar,jdbcType=VARCHAR},
+            </if>
+            <if test="seqType != null">
+                SEQ_TYPE = #{seqType,jdbcType=VARCHAR},
+            </if>
+            <if test="stringValue != null">
+                STRING_VALUE = #{stringValue,jdbcType=VARCHAR},
+            </if>
+            <if test="startIndex != null">
+                START_INDEX = #{startIndex,jdbcType=INTEGER},
+            </if>
+            <if test="endIndex != null">
+                END_INDEX = #{endIndex,jdbcType=INTEGER},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where STRUCTURE_TYPE = #{structureType,jdbcType=VARCHAR}
+          and PARAM_TYPE = #{paramType,jdbcType=VARCHAR}
+          and START_POS = #{startPos,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.FmStructureParam">
+        update FM_STRUCTURE_PARAM
+        set
+            LENGTH = #{length,jdbcType=VARCHAR},            END_POS = #{endPos,jdbcType=VARCHAR},            PADDING_CHAR = #{paddingChar,jdbcType=VARCHAR},            SEQ_TYPE = #{seqType,jdbcType=VARCHAR},            STRING_VALUE = #{stringValue,jdbcType=VARCHAR},            START_INDEX = #{startIndex,jdbcType=INTEGER},            END_INDEX = #{endIndex,jdbcType=INTEGER},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}        where STRUCTURE_TYPE = #{structureType,jdbcType=VARCHAR}
+          and PARAM_TYPE = #{paramType,jdbcType=VARCHAR}
+          and START_POS = #{startPos,jdbcType=VARCHAR}
+    </update>
+</mapper>
