@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbBusFundDirectionDetailsMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbBusFundDirectionDetails">
+        <id column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <result column="DOCUMENT_TYPE" property="documentType" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="FUND_TO_BANK_NO" property="fundToBankNo" jdbcType="VARCHAR" />
+        <result column="TRAN_DATE" property="tranDate" jdbcType="TIMESTAMP" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="LAST_UPD_TIMESTAMP" property="lastUpdTimestamp" jdbcType="VARCHAR" />
+        <result column="FUND_SOURCE" property="fundSource" jdbcType="VARCHAR" />
+        <result column="REG_TYPE" property="regType" jdbcType="VARCHAR" />
+        <result column="BAB_INTERNAL_BASE_ACCT_NO" property="babInternalBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="CCY" property="ccy" jdbcType="VARCHAR" />
+        <result column="DOCUMENT_ID" property="documentId" jdbcType="VARCHAR" />
+        <result column="FUND_FROM_NAME" property="fundFromName" jdbcType="VARCHAR" />
+        <result column="PROD_NO" property="prodNo" jdbcType="VARCHAR" />
+        <result column="FUND_FROM_ACCT_NO" property="fundFromAcctNo" jdbcType="VARCHAR" />
+        <result column="FUND_ACCT_PURPOSE" property="fundAcctPurpose" jdbcType="VARCHAR" />
+        <result column="AGENT_NAME" property="agentName" jdbcType="VARCHAR" />
+        <result column="FUND_TO_NAME" property="fundToName" jdbcType="VARCHAR" />
+        <result column="FUND_FROM_BANK_NO" property="fundFromBankNo" jdbcType="VARCHAR" />
+        <result column="FUND_TO_ACCT_NO" property="fundToAcctNo" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        DOCUMENT_TYPE,        BASE_ACCT_NO,        FUND_TO_BANK_NO,        TRAN_DATE,        ACCT_SEQ_NO,        LAST_UPD_TIMESTAMP,        FUND_SOURCE,        REG_TYPE,        BAB_INTERNAL_BASE_ACCT_NO,        CCY,        DOCUMENT_ID,        FUND_FROM_NAME,        PROD_NO,        FUND_FROM_ACCT_NO,        FUND_ACCT_PURPOSE,        AGENT_NAME,        SEQ_NO,        FUND_TO_NAME,        FUND_FROM_BANK_NO,        FUND_TO_ACCT_NO,        CREATE_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetailsExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BUS_FUND_DIRECTION_DETAILS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BUS_FUND_DIRECTION_DETAILS
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BUS_FUND_DIRECTION_DETAILS
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetailsExample">
+        delete from RB_BUS_FUND_DIRECTION_DETAILS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetails">
+        insert into RB_BUS_FUND_DIRECTION_DETAILS
+        (
+            DOCUMENT_TYPE,            BASE_ACCT_NO,            FUND_TO_BANK_NO,            TRAN_DATE,            ACCT_SEQ_NO,            LAST_UPD_TIMESTAMP,            FUND_SOURCE,            REG_TYPE,            BAB_INTERNAL_BASE_ACCT_NO,            CCY,            DOCUMENT_ID,            FUND_FROM_NAME,            PROD_NO,            FUND_FROM_ACCT_NO,            FUND_ACCT_PURPOSE,            AGENT_NAME,            SEQ_NO,            FUND_TO_NAME,            FUND_FROM_BANK_NO,            FUND_TO_ACCT_NO,            CREATE_TIMESTAMP        )
+        values
+        (
+            #{documentType,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{fundToBankNo,jdbcType=VARCHAR},            #{tranDate,jdbcType=TIMESTAMP},            #{acctSeqNo,jdbcType=VARCHAR},            #{lastUpdTimestamp,jdbcType=VARCHAR},            #{fundSource,jdbcType=VARCHAR},            #{regType,jdbcType=VARCHAR},            #{babInternalBaseAcctNo,jdbcType=VARCHAR},            #{ccy,jdbcType=VARCHAR},            #{documentId,jdbcType=VARCHAR},            #{fundFromName,jdbcType=VARCHAR},            #{prodNo,jdbcType=VARCHAR},            #{fundFromAcctNo,jdbcType=VARCHAR},            #{fundAcctPurpose,jdbcType=VARCHAR},            #{agentName,jdbcType=VARCHAR},            #{seqNo,jdbcType=VARCHAR},            #{fundToName,jdbcType=VARCHAR},            #{fundFromBankNo,jdbcType=VARCHAR},            #{fundToAcctNo,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetails">
+        insert into RB_BUS_FUND_DIRECTION_DETAILS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="documentType != null">
+                DOCUMENT_TYPE,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="fundToBankNo != null">
+                FUND_TO_BANK_NO,
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP,
+            </if>
+            <if test="fundSource != null">
+                FUND_SOURCE,
+            </if>
+            <if test="regType != null">
+                REG_TYPE,
+            </if>
+            <if test="babInternalBaseAcctNo != null">
+                BAB_INTERNAL_BASE_ACCT_NO,
+            </if>
+            <if test="ccy != null">
+                CCY,
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID,
+            </if>
+            <if test="fundFromName != null">
+                FUND_FROM_NAME,
+            </if>
+            <if test="prodNo != null">
+                PROD_NO,
+            </if>
+            <if test="fundFromAcctNo != null">
+                FUND_FROM_ACCT_NO,
+            </if>
+            <if test="fundAcctPurpose != null">
+                FUND_ACCT_PURPOSE,
+            </if>
+            <if test="agentName != null">
+                AGENT_NAME,
+            </if>
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+            <if test="fundToName != null">
+                FUND_TO_NAME,
+            </if>
+            <if test="fundFromBankNo != null">
+                FUND_FROM_BANK_NO,
+            </if>
+            <if test="fundToAcctNo != null">
+                FUND_TO_ACCT_NO,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="documentType != null">
+                #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundToBankNo != null">
+                #{fundToBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDate != null">
+                #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="fundSource != null">
+                #{fundSource,jdbcType=VARCHAR},
+            </if>
+            <if test="regType != null">
+                #{regType,jdbcType=VARCHAR},
+            </if>
+            <if test="babInternalBaseAcctNo != null">
+                #{babInternalBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="documentId != null">
+                #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="fundFromName != null">
+                #{fundFromName,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundFromAcctNo != null">
+                #{fundFromAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundAcctPurpose != null">
+                #{fundAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="agentName != null">
+                #{agentName,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundToName != null">
+                #{fundToName,jdbcType=VARCHAR},
+            </if>
+            <if test="fundFromBankNo != null">
+                #{fundFromBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundToAcctNo != null">
+                #{fundToAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetailsExample" resultType="java.lang.Long">
+        select count(*) from RB_BUS_FUND_DIRECTION_DETAILS
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BUS_FUND_DIRECTION_DETAILS
+        <set>
+            <if test="row.documentType != null">
+                DOCUMENT_TYPE = #{row.documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundToBankNo != null">
+                FUND_TO_BANK_NO = #{row.fundToBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranDate != null">
+                TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundSource != null">
+                FUND_SOURCE = #{row.fundSource,jdbcType=VARCHAR},
+            </if>
+            <if test="row.regType != null">
+                REG_TYPE = #{row.regType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.babInternalBaseAcctNo != null">
+                BAB_INTERNAL_BASE_ACCT_NO = #{row.babInternalBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ccy != null">
+                CCY = #{row.ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.documentId != null">
+                DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundFromName != null">
+                FUND_FROM_NAME = #{row.fundFromName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodNo != null">
+                PROD_NO = #{row.prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundFromAcctNo != null">
+                FUND_FROM_ACCT_NO = #{row.fundFromAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundAcctPurpose != null">
+                FUND_ACCT_PURPOSE = #{row.fundAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agentName != null">
+                AGENT_NAME = #{row.agentName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundToName != null">
+                FUND_TO_NAME = #{row.fundToName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundFromBankNo != null">
+                FUND_FROM_BANK_NO = #{row.fundFromBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fundToAcctNo != null">
+                FUND_TO_ACCT_NO = #{row.fundToAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BUS_FUND_DIRECTION_DETAILS
+        set
+            DOCUMENT_TYPE = #{row.documentType,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            FUND_TO_BANK_NO = #{row.fundToBankNo,jdbcType=VARCHAR},            TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},            FUND_SOURCE = #{row.fundSource,jdbcType=VARCHAR},            REG_TYPE = #{row.regType,jdbcType=VARCHAR},            BAB_INTERNAL_BASE_ACCT_NO = #{row.babInternalBaseAcctNo,jdbcType=VARCHAR},            CCY = #{row.ccy,jdbcType=VARCHAR},            DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},            FUND_FROM_NAME = #{row.fundFromName,jdbcType=VARCHAR},            PROD_NO = #{row.prodNo,jdbcType=VARCHAR},            FUND_FROM_ACCT_NO = #{row.fundFromAcctNo,jdbcType=VARCHAR},            FUND_ACCT_PURPOSE = #{row.fundAcctPurpose,jdbcType=VARCHAR},            AGENT_NAME = #{row.agentName,jdbcType=VARCHAR},            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},            FUND_TO_NAME = #{row.fundToName,jdbcType=VARCHAR},            FUND_FROM_BANK_NO = #{row.fundFromBankNo,jdbcType=VARCHAR},            FUND_TO_ACCT_NO = #{row.fundToAcctNo,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetails">
+        update RB_BUS_FUND_DIRECTION_DETAILS
+        <set>
+            <if test="documentType != null">
+                DOCUMENT_TYPE = #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundToBankNo != null">
+                FUND_TO_BANK_NO = #{fundToBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="fundSource != null">
+                FUND_SOURCE = #{fundSource,jdbcType=VARCHAR},
+            </if>
+            <if test="regType != null">
+                REG_TYPE = #{regType,jdbcType=VARCHAR},
+            </if>
+            <if test="babInternalBaseAcctNo != null">
+                BAB_INTERNAL_BASE_ACCT_NO = #{babInternalBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="fundFromName != null">
+                FUND_FROM_NAME = #{fundFromName,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                PROD_NO = #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundFromAcctNo != null">
+                FUND_FROM_ACCT_NO = #{fundFromAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundAcctPurpose != null">
+                FUND_ACCT_PURPOSE = #{fundAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="agentName != null">
+                AGENT_NAME = #{agentName,jdbcType=VARCHAR},
+            </if>
+            <if test="fundToName != null">
+                FUND_TO_NAME = #{fundToName,jdbcType=VARCHAR},
+            </if>
+            <if test="fundFromBankNo != null">
+                FUND_FROM_BANK_NO = #{fundFromBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="fundToAcctNo != null">
+                FUND_TO_ACCT_NO = #{fundToAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbBusFundDirectionDetails">
+        update RB_BUS_FUND_DIRECTION_DETAILS
+        set
+            DOCUMENT_TYPE = #{documentType,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            FUND_TO_BANK_NO = #{fundToBankNo,jdbcType=VARCHAR},            TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},            FUND_SOURCE = #{fundSource,jdbcType=VARCHAR},            REG_TYPE = #{regType,jdbcType=VARCHAR},            BAB_INTERNAL_BASE_ACCT_NO = #{babInternalBaseAcctNo,jdbcType=VARCHAR},            CCY = #{ccy,jdbcType=VARCHAR},            DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},            FUND_FROM_NAME = #{fundFromName,jdbcType=VARCHAR},            PROD_NO = #{prodNo,jdbcType=VARCHAR},            FUND_FROM_ACCT_NO = #{fundFromAcctNo,jdbcType=VARCHAR},            FUND_ACCT_PURPOSE = #{fundAcctPurpose,jdbcType=VARCHAR},            AGENT_NAME = #{agentName,jdbcType=VARCHAR},            FUND_TO_NAME = #{fundToName,jdbcType=VARCHAR},            FUND_FROM_BANK_NO = #{fundFromBankNo,jdbcType=VARCHAR},            FUND_TO_ACCT_NO = #{fundToAcctNo,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR}        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </update>
+</mapper>
