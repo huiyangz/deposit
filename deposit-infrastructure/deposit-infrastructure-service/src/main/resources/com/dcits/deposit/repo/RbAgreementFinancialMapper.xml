@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbAgreementFinancialMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbAgreementFinancial">
+        <id column="AGREEMENT_ID" property="agreementId" jdbcType="VARCHAR" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_TYPE" property="agreementType" jdbcType="VARCHAR" />
+        <result column="FIN_PROD_TYPE" property="finProdType" jdbcType="VARCHAR" />
+        <result column="FIN_PROD_DESC" property="finProdDesc" jdbcType="VARCHAR" />
+        <result column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+        <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+        <result column="FIN_FIXED_AMT" property="finFixedAmt" jdbcType="DECIMAL" />
+        <result column="REMAIN_AMT" property="remainAmt" jdbcType="DECIMAL" />
+        <result column="INT_MIN_AMT" property="intMinAmt" jdbcType="DECIMAL" />
+        <result column="TRANSFER_FREQ" property="transferFreq" jdbcType="VARCHAR" />
+        <result column="TRANSFER_START_DATE" property="transferStartDate" jdbcType="TIMESTAMP" />
+        <result column="TRANSFER_FREQ_TYPE" property="transferFreqType" jdbcType="VARCHAR" />
+        <result column="TRANSFER_END_DATE" property="transferEndDate" jdbcType="TIMESTAMP" />
+        <result column="TRANSFER_DAY" property="transferDay" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_STATUS" property="agreementStatus" jdbcType="VARCHAR" />
+        <result column="NEXT_TRANSFER_DATE" property="nextTransferDate" jdbcType="TIMESTAMP" />
+        <result column="TERM" property="term" jdbcType="VARCHAR" />
+        <result column="TERM_TYPE" property="termType" jdbcType="VARCHAR" />
+        <result column="AUTO_RENEW_ROLLOVER" property="autoRenewRollover" jdbcType="VARCHAR" />
+        <result column="TDA_ACCT_SEQ_NO" property="tdaAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="TDA_BASE_ACCT_NO" property="tdaBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="TDA_ACCT_PROD_TYPE" property="tdaAcctProdType" jdbcType="VARCHAR" />
+        <result column="TDA_ACCT_CCY" property="tdaAcctCcy" jdbcType="VARCHAR" />
+        <result column="FINANCIAL_AMOUNT" property="financialAmount" jdbcType="DECIMAL" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="FAILURE_TOTAL_TIMES" property="failureTotalTimes" jdbcType="INTEGER" />
+        <result column="FAILURE_TIMES" property="failureTimes" jdbcType="INTEGER" />
+        <result column="SUCCESS_TIMES" property="successTimes" jdbcType="INTEGER" />
+        <result column="SUCCESS_TOTAL_TIMES" property="successTotalTimes" jdbcType="INTEGER" />
+        <result column="AUTO_EXTEND" property="autoExtend" jdbcType="VARCHAR" />
+        <result column="LAST_TRANSFER_DATE" property="lastTransferDate" jdbcType="TIMESTAMP" />
+        <result column="SIGN_BRANCH" property="signBranch" jdbcType="VARCHAR" />
+        <result column="SIGN_USER_ID" property="signUserId" jdbcType="VARCHAR" />
+        <result column="OUT_SIGN_USER_ID" property="outSignUserId" jdbcType="VARCHAR" />
+        <result column="OUT_SIGN_BRANCH" property="outSignBranch" jdbcType="VARCHAR" />
+        <result column="ACCT_EXEC" property="acctExec" jdbcType="VARCHAR" />
+        <result column="ACCT_EXEC_NAME" property="acctExecName" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="AUTO_SETTLE_FLAG" property="autoSettleFlag" jdbcType="VARCHAR" />
+        <result column="DEPOSIT_NATURE" property="depositNature" jdbcType="VARCHAR" />
+        <result column="FAILURE_REASON" property="failureReason" jdbcType="VARCHAR" />
+        <result column="UNSIGN_OPERATE_DATE" property="unsignOperateDate" jdbcType="TIMESTAMP" />
+        <result column="AMORTIZE_TIME_TYPE" property="amortizeTimeType" jdbcType="VARCHAR" />
+        <result column="FEE_TYPE" property="feeType" jdbcType="VARCHAR" />
+        <result column="INT_BASIS_RATE" property="intBasisRate" jdbcType="DECIMAL" />
+        <result column="PAST_DUE_RATE" property="pastDueRate" jdbcType="DECIMAL" />
+        <result column="REAL_RATE" property="realRate" jdbcType="DECIMAL" />
+        <result column="LAST_TRANSFER_REFERENCE" property="lastTransferReference" jdbcType="VARCHAR" />
+        <result column="SIGN_REFERENCE" property="signReference" jdbcType="VARCHAR" />
+        <result column="UNSIGN_REFERENCE" property="unsignReference" jdbcType="VARCHAR" />
+        <result column="OD_MODE" property="odMode" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        AGREEMENT_ID,        AGREEMENT_TYPE,        FIN_PROD_TYPE,        FIN_PROD_DESC,        INTERNAL_KEY,        BASE_ACCT_NO,        PROD_TYPE,        ACCT_CCY,        ACCT_SEQ_NO,        CLIENT_NO,        START_DATE,        END_DATE,        FIN_FIXED_AMT,        REMAIN_AMT,        INT_MIN_AMT,        TRANSFER_FREQ,        TRANSFER_START_DATE,        TRANSFER_FREQ_TYPE,        TRANSFER_END_DATE,        TRANSFER_DAY,        AGREEMENT_STATUS,        NEXT_TRANSFER_DATE,        TERM,        TERM_TYPE,        AUTO_RENEW_ROLLOVER,        TDA_ACCT_SEQ_NO,        TDA_BASE_ACCT_NO,        TDA_ACCT_PROD_TYPE,        TDA_ACCT_CCY,        FINANCIAL_AMOUNT,        LAST_CHANGE_DATE,        FAILURE_TOTAL_TIMES,        FAILURE_TIMES,        SUCCESS_TIMES,        SUCCESS_TOTAL_TIMES,        AUTO_EXTEND,        LAST_TRANSFER_DATE,        SIGN_BRANCH,        SIGN_USER_ID,        OUT_SIGN_USER_ID,        OUT_SIGN_BRANCH,        ACCT_EXEC,        ACCT_EXEC_NAME,        COMPANY,        TRAN_TIMESTAMP,        AUTO_SETTLE_FLAG,        DEPOSIT_NATURE,        FAILURE_REASON,        UNSIGN_OPERATE_DATE,        AMORTIZE_TIME_TYPE,        FEE_TYPE,        INT_BASIS_RATE,        PAST_DUE_RATE,        REAL_RATE,        LAST_TRANSFER_REFERENCE,        SIGN_REFERENCE,        UNSIGN_REFERENCE,        OD_MODE,        CREATE_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbAgreementFinancialExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_AGREEMENT_FINANCIAL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_AGREEMENT_FINANCIAL
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_AGREEMENT_FINANCIAL
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbAgreementFinancialExample">
+        delete from RB_AGREEMENT_FINANCIAL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbAgreementFinancial">
+        insert into RB_AGREEMENT_FINANCIAL
+        (
+            AGREEMENT_ID,            AGREEMENT_TYPE,            FIN_PROD_TYPE,            FIN_PROD_DESC,            INTERNAL_KEY,            BASE_ACCT_NO,            PROD_TYPE,            ACCT_CCY,            ACCT_SEQ_NO,            CLIENT_NO,            START_DATE,            END_DATE,            FIN_FIXED_AMT,            REMAIN_AMT,            INT_MIN_AMT,            TRANSFER_FREQ,            TRANSFER_START_DATE,            TRANSFER_FREQ_TYPE,            TRANSFER_END_DATE,            TRANSFER_DAY,            AGREEMENT_STATUS,            NEXT_TRANSFER_DATE,            TERM,            TERM_TYPE,            AUTO_RENEW_ROLLOVER,            TDA_ACCT_SEQ_NO,            TDA_BASE_ACCT_NO,            TDA_ACCT_PROD_TYPE,            TDA_ACCT_CCY,            FINANCIAL_AMOUNT,            LAST_CHANGE_DATE,            FAILURE_TOTAL_TIMES,            FAILURE_TIMES,            SUCCESS_TIMES,            SUCCESS_TOTAL_TIMES,            AUTO_EXTEND,            LAST_TRANSFER_DATE,            SIGN_BRANCH,            SIGN_USER_ID,            OUT_SIGN_USER_ID,            OUT_SIGN_BRANCH,            ACCT_EXEC,            ACCT_EXEC_NAME,            COMPANY,            TRAN_TIMESTAMP,            AUTO_SETTLE_FLAG,            DEPOSIT_NATURE,            FAILURE_REASON,            UNSIGN_OPERATE_DATE,            AMORTIZE_TIME_TYPE,            FEE_TYPE,            INT_BASIS_RATE,            PAST_DUE_RATE,            REAL_RATE,            LAST_TRANSFER_REFERENCE,            SIGN_REFERENCE,            UNSIGN_REFERENCE,            OD_MODE,            CREATE_TIMESTAMP        )
+        values
+        (
+            #{agreementId,jdbcType=VARCHAR},            #{agreementType,jdbcType=VARCHAR},            #{finProdType,jdbcType=VARCHAR},            #{finProdDesc,jdbcType=VARCHAR},            #{internalKey,jdbcType=INTEGER},            #{baseAcctNo,jdbcType=VARCHAR},            #{prodType,jdbcType=VARCHAR},            #{acctCcy,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{startDate,jdbcType=TIMESTAMP},            #{endDate,jdbcType=TIMESTAMP},            #{finFixedAmt,jdbcType=DECIMAL},            #{remainAmt,jdbcType=DECIMAL},            #{intMinAmt,jdbcType=DECIMAL},            #{transferFreq,jdbcType=VARCHAR},            #{transferStartDate,jdbcType=TIMESTAMP},            #{transferFreqType,jdbcType=VARCHAR},            #{transferEndDate,jdbcType=TIMESTAMP},            #{transferDay,jdbcType=VARCHAR},            #{agreementStatus,jdbcType=VARCHAR},            #{nextTransferDate,jdbcType=TIMESTAMP},            #{term,jdbcType=VARCHAR},            #{termType,jdbcType=VARCHAR},            #{autoRenewRollover,jdbcType=VARCHAR},            #{tdaAcctSeqNo,jdbcType=VARCHAR},            #{tdaBaseAcctNo,jdbcType=VARCHAR},            #{tdaAcctProdType,jdbcType=VARCHAR},            #{tdaAcctCcy,jdbcType=VARCHAR},            #{financialAmount,jdbcType=DECIMAL},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{failureTotalTimes,jdbcType=INTEGER},            #{failureTimes,jdbcType=INTEGER},            #{successTimes,jdbcType=INTEGER},            #{successTotalTimes,jdbcType=INTEGER},            #{autoExtend,jdbcType=VARCHAR},            #{lastTransferDate,jdbcType=TIMESTAMP},            #{signBranch,jdbcType=VARCHAR},            #{signUserId,jdbcType=VARCHAR},            #{outSignUserId,jdbcType=VARCHAR},            #{outSignBranch,jdbcType=VARCHAR},            #{acctExec,jdbcType=VARCHAR},            #{acctExecName,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{autoSettleFlag,jdbcType=VARCHAR},            #{depositNature,jdbcType=VARCHAR},            #{failureReason,jdbcType=VARCHAR},            #{unsignOperateDate,jdbcType=TIMESTAMP},            #{amortizeTimeType,jdbcType=VARCHAR},            #{feeType,jdbcType=VARCHAR},            #{intBasisRate,jdbcType=DECIMAL},            #{pastDueRate,jdbcType=DECIMAL},            #{realRate,jdbcType=DECIMAL},            #{lastTransferReference,jdbcType=VARCHAR},            #{signReference,jdbcType=VARCHAR},            #{unsignReference,jdbcType=VARCHAR},            #{odMode,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbAgreementFinancial">
+        insert into RB_AGREEMENT_FINANCIAL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="agreementId != null">
+                AGREEMENT_ID,
+            </if>
+            <if test="agreementType != null">
+                AGREEMENT_TYPE,
+            </if>
+            <if test="finProdType != null">
+                FIN_PROD_TYPE,
+            </if>
+            <if test="finProdDesc != null">
+                FIN_PROD_DESC,
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="startDate != null">
+                START_DATE,
+            </if>
+            <if test="endDate != null">
+                END_DATE,
+            </if>
+            <if test="finFixedAmt != null">
+                FIN_FIXED_AMT,
+            </if>
+            <if test="remainAmt != null">
+                REMAIN_AMT,
+            </if>
+            <if test="intMinAmt != null">
+                INT_MIN_AMT,
+            </if>
+            <if test="transferFreq != null">
+                TRANSFER_FREQ,
+            </if>
+            <if test="transferStartDate != null">
+                TRANSFER_START_DATE,
+            </if>
+            <if test="transferFreqType != null">
+                TRANSFER_FREQ_TYPE,
+            </if>
+            <if test="transferEndDate != null">
+                TRANSFER_END_DATE,
+            </if>
+            <if test="transferDay != null">
+                TRANSFER_DAY,
+            </if>
+            <if test="agreementStatus != null">
+                AGREEMENT_STATUS,
+            </if>
+            <if test="nextTransferDate != null">
+                NEXT_TRANSFER_DATE,
+            </if>
+            <if test="term != null">
+                TERM,
+            </if>
+            <if test="termType != null">
+                TERM_TYPE,
+            </if>
+            <if test="autoRenewRollover != null">
+                AUTO_RENEW_ROLLOVER,
+            </if>
+            <if test="tdaAcctSeqNo != null">
+                TDA_ACCT_SEQ_NO,
+            </if>
+            <if test="tdaBaseAcctNo != null">
+                TDA_BASE_ACCT_NO,
+            </if>
+            <if test="tdaAcctProdType != null">
+                TDA_ACCT_PROD_TYPE,
+            </if>
+            <if test="tdaAcctCcy != null">
+                TDA_ACCT_CCY,
+            </if>
+            <if test="financialAmount != null">
+                FINANCIAL_AMOUNT,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="failureTotalTimes != null">
+                FAILURE_TOTAL_TIMES,
+            </if>
+            <if test="failureTimes != null">
+                FAILURE_TIMES,
+            </if>
+            <if test="successTimes != null">
+                SUCCESS_TIMES,
+            </if>
+            <if test="successTotalTimes != null">
+                SUCCESS_TOTAL_TIMES,
+            </if>
+            <if test="autoExtend != null">
+                AUTO_EXTEND,
+            </if>
+            <if test="lastTransferDate != null">
+                LAST_TRANSFER_DATE,
+            </if>
+            <if test="signBranch != null">
+                SIGN_BRANCH,
+            </if>
+            <if test="signUserId != null">
+                SIGN_USER_ID,
+            </if>
+            <if test="outSignUserId != null">
+                OUT_SIGN_USER_ID,
+            </if>
+            <if test="outSignBranch != null">
+                OUT_SIGN_BRANCH,
+            </if>
+            <if test="acctExec != null">
+                ACCT_EXEC,
+            </if>
+            <if test="acctExecName != null">
+                ACCT_EXEC_NAME,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="autoSettleFlag != null">
+                AUTO_SETTLE_FLAG,
+            </if>
+            <if test="depositNature != null">
+                DEPOSIT_NATURE,
+            </if>
+            <if test="failureReason != null">
+                FAILURE_REASON,
+            </if>
+            <if test="unsignOperateDate != null">
+                UNSIGN_OPERATE_DATE,
+            </if>
+            <if test="amortizeTimeType != null">
+                AMORTIZE_TIME_TYPE,
+            </if>
+            <if test="feeType != null">
+                FEE_TYPE,
+            </if>
+            <if test="intBasisRate != null">
+                INT_BASIS_RATE,
+            </if>
+            <if test="pastDueRate != null">
+                PAST_DUE_RATE,
+            </if>
+            <if test="realRate != null">
+                REAL_RATE,
+            </if>
+            <if test="lastTransferReference != null">
+                LAST_TRANSFER_REFERENCE,
+            </if>
+            <if test="signReference != null">
+                SIGN_REFERENCE,
+            </if>
+            <if test="unsignReference != null">
+                UNSIGN_REFERENCE,
+            </if>
+            <if test="odMode != null">
+                OD_MODE,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="agreementId != null">
+                #{agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementType != null">
+                #{agreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="finProdType != null">
+                #{finProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="finProdDesc != null">
+                #{finProdDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="finFixedAmt != null">
+                #{finFixedAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="remainAmt != null">
+                #{remainAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="intMinAmt != null">
+                #{intMinAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="transferFreq != null">
+                #{transferFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="transferStartDate != null">
+                #{transferStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="transferFreqType != null">
+                #{transferFreqType,jdbcType=VARCHAR},
+            </if>
+            <if test="transferEndDate != null">
+                #{transferEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="transferDay != null">
+                #{transferDay,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementStatus != null">
+                #{agreementStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="nextTransferDate != null">
+                #{nextTransferDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="term != null">
+                #{term,jdbcType=VARCHAR},
+            </if>
+            <if test="termType != null">
+                #{termType,jdbcType=VARCHAR},
+            </if>
+            <if test="autoRenewRollover != null">
+                #{autoRenewRollover,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaAcctSeqNo != null">
+                #{tdaAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaBaseAcctNo != null">
+                #{tdaBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaAcctProdType != null">
+                #{tdaAcctProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaAcctCcy != null">
+                #{tdaAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="financialAmount != null">
+                #{financialAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="failureTotalTimes != null">
+                #{failureTotalTimes,jdbcType=INTEGER},
+            </if>
+            <if test="failureTimes != null">
+                #{failureTimes,jdbcType=INTEGER},
+            </if>
+            <if test="successTimes != null">
+                #{successTimes,jdbcType=INTEGER},
+            </if>
+            <if test="successTotalTimes != null">
+                #{successTotalTimes,jdbcType=INTEGER},
+            </if>
+            <if test="autoExtend != null">
+                #{autoExtend,jdbcType=VARCHAR},
+            </if>
+            <if test="lastTransferDate != null">
+                #{lastTransferDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="signBranch != null">
+                #{signBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="signUserId != null">
+                #{signUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignUserId != null">
+                #{outSignUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignBranch != null">
+                #{outSignBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExec != null">
+                #{acctExec,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExecName != null">
+                #{acctExecName,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="autoSettleFlag != null">
+                #{autoSettleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="depositNature != null">
+                #{depositNature,jdbcType=VARCHAR},
+            </if>
+            <if test="failureReason != null">
+                #{failureReason,jdbcType=VARCHAR},
+            </if>
+            <if test="unsignOperateDate != null">
+                #{unsignOperateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="amortizeTimeType != null">
+                #{amortizeTimeType,jdbcType=VARCHAR},
+            </if>
+            <if test="feeType != null">
+                #{feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="intBasisRate != null">
+                #{intBasisRate,jdbcType=DECIMAL},
+            </if>
+            <if test="pastDueRate != null">
+                #{pastDueRate,jdbcType=DECIMAL},
+            </if>
+            <if test="realRate != null">
+                #{realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="lastTransferReference != null">
+                #{lastTransferReference,jdbcType=VARCHAR},
+            </if>
+            <if test="signReference != null">
+                #{signReference,jdbcType=VARCHAR},
+            </if>
+            <if test="unsignReference != null">
+                #{unsignReference,jdbcType=VARCHAR},
+            </if>
+            <if test="odMode != null">
+                #{odMode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbAgreementFinancialExample" resultType="java.lang.Long">
+        select count(*) from RB_AGREEMENT_FINANCIAL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_AGREEMENT_FINANCIAL
+        <set>
+            <if test="row.agreementId != null">
+                AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementType != null">
+                AGREEMENT_TYPE = #{row.agreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.finProdType != null">
+                FIN_PROD_TYPE = #{row.finProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.finProdDesc != null">
+                FIN_PROD_DESC = #{row.finProdDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodType != null">
+                PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.startDate != null">
+                START_DATE = #{row.startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.endDate != null">
+                END_DATE = #{row.endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.finFixedAmt != null">
+                FIN_FIXED_AMT = #{row.finFixedAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.remainAmt != null">
+                REMAIN_AMT = #{row.remainAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.intMinAmt != null">
+                INT_MIN_AMT = #{row.intMinAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.transferFreq != null">
+                TRANSFER_FREQ = #{row.transferFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.transferStartDate != null">
+                TRANSFER_START_DATE = #{row.transferStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.transferFreqType != null">
+                TRANSFER_FREQ_TYPE = #{row.transferFreqType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.transferEndDate != null">
+                TRANSFER_END_DATE = #{row.transferEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.transferDay != null">
+                TRANSFER_DAY = #{row.transferDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementStatus != null">
+                AGREEMENT_STATUS = #{row.agreementStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.nextTransferDate != null">
+                NEXT_TRANSFER_DATE = #{row.nextTransferDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.term != null">
+                TERM = #{row.term,jdbcType=VARCHAR},
+            </if>
+            <if test="row.termType != null">
+                TERM_TYPE = #{row.termType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoRenewRollover != null">
+                AUTO_RENEW_ROLLOVER = #{row.autoRenewRollover,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tdaAcctSeqNo != null">
+                TDA_ACCT_SEQ_NO = #{row.tdaAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tdaBaseAcctNo != null">
+                TDA_BASE_ACCT_NO = #{row.tdaBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tdaAcctProdType != null">
+                TDA_ACCT_PROD_TYPE = #{row.tdaAcctProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tdaAcctCcy != null">
+                TDA_ACCT_CCY = #{row.tdaAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.financialAmount != null">
+                FINANCIAL_AMOUNT = #{row.financialAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.failureTotalTimes != null">
+                FAILURE_TOTAL_TIMES = #{row.failureTotalTimes,jdbcType=INTEGER},
+            </if>
+            <if test="row.failureTimes != null">
+                FAILURE_TIMES = #{row.failureTimes,jdbcType=INTEGER},
+            </if>
+            <if test="row.successTimes != null">
+                SUCCESS_TIMES = #{row.successTimes,jdbcType=INTEGER},
+            </if>
+            <if test="row.successTotalTimes != null">
+                SUCCESS_TOTAL_TIMES = #{row.successTotalTimes,jdbcType=INTEGER},
+            </if>
+            <if test="row.autoExtend != null">
+                AUTO_EXTEND = #{row.autoExtend,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastTransferDate != null">
+                LAST_TRANSFER_DATE = #{row.lastTransferDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.signBranch != null">
+                SIGN_BRANCH = #{row.signBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.signUserId != null">
+                SIGN_USER_ID = #{row.signUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.outSignUserId != null">
+                OUT_SIGN_USER_ID = #{row.outSignUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.outSignBranch != null">
+                OUT_SIGN_BRANCH = #{row.outSignBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctExec != null">
+                ACCT_EXEC = #{row.acctExec,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctExecName != null">
+                ACCT_EXEC_NAME = #{row.acctExecName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoSettleFlag != null">
+                AUTO_SETTLE_FLAG = #{row.autoSettleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.depositNature != null">
+                DEPOSIT_NATURE = #{row.depositNature,jdbcType=VARCHAR},
+            </if>
+            <if test="row.failureReason != null">
+                FAILURE_REASON = #{row.failureReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.unsignOperateDate != null">
+                UNSIGN_OPERATE_DATE = #{row.unsignOperateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.amortizeTimeType != null">
+                AMORTIZE_TIME_TYPE = #{row.amortizeTimeType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.feeType != null">
+                FEE_TYPE = #{row.feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intBasisRate != null">
+                INT_BASIS_RATE = #{row.intBasisRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.pastDueRate != null">
+                PAST_DUE_RATE = #{row.pastDueRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.realRate != null">
+                REAL_RATE = #{row.realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.lastTransferReference != null">
+                LAST_TRANSFER_REFERENCE = #{row.lastTransferReference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.signReference != null">
+                SIGN_REFERENCE = #{row.signReference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.unsignReference != null">
+                UNSIGN_REFERENCE = #{row.unsignReference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odMode != null">
+                OD_MODE = #{row.odMode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_AGREEMENT_FINANCIAL
+        set
+            AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},            AGREEMENT_TYPE = #{row.agreementType,jdbcType=VARCHAR},            FIN_PROD_TYPE = #{row.finProdType,jdbcType=VARCHAR},            FIN_PROD_DESC = #{row.finProdDesc,jdbcType=VARCHAR},            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            START_DATE = #{row.startDate,jdbcType=TIMESTAMP},            END_DATE = #{row.endDate,jdbcType=TIMESTAMP},            FIN_FIXED_AMT = #{row.finFixedAmt,jdbcType=DECIMAL},            REMAIN_AMT = #{row.remainAmt,jdbcType=DECIMAL},            INT_MIN_AMT = #{row.intMinAmt,jdbcType=DECIMAL},            TRANSFER_FREQ = #{row.transferFreq,jdbcType=VARCHAR},            TRANSFER_START_DATE = #{row.transferStartDate,jdbcType=TIMESTAMP},            TRANSFER_FREQ_TYPE = #{row.transferFreqType,jdbcType=VARCHAR},            TRANSFER_END_DATE = #{row.transferEndDate,jdbcType=TIMESTAMP},            TRANSFER_DAY = #{row.transferDay,jdbcType=VARCHAR},            AGREEMENT_STATUS = #{row.agreementStatus,jdbcType=VARCHAR},            NEXT_TRANSFER_DATE = #{row.nextTransferDate,jdbcType=TIMESTAMP},            TERM = #{row.term,jdbcType=VARCHAR},            TERM_TYPE = #{row.termType,jdbcType=VARCHAR},            AUTO_RENEW_ROLLOVER = #{row.autoRenewRollover,jdbcType=VARCHAR},            TDA_ACCT_SEQ_NO = #{row.tdaAcctSeqNo,jdbcType=VARCHAR},            TDA_BASE_ACCT_NO = #{row.tdaBaseAcctNo,jdbcType=VARCHAR},            TDA_ACCT_PROD_TYPE = #{row.tdaAcctProdType,jdbcType=VARCHAR},            TDA_ACCT_CCY = #{row.tdaAcctCcy,jdbcType=VARCHAR},            FINANCIAL_AMOUNT = #{row.financialAmount,jdbcType=DECIMAL},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            FAILURE_TOTAL_TIMES = #{row.failureTotalTimes,jdbcType=INTEGER},            FAILURE_TIMES = #{row.failureTimes,jdbcType=INTEGER},            SUCCESS_TIMES = #{row.successTimes,jdbcType=INTEGER},            SUCCESS_TOTAL_TIMES = #{row.successTotalTimes,jdbcType=INTEGER},            AUTO_EXTEND = #{row.autoExtend,jdbcType=VARCHAR},            LAST_TRANSFER_DATE = #{row.lastTransferDate,jdbcType=TIMESTAMP},            SIGN_BRANCH = #{row.signBranch,jdbcType=VARCHAR},            SIGN_USER_ID = #{row.signUserId,jdbcType=VARCHAR},            OUT_SIGN_USER_ID = #{row.outSignUserId,jdbcType=VARCHAR},            OUT_SIGN_BRANCH = #{row.outSignBranch,jdbcType=VARCHAR},            ACCT_EXEC = #{row.acctExec,jdbcType=VARCHAR},            ACCT_EXEC_NAME = #{row.acctExecName,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            AUTO_SETTLE_FLAG = #{row.autoSettleFlag,jdbcType=VARCHAR},            DEPOSIT_NATURE = #{row.depositNature,jdbcType=VARCHAR},            FAILURE_REASON = #{row.failureReason,jdbcType=VARCHAR},            UNSIGN_OPERATE_DATE = #{row.unsignOperateDate,jdbcType=TIMESTAMP},            AMORTIZE_TIME_TYPE = #{row.amortizeTimeType,jdbcType=VARCHAR},            FEE_TYPE = #{row.feeType,jdbcType=VARCHAR},            INT_BASIS_RATE = #{row.intBasisRate,jdbcType=DECIMAL},            PAST_DUE_RATE = #{row.pastDueRate,jdbcType=DECIMAL},            REAL_RATE = #{row.realRate,jdbcType=DECIMAL},            LAST_TRANSFER_REFERENCE = #{row.lastTransferReference,jdbcType=VARCHAR},            SIGN_REFERENCE = #{row.signReference,jdbcType=VARCHAR},            UNSIGN_REFERENCE = #{row.unsignReference,jdbcType=VARCHAR},            OD_MODE = #{row.odMode,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbAgreementFinancial">
+        update RB_AGREEMENT_FINANCIAL
+        <set>
+            <if test="agreementType != null">
+                AGREEMENT_TYPE = #{agreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="finProdType != null">
+                FIN_PROD_TYPE = #{finProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="finProdDesc != null">
+                FIN_PROD_DESC = #{finProdDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE = #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                START_DATE = #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                END_DATE = #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="finFixedAmt != null">
+                FIN_FIXED_AMT = #{finFixedAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="remainAmt != null">
+                REMAIN_AMT = #{remainAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="intMinAmt != null">
+                INT_MIN_AMT = #{intMinAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="transferFreq != null">
+                TRANSFER_FREQ = #{transferFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="transferStartDate != null">
+                TRANSFER_START_DATE = #{transferStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="transferFreqType != null">
+                TRANSFER_FREQ_TYPE = #{transferFreqType,jdbcType=VARCHAR},
+            </if>
+            <if test="transferEndDate != null">
+                TRANSFER_END_DATE = #{transferEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="transferDay != null">
+                TRANSFER_DAY = #{transferDay,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementStatus != null">
+                AGREEMENT_STATUS = #{agreementStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="nextTransferDate != null">
+                NEXT_TRANSFER_DATE = #{nextTransferDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="term != null">
+                TERM = #{term,jdbcType=VARCHAR},
+            </if>
+            <if test="termType != null">
+                TERM_TYPE = #{termType,jdbcType=VARCHAR},
+            </if>
+            <if test="autoRenewRollover != null">
+                AUTO_RENEW_ROLLOVER = #{autoRenewRollover,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaAcctSeqNo != null">
+                TDA_ACCT_SEQ_NO = #{tdaAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaBaseAcctNo != null">
+                TDA_BASE_ACCT_NO = #{tdaBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaAcctProdType != null">
+                TDA_ACCT_PROD_TYPE = #{tdaAcctProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="tdaAcctCcy != null">
+                TDA_ACCT_CCY = #{tdaAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="financialAmount != null">
+                FINANCIAL_AMOUNT = #{financialAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="failureTotalTimes != null">
+                FAILURE_TOTAL_TIMES = #{failureTotalTimes,jdbcType=INTEGER},
+            </if>
+            <if test="failureTimes != null">
+                FAILURE_TIMES = #{failureTimes,jdbcType=INTEGER},
+            </if>
+            <if test="successTimes != null">
+                SUCCESS_TIMES = #{successTimes,jdbcType=INTEGER},
+            </if>
+            <if test="successTotalTimes != null">
+                SUCCESS_TOTAL_TIMES = #{successTotalTimes,jdbcType=INTEGER},
+            </if>
+            <if test="autoExtend != null">
+                AUTO_EXTEND = #{autoExtend,jdbcType=VARCHAR},
+            </if>
+            <if test="lastTransferDate != null">
+                LAST_TRANSFER_DATE = #{lastTransferDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="signBranch != null">
+                SIGN_BRANCH = #{signBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="signUserId != null">
+                SIGN_USER_ID = #{signUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignUserId != null">
+                OUT_SIGN_USER_ID = #{outSignUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignBranch != null">
+                OUT_SIGN_BRANCH = #{outSignBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExec != null">
+                ACCT_EXEC = #{acctExec,jdbcType=VARCHAR},
+            </if>
+            <if test="acctExecName != null">
+                ACCT_EXEC_NAME = #{acctExecName,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="autoSettleFlag != null">
+                AUTO_SETTLE_FLAG = #{autoSettleFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="depositNature != null">
+                DEPOSIT_NATURE = #{depositNature,jdbcType=VARCHAR},
+            </if>
+            <if test="failureReason != null">
+                FAILURE_REASON = #{failureReason,jdbcType=VARCHAR},
+            </if>
+            <if test="unsignOperateDate != null">
+                UNSIGN_OPERATE_DATE = #{unsignOperateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="amortizeTimeType != null">
+                AMORTIZE_TIME_TYPE = #{amortizeTimeType,jdbcType=VARCHAR},
+            </if>
+            <if test="feeType != null">
+                FEE_TYPE = #{feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="intBasisRate != null">
+                INT_BASIS_RATE = #{intBasisRate,jdbcType=DECIMAL},
+            </if>
+            <if test="pastDueRate != null">
+                PAST_DUE_RATE = #{pastDueRate,jdbcType=DECIMAL},
+            </if>
+            <if test="realRate != null">
+                REAL_RATE = #{realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="lastTransferReference != null">
+                LAST_TRANSFER_REFERENCE = #{lastTransferReference,jdbcType=VARCHAR},
+            </if>
+            <if test="signReference != null">
+                SIGN_REFERENCE = #{signReference,jdbcType=VARCHAR},
+            </if>
+            <if test="unsignReference != null">
+                UNSIGN_REFERENCE = #{unsignReference,jdbcType=VARCHAR},
+            </if>
+            <if test="odMode != null">
+                OD_MODE = #{odMode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbAgreementFinancial">
+        update RB_AGREEMENT_FINANCIAL
+        set
+            AGREEMENT_TYPE = #{agreementType,jdbcType=VARCHAR},            FIN_PROD_TYPE = #{finProdType,jdbcType=VARCHAR},            FIN_PROD_DESC = #{finProdDesc,jdbcType=VARCHAR},            INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            PROD_TYPE = #{prodType,jdbcType=VARCHAR},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            START_DATE = #{startDate,jdbcType=TIMESTAMP},            END_DATE = #{endDate,jdbcType=TIMESTAMP},            FIN_FIXED_AMT = #{finFixedAmt,jdbcType=DECIMAL},            REMAIN_AMT = #{remainAmt,jdbcType=DECIMAL},            INT_MIN_AMT = #{intMinAmt,jdbcType=DECIMAL},            TRANSFER_FREQ = #{transferFreq,jdbcType=VARCHAR},            TRANSFER_START_DATE = #{transferStartDate,jdbcType=TIMESTAMP},            TRANSFER_FREQ_TYPE = #{transferFreqType,jdbcType=VARCHAR},            TRANSFER_END_DATE = #{transferEndDate,jdbcType=TIMESTAMP},            TRANSFER_DAY = #{transferDay,jdbcType=VARCHAR},            AGREEMENT_STATUS = #{agreementStatus,jdbcType=VARCHAR},            NEXT_TRANSFER_DATE = #{nextTransferDate,jdbcType=TIMESTAMP},            TERM = #{term,jdbcType=VARCHAR},            TERM_TYPE = #{termType,jdbcType=VARCHAR},            AUTO_RENEW_ROLLOVER = #{autoRenewRollover,jdbcType=VARCHAR},            TDA_ACCT_SEQ_NO = #{tdaAcctSeqNo,jdbcType=VARCHAR},            TDA_BASE_ACCT_NO = #{tdaBaseAcctNo,jdbcType=VARCHAR},            TDA_ACCT_PROD_TYPE = #{tdaAcctProdType,jdbcType=VARCHAR},            TDA_ACCT_CCY = #{tdaAcctCcy,jdbcType=VARCHAR},            FINANCIAL_AMOUNT = #{financialAmount,jdbcType=DECIMAL},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            FAILURE_TOTAL_TIMES = #{failureTotalTimes,jdbcType=INTEGER},            FAILURE_TIMES = #{failureTimes,jdbcType=INTEGER},            SUCCESS_TIMES = #{successTimes,jdbcType=INTEGER},            SUCCESS_TOTAL_TIMES = #{successTotalTimes,jdbcType=INTEGER},            AUTO_EXTEND = #{autoExtend,jdbcType=VARCHAR},            LAST_TRANSFER_DATE = #{lastTransferDate,jdbcType=TIMESTAMP},            SIGN_BRANCH = #{signBranch,jdbcType=VARCHAR},            SIGN_USER_ID = #{signUserId,jdbcType=VARCHAR},            OUT_SIGN_USER_ID = #{outSignUserId,jdbcType=VARCHAR},            OUT_SIGN_BRANCH = #{outSignBranch,jdbcType=VARCHAR},            ACCT_EXEC = #{acctExec,jdbcType=VARCHAR},            ACCT_EXEC_NAME = #{acctExecName,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            AUTO_SETTLE_FLAG = #{autoSettleFlag,jdbcType=VARCHAR},            DEPOSIT_NATURE = #{depositNature,jdbcType=VARCHAR},            FAILURE_REASON = #{failureReason,jdbcType=VARCHAR},            UNSIGN_OPERATE_DATE = #{unsignOperateDate,jdbcType=TIMESTAMP},            AMORTIZE_TIME_TYPE = #{amortizeTimeType,jdbcType=VARCHAR},            FEE_TYPE = #{feeType,jdbcType=VARCHAR},            INT_BASIS_RATE = #{intBasisRate,jdbcType=DECIMAL},            PAST_DUE_RATE = #{pastDueRate,jdbcType=DECIMAL},            REAL_RATE = #{realRate,jdbcType=DECIMAL},            LAST_TRANSFER_REFERENCE = #{lastTransferReference,jdbcType=VARCHAR},            SIGN_REFERENCE = #{signReference,jdbcType=VARCHAR},            UNSIGN_REFERENCE = #{unsignReference,jdbcType=VARCHAR},            OD_MODE = #{odMode,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR}        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

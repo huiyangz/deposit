@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.MbIntMatrixMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.MbIntMatrix">
+        <id column="MATRIX_NO" property="matrixNo" jdbcType="VARCHAR" />
+        <result column="BRANCH" property="branch" jdbcType="VARCHAR" />
+        <result column="CCY" property="ccy" jdbcType="VARCHAR" />
+        <result column="INT_TYPE" property="intType" jdbcType="VARCHAR" />
+        <result column="YEAR_BASIS" property="yearBasis" jdbcType="VARCHAR" />
+        <result column="EFFECT_DATE" property="effectDate" jdbcType="TIMESTAMP" />
+        <result column="INT_BASIS" property="intBasis" jdbcType="VARCHAR" />
+        <result column="BASE_RATE" property="baseRate" jdbcType="DECIMAL" />
+        <result column="PERIOD_FREQ" property="periodFreq" jdbcType="VARCHAR" />
+        <result column="DAY_NUM" property="dayNum" jdbcType="INTEGER" />
+        <result column="MATRIX_AMT" property="matrixAmt" jdbcType="DECIMAL" />
+        <result column="ACTUAL_RATE" property="actualRate" jdbcType="DECIMAL" />
+        <result column="DISC_RATE" property="discRate" jdbcType="DECIMAL" />
+        <result column="SPREAD_PERCENT" property="spreadPercent" jdbcType="DECIMAL" />
+        <result column="SPREAD_RATE" property="spreadRate" jdbcType="DECIMAL" />
+        <result column="MAX_PERCENT" property="maxPercent" jdbcType="DECIMAL" />
+        <result column="MIN_PERCENT" property="minPercent" jdbcType="DECIMAL" />
+        <result column="MIN_RATE" property="minRate" jdbcType="DECIMAL" />
+        <result column="MAX_RATE" property="maxRate" jdbcType="DECIMAL" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="MIN_SPREAD_RATE" property="minSpreadRate" jdbcType="DECIMAL" />
+        <result column="MIN_SPREAD_PERCENT" property="minSpreadPercent" jdbcType="DECIMAL" />
+        <result column="MAX_SPREAD_RATE" property="maxSpreadRate" jdbcType="DECIMAL" />
+        <result column="MAX_SPREAD_PERCENT" property="maxSpreadPercent" jdbcType="DECIMAL" />
+        <result column="PEGGED_INT_TYPE" property="peggedIntType" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        MATRIX_NO,        BRANCH,        CCY,        INT_TYPE,        YEAR_BASIS,        EFFECT_DATE,        INT_BASIS,        BASE_RATE,        PERIOD_FREQ,        DAY_NUM,        MATRIX_AMT,        ACTUAL_RATE,        DISC_RATE,        SPREAD_PERCENT,        SPREAD_RATE,        MAX_PERCENT,        MIN_PERCENT,        MIN_RATE,        MAX_RATE,        COMPANY,        TRAN_TIMESTAMP,        MIN_SPREAD_RATE,        MIN_SPREAD_PERCENT,        MAX_SPREAD_RATE,        MAX_SPREAD_PERCENT,        PEGGED_INT_TYPE    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.MbIntMatrixExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from MB_INT_MATRIX
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MB_INT_MATRIX
+        where MATRIX_NO = #{matrixNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from MB_INT_MATRIX
+        where MATRIX_NO = #{matrixNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.MbIntMatrixExample">
+        delete from MB_INT_MATRIX
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.MbIntMatrix">
+        insert into MB_INT_MATRIX
+        (
+            MATRIX_NO,            BRANCH,            CCY,            INT_TYPE,            YEAR_BASIS,            EFFECT_DATE,            INT_BASIS,            BASE_RATE,            PERIOD_FREQ,            DAY_NUM,            MATRIX_AMT,            ACTUAL_RATE,            DISC_RATE,            SPREAD_PERCENT,            SPREAD_RATE,            MAX_PERCENT,            MIN_PERCENT,            MIN_RATE,            MAX_RATE,            COMPANY,            TRAN_TIMESTAMP,            MIN_SPREAD_RATE,            MIN_SPREAD_PERCENT,            MAX_SPREAD_RATE,            MAX_SPREAD_PERCENT,            PEGGED_INT_TYPE        )
+        values
+        (
+            #{matrixNo,jdbcType=VARCHAR},            #{branch,jdbcType=VARCHAR},            #{ccy,jdbcType=VARCHAR},            #{intType,jdbcType=VARCHAR},            #{yearBasis,jdbcType=VARCHAR},            #{effectDate,jdbcType=TIMESTAMP},            #{intBasis,jdbcType=VARCHAR},            #{baseRate,jdbcType=DECIMAL},            #{periodFreq,jdbcType=VARCHAR},            #{dayNum,jdbcType=INTEGER},            #{matrixAmt,jdbcType=DECIMAL},            #{actualRate,jdbcType=DECIMAL},            #{discRate,jdbcType=DECIMAL},            #{spreadPercent,jdbcType=DECIMAL},            #{spreadRate,jdbcType=DECIMAL},            #{maxPercent,jdbcType=DECIMAL},            #{minPercent,jdbcType=DECIMAL},            #{minRate,jdbcType=DECIMAL},            #{maxRate,jdbcType=DECIMAL},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{minSpreadRate,jdbcType=DECIMAL},            #{minSpreadPercent,jdbcType=DECIMAL},            #{maxSpreadRate,jdbcType=DECIMAL},            #{maxSpreadPercent,jdbcType=DECIMAL},            #{peggedIntType,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.MbIntMatrix">
+        insert into MB_INT_MATRIX
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="matrixNo != null">
+                MATRIX_NO,
+            </if>
+            <if test="branch != null">
+                BRANCH,
+            </if>
+            <if test="ccy != null">
+                CCY,
+            </if>
+            <if test="intType != null">
+                INT_TYPE,
+            </if>
+            <if test="yearBasis != null">
+                YEAR_BASIS,
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE,
+            </if>
+            <if test="intBasis != null">
+                INT_BASIS,
+            </if>
+            <if test="baseRate != null">
+                BASE_RATE,
+            </if>
+            <if test="periodFreq != null">
+                PERIOD_FREQ,
+            </if>
+            <if test="dayNum != null">
+                DAY_NUM,
+            </if>
+            <if test="matrixAmt != null">
+                MATRIX_AMT,
+            </if>
+            <if test="actualRate != null">
+                ACTUAL_RATE,
+            </if>
+            <if test="discRate != null">
+                DISC_RATE,
+            </if>
+            <if test="spreadPercent != null">
+                SPREAD_PERCENT,
+            </if>
+            <if test="spreadRate != null">
+                SPREAD_RATE,
+            </if>
+            <if test="maxPercent != null">
+                MAX_PERCENT,
+            </if>
+            <if test="minPercent != null">
+                MIN_PERCENT,
+            </if>
+            <if test="minRate != null">
+                MIN_RATE,
+            </if>
+            <if test="maxRate != null">
+                MAX_RATE,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="minSpreadRate != null">
+                MIN_SPREAD_RATE,
+            </if>
+            <if test="minSpreadPercent != null">
+                MIN_SPREAD_PERCENT,
+            </if>
+            <if test="maxSpreadRate != null">
+                MAX_SPREAD_RATE,
+            </if>
+            <if test="maxSpreadPercent != null">
+                MAX_SPREAD_PERCENT,
+            </if>
+            <if test="peggedIntType != null">
+                PEGGED_INT_TYPE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="matrixNo != null">
+                #{matrixNo,jdbcType=VARCHAR},
+            </if>
+            <if test="branch != null">
+                #{branch,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="intType != null">
+                #{intType,jdbcType=VARCHAR},
+            </if>
+            <if test="yearBasis != null">
+                #{yearBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDate != null">
+                #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="intBasis != null">
+                #{intBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="baseRate != null">
+                #{baseRate,jdbcType=DECIMAL},
+            </if>
+            <if test="periodFreq != null">
+                #{periodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="dayNum != null">
+                #{dayNum,jdbcType=INTEGER},
+            </if>
+            <if test="matrixAmt != null">
+                #{matrixAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="actualRate != null">
+                #{actualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="discRate != null">
+                #{discRate,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadPercent != null">
+                #{spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadRate != null">
+                #{spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxPercent != null">
+                #{maxPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="minPercent != null">
+                #{minPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="minRate != null">
+                #{minRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxRate != null">
+                #{maxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="minSpreadRate != null">
+                #{minSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="minSpreadPercent != null">
+                #{minSpreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="maxSpreadRate != null">
+                #{maxSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxSpreadPercent != null">
+                #{maxSpreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="peggedIntType != null">
+                #{peggedIntType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.MbIntMatrixExample" resultType="java.lang.Long">
+        select count(*) from MB_INT_MATRIX
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update MB_INT_MATRIX
+        <set>
+            <if test="row.matrixNo != null">
+                MATRIX_NO = #{row.matrixNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.branch != null">
+                BRANCH = #{row.branch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ccy != null">
+                CCY = #{row.ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intType != null">
+                INT_TYPE = #{row.intType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.yearBasis != null">
+                YEAR_BASIS = #{row.yearBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="row.effectDate != null">
+                EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.intBasis != null">
+                INT_BASIS = #{row.intBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseRate != null">
+                BASE_RATE = #{row.baseRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.periodFreq != null">
+                PERIOD_FREQ = #{row.periodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.dayNum != null">
+                DAY_NUM = #{row.dayNum,jdbcType=INTEGER},
+            </if>
+            <if test="row.matrixAmt != null">
+                MATRIX_AMT = #{row.matrixAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.actualRate != null">
+                ACTUAL_RATE = #{row.actualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.discRate != null">
+                DISC_RATE = #{row.discRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.spreadPercent != null">
+                SPREAD_PERCENT = #{row.spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.spreadRate != null">
+                SPREAD_RATE = #{row.spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.maxPercent != null">
+                MAX_PERCENT = #{row.maxPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.minPercent != null">
+                MIN_PERCENT = #{row.minPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.minRate != null">
+                MIN_RATE = #{row.minRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.maxRate != null">
+                MAX_RATE = #{row.maxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.minSpreadRate != null">
+                MIN_SPREAD_RATE = #{row.minSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.minSpreadPercent != null">
+                MIN_SPREAD_PERCENT = #{row.minSpreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.maxSpreadRate != null">
+                MAX_SPREAD_RATE = #{row.maxSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.maxSpreadPercent != null">
+                MAX_SPREAD_PERCENT = #{row.maxSpreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.peggedIntType != null">
+                PEGGED_INT_TYPE = #{row.peggedIntType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update MB_INT_MATRIX
+        set
+            MATRIX_NO = #{row.matrixNo,jdbcType=VARCHAR},            BRANCH = #{row.branch,jdbcType=VARCHAR},            CCY = #{row.ccy,jdbcType=VARCHAR},            INT_TYPE = #{row.intType,jdbcType=VARCHAR},            YEAR_BASIS = #{row.yearBasis,jdbcType=VARCHAR},            EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},            INT_BASIS = #{row.intBasis,jdbcType=VARCHAR},            BASE_RATE = #{row.baseRate,jdbcType=DECIMAL},            PERIOD_FREQ = #{row.periodFreq,jdbcType=VARCHAR},            DAY_NUM = #{row.dayNum,jdbcType=INTEGER},            MATRIX_AMT = #{row.matrixAmt,jdbcType=DECIMAL},            ACTUAL_RATE = #{row.actualRate,jdbcType=DECIMAL},            DISC_RATE = #{row.discRate,jdbcType=DECIMAL},            SPREAD_PERCENT = #{row.spreadPercent,jdbcType=DECIMAL},            SPREAD_RATE = #{row.spreadRate,jdbcType=DECIMAL},            MAX_PERCENT = #{row.maxPercent,jdbcType=DECIMAL},            MIN_PERCENT = #{row.minPercent,jdbcType=DECIMAL},            MIN_RATE = #{row.minRate,jdbcType=DECIMAL},            MAX_RATE = #{row.maxRate,jdbcType=DECIMAL},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            MIN_SPREAD_RATE = #{row.minSpreadRate,jdbcType=DECIMAL},            MIN_SPREAD_PERCENT = #{row.minSpreadPercent,jdbcType=DECIMAL},            MAX_SPREAD_RATE = #{row.maxSpreadRate,jdbcType=DECIMAL},            MAX_SPREAD_PERCENT = #{row.maxSpreadPercent,jdbcType=DECIMAL},            PEGGED_INT_TYPE = #{row.peggedIntType,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.MbIntMatrix">
+        update MB_INT_MATRIX
+        <set>
+            <if test="branch != null">
+                BRANCH = #{branch,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="intType != null">
+                INT_TYPE = #{intType,jdbcType=VARCHAR},
+            </if>
+            <if test="yearBasis != null">
+                YEAR_BASIS = #{yearBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="intBasis != null">
+                INT_BASIS = #{intBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="baseRate != null">
+                BASE_RATE = #{baseRate,jdbcType=DECIMAL},
+            </if>
+            <if test="periodFreq != null">
+                PERIOD_FREQ = #{periodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="dayNum != null">
+                DAY_NUM = #{dayNum,jdbcType=INTEGER},
+            </if>
+            <if test="matrixAmt != null">
+                MATRIX_AMT = #{matrixAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="actualRate != null">
+                ACTUAL_RATE = #{actualRate,jdbcType=DECIMAL},
+            </if>
+            <if test="discRate != null">
+                DISC_RATE = #{discRate,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadPercent != null">
+                SPREAD_PERCENT = #{spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadRate != null">
+                SPREAD_RATE = #{spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxPercent != null">
+                MAX_PERCENT = #{maxPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="minPercent != null">
+                MIN_PERCENT = #{minPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="minRate != null">
+                MIN_RATE = #{minRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxRate != null">
+                MAX_RATE = #{maxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="minSpreadRate != null">
+                MIN_SPREAD_RATE = #{minSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="minSpreadPercent != null">
+                MIN_SPREAD_PERCENT = #{minSpreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="maxSpreadRate != null">
+                MAX_SPREAD_RATE = #{maxSpreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxSpreadPercent != null">
+                MAX_SPREAD_PERCENT = #{maxSpreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="peggedIntType != null">
+                PEGGED_INT_TYPE = #{peggedIntType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where MATRIX_NO = #{matrixNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.MbIntMatrix">
+        update MB_INT_MATRIX
+        set
+            BRANCH = #{branch,jdbcType=VARCHAR},            CCY = #{ccy,jdbcType=VARCHAR},            INT_TYPE = #{intType,jdbcType=VARCHAR},            YEAR_BASIS = #{yearBasis,jdbcType=VARCHAR},            EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},            INT_BASIS = #{intBasis,jdbcType=VARCHAR},            BASE_RATE = #{baseRate,jdbcType=DECIMAL},            PERIOD_FREQ = #{periodFreq,jdbcType=VARCHAR},            DAY_NUM = #{dayNum,jdbcType=INTEGER},            MATRIX_AMT = #{matrixAmt,jdbcType=DECIMAL},            ACTUAL_RATE = #{actualRate,jdbcType=DECIMAL},            DISC_RATE = #{discRate,jdbcType=DECIMAL},            SPREAD_PERCENT = #{spreadPercent,jdbcType=DECIMAL},            SPREAD_RATE = #{spreadRate,jdbcType=DECIMAL},            MAX_PERCENT = #{maxPercent,jdbcType=DECIMAL},            MIN_PERCENT = #{minPercent,jdbcType=DECIMAL},            MIN_RATE = #{minRate,jdbcType=DECIMAL},            MAX_RATE = #{maxRate,jdbcType=DECIMAL},            COMPANY = #{company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            MIN_SPREAD_RATE = #{minSpreadRate,jdbcType=DECIMAL},            MIN_SPREAD_PERCENT = #{minSpreadPercent,jdbcType=DECIMAL},            MAX_SPREAD_RATE = #{maxSpreadRate,jdbcType=DECIMAL},            MAX_SPREAD_PERCENT = #{maxSpreadPercent,jdbcType=DECIMAL},            PEGGED_INT_TYPE = #{peggedIntType,jdbcType=VARCHAR}        where MATRIX_NO = #{matrixNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

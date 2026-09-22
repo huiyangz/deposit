@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbTranDefMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbTranDef">
+        <id column="TRAN_TYPE" property="tranType" jdbcType="VARCHAR" />
+        <result column="TRAN_CLASS" property="tranClass" jdbcType="VARCHAR" />
+        <result column="TRAN_TYPE_DESC" property="tranTypeDesc" jdbcType="VARCHAR" />
+        <result column="PRINT_TRAN_DESC" property="printTranDesc" jdbcType="VARCHAR" />
+        <result column="CR_DR_IND" property="crDrInd" jdbcType="VARCHAR" />
+        <result column="BALANCE_FLAG" property="balanceFlag" jdbcType="VARCHAR" />
+        <result column="CASH_TRAN_FLAG" property="cashTranFlag" jdbcType="VARCHAR" />
+        <result column="UPD_TAILBOX_FLAG" property="updTailboxFlag" jdbcType="VARCHAR" />
+        <result column="RES_PRIORITY" property="resPriority" jdbcType="VARCHAR" />
+        <result column="RECALC_ACCT_STOP_PAY_FLAG" property="recalcAcctStopPayFlag" jdbcType="VARCHAR" />
+        <result column="RECALC_RES_AMT_FLAG" property="recalcResAmtFlag" jdbcType="VARCHAR" />
+        <result column="AVAILBAL_CALC_TYPE" property="availbalCalcType" jdbcType="VARCHAR" />
+        <result column="OTH_TRAN_TYPE" property="othTranType" jdbcType="VARCHAR" />
+        <result column="REVERSAL" property="reversal" jdbcType="VARCHAR" />
+        <result column="REVERSAL_TRAN_TYPE" property="reversalTranType" jdbcType="VARCHAR" />
+        <result column="PROGRAM_ID_GROUP" property="programIdGroup" jdbcType="VARCHAR" />
+        <result column="BAL_TYPE_PRIORITY" property="balTypePriority" jdbcType="VARCHAR" />
+        <result column="CORRECT_FLAG" property="correctFlag" jdbcType="VARCHAR" />
+        <result column="MULTI_RVS_TRAN_TYPE_FLAG" property="multiRvsTranTypeFlag" jdbcType="VARCHAR" />
+        <result column="SOURCE_TYPE" property="sourceType" jdbcType="VARCHAR" />
+        <result column="IS_INIT_PARAM" property="isInitParam" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="CHEQUE_BOOK_FLAG" property="chequeBookFlag" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        TRAN_TYPE,        TRAN_CLASS,        TRAN_TYPE_DESC,        PRINT_TRAN_DESC,        CR_DR_IND,        BALANCE_FLAG,        CASH_TRAN_FLAG,        UPD_TAILBOX_FLAG,        RES_PRIORITY,        RECALC_ACCT_STOP_PAY_FLAG,        RECALC_RES_AMT_FLAG,        AVAILBAL_CALC_TYPE,        OTH_TRAN_TYPE,        REVERSAL,        REVERSAL_TRAN_TYPE,        PROGRAM_ID_GROUP,        BAL_TYPE_PRIORITY,        CORRECT_FLAG,        MULTI_RVS_TRAN_TYPE_FLAG,        SOURCE_TYPE,        IS_INIT_PARAM,        TRAN_TIMESTAMP,        COMPANY,        CHEQUE_BOOK_FLAG    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbTranDefExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_TRAN_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_TRAN_DEF
+        where TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_TRAN_DEF
+        where TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbTranDefExample">
+        delete from RB_TRAN_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbTranDef">
+        insert into RB_TRAN_DEF
+        (
+            TRAN_TYPE,            TRAN_CLASS,            TRAN_TYPE_DESC,            PRINT_TRAN_DESC,            CR_DR_IND,            BALANCE_FLAG,            CASH_TRAN_FLAG,            UPD_TAILBOX_FLAG,            RES_PRIORITY,            RECALC_ACCT_STOP_PAY_FLAG,            RECALC_RES_AMT_FLAG,            AVAILBAL_CALC_TYPE,            OTH_TRAN_TYPE,            REVERSAL,            REVERSAL_TRAN_TYPE,            PROGRAM_ID_GROUP,            BAL_TYPE_PRIORITY,            CORRECT_FLAG,            MULTI_RVS_TRAN_TYPE_FLAG,            SOURCE_TYPE,            IS_INIT_PARAM,            TRAN_TIMESTAMP,            COMPANY,            CHEQUE_BOOK_FLAG        )
+        values
+        (
+            #{tranType,jdbcType=VARCHAR},            #{tranClass,jdbcType=VARCHAR},            #{tranTypeDesc,jdbcType=VARCHAR},            #{printTranDesc,jdbcType=VARCHAR},            #{crDrInd,jdbcType=VARCHAR},            #{balanceFlag,jdbcType=VARCHAR},            #{cashTranFlag,jdbcType=VARCHAR},            #{updTailboxFlag,jdbcType=VARCHAR},            #{resPriority,jdbcType=VARCHAR},            #{recalcAcctStopPayFlag,jdbcType=VARCHAR},            #{recalcResAmtFlag,jdbcType=VARCHAR},            #{availbalCalcType,jdbcType=VARCHAR},            #{othTranType,jdbcType=VARCHAR},            #{reversal,jdbcType=VARCHAR},            #{reversalTranType,jdbcType=VARCHAR},            #{programIdGroup,jdbcType=VARCHAR},            #{balTypePriority,jdbcType=VARCHAR},            #{correctFlag,jdbcType=VARCHAR},            #{multiRvsTranTypeFlag,jdbcType=VARCHAR},            #{sourceType,jdbcType=VARCHAR},            #{isInitParam,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{chequeBookFlag,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbTranDef">
+        insert into RB_TRAN_DEF
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tranType != null">
+                TRAN_TYPE,
+            </if>
+            <if test="tranClass != null">
+                TRAN_CLASS,
+            </if>
+            <if test="tranTypeDesc != null">
+                TRAN_TYPE_DESC,
+            </if>
+            <if test="printTranDesc != null">
+                PRINT_TRAN_DESC,
+            </if>
+            <if test="crDrInd != null">
+                CR_DR_IND,
+            </if>
+            <if test="balanceFlag != null">
+                BALANCE_FLAG,
+            </if>
+            <if test="cashTranFlag != null">
+                CASH_TRAN_FLAG,
+            </if>
+            <if test="updTailboxFlag != null">
+                UPD_TAILBOX_FLAG,
+            </if>
+            <if test="resPriority != null">
+                RES_PRIORITY,
+            </if>
+            <if test="recalcAcctStopPayFlag != null">
+                RECALC_ACCT_STOP_PAY_FLAG,
+            </if>
+            <if test="recalcResAmtFlag != null">
+                RECALC_RES_AMT_FLAG,
+            </if>
+            <if test="availbalCalcType != null">
+                AVAILBAL_CALC_TYPE,
+            </if>
+            <if test="othTranType != null">
+                OTH_TRAN_TYPE,
+            </if>
+            <if test="reversal != null">
+                REVERSAL,
+            </if>
+            <if test="reversalTranType != null">
+                REVERSAL_TRAN_TYPE,
+            </if>
+            <if test="programIdGroup != null">
+                PROGRAM_ID_GROUP,
+            </if>
+            <if test="balTypePriority != null">
+                BAL_TYPE_PRIORITY,
+            </if>
+            <if test="correctFlag != null">
+                CORRECT_FLAG,
+            </if>
+            <if test="multiRvsTranTypeFlag != null">
+                MULTI_RVS_TRAN_TYPE_FLAG,
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE,
+            </if>
+            <if test="isInitParam != null">
+                IS_INIT_PARAM,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="chequeBookFlag != null">
+                CHEQUE_BOOK_FLAG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tranType != null">
+                #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranClass != null">
+                #{tranClass,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTypeDesc != null">
+                #{tranTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="printTranDesc != null">
+                #{printTranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="crDrInd != null">
+                #{crDrInd,jdbcType=VARCHAR},
+            </if>
+            <if test="balanceFlag != null">
+                #{balanceFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="cashTranFlag != null">
+                #{cashTranFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="updTailboxFlag != null">
+                #{updTailboxFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="resPriority != null">
+                #{resPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="recalcAcctStopPayFlag != null">
+                #{recalcAcctStopPayFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="recalcResAmtFlag != null">
+                #{recalcResAmtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="availbalCalcType != null">
+                #{availbalCalcType,jdbcType=VARCHAR},
+            </if>
+            <if test="othTranType != null">
+                #{othTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="reversal != null">
+                #{reversal,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalTranType != null">
+                #{reversalTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="programIdGroup != null">
+                #{programIdGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="balTypePriority != null">
+                #{balTypePriority,jdbcType=VARCHAR},
+            </if>
+            <if test="correctFlag != null">
+                #{correctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="multiRvsTranTypeFlag != null">
+                #{multiRvsTranTypeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="isInitParam != null">
+                #{isInitParam,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="chequeBookFlag != null">
+                #{chequeBookFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbTranDefExample" resultType="java.lang.Long">
+        select count(*) from RB_TRAN_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_TRAN_DEF
+        <set>
+            <if test="row.tranType != null">
+                TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranClass != null">
+                TRAN_CLASS = #{row.tranClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTypeDesc != null">
+                TRAN_TYPE_DESC = #{row.tranTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.printTranDesc != null">
+                PRINT_TRAN_DESC = #{row.printTranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.crDrInd != null">
+                CR_DR_IND = #{row.crDrInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.balanceFlag != null">
+                BALANCE_FLAG = #{row.balanceFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashTranFlag != null">
+                CASH_TRAN_FLAG = #{row.cashTranFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.updTailboxFlag != null">
+                UPD_TAILBOX_FLAG = #{row.updTailboxFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resPriority != null">
+                RES_PRIORITY = #{row.resPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="row.recalcAcctStopPayFlag != null">
+                RECALC_ACCT_STOP_PAY_FLAG = #{row.recalcAcctStopPayFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.recalcResAmtFlag != null">
+                RECALC_RES_AMT_FLAG = #{row.recalcResAmtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.availbalCalcType != null">
+                AVAILBAL_CALC_TYPE = #{row.availbalCalcType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othTranType != null">
+                OTH_TRAN_TYPE = #{row.othTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reversal != null">
+                REVERSAL = #{row.reversal,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reversalTranType != null">
+                REVERSAL_TRAN_TYPE = #{row.reversalTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.programIdGroup != null">
+                PROGRAM_ID_GROUP = #{row.programIdGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="row.balTypePriority != null">
+                BAL_TYPE_PRIORITY = #{row.balTypePriority,jdbcType=VARCHAR},
+            </if>
+            <if test="row.correctFlag != null">
+                CORRECT_FLAG = #{row.correctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.multiRvsTranTypeFlag != null">
+                MULTI_RVS_TRAN_TYPE_FLAG = #{row.multiRvsTranTypeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sourceType != null">
+                SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isInitParam != null">
+                IS_INIT_PARAM = #{row.isInitParam,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.chequeBookFlag != null">
+                CHEQUE_BOOK_FLAG = #{row.chequeBookFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_TRAN_DEF
+        set
+            TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},            TRAN_CLASS = #{row.tranClass,jdbcType=VARCHAR},            TRAN_TYPE_DESC = #{row.tranTypeDesc,jdbcType=VARCHAR},            PRINT_TRAN_DESC = #{row.printTranDesc,jdbcType=VARCHAR},            CR_DR_IND = #{row.crDrInd,jdbcType=VARCHAR},            BALANCE_FLAG = #{row.balanceFlag,jdbcType=VARCHAR},            CASH_TRAN_FLAG = #{row.cashTranFlag,jdbcType=VARCHAR},            UPD_TAILBOX_FLAG = #{row.updTailboxFlag,jdbcType=VARCHAR},            RES_PRIORITY = #{row.resPriority,jdbcType=VARCHAR},            RECALC_ACCT_STOP_PAY_FLAG = #{row.recalcAcctStopPayFlag,jdbcType=VARCHAR},            RECALC_RES_AMT_FLAG = #{row.recalcResAmtFlag,jdbcType=VARCHAR},            AVAILBAL_CALC_TYPE = #{row.availbalCalcType,jdbcType=VARCHAR},            OTH_TRAN_TYPE = #{row.othTranType,jdbcType=VARCHAR},            REVERSAL = #{row.reversal,jdbcType=VARCHAR},            REVERSAL_TRAN_TYPE = #{row.reversalTranType,jdbcType=VARCHAR},            PROGRAM_ID_GROUP = #{row.programIdGroup,jdbcType=VARCHAR},            BAL_TYPE_PRIORITY = #{row.balTypePriority,jdbcType=VARCHAR},            CORRECT_FLAG = #{row.correctFlag,jdbcType=VARCHAR},            MULTI_RVS_TRAN_TYPE_FLAG = #{row.multiRvsTranTypeFlag,jdbcType=VARCHAR},            SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},            IS_INIT_PARAM = #{row.isInitParam,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            CHEQUE_BOOK_FLAG = #{row.chequeBookFlag,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbTranDef">
+        update RB_TRAN_DEF
+        <set>
+            <if test="tranClass != null">
+                TRAN_CLASS = #{tranClass,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTypeDesc != null">
+                TRAN_TYPE_DESC = #{tranTypeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="printTranDesc != null">
+                PRINT_TRAN_DESC = #{printTranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="crDrInd != null">
+                CR_DR_IND = #{crDrInd,jdbcType=VARCHAR},
+            </if>
+            <if test="balanceFlag != null">
+                BALANCE_FLAG = #{balanceFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="cashTranFlag != null">
+                CASH_TRAN_FLAG = #{cashTranFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="updTailboxFlag != null">
+                UPD_TAILBOX_FLAG = #{updTailboxFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="resPriority != null">
+                RES_PRIORITY = #{resPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="recalcAcctStopPayFlag != null">
+                RECALC_ACCT_STOP_PAY_FLAG = #{recalcAcctStopPayFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="recalcResAmtFlag != null">
+                RECALC_RES_AMT_FLAG = #{recalcResAmtFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="availbalCalcType != null">
+                AVAILBAL_CALC_TYPE = #{availbalCalcType,jdbcType=VARCHAR},
+            </if>
+            <if test="othTranType != null">
+                OTH_TRAN_TYPE = #{othTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="reversal != null">
+                REVERSAL = #{reversal,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalTranType != null">
+                REVERSAL_TRAN_TYPE = #{reversalTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="programIdGroup != null">
+                PROGRAM_ID_GROUP = #{programIdGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="balTypePriority != null">
+                BAL_TYPE_PRIORITY = #{balTypePriority,jdbcType=VARCHAR},
+            </if>
+            <if test="correctFlag != null">
+                CORRECT_FLAG = #{correctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="multiRvsTranTypeFlag != null">
+                MULTI_RVS_TRAN_TYPE_FLAG = #{multiRvsTranTypeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="isInitParam != null">
+                IS_INIT_PARAM = #{isInitParam,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="chequeBookFlag != null">
+                CHEQUE_BOOK_FLAG = #{chequeBookFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbTranDef">
+        update RB_TRAN_DEF
+        set
+            TRAN_CLASS = #{tranClass,jdbcType=VARCHAR},            TRAN_TYPE_DESC = #{tranTypeDesc,jdbcType=VARCHAR},            PRINT_TRAN_DESC = #{printTranDesc,jdbcType=VARCHAR},            CR_DR_IND = #{crDrInd,jdbcType=VARCHAR},            BALANCE_FLAG = #{balanceFlag,jdbcType=VARCHAR},            CASH_TRAN_FLAG = #{cashTranFlag,jdbcType=VARCHAR},            UPD_TAILBOX_FLAG = #{updTailboxFlag,jdbcType=VARCHAR},            RES_PRIORITY = #{resPriority,jdbcType=VARCHAR},            RECALC_ACCT_STOP_PAY_FLAG = #{recalcAcctStopPayFlag,jdbcType=VARCHAR},            RECALC_RES_AMT_FLAG = #{recalcResAmtFlag,jdbcType=VARCHAR},            AVAILBAL_CALC_TYPE = #{availbalCalcType,jdbcType=VARCHAR},            OTH_TRAN_TYPE = #{othTranType,jdbcType=VARCHAR},            REVERSAL = #{reversal,jdbcType=VARCHAR},            REVERSAL_TRAN_TYPE = #{reversalTranType,jdbcType=VARCHAR},            PROGRAM_ID_GROUP = #{programIdGroup,jdbcType=VARCHAR},            BAL_TYPE_PRIORITY = #{balTypePriority,jdbcType=VARCHAR},            CORRECT_FLAG = #{correctFlag,jdbcType=VARCHAR},            MULTI_RVS_TRAN_TYPE_FLAG = #{multiRvsTranTypeFlag,jdbcType=VARCHAR},            SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},            IS_INIT_PARAM = #{isInitParam,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            CHEQUE_BOOK_FLAG = #{chequeBookFlag,jdbcType=VARCHAR}        where TRAN_TYPE = #{tranType,jdbcType=VARCHAR}
+    </update>
+</mapper>
