@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbBillRegisterMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbBillRegister">
+        <id column="BILL_SERIAL_NO" property="billSerialNo" jdbcType="VARCHAR" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="BILL_NO" property="billNo" jdbcType="VARCHAR" />
+        <result column="BILL_BUSI_TYPE" property="billBusiType" jdbcType="VARCHAR" />
+        <result column="BILL_TYPE" property="billType" jdbcType="VARCHAR" />
+        <result column="BILL_STATUS" property="billStatus" jdbcType="VARCHAR" />
+        <result column="BILL_PREFIX" property="billPrefix" jdbcType="VARCHAR" />
+        <result column="BILL_VOUCHER_NO" property="billVoucherNo" jdbcType="VARCHAR" />
+        <result column="DOC_TYPE" property="docType" jdbcType="VARCHAR" />
+        <result column="DOC_CLASS" property="docClass" jdbcType="VARCHAR" />
+        <result column="PROMPT_DATE" property="promptDate" jdbcType="TIMESTAMP" />
+        <result column="SETTLE_DATE" property="settleDate" jdbcType="TIMESTAMP" />
+        <result column="ENCRYPT_KEY" property="encryptKey" jdbcType="VARCHAR" />
+        <result column="BILL_APPLY_TYPE" property="billApplyType" jdbcType="VARCHAR" />
+        <result column="BILL_APPLY_NO" property="billApplyNo" jdbcType="VARCHAR" />
+        <result column="BILL_APPLY_PREFIX" property="billApplyPrefix" jdbcType="VARCHAR" />
+        <result column="BILL_APPLY_DATE" property="billApplyDate" jdbcType="TIMESTAMP" />
+        <result column="BILL_ISSUE_AMT" property="billIssueAmt" jdbcType="DECIMAL" />
+        <result column="BILL_ISSUE_CCY" property="billIssueCcy" jdbcType="VARCHAR" />
+        <result column="BILL_ISSUE_TYPE" property="billIssueType" jdbcType="VARCHAR" />
+        <result column="BILL_ISSUE_BANK_NO" property="billIssueBankNo" jdbcType="VARCHAR" />
+        <result column="BILL_ISSUE_BANK_NAME" property="billIssueBankName" jdbcType="VARCHAR" />
+        <result column="BILL_ISSUE_DATE" property="billIssueDate" jdbcType="TIMESTAMP" />
+        <result column="BILL_ISSUE_CASH_ITEM" property="billIssueCashItem" jdbcType="VARCHAR" />
+        <result column="BILL_ISSUE_BRANCH" property="billIssueBranch" jdbcType="VARCHAR" />
+        <result column="BILL_ISSUE_USER_ID" property="billIssueUserId" jdbcType="VARCHAR" />
+        <result column="APPR_USER_ID" property="apprUserId" jdbcType="VARCHAR" />
+        <result column="AUTH_USER_ID" property="authUserId" jdbcType="VARCHAR" />
+        <result column="PRINT_CNT" property="printCnt" jdbcType="INTEGER" />
+        <result column="AGENT_PAYER_BANK_NO" property="agentPayerBankNo" jdbcType="VARCHAR" />
+        <result column="AGENT_PAYER_BANK_NAME" property="agentPayerBankName" jdbcType="VARCHAR" />
+        <result column="BILL_PAYMENT_STATUS" property="billPaymentStatus" jdbcType="VARCHAR" />
+        <result column="BILL_PAYMENT_AMT" property="billPaymentAmt" jdbcType="DECIMAL" />
+        <result column="EXCESS_AMT" property="excessAmt" jdbcType="DECIMAL" />
+        <result column="PAYMENT_TYPE" property="paymentType" jdbcType="VARCHAR" />
+        <result column="PAYMENT_DATE" property="paymentDate" jdbcType="TIMESTAMP" />
+        <result column="PAYMENT_CASH_ITEM" property="paymentCashItem" jdbcType="VARCHAR" />
+        <result column="PAYMENT_BANK_NO" property="paymentBankNo" jdbcType="VARCHAR" />
+        <result column="PAYMENT_BANK_NAME" property="paymentBankName" jdbcType="VARCHAR" />
+        <result column="PAYER_BASE_ACCT_NO" property="payerBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="PAYER_BANK_NAME" property="payerBankName" jdbcType="VARCHAR" />
+        <result column="PAYER_ACCT_NAME" property="payerAcctName" jdbcType="VARCHAR" />
+        <result column="PAYER_ACCT_CCY" property="payerAcctCcy" jdbcType="VARCHAR" />
+        <result column="PAYER_ACCT_PROD_TYPE" property="payerAcctProdType" jdbcType="VARCHAR" />
+        <result column="PAYER_ACCT_SEQ_NO" property="payerAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="PAYER_DOCUMENT_ID" property="payerDocumentId" jdbcType="VARCHAR" />
+        <result column="PAYER_DOCUMENT_TYPE" property="payerDocumentType" jdbcType="VARCHAR" />
+        <result column="PAYER_ADDR" property="payerAddr" jdbcType="VARCHAR" />
+        <result column="PAYER_BANK_CODE" property="payerBankCode" jdbcType="VARCHAR" />
+        <result column="PAYEE_BASE_ACCT_NO" property="payeeBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="PAYEE_ACCT_SEQ_NO" property="payeeAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="PAYEE_PROD_TYPE" property="payeeProdType" jdbcType="VARCHAR" />
+        <result column="PAYEE_ACCT_CCY" property="payeeAcctCcy" jdbcType="VARCHAR" />
+        <result column="PAYEE_ACCT_NAME" property="payeeAcctName" jdbcType="VARCHAR" />
+        <result column="PAYEE_ADDR" property="payeeAddr" jdbcType="VARCHAR" />
+        <result column="PAYEE_DOCUMENT_TYPE" property="payeeDocumentType" jdbcType="VARCHAR" />
+        <result column="PAYEE_DOCUMENT_ID" property="payeeDocumentId" jdbcType="VARCHAR" />
+        <result column="PAYEE_BANK_CODE" property="payeeBankCode" jdbcType="VARCHAR" />
+        <result column="PAYEE_BANK_NAME" property="payeeBankName" jdbcType="VARCHAR" />
+        <result column="RETURN_BASE_ACCT_NO" property="returnBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="RETURN_ACCT_NAME" property="returnAcctName" jdbcType="VARCHAR" />
+        <result column="RETURN_DOCUMENT_ID" property="returnDocumentId" jdbcType="VARCHAR" />
+        <result column="RETURN_DOCUMENT_TYPE" property="returnDocumentType" jdbcType="VARCHAR" />
+        <result column="REFUND_BANK_NO" property="refundBankNo" jdbcType="VARCHAR" />
+        <result column="RETURN_CASH_ITEM" property="returnCashItem" jdbcType="VARCHAR" />
+        <result column="RETURN_TYPE" property="returnType" jdbcType="VARCHAR" />
+        <result column="RETURN_USER" property="returnUser" jdbcType="VARCHAR" />
+        <result column="RETURN_DATE" property="returnDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_HOLDER_NAME" property="lastHolderName" jdbcType="VARCHAR" />
+        <result column="LAST_HOLDER_BASE_ACCT_NO" property="lastHolderBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="LAST_HOLDER_BANK_CODE" property="lastHolderBankCode" jdbcType="VARCHAR" />
+        <result column="LAST_HOLDER_BANK_NAME" property="lastHolderBankName" jdbcType="VARCHAR" />
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="LAST_TRAN_DATE" property="lastTranDate" jdbcType="TIMESTAMP" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        BILL_SERIAL_NO,        CLIENT_NO,        BILL_NO,        BILL_BUSI_TYPE,        BILL_TYPE,        BILL_STATUS,        BILL_PREFIX,        BILL_VOUCHER_NO,        DOC_TYPE,        DOC_CLASS,        PROMPT_DATE,        SETTLE_DATE,        ENCRYPT_KEY,        BILL_APPLY_TYPE,        BILL_APPLY_NO,        BILL_APPLY_PREFIX,        BILL_APPLY_DATE,        BILL_ISSUE_AMT,        BILL_ISSUE_CCY,        BILL_ISSUE_TYPE,        BILL_ISSUE_BANK_NO,        BILL_ISSUE_BANK_NAME,        BILL_ISSUE_DATE,        BILL_ISSUE_CASH_ITEM,        BILL_ISSUE_BRANCH,        BILL_ISSUE_USER_ID,        APPR_USER_ID,        AUTH_USER_ID,        PRINT_CNT,        AGENT_PAYER_BANK_NO,        AGENT_PAYER_BANK_NAME,        BILL_PAYMENT_STATUS,        BILL_PAYMENT_AMT,        EXCESS_AMT,        PAYMENT_TYPE,        PAYMENT_DATE,        PAYMENT_CASH_ITEM,        PAYMENT_BANK_NO,        PAYMENT_BANK_NAME,        PAYER_BASE_ACCT_NO,        PAYER_BANK_NAME,        PAYER_ACCT_NAME,        PAYER_ACCT_CCY,        PAYER_ACCT_PROD_TYPE,        PAYER_ACCT_SEQ_NO,        PAYER_DOCUMENT_ID,        PAYER_DOCUMENT_TYPE,        PAYER_ADDR,        PAYER_BANK_CODE,        PAYEE_BASE_ACCT_NO,        PAYEE_ACCT_SEQ_NO,        PAYEE_PROD_TYPE,        PAYEE_ACCT_CCY,        PAYEE_ACCT_NAME,        PAYEE_ADDR,        PAYEE_DOCUMENT_TYPE,        PAYEE_DOCUMENT_ID,        PAYEE_BANK_CODE,        PAYEE_BANK_NAME,        RETURN_BASE_ACCT_NO,        RETURN_ACCT_NAME,        RETURN_DOCUMENT_ID,        RETURN_DOCUMENT_TYPE,        REFUND_BANK_NO,        RETURN_CASH_ITEM,        RETURN_TYPE,        RETURN_USER,        RETURN_DATE,        LAST_HOLDER_NAME,        LAST_HOLDER_BASE_ACCT_NO,        LAST_HOLDER_BANK_CODE,        LAST_HOLDER_BANK_NAME,        REMARK,        COMPANY,        LAST_TRAN_DATE,        TRAN_TIMESTAMP,        CREATE_TIMESTAMP,        LAST_CHANGE_DATE    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbBillRegisterExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BILL_REGISTER
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BILL_REGISTER
+        where BILL_SERIAL_NO = #{billSerialNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BILL_REGISTER
+        where BILL_SERIAL_NO = #{billSerialNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbBillRegisterExample">
+        delete from RB_BILL_REGISTER
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbBillRegister">
+        insert into RB_BILL_REGISTER
+        (
+            BILL_SERIAL_NO,            CLIENT_NO,            BILL_NO,            BILL_BUSI_TYPE,            BILL_TYPE,            BILL_STATUS,            BILL_PREFIX,            BILL_VOUCHER_NO,            DOC_TYPE,            DOC_CLASS,            PROMPT_DATE,            SETTLE_DATE,            ENCRYPT_KEY,            BILL_APPLY_TYPE,            BILL_APPLY_NO,            BILL_APPLY_PREFIX,            BILL_APPLY_DATE,            BILL_ISSUE_AMT,            BILL_ISSUE_CCY,            BILL_ISSUE_TYPE,            BILL_ISSUE_BANK_NO,            BILL_ISSUE_BANK_NAME,            BILL_ISSUE_DATE,            BILL_ISSUE_CASH_ITEM,            BILL_ISSUE_BRANCH,            BILL_ISSUE_USER_ID,            APPR_USER_ID,            AUTH_USER_ID,            PRINT_CNT,            AGENT_PAYER_BANK_NO,            AGENT_PAYER_BANK_NAME,            BILL_PAYMENT_STATUS,            BILL_PAYMENT_AMT,            EXCESS_AMT,            PAYMENT_TYPE,            PAYMENT_DATE,            PAYMENT_CASH_ITEM,            PAYMENT_BANK_NO,            PAYMENT_BANK_NAME,            PAYER_BASE_ACCT_NO,            PAYER_BANK_NAME,            PAYER_ACCT_NAME,            PAYER_ACCT_CCY,            PAYER_ACCT_PROD_TYPE,            PAYER_ACCT_SEQ_NO,            PAYER_DOCUMENT_ID,            PAYER_DOCUMENT_TYPE,            PAYER_ADDR,            PAYER_BANK_CODE,            PAYEE_BASE_ACCT_NO,            PAYEE_ACCT_SEQ_NO,            PAYEE_PROD_TYPE,            PAYEE_ACCT_CCY,            PAYEE_ACCT_NAME,            PAYEE_ADDR,            PAYEE_DOCUMENT_TYPE,            PAYEE_DOCUMENT_ID,            PAYEE_BANK_CODE,            PAYEE_BANK_NAME,            RETURN_BASE_ACCT_NO,            RETURN_ACCT_NAME,            RETURN_DOCUMENT_ID,            RETURN_DOCUMENT_TYPE,            REFUND_BANK_NO,            RETURN_CASH_ITEM,            RETURN_TYPE,            RETURN_USER,            RETURN_DATE,            LAST_HOLDER_NAME,            LAST_HOLDER_BASE_ACCT_NO,            LAST_HOLDER_BANK_CODE,            LAST_HOLDER_BANK_NAME,            REMARK,            COMPANY,            LAST_TRAN_DATE,            TRAN_TIMESTAMP,            CREATE_TIMESTAMP,            LAST_CHANGE_DATE        )
+        values
+        (
+            #{billSerialNo,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{billNo,jdbcType=VARCHAR},            #{billBusiType,jdbcType=VARCHAR},            #{billType,jdbcType=VARCHAR},            #{billStatus,jdbcType=VARCHAR},            #{billPrefix,jdbcType=VARCHAR},            #{billVoucherNo,jdbcType=VARCHAR},            #{docType,jdbcType=VARCHAR},            #{docClass,jdbcType=VARCHAR},            #{promptDate,jdbcType=TIMESTAMP},            #{settleDate,jdbcType=TIMESTAMP},            #{encryptKey,jdbcType=VARCHAR},            #{billApplyType,jdbcType=VARCHAR},            #{billApplyNo,jdbcType=VARCHAR},            #{billApplyPrefix,jdbcType=VARCHAR},            #{billApplyDate,jdbcType=TIMESTAMP},            #{billIssueAmt,jdbcType=DECIMAL},            #{billIssueCcy,jdbcType=VARCHAR},            #{billIssueType,jdbcType=VARCHAR},            #{billIssueBankNo,jdbcType=VARCHAR},            #{billIssueBankName,jdbcType=VARCHAR},            #{billIssueDate,jdbcType=TIMESTAMP},            #{billIssueCashItem,jdbcType=VARCHAR},            #{billIssueBranch,jdbcType=VARCHAR},            #{billIssueUserId,jdbcType=VARCHAR},            #{apprUserId,jdbcType=VARCHAR},            #{authUserId,jdbcType=VARCHAR},            #{printCnt,jdbcType=INTEGER},            #{agentPayerBankNo,jdbcType=VARCHAR},            #{agentPayerBankName,jdbcType=VARCHAR},            #{billPaymentStatus,jdbcType=VARCHAR},            #{billPaymentAmt,jdbcType=DECIMAL},            #{excessAmt,jdbcType=DECIMAL},            #{paymentType,jdbcType=VARCHAR},            #{paymentDate,jdbcType=TIMESTAMP},            #{paymentCashItem,jdbcType=VARCHAR},            #{paymentBankNo,jdbcType=VARCHAR},            #{paymentBankName,jdbcType=VARCHAR},            #{payerBaseAcctNo,jdbcType=VARCHAR},            #{payerBankName,jdbcType=VARCHAR},            #{payerAcctName,jdbcType=VARCHAR},            #{payerAcctCcy,jdbcType=VARCHAR},            #{payerAcctProdType,jdbcType=VARCHAR},            #{payerAcctSeqNo,jdbcType=VARCHAR},            #{payerDocumentId,jdbcType=VARCHAR},            #{payerDocumentType,jdbcType=VARCHAR},            #{payerAddr,jdbcType=VARCHAR},            #{payerBankCode,jdbcType=VARCHAR},            #{payeeBaseAcctNo,jdbcType=VARCHAR},            #{payeeAcctSeqNo,jdbcType=VARCHAR},            #{payeeProdType,jdbcType=VARCHAR},            #{payeeAcctCcy,jdbcType=VARCHAR},            #{payeeAcctName,jdbcType=VARCHAR},            #{payeeAddr,jdbcType=VARCHAR},            #{payeeDocumentType,jdbcType=VARCHAR},            #{payeeDocumentId,jdbcType=VARCHAR},            #{payeeBankCode,jdbcType=VARCHAR},            #{payeeBankName,jdbcType=VARCHAR},            #{returnBaseAcctNo,jdbcType=VARCHAR},            #{returnAcctName,jdbcType=VARCHAR},            #{returnDocumentId,jdbcType=VARCHAR},            #{returnDocumentType,jdbcType=VARCHAR},            #{refundBankNo,jdbcType=VARCHAR},            #{returnCashItem,jdbcType=VARCHAR},            #{returnType,jdbcType=VARCHAR},            #{returnUser,jdbcType=VARCHAR},            #{returnDate,jdbcType=TIMESTAMP},            #{lastHolderName,jdbcType=VARCHAR},            #{lastHolderBaseAcctNo,jdbcType=VARCHAR},            #{lastHolderBankCode,jdbcType=VARCHAR},            #{lastHolderBankName,jdbcType=VARCHAR},            #{remark,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{lastTranDate,jdbcType=TIMESTAMP},            #{tranTimestamp,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbBillRegister">
+        insert into RB_BILL_REGISTER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="billSerialNo != null">
+                BILL_SERIAL_NO,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="billNo != null">
+                BILL_NO,
+            </if>
+            <if test="billBusiType != null">
+                BILL_BUSI_TYPE,
+            </if>
+            <if test="billType != null">
+                BILL_TYPE,
+            </if>
+            <if test="billStatus != null">
+                BILL_STATUS,
+            </if>
+            <if test="billPrefix != null">
+                BILL_PREFIX,
+            </if>
+            <if test="billVoucherNo != null">
+                BILL_VOUCHER_NO,
+            </if>
+            <if test="docType != null">
+                DOC_TYPE,
+            </if>
+            <if test="docClass != null">
+                DOC_CLASS,
+            </if>
+            <if test="promptDate != null">
+                PROMPT_DATE,
+            </if>
+            <if test="settleDate != null">
+                SETTLE_DATE,
+            </if>
+            <if test="encryptKey != null">
+                ENCRYPT_KEY,
+            </if>
+            <if test="billApplyType != null">
+                BILL_APPLY_TYPE,
+            </if>
+            <if test="billApplyNo != null">
+                BILL_APPLY_NO,
+            </if>
+            <if test="billApplyPrefix != null">
+                BILL_APPLY_PREFIX,
+            </if>
+            <if test="billApplyDate != null">
+                BILL_APPLY_DATE,
+            </if>
+            <if test="billIssueAmt != null">
+                BILL_ISSUE_AMT,
+            </if>
+            <if test="billIssueCcy != null">
+                BILL_ISSUE_CCY,
+            </if>
+            <if test="billIssueType != null">
+                BILL_ISSUE_TYPE,
+            </if>
+            <if test="billIssueBankNo != null">
+                BILL_ISSUE_BANK_NO,
+            </if>
+            <if test="billIssueBankName != null">
+                BILL_ISSUE_BANK_NAME,
+            </if>
+            <if test="billIssueDate != null">
+                BILL_ISSUE_DATE,
+            </if>
+            <if test="billIssueCashItem != null">
+                BILL_ISSUE_CASH_ITEM,
+            </if>
+            <if test="billIssueBranch != null">
+                BILL_ISSUE_BRANCH,
+            </if>
+            <if test="billIssueUserId != null">
+                BILL_ISSUE_USER_ID,
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID,
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID,
+            </if>
+            <if test="printCnt != null">
+                PRINT_CNT,
+            </if>
+            <if test="agentPayerBankNo != null">
+                AGENT_PAYER_BANK_NO,
+            </if>
+            <if test="agentPayerBankName != null">
+                AGENT_PAYER_BANK_NAME,
+            </if>
+            <if test="billPaymentStatus != null">
+                BILL_PAYMENT_STATUS,
+            </if>
+            <if test="billPaymentAmt != null">
+                BILL_PAYMENT_AMT,
+            </if>
+            <if test="excessAmt != null">
+                EXCESS_AMT,
+            </if>
+            <if test="paymentType != null">
+                PAYMENT_TYPE,
+            </if>
+            <if test="paymentDate != null">
+                PAYMENT_DATE,
+            </if>
+            <if test="paymentCashItem != null">
+                PAYMENT_CASH_ITEM,
+            </if>
+            <if test="paymentBankNo != null">
+                PAYMENT_BANK_NO,
+            </if>
+            <if test="paymentBankName != null">
+                PAYMENT_BANK_NAME,
+            </if>
+            <if test="payerBaseAcctNo != null">
+                PAYER_BASE_ACCT_NO,
+            </if>
+            <if test="payerBankName != null">
+                PAYER_BANK_NAME,
+            </if>
+            <if test="payerAcctName != null">
+                PAYER_ACCT_NAME,
+            </if>
+            <if test="payerAcctCcy != null">
+                PAYER_ACCT_CCY,
+            </if>
+            <if test="payerAcctProdType != null">
+                PAYER_ACCT_PROD_TYPE,
+            </if>
+            <if test="payerAcctSeqNo != null">
+                PAYER_ACCT_SEQ_NO,
+            </if>
+            <if test="payerDocumentId != null">
+                PAYER_DOCUMENT_ID,
+            </if>
+            <if test="payerDocumentType != null">
+                PAYER_DOCUMENT_TYPE,
+            </if>
+            <if test="payerAddr != null">
+                PAYER_ADDR,
+            </if>
+            <if test="payerBankCode != null">
+                PAYER_BANK_CODE,
+            </if>
+            <if test="payeeBaseAcctNo != null">
+                PAYEE_BASE_ACCT_NO,
+            </if>
+            <if test="payeeAcctSeqNo != null">
+                PAYEE_ACCT_SEQ_NO,
+            </if>
+            <if test="payeeProdType != null">
+                PAYEE_PROD_TYPE,
+            </if>
+            <if test="payeeAcctCcy != null">
+                PAYEE_ACCT_CCY,
+            </if>
+            <if test="payeeAcctName != null">
+                PAYEE_ACCT_NAME,
+            </if>
+            <if test="payeeAddr != null">
+                PAYEE_ADDR,
+            </if>
+            <if test="payeeDocumentType != null">
+                PAYEE_DOCUMENT_TYPE,
+            </if>
+            <if test="payeeDocumentId != null">
+                PAYEE_DOCUMENT_ID,
+            </if>
+            <if test="payeeBankCode != null">
+                PAYEE_BANK_CODE,
+            </if>
+            <if test="payeeBankName != null">
+                PAYEE_BANK_NAME,
+            </if>
+            <if test="returnBaseAcctNo != null">
+                RETURN_BASE_ACCT_NO,
+            </if>
+            <if test="returnAcctName != null">
+                RETURN_ACCT_NAME,
+            </if>
+            <if test="returnDocumentId != null">
+                RETURN_DOCUMENT_ID,
+            </if>
+            <if test="returnDocumentType != null">
+                RETURN_DOCUMENT_TYPE,
+            </if>
+            <if test="refundBankNo != null">
+                REFUND_BANK_NO,
+            </if>
+            <if test="returnCashItem != null">
+                RETURN_CASH_ITEM,
+            </if>
+            <if test="returnType != null">
+                RETURN_TYPE,
+            </if>
+            <if test="returnUser != null">
+                RETURN_USER,
+            </if>
+            <if test="returnDate != null">
+                RETURN_DATE,
+            </if>
+            <if test="lastHolderName != null">
+                LAST_HOLDER_NAME,
+            </if>
+            <if test="lastHolderBaseAcctNo != null">
+                LAST_HOLDER_BASE_ACCT_NO,
+            </if>
+            <if test="lastHolderBankCode != null">
+                LAST_HOLDER_BANK_CODE,
+            </if>
+            <if test="lastHolderBankName != null">
+                LAST_HOLDER_BANK_NAME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="lastTranDate != null">
+                LAST_TRAN_DATE,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="billSerialNo != null">
+                #{billSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billNo != null">
+                #{billNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billBusiType != null">
+                #{billBusiType,jdbcType=VARCHAR},
+            </if>
+            <if test="billType != null">
+                #{billType,jdbcType=VARCHAR},
+            </if>
+            <if test="billStatus != null">
+                #{billStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="billPrefix != null">
+                #{billPrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="billVoucherNo != null">
+                #{billVoucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="docType != null">
+                #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="docClass != null">
+                #{docClass,jdbcType=VARCHAR},
+            </if>
+            <if test="promptDate != null">
+                #{promptDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="settleDate != null">
+                #{settleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="encryptKey != null">
+                #{encryptKey,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyType != null">
+                #{billApplyType,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyNo != null">
+                #{billApplyNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyPrefix != null">
+                #{billApplyPrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyDate != null">
+                #{billApplyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billIssueAmt != null">
+                #{billIssueAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="billIssueCcy != null">
+                #{billIssueCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueType != null">
+                #{billIssueType,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueBankNo != null">
+                #{billIssueBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueBankName != null">
+                #{billIssueBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueDate != null">
+                #{billIssueDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billIssueCashItem != null">
+                #{billIssueCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueBranch != null">
+                #{billIssueBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueUserId != null">
+                #{billIssueUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="printCnt != null">
+                #{printCnt,jdbcType=INTEGER},
+            </if>
+            <if test="agentPayerBankNo != null">
+                #{agentPayerBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agentPayerBankName != null">
+                #{agentPayerBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="billPaymentStatus != null">
+                #{billPaymentStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="billPaymentAmt != null">
+                #{billPaymentAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="excessAmt != null">
+                #{excessAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="paymentType != null">
+                #{paymentType,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentDate != null">
+                #{paymentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="paymentCashItem != null">
+                #{paymentCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentBankNo != null">
+                #{paymentBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentBankName != null">
+                #{paymentBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="payerBaseAcctNo != null">
+                #{payerBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payerBankName != null">
+                #{payerBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctName != null">
+                #{payerAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctCcy != null">
+                #{payerAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctProdType != null">
+                #{payerAcctProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctSeqNo != null">
+                #{payerAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payerDocumentId != null">
+                #{payerDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="payerDocumentType != null">
+                #{payerDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAddr != null">
+                #{payerAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="payerBankCode != null">
+                #{payerBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeBaseAcctNo != null">
+                #{payeeBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAcctSeqNo != null">
+                #{payeeAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeProdType != null">
+                #{payeeProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAcctCcy != null">
+                #{payeeAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAcctName != null">
+                #{payeeAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAddr != null">
+                #{payeeAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeDocumentType != null">
+                #{payeeDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeDocumentId != null">
+                #{payeeDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeBankCode != null">
+                #{payeeBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeBankName != null">
+                #{payeeBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="returnBaseAcctNo != null">
+                #{returnBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="returnAcctName != null">
+                #{returnAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="returnDocumentId != null">
+                #{returnDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="returnDocumentType != null">
+                #{returnDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="refundBankNo != null">
+                #{refundBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCashItem != null">
+                #{returnCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="returnType != null">
+                #{returnType,jdbcType=VARCHAR},
+            </if>
+            <if test="returnUser != null">
+                #{returnUser,jdbcType=VARCHAR},
+            </if>
+            <if test="returnDate != null">
+                #{returnDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastHolderName != null">
+                #{lastHolderName,jdbcType=VARCHAR},
+            </if>
+            <if test="lastHolderBaseAcctNo != null">
+                #{lastHolderBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lastHolderBankCode != null">
+                #{lastHolderBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="lastHolderBankName != null">
+                #{lastHolderBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="lastTranDate != null">
+                #{lastTranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbBillRegisterExample" resultType="java.lang.Long">
+        select count(*) from RB_BILL_REGISTER
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BILL_REGISTER
+        <set>
+            <if test="row.billSerialNo != null">
+                BILL_SERIAL_NO = #{row.billSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billNo != null">
+                BILL_NO = #{row.billNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billBusiType != null">
+                BILL_BUSI_TYPE = #{row.billBusiType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billType != null">
+                BILL_TYPE = #{row.billType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billStatus != null">
+                BILL_STATUS = #{row.billStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billPrefix != null">
+                BILL_PREFIX = #{row.billPrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billVoucherNo != null">
+                BILL_VOUCHER_NO = #{row.billVoucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.docType != null">
+                DOC_TYPE = #{row.docType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.docClass != null">
+                DOC_CLASS = #{row.docClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.promptDate != null">
+                PROMPT_DATE = #{row.promptDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.settleDate != null">
+                SETTLE_DATE = #{row.settleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.encryptKey != null">
+                ENCRYPT_KEY = #{row.encryptKey,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billApplyType != null">
+                BILL_APPLY_TYPE = #{row.billApplyType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billApplyNo != null">
+                BILL_APPLY_NO = #{row.billApplyNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billApplyPrefix != null">
+                BILL_APPLY_PREFIX = #{row.billApplyPrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billApplyDate != null">
+                BILL_APPLY_DATE = #{row.billApplyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.billIssueAmt != null">
+                BILL_ISSUE_AMT = #{row.billIssueAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.billIssueCcy != null">
+                BILL_ISSUE_CCY = #{row.billIssueCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billIssueType != null">
+                BILL_ISSUE_TYPE = #{row.billIssueType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billIssueBankNo != null">
+                BILL_ISSUE_BANK_NO = #{row.billIssueBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billIssueBankName != null">
+                BILL_ISSUE_BANK_NAME = #{row.billIssueBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billIssueDate != null">
+                BILL_ISSUE_DATE = #{row.billIssueDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.billIssueCashItem != null">
+                BILL_ISSUE_CASH_ITEM = #{row.billIssueCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billIssueBranch != null">
+                BILL_ISSUE_BRANCH = #{row.billIssueBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billIssueUserId != null">
+                BILL_ISSUE_USER_ID = #{row.billIssueUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.apprUserId != null">
+                APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.authUserId != null">
+                AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.printCnt != null">
+                PRINT_CNT = #{row.printCnt,jdbcType=INTEGER},
+            </if>
+            <if test="row.agentPayerBankNo != null">
+                AGENT_PAYER_BANK_NO = #{row.agentPayerBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agentPayerBankName != null">
+                AGENT_PAYER_BANK_NAME = #{row.agentPayerBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billPaymentStatus != null">
+                BILL_PAYMENT_STATUS = #{row.billPaymentStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.billPaymentAmt != null">
+                BILL_PAYMENT_AMT = #{row.billPaymentAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.excessAmt != null">
+                EXCESS_AMT = #{row.excessAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.paymentType != null">
+                PAYMENT_TYPE = #{row.paymentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paymentDate != null">
+                PAYMENT_DATE = #{row.paymentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.paymentCashItem != null">
+                PAYMENT_CASH_ITEM = #{row.paymentCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paymentBankNo != null">
+                PAYMENT_BANK_NO = #{row.paymentBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.paymentBankName != null">
+                PAYMENT_BANK_NAME = #{row.paymentBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerBaseAcctNo != null">
+                PAYER_BASE_ACCT_NO = #{row.payerBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerBankName != null">
+                PAYER_BANK_NAME = #{row.payerBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerAcctName != null">
+                PAYER_ACCT_NAME = #{row.payerAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerAcctCcy != null">
+                PAYER_ACCT_CCY = #{row.payerAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerAcctProdType != null">
+                PAYER_ACCT_PROD_TYPE = #{row.payerAcctProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerAcctSeqNo != null">
+                PAYER_ACCT_SEQ_NO = #{row.payerAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerDocumentId != null">
+                PAYER_DOCUMENT_ID = #{row.payerDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerDocumentType != null">
+                PAYER_DOCUMENT_TYPE = #{row.payerDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerAddr != null">
+                PAYER_ADDR = #{row.payerAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payerBankCode != null">
+                PAYER_BANK_CODE = #{row.payerBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeBaseAcctNo != null">
+                PAYEE_BASE_ACCT_NO = #{row.payeeBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeAcctSeqNo != null">
+                PAYEE_ACCT_SEQ_NO = #{row.payeeAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeProdType != null">
+                PAYEE_PROD_TYPE = #{row.payeeProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeAcctCcy != null">
+                PAYEE_ACCT_CCY = #{row.payeeAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeAcctName != null">
+                PAYEE_ACCT_NAME = #{row.payeeAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeAddr != null">
+                PAYEE_ADDR = #{row.payeeAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeDocumentType != null">
+                PAYEE_DOCUMENT_TYPE = #{row.payeeDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeDocumentId != null">
+                PAYEE_DOCUMENT_ID = #{row.payeeDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeBankCode != null">
+                PAYEE_BANK_CODE = #{row.payeeBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payeeBankName != null">
+                PAYEE_BANK_NAME = #{row.payeeBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnBaseAcctNo != null">
+                RETURN_BASE_ACCT_NO = #{row.returnBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnAcctName != null">
+                RETURN_ACCT_NAME = #{row.returnAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnDocumentId != null">
+                RETURN_DOCUMENT_ID = #{row.returnDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnDocumentType != null">
+                RETURN_DOCUMENT_TYPE = #{row.returnDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.refundBankNo != null">
+                REFUND_BANK_NO = #{row.refundBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnCashItem != null">
+                RETURN_CASH_ITEM = #{row.returnCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnType != null">
+                RETURN_TYPE = #{row.returnType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnUser != null">
+                RETURN_USER = #{row.returnUser,jdbcType=VARCHAR},
+            </if>
+            <if test="row.returnDate != null">
+                RETURN_DATE = #{row.returnDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastHolderName != null">
+                LAST_HOLDER_NAME = #{row.lastHolderName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastHolderBaseAcctNo != null">
+                LAST_HOLDER_BASE_ACCT_NO = #{row.lastHolderBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastHolderBankCode != null">
+                LAST_HOLDER_BANK_CODE = #{row.lastHolderBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastHolderBankName != null">
+                LAST_HOLDER_BANK_NAME = #{row.lastHolderBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.remark != null">
+                REMARK = #{row.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastTranDate != null">
+                LAST_TRAN_DATE = #{row.lastTranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BILL_REGISTER
+        set
+            BILL_SERIAL_NO = #{row.billSerialNo,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            BILL_NO = #{row.billNo,jdbcType=VARCHAR},            BILL_BUSI_TYPE = #{row.billBusiType,jdbcType=VARCHAR},            BILL_TYPE = #{row.billType,jdbcType=VARCHAR},            BILL_STATUS = #{row.billStatus,jdbcType=VARCHAR},            BILL_PREFIX = #{row.billPrefix,jdbcType=VARCHAR},            BILL_VOUCHER_NO = #{row.billVoucherNo,jdbcType=VARCHAR},            DOC_TYPE = #{row.docType,jdbcType=VARCHAR},            DOC_CLASS = #{row.docClass,jdbcType=VARCHAR},            PROMPT_DATE = #{row.promptDate,jdbcType=TIMESTAMP},            SETTLE_DATE = #{row.settleDate,jdbcType=TIMESTAMP},            ENCRYPT_KEY = #{row.encryptKey,jdbcType=VARCHAR},            BILL_APPLY_TYPE = #{row.billApplyType,jdbcType=VARCHAR},            BILL_APPLY_NO = #{row.billApplyNo,jdbcType=VARCHAR},            BILL_APPLY_PREFIX = #{row.billApplyPrefix,jdbcType=VARCHAR},            BILL_APPLY_DATE = #{row.billApplyDate,jdbcType=TIMESTAMP},            BILL_ISSUE_AMT = #{row.billIssueAmt,jdbcType=DECIMAL},            BILL_ISSUE_CCY = #{row.billIssueCcy,jdbcType=VARCHAR},            BILL_ISSUE_TYPE = #{row.billIssueType,jdbcType=VARCHAR},            BILL_ISSUE_BANK_NO = #{row.billIssueBankNo,jdbcType=VARCHAR},            BILL_ISSUE_BANK_NAME = #{row.billIssueBankName,jdbcType=VARCHAR},            BILL_ISSUE_DATE = #{row.billIssueDate,jdbcType=TIMESTAMP},            BILL_ISSUE_CASH_ITEM = #{row.billIssueCashItem,jdbcType=VARCHAR},            BILL_ISSUE_BRANCH = #{row.billIssueBranch,jdbcType=VARCHAR},            BILL_ISSUE_USER_ID = #{row.billIssueUserId,jdbcType=VARCHAR},            APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},            AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},            PRINT_CNT = #{row.printCnt,jdbcType=INTEGER},            AGENT_PAYER_BANK_NO = #{row.agentPayerBankNo,jdbcType=VARCHAR},            AGENT_PAYER_BANK_NAME = #{row.agentPayerBankName,jdbcType=VARCHAR},            BILL_PAYMENT_STATUS = #{row.billPaymentStatus,jdbcType=VARCHAR},            BILL_PAYMENT_AMT = #{row.billPaymentAmt,jdbcType=DECIMAL},            EXCESS_AMT = #{row.excessAmt,jdbcType=DECIMAL},            PAYMENT_TYPE = #{row.paymentType,jdbcType=VARCHAR},            PAYMENT_DATE = #{row.paymentDate,jdbcType=TIMESTAMP},            PAYMENT_CASH_ITEM = #{row.paymentCashItem,jdbcType=VARCHAR},            PAYMENT_BANK_NO = #{row.paymentBankNo,jdbcType=VARCHAR},            PAYMENT_BANK_NAME = #{row.paymentBankName,jdbcType=VARCHAR},            PAYER_BASE_ACCT_NO = #{row.payerBaseAcctNo,jdbcType=VARCHAR},            PAYER_BANK_NAME = #{row.payerBankName,jdbcType=VARCHAR},            PAYER_ACCT_NAME = #{row.payerAcctName,jdbcType=VARCHAR},            PAYER_ACCT_CCY = #{row.payerAcctCcy,jdbcType=VARCHAR},            PAYER_ACCT_PROD_TYPE = #{row.payerAcctProdType,jdbcType=VARCHAR},            PAYER_ACCT_SEQ_NO = #{row.payerAcctSeqNo,jdbcType=VARCHAR},            PAYER_DOCUMENT_ID = #{row.payerDocumentId,jdbcType=VARCHAR},            PAYER_DOCUMENT_TYPE = #{row.payerDocumentType,jdbcType=VARCHAR},            PAYER_ADDR = #{row.payerAddr,jdbcType=VARCHAR},            PAYER_BANK_CODE = #{row.payerBankCode,jdbcType=VARCHAR},            PAYEE_BASE_ACCT_NO = #{row.payeeBaseAcctNo,jdbcType=VARCHAR},            PAYEE_ACCT_SEQ_NO = #{row.payeeAcctSeqNo,jdbcType=VARCHAR},            PAYEE_PROD_TYPE = #{row.payeeProdType,jdbcType=VARCHAR},            PAYEE_ACCT_CCY = #{row.payeeAcctCcy,jdbcType=VARCHAR},            PAYEE_ACCT_NAME = #{row.payeeAcctName,jdbcType=VARCHAR},            PAYEE_ADDR = #{row.payeeAddr,jdbcType=VARCHAR},            PAYEE_DOCUMENT_TYPE = #{row.payeeDocumentType,jdbcType=VARCHAR},            PAYEE_DOCUMENT_ID = #{row.payeeDocumentId,jdbcType=VARCHAR},            PAYEE_BANK_CODE = #{row.payeeBankCode,jdbcType=VARCHAR},            PAYEE_BANK_NAME = #{row.payeeBankName,jdbcType=VARCHAR},            RETURN_BASE_ACCT_NO = #{row.returnBaseAcctNo,jdbcType=VARCHAR},            RETURN_ACCT_NAME = #{row.returnAcctName,jdbcType=VARCHAR},            RETURN_DOCUMENT_ID = #{row.returnDocumentId,jdbcType=VARCHAR},            RETURN_DOCUMENT_TYPE = #{row.returnDocumentType,jdbcType=VARCHAR},            REFUND_BANK_NO = #{row.refundBankNo,jdbcType=VARCHAR},            RETURN_CASH_ITEM = #{row.returnCashItem,jdbcType=VARCHAR},            RETURN_TYPE = #{row.returnType,jdbcType=VARCHAR},            RETURN_USER = #{row.returnUser,jdbcType=VARCHAR},            RETURN_DATE = #{row.returnDate,jdbcType=TIMESTAMP},            LAST_HOLDER_NAME = #{row.lastHolderName,jdbcType=VARCHAR},            LAST_HOLDER_BASE_ACCT_NO = #{row.lastHolderBaseAcctNo,jdbcType=VARCHAR},            LAST_HOLDER_BANK_CODE = #{row.lastHolderBankCode,jdbcType=VARCHAR},            LAST_HOLDER_BANK_NAME = #{row.lastHolderBankName,jdbcType=VARCHAR},            REMARK = #{row.remark,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            LAST_TRAN_DATE = #{row.lastTranDate,jdbcType=TIMESTAMP},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbBillRegister">
+        update RB_BILL_REGISTER
+        <set>
+            <if test="billNo != null">
+                BILL_NO = #{billNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billBusiType != null">
+                BILL_BUSI_TYPE = #{billBusiType,jdbcType=VARCHAR},
+            </if>
+            <if test="billType != null">
+                BILL_TYPE = #{billType,jdbcType=VARCHAR},
+            </if>
+            <if test="billStatus != null">
+                BILL_STATUS = #{billStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="billPrefix != null">
+                BILL_PREFIX = #{billPrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="billVoucherNo != null">
+                BILL_VOUCHER_NO = #{billVoucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="docType != null">
+                DOC_TYPE = #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="docClass != null">
+                DOC_CLASS = #{docClass,jdbcType=VARCHAR},
+            </if>
+            <if test="promptDate != null">
+                PROMPT_DATE = #{promptDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="settleDate != null">
+                SETTLE_DATE = #{settleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="encryptKey != null">
+                ENCRYPT_KEY = #{encryptKey,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyType != null">
+                BILL_APPLY_TYPE = #{billApplyType,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyNo != null">
+                BILL_APPLY_NO = #{billApplyNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyPrefix != null">
+                BILL_APPLY_PREFIX = #{billApplyPrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="billApplyDate != null">
+                BILL_APPLY_DATE = #{billApplyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billIssueAmt != null">
+                BILL_ISSUE_AMT = #{billIssueAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="billIssueCcy != null">
+                BILL_ISSUE_CCY = #{billIssueCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueType != null">
+                BILL_ISSUE_TYPE = #{billIssueType,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueBankNo != null">
+                BILL_ISSUE_BANK_NO = #{billIssueBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueBankName != null">
+                BILL_ISSUE_BANK_NAME = #{billIssueBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueDate != null">
+                BILL_ISSUE_DATE = #{billIssueDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billIssueCashItem != null">
+                BILL_ISSUE_CASH_ITEM = #{billIssueCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueBranch != null">
+                BILL_ISSUE_BRANCH = #{billIssueBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="billIssueUserId != null">
+                BILL_ISSUE_USER_ID = #{billIssueUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="printCnt != null">
+                PRINT_CNT = #{printCnt,jdbcType=INTEGER},
+            </if>
+            <if test="agentPayerBankNo != null">
+                AGENT_PAYER_BANK_NO = #{agentPayerBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agentPayerBankName != null">
+                AGENT_PAYER_BANK_NAME = #{agentPayerBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="billPaymentStatus != null">
+                BILL_PAYMENT_STATUS = #{billPaymentStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="billPaymentAmt != null">
+                BILL_PAYMENT_AMT = #{billPaymentAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="excessAmt != null">
+                EXCESS_AMT = #{excessAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="paymentType != null">
+                PAYMENT_TYPE = #{paymentType,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentDate != null">
+                PAYMENT_DATE = #{paymentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="paymentCashItem != null">
+                PAYMENT_CASH_ITEM = #{paymentCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentBankNo != null">
+                PAYMENT_BANK_NO = #{paymentBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentBankName != null">
+                PAYMENT_BANK_NAME = #{paymentBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="payerBaseAcctNo != null">
+                PAYER_BASE_ACCT_NO = #{payerBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payerBankName != null">
+                PAYER_BANK_NAME = #{payerBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctName != null">
+                PAYER_ACCT_NAME = #{payerAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctCcy != null">
+                PAYER_ACCT_CCY = #{payerAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctProdType != null">
+                PAYER_ACCT_PROD_TYPE = #{payerAcctProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAcctSeqNo != null">
+                PAYER_ACCT_SEQ_NO = #{payerAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payerDocumentId != null">
+                PAYER_DOCUMENT_ID = #{payerDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="payerDocumentType != null">
+                PAYER_DOCUMENT_TYPE = #{payerDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="payerAddr != null">
+                PAYER_ADDR = #{payerAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="payerBankCode != null">
+                PAYER_BANK_CODE = #{payerBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeBaseAcctNo != null">
+                PAYEE_BASE_ACCT_NO = #{payeeBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAcctSeqNo != null">
+                PAYEE_ACCT_SEQ_NO = #{payeeAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeProdType != null">
+                PAYEE_PROD_TYPE = #{payeeProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAcctCcy != null">
+                PAYEE_ACCT_CCY = #{payeeAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAcctName != null">
+                PAYEE_ACCT_NAME = #{payeeAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeAddr != null">
+                PAYEE_ADDR = #{payeeAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeDocumentType != null">
+                PAYEE_DOCUMENT_TYPE = #{payeeDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeDocumentId != null">
+                PAYEE_DOCUMENT_ID = #{payeeDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeBankCode != null">
+                PAYEE_BANK_CODE = #{payeeBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="payeeBankName != null">
+                PAYEE_BANK_NAME = #{payeeBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="returnBaseAcctNo != null">
+                RETURN_BASE_ACCT_NO = #{returnBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="returnAcctName != null">
+                RETURN_ACCT_NAME = #{returnAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="returnDocumentId != null">
+                RETURN_DOCUMENT_ID = #{returnDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="returnDocumentType != null">
+                RETURN_DOCUMENT_TYPE = #{returnDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="refundBankNo != null">
+                REFUND_BANK_NO = #{refundBankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="returnCashItem != null">
+                RETURN_CASH_ITEM = #{returnCashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="returnType != null">
+                RETURN_TYPE = #{returnType,jdbcType=VARCHAR},
+            </if>
+            <if test="returnUser != null">
+                RETURN_USER = #{returnUser,jdbcType=VARCHAR},
+            </if>
+            <if test="returnDate != null">
+                RETURN_DATE = #{returnDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastHolderName != null">
+                LAST_HOLDER_NAME = #{lastHolderName,jdbcType=VARCHAR},
+            </if>
+            <if test="lastHolderBaseAcctNo != null">
+                LAST_HOLDER_BASE_ACCT_NO = #{lastHolderBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lastHolderBankCode != null">
+                LAST_HOLDER_BANK_CODE = #{lastHolderBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="lastHolderBankName != null">
+                LAST_HOLDER_BANK_NAME = #{lastHolderBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="lastTranDate != null">
+                LAST_TRAN_DATE = #{lastTranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where BILL_SERIAL_NO = #{billSerialNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbBillRegister">
+        update RB_BILL_REGISTER
+        set
+            BILL_NO = #{billNo,jdbcType=VARCHAR},            BILL_BUSI_TYPE = #{billBusiType,jdbcType=VARCHAR},            BILL_TYPE = #{billType,jdbcType=VARCHAR},            BILL_STATUS = #{billStatus,jdbcType=VARCHAR},            BILL_PREFIX = #{billPrefix,jdbcType=VARCHAR},            BILL_VOUCHER_NO = #{billVoucherNo,jdbcType=VARCHAR},            DOC_TYPE = #{docType,jdbcType=VARCHAR},            DOC_CLASS = #{docClass,jdbcType=VARCHAR},            PROMPT_DATE = #{promptDate,jdbcType=TIMESTAMP},            SETTLE_DATE = #{settleDate,jdbcType=TIMESTAMP},            ENCRYPT_KEY = #{encryptKey,jdbcType=VARCHAR},            BILL_APPLY_TYPE = #{billApplyType,jdbcType=VARCHAR},            BILL_APPLY_NO = #{billApplyNo,jdbcType=VARCHAR},            BILL_APPLY_PREFIX = #{billApplyPrefix,jdbcType=VARCHAR},            BILL_APPLY_DATE = #{billApplyDate,jdbcType=TIMESTAMP},            BILL_ISSUE_AMT = #{billIssueAmt,jdbcType=DECIMAL},            BILL_ISSUE_CCY = #{billIssueCcy,jdbcType=VARCHAR},            BILL_ISSUE_TYPE = #{billIssueType,jdbcType=VARCHAR},            BILL_ISSUE_BANK_NO = #{billIssueBankNo,jdbcType=VARCHAR},            BILL_ISSUE_BANK_NAME = #{billIssueBankName,jdbcType=VARCHAR},            BILL_ISSUE_DATE = #{billIssueDate,jdbcType=TIMESTAMP},            BILL_ISSUE_CASH_ITEM = #{billIssueCashItem,jdbcType=VARCHAR},            BILL_ISSUE_BRANCH = #{billIssueBranch,jdbcType=VARCHAR},            BILL_ISSUE_USER_ID = #{billIssueUserId,jdbcType=VARCHAR},            APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},            AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},            PRINT_CNT = #{printCnt,jdbcType=INTEGER},            AGENT_PAYER_BANK_NO = #{agentPayerBankNo,jdbcType=VARCHAR},            AGENT_PAYER_BANK_NAME = #{agentPayerBankName,jdbcType=VARCHAR},            BILL_PAYMENT_STATUS = #{billPaymentStatus,jdbcType=VARCHAR},            BILL_PAYMENT_AMT = #{billPaymentAmt,jdbcType=DECIMAL},            EXCESS_AMT = #{excessAmt,jdbcType=DECIMAL},            PAYMENT_TYPE = #{paymentType,jdbcType=VARCHAR},            PAYMENT_DATE = #{paymentDate,jdbcType=TIMESTAMP},            PAYMENT_CASH_ITEM = #{paymentCashItem,jdbcType=VARCHAR},            PAYMENT_BANK_NO = #{paymentBankNo,jdbcType=VARCHAR},            PAYMENT_BANK_NAME = #{paymentBankName,jdbcType=VARCHAR},            PAYER_BASE_ACCT_NO = #{payerBaseAcctNo,jdbcType=VARCHAR},            PAYER_BANK_NAME = #{payerBankName,jdbcType=VARCHAR},            PAYER_ACCT_NAME = #{payerAcctName,jdbcType=VARCHAR},            PAYER_ACCT_CCY = #{payerAcctCcy,jdbcType=VARCHAR},            PAYER_ACCT_PROD_TYPE = #{payerAcctProdType,jdbcType=VARCHAR},            PAYER_ACCT_SEQ_NO = #{payerAcctSeqNo,jdbcType=VARCHAR},            PAYER_DOCUMENT_ID = #{payerDocumentId,jdbcType=VARCHAR},            PAYER_DOCUMENT_TYPE = #{payerDocumentType,jdbcType=VARCHAR},            PAYER_ADDR = #{payerAddr,jdbcType=VARCHAR},            PAYER_BANK_CODE = #{payerBankCode,jdbcType=VARCHAR},            PAYEE_BASE_ACCT_NO = #{payeeBaseAcctNo,jdbcType=VARCHAR},            PAYEE_ACCT_SEQ_NO = #{payeeAcctSeqNo,jdbcType=VARCHAR},            PAYEE_PROD_TYPE = #{payeeProdType,jdbcType=VARCHAR},            PAYEE_ACCT_CCY = #{payeeAcctCcy,jdbcType=VARCHAR},            PAYEE_ACCT_NAME = #{payeeAcctName,jdbcType=VARCHAR},            PAYEE_ADDR = #{payeeAddr,jdbcType=VARCHAR},            PAYEE_DOCUMENT_TYPE = #{payeeDocumentType,jdbcType=VARCHAR},            PAYEE_DOCUMENT_ID = #{payeeDocumentId,jdbcType=VARCHAR},            PAYEE_BANK_CODE = #{payeeBankCode,jdbcType=VARCHAR},            PAYEE_BANK_NAME = #{payeeBankName,jdbcType=VARCHAR},            RETURN_BASE_ACCT_NO = #{returnBaseAcctNo,jdbcType=VARCHAR},            RETURN_ACCT_NAME = #{returnAcctName,jdbcType=VARCHAR},            RETURN_DOCUMENT_ID = #{returnDocumentId,jdbcType=VARCHAR},            RETURN_DOCUMENT_TYPE = #{returnDocumentType,jdbcType=VARCHAR},            REFUND_BANK_NO = #{refundBankNo,jdbcType=VARCHAR},            RETURN_CASH_ITEM = #{returnCashItem,jdbcType=VARCHAR},            RETURN_TYPE = #{returnType,jdbcType=VARCHAR},            RETURN_USER = #{returnUser,jdbcType=VARCHAR},            RETURN_DATE = #{returnDate,jdbcType=TIMESTAMP},            LAST_HOLDER_NAME = #{lastHolderName,jdbcType=VARCHAR},            LAST_HOLDER_BASE_ACCT_NO = #{lastHolderBaseAcctNo,jdbcType=VARCHAR},            LAST_HOLDER_BANK_CODE = #{lastHolderBankCode,jdbcType=VARCHAR},            LAST_HOLDER_BANK_NAME = #{lastHolderBankName,jdbcType=VARCHAR},            REMARK = #{remark,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            LAST_TRAN_DATE = #{lastTranDate,jdbcType=TIMESTAMP},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP}        where BILL_SERIAL_NO = #{billSerialNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+    </update>
+</mapper>
