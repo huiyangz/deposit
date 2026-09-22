@@ -1,0 +1,228 @@
+package com.dcits.deposit.service.utils;
+
+import com.dcits.deposit.entity.RbAgreementFinancial;
+import com.dcits.deposit.entity.RbAgreementFinancialExample;
+import com.dcits.deposit.facade.eo.RbAgreementFinancialEO;
+import com.dcits.deposit.enums.AgreementType;
+import com.dcits.deposit.enums.AcctCcy;
+import com.dcits.deposit.enums.TermType;
+import com.dcits.deposit.enums.AgreementStatus;
+import com.dcits.deposit.enums.TermType;
+import com.dcits.deposit.enums.AutoRenewRollover;
+import com.dcits.deposit.enums.AcctCcy;
+import com.dcits.deposit.enums.IndividualFlag;
+import com.dcits.deposit.enums.AcctBranch;
+import com.dcits.deposit.enums.AcctBranch;
+import com.dcits.deposit.enums.Company;
+import com.dcits.deposit.enums.IndividualFlag;
+import com.dcits.deposit.enums.DepositNature;
+import com.dcits.deposit.enums.AmortizeTimeType;
+import com.dcits.deposit.enums.FeeType;
+import com.dcits.deposit.enums.OdMode;
+
+public final class RbAgreementFinancialValueUtil {
+    private RbAgreementFinancialValueUtil() {
+    }
+
+    public static RbAgreementFinancialEO entityToEo(RbAgreementFinancial entity) {
+        if (entity == null) {
+            return null;
+        }
+        RbAgreementFinancialEO eo = new RbAgreementFinancialEO();
+        eo.setAgreementId(entity.getAgreementId());
+        eo.setAgreementType(AgreementType.byValue(entity.getAgreementType()));
+        eo.setFinProdType(entity.getFinProdType());
+        eo.setFinProdDesc(entity.getFinProdDesc());
+        eo.setInternalKey(entity.getInternalKey());
+        eo.setBaseAcctNo(entity.getBaseAcctNo());
+        eo.setProdType(entity.getProdType());
+        eo.setAcctCcy(AcctCcy.byValue(entity.getAcctCcy()));
+        eo.setAcctSeqNo(entity.getAcctSeqNo());
+        eo.setClientNo(entity.getClientNo());
+        eo.setStartDate(entity.getStartDate());
+        eo.setEndDate(entity.getEndDate());
+        eo.setFinFixedAmt(entity.getFinFixedAmt());
+        eo.setRemainAmt(entity.getRemainAmt());
+        eo.setIntMinAmt(entity.getIntMinAmt());
+        eo.setTransferFreq(entity.getTransferFreq());
+        eo.setTransferStartDate(entity.getTransferStartDate());
+        eo.setTransferFreqType(TermType.byValue(entity.getTransferFreqType()));
+        eo.setTransferEndDate(entity.getTransferEndDate());
+        eo.setTransferDay(entity.getTransferDay());
+        eo.setAgreementStatus(AgreementStatus.byValue(entity.getAgreementStatus()));
+        eo.setNextTransferDate(entity.getNextTransferDate());
+        eo.setTerm(entity.getTerm());
+        eo.setTermType(TermType.byValue(entity.getTermType()));
+        eo.setAutoRenewRollover(AutoRenewRollover.byValue(entity.getAutoRenewRollover()));
+        eo.setTdaAcctSeqNo(entity.getTdaAcctSeqNo());
+        eo.setTdaBaseAcctNo(entity.getTdaBaseAcctNo());
+        eo.setTdaAcctProdType(entity.getTdaAcctProdType());
+        eo.setTdaAcctCcy(AcctCcy.byValue(entity.getTdaAcctCcy()));
+        eo.setFinancialAmount(entity.getFinancialAmount());
+        eo.setLastChangeDate(entity.getLastChangeDate());
+        eo.setFailureTotalTimes(entity.getFailureTotalTimes());
+        eo.setFailureTimes(entity.getFailureTimes());
+        eo.setSuccessTimes(entity.getSuccessTimes());
+        eo.setSuccessTotalTimes(entity.getSuccessTotalTimes());
+        eo.setAutoExtend(IndividualFlag.byValue(entity.getAutoExtend()));
+        eo.setLastTransferDate(entity.getLastTransferDate());
+        eo.setSignBranch(AcctBranch.byValue(entity.getSignBranch()));
+        eo.setSignUserId(entity.getSignUserId());
+        eo.setOutSignUserId(entity.getOutSignUserId());
+        eo.setOutSignBranch(AcctBranch.byValue(entity.getOutSignBranch()));
+        eo.setAcctExec(entity.getAcctExec());
+        eo.setAcctExecName(entity.getAcctExecName());
+        eo.setCompany(Company.byValue(entity.getCompany()));
+        eo.setTranTimestamp(entity.getTranTimestamp());
+        eo.setAutoSettleFlag(IndividualFlag.byValue(entity.getAutoSettleFlag()));
+        eo.setDepositNature(DepositNature.byValue(entity.getDepositNature()));
+        eo.setFailureReason(entity.getFailureReason());
+        eo.setUnsignOperateDate(entity.getUnsignOperateDate());
+        eo.setAmortizeTimeType(AmortizeTimeType.byValue(entity.getAmortizeTimeType()));
+        eo.setFeeType(FeeType.byValue(entity.getFeeType()));
+        eo.setIntBasisRate(entity.getIntBasisRate());
+        eo.setPastDueRate(entity.getPastDueRate());
+        eo.setRealRate(entity.getRealRate());
+        eo.setLastTransferReference(entity.getLastTransferReference());
+        eo.setSignReference(entity.getSignReference());
+        eo.setUnsignReference(entity.getUnsignReference());
+        eo.setOdMode(OdMode.byValue(entity.getOdMode()));
+        eo.setCreateTimestamp(entity.getCreateTimestamp());
+        return eo;
+    }
+
+    public static RbAgreementFinancial eoToEntity(RbAgreementFinancialEO eo) {
+        if (eo == null) {
+            return null;
+        }
+        RbAgreementFinancial entity = new RbAgreementFinancial();
+        entity.setAgreementId(eo.getAgreementId());
+        entity.setAgreementType(eo.getAgreementType() == null ? null : eo.getAgreementType().getValue());
+        entity.setFinProdType(eo.getFinProdType());
+        entity.setFinProdDesc(eo.getFinProdDesc());
+        entity.setInternalKey(eo.getInternalKey());
+        entity.setBaseAcctNo(eo.getBaseAcctNo());
+        entity.setProdType(eo.getProdType());
+        entity.setAcctCcy(eo.getAcctCcy() == null ? null : eo.getAcctCcy().getValue());
+        entity.setAcctSeqNo(eo.getAcctSeqNo());
+        entity.setClientNo(eo.getClientNo());
+        entity.setStartDate(eo.getStartDate());
+        entity.setEndDate(eo.getEndDate());
+        entity.setFinFixedAmt(eo.getFinFixedAmt());
+        entity.setRemainAmt(eo.getRemainAmt());
+        entity.setIntMinAmt(eo.getIntMinAmt());
+        entity.setTransferFreq(eo.getTransferFreq());
+        entity.setTransferStartDate(eo.getTransferStartDate());
+        entity.setTransferFreqType(eo.getTransferFreqType() == null ? null : eo.getTransferFreqType().getValue());
+        entity.setTransferEndDate(eo.getTransferEndDate());
+        entity.setTransferDay(eo.getTransferDay());
+        entity.setAgreementStatus(eo.getAgreementStatus() == null ? null : eo.getAgreementStatus().getValue());
+        entity.setNextTransferDate(eo.getNextTransferDate());
+        entity.setTerm(eo.getTerm());
+        entity.setTermType(eo.getTermType() == null ? null : eo.getTermType().getValue());
+        entity.setAutoRenewRollover(eo.getAutoRenewRollover() == null ? null : eo.getAutoRenewRollover().getValue());
+        entity.setTdaAcctSeqNo(eo.getTdaAcctSeqNo());
+        entity.setTdaBaseAcctNo(eo.getTdaBaseAcctNo());
+        entity.setTdaAcctProdType(eo.getTdaAcctProdType());
+        entity.setTdaAcctCcy(eo.getTdaAcctCcy() == null ? null : eo.getTdaAcctCcy().getValue());
+        entity.setFinancialAmount(eo.getFinancialAmount());
+        entity.setLastChangeDate(eo.getLastChangeDate());
+        entity.setFailureTotalTimes(eo.getFailureTotalTimes());
+        entity.setFailureTimes(eo.getFailureTimes());
+        entity.setSuccessTimes(eo.getSuccessTimes());
+        entity.setSuccessTotalTimes(eo.getSuccessTotalTimes());
+        entity.setAutoExtend(eo.getAutoExtend() == null ? null : eo.getAutoExtend().getValue());
+        entity.setLastTransferDate(eo.getLastTransferDate());
+        entity.setSignBranch(eo.getSignBranch() == null ? null : eo.getSignBranch().getValue());
+        entity.setSignUserId(eo.getSignUserId());
+        entity.setOutSignUserId(eo.getOutSignUserId());
+        entity.setOutSignBranch(eo.getOutSignBranch() == null ? null : eo.getOutSignBranch().getValue());
+        entity.setAcctExec(eo.getAcctExec());
+        entity.setAcctExecName(eo.getAcctExecName());
+        entity.setCompany(eo.getCompany() == null ? null : eo.getCompany().getValue());
+        entity.setTranTimestamp(eo.getTranTimestamp());
+        entity.setAutoSettleFlag(eo.getAutoSettleFlag() == null ? null : eo.getAutoSettleFlag().getValue());
+        entity.setDepositNature(eo.getDepositNature() == null ? null : eo.getDepositNature().getValue());
+        entity.setFailureReason(eo.getFailureReason());
+        entity.setUnsignOperateDate(eo.getUnsignOperateDate());
+        entity.setAmortizeTimeType(eo.getAmortizeTimeType() == null ? null : eo.getAmortizeTimeType().getValue());
+        entity.setFeeType(eo.getFeeType() == null ? null : eo.getFeeType().getValue());
+        entity.setIntBasisRate(eo.getIntBasisRate());
+        entity.setPastDueRate(eo.getPastDueRate());
+        entity.setRealRate(eo.getRealRate());
+        entity.setLastTransferReference(eo.getLastTransferReference());
+        entity.setSignReference(eo.getSignReference());
+        entity.setUnsignReference(eo.getUnsignReference());
+        entity.setOdMode(eo.getOdMode() == null ? null : eo.getOdMode().getValue());
+        entity.setCreateTimestamp(eo.getCreateTimestamp());
+        return entity;
+    }
+
+    public static RbAgreementFinancialExample eoToEntityExample(RbAgreementFinancialEO eo) {
+        if (eo == null) {
+            return null;
+        }
+        RbAgreementFinancialExample example = new RbAgreementFinancialExample();
+        RbAgreementFinancialExample.Criteria criteria = example.createCriteria();
+        if (eo.getAgreementId() != null) criteria.andAgreementIdEqualTo(eo.getAgreementId());
+        if (eo.getAgreementType() != null) criteria.andAgreementTypeEqualTo(eo.getAgreementType().getValue());
+        if (eo.getFinProdType() != null) criteria.andFinProdTypeEqualTo(eo.getFinProdType());
+        if (eo.getFinProdDesc() != null) criteria.andFinProdDescEqualTo(eo.getFinProdDesc());
+        if (eo.getInternalKey() != null) criteria.andInternalKeyEqualTo(eo.getInternalKey());
+        if (eo.getBaseAcctNo() != null) criteria.andBaseAcctNoEqualTo(eo.getBaseAcctNo());
+        if (eo.getProdType() != null) criteria.andProdTypeEqualTo(eo.getProdType());
+        if (eo.getAcctCcy() != null) criteria.andAcctCcyEqualTo(eo.getAcctCcy().getValue());
+        if (eo.getAcctSeqNo() != null) criteria.andAcctSeqNoEqualTo(eo.getAcctSeqNo());
+        if (eo.getClientNo() != null) criteria.andClientNoEqualTo(eo.getClientNo());
+        if (eo.getStartDate() != null) criteria.andStartDateEqualTo(eo.getStartDate());
+        if (eo.getEndDate() != null) criteria.andEndDateEqualTo(eo.getEndDate());
+        if (eo.getFinFixedAmt() != null) criteria.andFinFixedAmtEqualTo(eo.getFinFixedAmt());
+        if (eo.getRemainAmt() != null) criteria.andRemainAmtEqualTo(eo.getRemainAmt());
+        if (eo.getIntMinAmt() != null) criteria.andIntMinAmtEqualTo(eo.getIntMinAmt());
+        if (eo.getTransferFreq() != null) criteria.andTransferFreqEqualTo(eo.getTransferFreq());
+        if (eo.getTransferStartDate() != null) criteria.andTransferStartDateEqualTo(eo.getTransferStartDate());
+        if (eo.getTransferFreqType() != null) criteria.andTransferFreqTypeEqualTo(eo.getTransferFreqType().getValue());
+        if (eo.getTransferEndDate() != null) criteria.andTransferEndDateEqualTo(eo.getTransferEndDate());
+        if (eo.getTransferDay() != null) criteria.andTransferDayEqualTo(eo.getTransferDay());
+        if (eo.getAgreementStatus() != null) criteria.andAgreementStatusEqualTo(eo.getAgreementStatus().getValue());
+        if (eo.getNextTransferDate() != null) criteria.andNextTransferDateEqualTo(eo.getNextTransferDate());
+        if (eo.getTerm() != null) criteria.andTermEqualTo(eo.getTerm());
+        if (eo.getTermType() != null) criteria.andTermTypeEqualTo(eo.getTermType().getValue());
+        if (eo.getAutoRenewRollover() != null) criteria.andAutoRenewRolloverEqualTo(eo.getAutoRenewRollover().getValue());
+        if (eo.getTdaAcctSeqNo() != null) criteria.andTdaAcctSeqNoEqualTo(eo.getTdaAcctSeqNo());
+        if (eo.getTdaBaseAcctNo() != null) criteria.andTdaBaseAcctNoEqualTo(eo.getTdaBaseAcctNo());
+        if (eo.getTdaAcctProdType() != null) criteria.andTdaAcctProdTypeEqualTo(eo.getTdaAcctProdType());
+        if (eo.getTdaAcctCcy() != null) criteria.andTdaAcctCcyEqualTo(eo.getTdaAcctCcy().getValue());
+        if (eo.getFinancialAmount() != null) criteria.andFinancialAmountEqualTo(eo.getFinancialAmount());
+        if (eo.getLastChangeDate() != null) criteria.andLastChangeDateEqualTo(eo.getLastChangeDate());
+        if (eo.getFailureTotalTimes() != null) criteria.andFailureTotalTimesEqualTo(eo.getFailureTotalTimes());
+        if (eo.getFailureTimes() != null) criteria.andFailureTimesEqualTo(eo.getFailureTimes());
+        if (eo.getSuccessTimes() != null) criteria.andSuccessTimesEqualTo(eo.getSuccessTimes());
+        if (eo.getSuccessTotalTimes() != null) criteria.andSuccessTotalTimesEqualTo(eo.getSuccessTotalTimes());
+        if (eo.getAutoExtend() != null) criteria.andAutoExtendEqualTo(eo.getAutoExtend().getValue());
+        if (eo.getLastTransferDate() != null) criteria.andLastTransferDateEqualTo(eo.getLastTransferDate());
+        if (eo.getSignBranch() != null) criteria.andSignBranchEqualTo(eo.getSignBranch().getValue());
+        if (eo.getSignUserId() != null) criteria.andSignUserIdEqualTo(eo.getSignUserId());
+        if (eo.getOutSignUserId() != null) criteria.andOutSignUserIdEqualTo(eo.getOutSignUserId());
+        if (eo.getOutSignBranch() != null) criteria.andOutSignBranchEqualTo(eo.getOutSignBranch().getValue());
+        if (eo.getAcctExec() != null) criteria.andAcctExecEqualTo(eo.getAcctExec());
+        if (eo.getAcctExecName() != null) criteria.andAcctExecNameEqualTo(eo.getAcctExecName());
+        if (eo.getCompany() != null) criteria.andCompanyEqualTo(eo.getCompany().getValue());
+        if (eo.getTranTimestamp() != null) criteria.andTranTimestampEqualTo(eo.getTranTimestamp());
+        if (eo.getAutoSettleFlag() != null) criteria.andAutoSettleFlagEqualTo(eo.getAutoSettleFlag().getValue());
+        if (eo.getDepositNature() != null) criteria.andDepositNatureEqualTo(eo.getDepositNature().getValue());
+        if (eo.getFailureReason() != null) criteria.andFailureReasonEqualTo(eo.getFailureReason());
+        if (eo.getUnsignOperateDate() != null) criteria.andUnsignOperateDateEqualTo(eo.getUnsignOperateDate());
+        if (eo.getAmortizeTimeType() != null) criteria.andAmortizeTimeTypeEqualTo(eo.getAmortizeTimeType().getValue());
+        if (eo.getFeeType() != null) criteria.andFeeTypeEqualTo(eo.getFeeType().getValue());
+        if (eo.getIntBasisRate() != null) criteria.andIntBasisRateEqualTo(eo.getIntBasisRate());
+        if (eo.getPastDueRate() != null) criteria.andPastDueRateEqualTo(eo.getPastDueRate());
+        if (eo.getRealRate() != null) criteria.andRealRateEqualTo(eo.getRealRate());
+        if (eo.getLastTransferReference() != null) criteria.andLastTransferReferenceEqualTo(eo.getLastTransferReference());
+        if (eo.getSignReference() != null) criteria.andSignReferenceEqualTo(eo.getSignReference());
+        if (eo.getUnsignReference() != null) criteria.andUnsignReferenceEqualTo(eo.getUnsignReference());
+        if (eo.getOdMode() != null) criteria.andOdModeEqualTo(eo.getOdMode().getValue());
+        if (eo.getCreateTimestamp() != null) criteria.andCreateTimestampEqualTo(eo.getCreateTimestamp());
+        return example;
+    }
+}

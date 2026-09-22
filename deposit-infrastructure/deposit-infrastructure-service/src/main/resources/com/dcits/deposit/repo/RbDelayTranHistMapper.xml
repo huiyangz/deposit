@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbDelayTranHistMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbDelayTranHist">
+        <id column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <id column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <id column="TRAN_DATE" property="tranDate" jdbcType="TIMESTAMP" />
+        <result column="CHANNEL_SEQ_NO" property="channelSeqNo" jdbcType="VARCHAR" />
+        <result column="RES_SEQ_NO" property="resSeqNo" jdbcType="VARCHAR" />
+        <result column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+        <result column="CLIENT_NAME" property="clientName" jdbcType="VARCHAR" />
+        <result column="OTH_INTERNAL_KEY" property="othInternalKey" jdbcType="INTEGER" />
+        <result column="OTH_CARD_NO" property="othCardNo" jdbcType="VARCHAR" />
+        <result column="OTH_BASE_ACCT_NO" property="othBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="OTH_ACCT_CCY" property="othAcctCcy" jdbcType="VARCHAR" />
+        <result column="OTH_ACCT_SEQ_NO" property="othAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="OTH_PROD_TYPE" property="othProdType" jdbcType="VARCHAR" />
+        <result column="OTH_ACCT_NAME" property="othAcctName" jdbcType="VARCHAR" />
+        <result column="OTH_ACCT_DESC" property="othAcctDesc" jdbcType="VARCHAR" />
+        <result column="SETTLE_CARD_FLAG" property="settleCardFlag" jdbcType="VARCHAR" />
+        <result column="CCY" property="ccy" jdbcType="VARCHAR" />
+        <result column="TRAN_METHOD" property="tranMethod" jdbcType="VARCHAR" />
+        <result column="SIGN_TIMESTAMP" property="signTimestamp" jdbcType="VARCHAR" />
+        <result column="TRAN_TYPE" property="tranType" jdbcType="VARCHAR" />
+        <result column="TRAN_AMT" property="tranAmt" jdbcType="DECIMAL" />
+        <result column="TRAN_BRANCH" property="tranBranch" jdbcType="VARCHAR" />
+        <result column="DOC_TYPE" property="docType" jdbcType="VARCHAR" />
+        <result column="PREFIX" property="prefix" jdbcType="VARCHAR" />
+        <result column="VOUCHER_NO" property="voucherNo" jdbcType="VARCHAR" />
+        <result column="ARRIVAL_STATUS" property="arrivalStatus" jdbcType="VARCHAR" />
+        <result column="REFERENCE" property="reference" jdbcType="VARCHAR" />
+        <result column="SOURCE_TYPE" property="sourceType" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TRAN_CODE" property="exchangeTranCode" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TRAN_CODET" property="exchangeTranCodet" jdbcType="VARCHAR" />
+        <result column="TRAN_DESC" property="tranDesc" jdbcType="VARCHAR" />
+        <result column="TRAN_NOTE" property="tranNote" jdbcType="VARCHAR" />
+        <result column="CASH_ITEM" property="cashItem" jdbcType="VARCHAR" />
+        <result column="NARRATIVE" property="narrative" jdbcType="VARCHAR" />
+        <result column="COMMISSION_CLIENT_NAME" property="commissionClientName" jdbcType="VARCHAR" />
+        <result column="COMMISSION_CLIENT_TEL" property="commissionClientTel" jdbcType="VARCHAR" />
+        <result column="PAY_UNIT" property="payUnit" jdbcType="VARCHAR" />
+        <result column="CANCEL_REASON" property="cancelReason" jdbcType="VARCHAR" />
+        <result column="TERMINAL_ID" property="terminalId" jdbcType="VARCHAR" />
+        <result column="TRACK2" property="track2" jdbcType="VARCHAR" />
+        <result column="TRACK3" property="track3" jdbcType="VARCHAR" />
+        <result column="AUTH_USER_ID" property="authUserId" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="SUB_SEQ_NO" property="subSeqNo" jdbcType="VARCHAR" />
+        <result column="INNER_BASE_ACCT_NO" property="innerBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="INNER_PROD_TYPE" property="innerProdType" jdbcType="VARCHAR" />
+        <result column="INNER_ACCT_SEQ_NO" property="innerAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="INNER_ACCT_CCY" property="innerAcctCcy" jdbcType="VARCHAR" />
+        <result column="INNER_INTERNAL_KEY" property="innerInternalKey" jdbcType="INTEGER" />
+        <result column="INNER_ACCT_NAME" property="innerAcctName" jdbcType="VARCHAR" />
+        <result column="INNER_CLIENT_NO" property="innerClientNo" jdbcType="VARCHAR" />
+        <result column="HANG_SEQ_NO" property="hangSeqNo" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="LAST_CHANGE_DATE" property="lastChangeDate" jdbcType="TIMESTAMP" />
+        <result column="OTH_CLIENT_NO" property="othClientNo" jdbcType="VARCHAR" />
+        <result column="BANK_IN_OUT" property="bankInOut" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        SEQ_NO,        CHANNEL_SEQ_NO,        RES_SEQ_NO,        INTERNAL_KEY,        CARD_NO,        BASE_ACCT_NO,        ACCT_CCY,        ACCT_SEQ_NO,        PROD_TYPE,        CLIENT_NO,        CLIENT_NAME,        OTH_INTERNAL_KEY,        OTH_CARD_NO,        OTH_BASE_ACCT_NO,        OTH_ACCT_CCY,        OTH_ACCT_SEQ_NO,        OTH_PROD_TYPE,        OTH_ACCT_NAME,        OTH_ACCT_DESC,        SETTLE_CARD_FLAG,        CCY,        TRAN_METHOD,        SIGN_TIMESTAMP,        TRAN_TYPE,        TRAN_AMT,        TRAN_DATE,        TRAN_BRANCH,        DOC_TYPE,        PREFIX,        VOUCHER_NO,        ARRIVAL_STATUS,        REFERENCE,        SOURCE_TYPE,        EXCHANGE_TRAN_CODE,        EXCHANGE_TRAN_CODET,        TRAN_DESC,        TRAN_NOTE,        CASH_ITEM,        NARRATIVE,        COMMISSION_CLIENT_NAME,        COMMISSION_CLIENT_TEL,        PAY_UNIT,        CANCEL_REASON,        TERMINAL_ID,        TRACK2,        TRACK3,        AUTH_USER_ID,        TRAN_TIMESTAMP,        USER_ID,        COMPANY,        SUB_SEQ_NO,        INNER_BASE_ACCT_NO,        INNER_PROD_TYPE,        INNER_ACCT_SEQ_NO,        INNER_ACCT_CCY,        INNER_INTERNAL_KEY,        INNER_ACCT_NAME,        INNER_CLIENT_NO,        HANG_SEQ_NO,        CREATE_TIMESTAMP,        LAST_CHANGE_DATE,        OTH_CLIENT_NO,        BANK_IN_OUT    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbDelayTranHistExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_DELAY_TRAN_HIST
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_DELAY_TRAN_HIST
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_DELAY_TRAN_HIST
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbDelayTranHistExample">
+        delete from RB_DELAY_TRAN_HIST
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbDelayTranHist">
+        insert into RB_DELAY_TRAN_HIST
+        (
+            SEQ_NO,            CHANNEL_SEQ_NO,            RES_SEQ_NO,            INTERNAL_KEY,            CARD_NO,            BASE_ACCT_NO,            ACCT_CCY,            ACCT_SEQ_NO,            PROD_TYPE,            CLIENT_NO,            CLIENT_NAME,            OTH_INTERNAL_KEY,            OTH_CARD_NO,            OTH_BASE_ACCT_NO,            OTH_ACCT_CCY,            OTH_ACCT_SEQ_NO,            OTH_PROD_TYPE,            OTH_ACCT_NAME,            OTH_ACCT_DESC,            SETTLE_CARD_FLAG,            CCY,            TRAN_METHOD,            SIGN_TIMESTAMP,            TRAN_TYPE,            TRAN_AMT,            TRAN_DATE,            TRAN_BRANCH,            DOC_TYPE,            PREFIX,            VOUCHER_NO,            ARRIVAL_STATUS,            REFERENCE,            SOURCE_TYPE,            EXCHANGE_TRAN_CODE,            EXCHANGE_TRAN_CODET,            TRAN_DESC,            TRAN_NOTE,            CASH_ITEM,            NARRATIVE,            COMMISSION_CLIENT_NAME,            COMMISSION_CLIENT_TEL,            PAY_UNIT,            CANCEL_REASON,            TERMINAL_ID,            TRACK2,            TRACK3,            AUTH_USER_ID,            TRAN_TIMESTAMP,            USER_ID,            COMPANY,            SUB_SEQ_NO,            INNER_BASE_ACCT_NO,            INNER_PROD_TYPE,            INNER_ACCT_SEQ_NO,            INNER_ACCT_CCY,            INNER_INTERNAL_KEY,            INNER_ACCT_NAME,            INNER_CLIENT_NO,            HANG_SEQ_NO,            CREATE_TIMESTAMP,            LAST_CHANGE_DATE,            OTH_CLIENT_NO,            BANK_IN_OUT        )
+        values
+        (
+            #{seqNo,jdbcType=VARCHAR},            #{channelSeqNo,jdbcType=VARCHAR},            #{resSeqNo,jdbcType=VARCHAR},            #{internalKey,jdbcType=INTEGER},            #{cardNo,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{acctCcy,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{prodType,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{clientName,jdbcType=VARCHAR},            #{othInternalKey,jdbcType=INTEGER},            #{othCardNo,jdbcType=VARCHAR},            #{othBaseAcctNo,jdbcType=VARCHAR},            #{othAcctCcy,jdbcType=VARCHAR},            #{othAcctSeqNo,jdbcType=VARCHAR},            #{othProdType,jdbcType=VARCHAR},            #{othAcctName,jdbcType=VARCHAR},            #{othAcctDesc,jdbcType=VARCHAR},            #{settleCardFlag,jdbcType=VARCHAR},            #{ccy,jdbcType=VARCHAR},            #{tranMethod,jdbcType=VARCHAR},            #{signTimestamp,jdbcType=VARCHAR},            #{tranType,jdbcType=VARCHAR},            #{tranAmt,jdbcType=DECIMAL},            #{tranDate,jdbcType=TIMESTAMP},            #{tranBranch,jdbcType=VARCHAR},            #{docType,jdbcType=VARCHAR},            #{prefix,jdbcType=VARCHAR},            #{voucherNo,jdbcType=VARCHAR},            #{arrivalStatus,jdbcType=VARCHAR},            #{reference,jdbcType=VARCHAR},            #{sourceType,jdbcType=VARCHAR},            #{exchangeTranCode,jdbcType=VARCHAR},            #{exchangeTranCodet,jdbcType=VARCHAR},            #{tranDesc,jdbcType=VARCHAR},            #{tranNote,jdbcType=VARCHAR},            #{cashItem,jdbcType=VARCHAR},            #{narrative,jdbcType=VARCHAR},            #{commissionClientName,jdbcType=VARCHAR},            #{commissionClientTel,jdbcType=VARCHAR},            #{payUnit,jdbcType=VARCHAR},            #{cancelReason,jdbcType=VARCHAR},            #{terminalId,jdbcType=VARCHAR},            #{track2,jdbcType=VARCHAR},            #{track3,jdbcType=VARCHAR},            #{authUserId,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{userId,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{subSeqNo,jdbcType=VARCHAR},            #{innerBaseAcctNo,jdbcType=VARCHAR},            #{innerProdType,jdbcType=VARCHAR},            #{innerAcctSeqNo,jdbcType=VARCHAR},            #{innerAcctCcy,jdbcType=VARCHAR},            #{innerInternalKey,jdbcType=INTEGER},            #{innerAcctName,jdbcType=VARCHAR},            #{innerClientNo,jdbcType=VARCHAR},            #{hangSeqNo,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{lastChangeDate,jdbcType=TIMESTAMP},            #{othClientNo,jdbcType=VARCHAR},            #{bankInOut,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbDelayTranHist">
+        insert into RB_DELAY_TRAN_HIST
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO,
+            </if>
+            <if test="resSeqNo != null">
+                RES_SEQ_NO,
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="cardNo != null">
+                CARD_NO,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="clientName != null">
+                CLIENT_NAME,
+            </if>
+            <if test="othInternalKey != null">
+                OTH_INTERNAL_KEY,
+            </if>
+            <if test="othCardNo != null">
+                OTH_CARD_NO,
+            </if>
+            <if test="othBaseAcctNo != null">
+                OTH_BASE_ACCT_NO,
+            </if>
+            <if test="othAcctCcy != null">
+                OTH_ACCT_CCY,
+            </if>
+            <if test="othAcctSeqNo != null">
+                OTH_ACCT_SEQ_NO,
+            </if>
+            <if test="othProdType != null">
+                OTH_PROD_TYPE,
+            </if>
+            <if test="othAcctName != null">
+                OTH_ACCT_NAME,
+            </if>
+            <if test="othAcctDesc != null">
+                OTH_ACCT_DESC,
+            </if>
+            <if test="settleCardFlag != null">
+                SETTLE_CARD_FLAG,
+            </if>
+            <if test="ccy != null">
+                CCY,
+            </if>
+            <if test="tranMethod != null">
+                TRAN_METHOD,
+            </if>
+            <if test="signTimestamp != null">
+                SIGN_TIMESTAMP,
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE,
+            </if>
+            <if test="tranAmt != null">
+                TRAN_AMT,
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE,
+            </if>
+            <if test="tranBranch != null">
+                TRAN_BRANCH,
+            </if>
+            <if test="docType != null">
+                DOC_TYPE,
+            </if>
+            <if test="prefix != null">
+                PREFIX,
+            </if>
+            <if test="voucherNo != null">
+                VOUCHER_NO,
+            </if>
+            <if test="arrivalStatus != null">
+                ARRIVAL_STATUS,
+            </if>
+            <if test="reference != null">
+                REFERENCE,
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE,
+            </if>
+            <if test="exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE,
+            </if>
+            <if test="exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET,
+            </if>
+            <if test="tranDesc != null">
+                TRAN_DESC,
+            </if>
+            <if test="tranNote != null">
+                TRAN_NOTE,
+            </if>
+            <if test="cashItem != null">
+                CASH_ITEM,
+            </if>
+            <if test="narrative != null">
+                NARRATIVE,
+            </if>
+            <if test="commissionClientName != null">
+                COMMISSION_CLIENT_NAME,
+            </if>
+            <if test="commissionClientTel != null">
+                COMMISSION_CLIENT_TEL,
+            </if>
+            <if test="payUnit != null">
+                PAY_UNIT,
+            </if>
+            <if test="cancelReason != null">
+                CANCEL_REASON,
+            </if>
+            <if test="terminalId != null">
+                TERMINAL_ID,
+            </if>
+            <if test="track2 != null">
+                TRACK2,
+            </if>
+            <if test="track3 != null">
+                TRACK3,
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="subSeqNo != null">
+                SUB_SEQ_NO,
+            </if>
+            <if test="innerBaseAcctNo != null">
+                INNER_BASE_ACCT_NO,
+            </if>
+            <if test="innerProdType != null">
+                INNER_PROD_TYPE,
+            </if>
+            <if test="innerAcctSeqNo != null">
+                INNER_ACCT_SEQ_NO,
+            </if>
+            <if test="innerAcctCcy != null">
+                INNER_ACCT_CCY,
+            </if>
+            <if test="innerInternalKey != null">
+                INNER_INTERNAL_KEY,
+            </if>
+            <if test="innerAcctName != null">
+                INNER_ACCT_NAME,
+            </if>
+            <if test="innerClientNo != null">
+                INNER_CLIENT_NO,
+            </if>
+            <if test="hangSeqNo != null">
+                HANG_SEQ_NO,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE,
+            </if>
+            <if test="othClientNo != null">
+                OTH_CLIENT_NO,
+            </if>
+            <if test="bankInOut != null">
+                BANK_IN_OUT,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="resSeqNo != null">
+                #{resSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="cardNo != null">
+                #{cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="othInternalKey != null">
+                #{othInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="othCardNo != null">
+                #{othCardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othBaseAcctNo != null">
+                #{othBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctCcy != null">
+                #{othAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctSeqNo != null">
+                #{othAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othProdType != null">
+                #{othProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctName != null">
+                #{othAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctDesc != null">
+                #{othAcctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="settleCardFlag != null">
+                #{settleCardFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="tranMethod != null">
+                #{tranMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="signTimestamp != null">
+                #{signTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmt != null">
+                #{tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tranDate != null">
+                #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tranBranch != null">
+                #{tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="docType != null">
+                #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="prefix != null">
+                #{prefix,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherNo != null">
+                #{voucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="arrivalStatus != null">
+                #{arrivalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCode != null">
+                #{exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCodet != null">
+                #{exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDesc != null">
+                #{tranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="tranNote != null">
+                #{tranNote,jdbcType=VARCHAR},
+            </if>
+            <if test="cashItem != null">
+                #{cashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="narrative != null">
+                #{narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="commissionClientName != null">
+                #{commissionClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="commissionClientTel != null">
+                #{commissionClientTel,jdbcType=VARCHAR},
+            </if>
+            <if test="payUnit != null">
+                #{payUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReason != null">
+                #{cancelReason,jdbcType=VARCHAR},
+            </if>
+            <if test="terminalId != null">
+                #{terminalId,jdbcType=VARCHAR},
+            </if>
+            <if test="track2 != null">
+                #{track2,jdbcType=VARCHAR},
+            </if>
+            <if test="track3 != null">
+                #{track3,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="subSeqNo != null">
+                #{subSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="innerBaseAcctNo != null">
+                #{innerBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="innerProdType != null">
+                #{innerProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="innerAcctSeqNo != null">
+                #{innerAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="innerAcctCcy != null">
+                #{innerAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="innerInternalKey != null">
+                #{innerInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="innerAcctName != null">
+                #{innerAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="innerClientNo != null">
+                #{innerClientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="hangSeqNo != null">
+                #{hangSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="othClientNo != null">
+                #{othClientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bankInOut != null">
+                #{bankInOut,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbDelayTranHistExample" resultType="java.lang.Long">
+        select count(*) from RB_DELAY_TRAN_HIST
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_DELAY_TRAN_HIST
+        <set>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resSeqNo != null">
+                RES_SEQ_NO = #{row.resSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.cardNo != null">
+                CARD_NO = #{row.cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodType != null">
+                PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientName != null">
+                CLIENT_NAME = #{row.clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othInternalKey != null">
+                OTH_INTERNAL_KEY = #{row.othInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.othCardNo != null">
+                OTH_CARD_NO = #{row.othCardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othBaseAcctNo != null">
+                OTH_BASE_ACCT_NO = #{row.othBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othAcctCcy != null">
+                OTH_ACCT_CCY = #{row.othAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othAcctSeqNo != null">
+                OTH_ACCT_SEQ_NO = #{row.othAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othProdType != null">
+                OTH_PROD_TYPE = #{row.othProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othAcctName != null">
+                OTH_ACCT_NAME = #{row.othAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othAcctDesc != null">
+                OTH_ACCT_DESC = #{row.othAcctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.settleCardFlag != null">
+                SETTLE_CARD_FLAG = #{row.settleCardFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ccy != null">
+                CCY = #{row.ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranMethod != null">
+                TRAN_METHOD = #{row.tranMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.signTimestamp != null">
+                SIGN_TIMESTAMP = #{row.signTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranType != null">
+                TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranAmt != null">
+                TRAN_AMT = #{row.tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tranDate != null">
+                TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.tranBranch != null">
+                TRAN_BRANCH = #{row.tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.docType != null">
+                DOC_TYPE = #{row.docType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prefix != null">
+                PREFIX = #{row.prefix,jdbcType=VARCHAR},
+            </if>
+            <if test="row.voucherNo != null">
+                VOUCHER_NO = #{row.voucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.arrivalStatus != null">
+                ARRIVAL_STATUS = #{row.arrivalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reference != null">
+                REFERENCE = #{row.reference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sourceType != null">
+                SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE = #{row.exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET = #{row.exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranDesc != null">
+                TRAN_DESC = #{row.tranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranNote != null">
+                TRAN_NOTE = #{row.tranNote,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashItem != null">
+                CASH_ITEM = #{row.cashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.narrative != null">
+                NARRATIVE = #{row.narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="row.commissionClientName != null">
+                COMMISSION_CLIENT_NAME = #{row.commissionClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.commissionClientTel != null">
+                COMMISSION_CLIENT_TEL = #{row.commissionClientTel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payUnit != null">
+                PAY_UNIT = #{row.payUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cancelReason != null">
+                CANCEL_REASON = #{row.cancelReason,jdbcType=VARCHAR},
+            </if>
+            <if test="row.terminalId != null">
+                TERMINAL_ID = #{row.terminalId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.track2 != null">
+                TRACK2 = #{row.track2,jdbcType=VARCHAR},
+            </if>
+            <if test="row.track3 != null">
+                TRACK3 = #{row.track3,jdbcType=VARCHAR},
+            </if>
+            <if test="row.authUserId != null">
+                AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.userId != null">
+                USER_ID = #{row.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.subSeqNo != null">
+                SUB_SEQ_NO = #{row.subSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.innerBaseAcctNo != null">
+                INNER_BASE_ACCT_NO = #{row.innerBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.innerProdType != null">
+                INNER_PROD_TYPE = #{row.innerProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.innerAcctSeqNo != null">
+                INNER_ACCT_SEQ_NO = #{row.innerAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.innerAcctCcy != null">
+                INNER_ACCT_CCY = #{row.innerAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.innerInternalKey != null">
+                INNER_INTERNAL_KEY = #{row.innerInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.innerAcctName != null">
+                INNER_ACCT_NAME = #{row.innerAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.innerClientNo != null">
+                INNER_CLIENT_NO = #{row.innerClientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.hangSeqNo != null">
+                HANG_SEQ_NO = #{row.hangSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastChangeDate != null">
+                LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.othClientNo != null">
+                OTH_CLIENT_NO = #{row.othClientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.bankInOut != null">
+                BANK_IN_OUT = #{row.bankInOut,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_DELAY_TRAN_HIST
+        set
+            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},            RES_SEQ_NO = #{row.resSeqNo,jdbcType=VARCHAR},            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            CARD_NO = #{row.cardNo,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            CLIENT_NAME = #{row.clientName,jdbcType=VARCHAR},            OTH_INTERNAL_KEY = #{row.othInternalKey,jdbcType=INTEGER},            OTH_CARD_NO = #{row.othCardNo,jdbcType=VARCHAR},            OTH_BASE_ACCT_NO = #{row.othBaseAcctNo,jdbcType=VARCHAR},            OTH_ACCT_CCY = #{row.othAcctCcy,jdbcType=VARCHAR},            OTH_ACCT_SEQ_NO = #{row.othAcctSeqNo,jdbcType=VARCHAR},            OTH_PROD_TYPE = #{row.othProdType,jdbcType=VARCHAR},            OTH_ACCT_NAME = #{row.othAcctName,jdbcType=VARCHAR},            OTH_ACCT_DESC = #{row.othAcctDesc,jdbcType=VARCHAR},            SETTLE_CARD_FLAG = #{row.settleCardFlag,jdbcType=VARCHAR},            CCY = #{row.ccy,jdbcType=VARCHAR},            TRAN_METHOD = #{row.tranMethod,jdbcType=VARCHAR},            SIGN_TIMESTAMP = #{row.signTimestamp,jdbcType=VARCHAR},            TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},            TRAN_AMT = #{row.tranAmt,jdbcType=DECIMAL},            TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},            TRAN_BRANCH = #{row.tranBranch,jdbcType=VARCHAR},            DOC_TYPE = #{row.docType,jdbcType=VARCHAR},            PREFIX = #{row.prefix,jdbcType=VARCHAR},            VOUCHER_NO = #{row.voucherNo,jdbcType=VARCHAR},            ARRIVAL_STATUS = #{row.arrivalStatus,jdbcType=VARCHAR},            REFERENCE = #{row.reference,jdbcType=VARCHAR},            SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODE = #{row.exchangeTranCode,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODET = #{row.exchangeTranCodet,jdbcType=VARCHAR},            TRAN_DESC = #{row.tranDesc,jdbcType=VARCHAR},            TRAN_NOTE = #{row.tranNote,jdbcType=VARCHAR},            CASH_ITEM = #{row.cashItem,jdbcType=VARCHAR},            NARRATIVE = #{row.narrative,jdbcType=VARCHAR},            COMMISSION_CLIENT_NAME = #{row.commissionClientName,jdbcType=VARCHAR},            COMMISSION_CLIENT_TEL = #{row.commissionClientTel,jdbcType=VARCHAR},            PAY_UNIT = #{row.payUnit,jdbcType=VARCHAR},            CANCEL_REASON = #{row.cancelReason,jdbcType=VARCHAR},            TERMINAL_ID = #{row.terminalId,jdbcType=VARCHAR},            TRACK2 = #{row.track2,jdbcType=VARCHAR},            TRACK3 = #{row.track3,jdbcType=VARCHAR},            AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            USER_ID = #{row.userId,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            SUB_SEQ_NO = #{row.subSeqNo,jdbcType=VARCHAR},            INNER_BASE_ACCT_NO = #{row.innerBaseAcctNo,jdbcType=VARCHAR},            INNER_PROD_TYPE = #{row.innerProdType,jdbcType=VARCHAR},            INNER_ACCT_SEQ_NO = #{row.innerAcctSeqNo,jdbcType=VARCHAR},            INNER_ACCT_CCY = #{row.innerAcctCcy,jdbcType=VARCHAR},            INNER_INTERNAL_KEY = #{row.innerInternalKey,jdbcType=INTEGER},            INNER_ACCT_NAME = #{row.innerAcctName,jdbcType=VARCHAR},            INNER_CLIENT_NO = #{row.innerClientNo,jdbcType=VARCHAR},            HANG_SEQ_NO = #{row.hangSeqNo,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{row.lastChangeDate,jdbcType=TIMESTAMP},            OTH_CLIENT_NO = #{row.othClientNo,jdbcType=VARCHAR},            BANK_IN_OUT = #{row.bankInOut,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbDelayTranHist">
+        update RB_DELAY_TRAN_HIST
+        <set>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="resSeqNo != null">
+                RES_SEQ_NO = #{resSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="cardNo != null">
+                CARD_NO = #{cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodType != null">
+                PROD_TYPE = #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                CLIENT_NAME = #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="othInternalKey != null">
+                OTH_INTERNAL_KEY = #{othInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="othCardNo != null">
+                OTH_CARD_NO = #{othCardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othBaseAcctNo != null">
+                OTH_BASE_ACCT_NO = #{othBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctCcy != null">
+                OTH_ACCT_CCY = #{othAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctSeqNo != null">
+                OTH_ACCT_SEQ_NO = #{othAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othProdType != null">
+                OTH_PROD_TYPE = #{othProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctName != null">
+                OTH_ACCT_NAME = #{othAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctDesc != null">
+                OTH_ACCT_DESC = #{othAcctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="settleCardFlag != null">
+                SETTLE_CARD_FLAG = #{settleCardFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="tranMethod != null">
+                TRAN_METHOD = #{tranMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="signTimestamp != null">
+                SIGN_TIMESTAMP = #{signTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE = #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmt != null">
+                TRAN_AMT = #{tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tranBranch != null">
+                TRAN_BRANCH = #{tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="docType != null">
+                DOC_TYPE = #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="prefix != null">
+                PREFIX = #{prefix,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherNo != null">
+                VOUCHER_NO = #{voucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="arrivalStatus != null">
+                ARRIVAL_STATUS = #{arrivalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                REFERENCE = #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE = #{exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET = #{exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDesc != null">
+                TRAN_DESC = #{tranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="tranNote != null">
+                TRAN_NOTE = #{tranNote,jdbcType=VARCHAR},
+            </if>
+            <if test="cashItem != null">
+                CASH_ITEM = #{cashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="narrative != null">
+                NARRATIVE = #{narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="commissionClientName != null">
+                COMMISSION_CLIENT_NAME = #{commissionClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="commissionClientTel != null">
+                COMMISSION_CLIENT_TEL = #{commissionClientTel,jdbcType=VARCHAR},
+            </if>
+            <if test="payUnit != null">
+                PAY_UNIT = #{payUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelReason != null">
+                CANCEL_REASON = #{cancelReason,jdbcType=VARCHAR},
+            </if>
+            <if test="terminalId != null">
+                TERMINAL_ID = #{terminalId,jdbcType=VARCHAR},
+            </if>
+            <if test="track2 != null">
+                TRACK2 = #{track2,jdbcType=VARCHAR},
+            </if>
+            <if test="track3 != null">
+                TRACK3 = #{track3,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="subSeqNo != null">
+                SUB_SEQ_NO = #{subSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="innerBaseAcctNo != null">
+                INNER_BASE_ACCT_NO = #{innerBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="innerProdType != null">
+                INNER_PROD_TYPE = #{innerProdType,jdbcType=VARCHAR},
+            </if>
+            <if test="innerAcctSeqNo != null">
+                INNER_ACCT_SEQ_NO = #{innerAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="innerAcctCcy != null">
+                INNER_ACCT_CCY = #{innerAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="innerInternalKey != null">
+                INNER_INTERNAL_KEY = #{innerInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="innerAcctName != null">
+                INNER_ACCT_NAME = #{innerAcctName,jdbcType=VARCHAR},
+            </if>
+            <if test="innerClientNo != null">
+                INNER_CLIENT_NO = #{innerClientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="hangSeqNo != null">
+                HANG_SEQ_NO = #{hangSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastChangeDate != null">
+                LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="othClientNo != null">
+                OTH_CLIENT_NO = #{othClientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bankInOut != null">
+                BANK_IN_OUT = #{bankInOut,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbDelayTranHist">
+        update RB_DELAY_TRAN_HIST
+        set
+            CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},            RES_SEQ_NO = #{resSeqNo,jdbcType=VARCHAR},            INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},            CARD_NO = #{cardNo,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            PROD_TYPE = #{prodType,jdbcType=VARCHAR},            CLIENT_NAME = #{clientName,jdbcType=VARCHAR},            OTH_INTERNAL_KEY = #{othInternalKey,jdbcType=INTEGER},            OTH_CARD_NO = #{othCardNo,jdbcType=VARCHAR},            OTH_BASE_ACCT_NO = #{othBaseAcctNo,jdbcType=VARCHAR},            OTH_ACCT_CCY = #{othAcctCcy,jdbcType=VARCHAR},            OTH_ACCT_SEQ_NO = #{othAcctSeqNo,jdbcType=VARCHAR},            OTH_PROD_TYPE = #{othProdType,jdbcType=VARCHAR},            OTH_ACCT_NAME = #{othAcctName,jdbcType=VARCHAR},            OTH_ACCT_DESC = #{othAcctDesc,jdbcType=VARCHAR},            SETTLE_CARD_FLAG = #{settleCardFlag,jdbcType=VARCHAR},            CCY = #{ccy,jdbcType=VARCHAR},            TRAN_METHOD = #{tranMethod,jdbcType=VARCHAR},            SIGN_TIMESTAMP = #{signTimestamp,jdbcType=VARCHAR},            TRAN_TYPE = #{tranType,jdbcType=VARCHAR},            TRAN_AMT = #{tranAmt,jdbcType=DECIMAL},            TRAN_BRANCH = #{tranBranch,jdbcType=VARCHAR},            DOC_TYPE = #{docType,jdbcType=VARCHAR},            PREFIX = #{prefix,jdbcType=VARCHAR},            VOUCHER_NO = #{voucherNo,jdbcType=VARCHAR},            ARRIVAL_STATUS = #{arrivalStatus,jdbcType=VARCHAR},            REFERENCE = #{reference,jdbcType=VARCHAR},            SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODE = #{exchangeTranCode,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODET = #{exchangeTranCodet,jdbcType=VARCHAR},            TRAN_DESC = #{tranDesc,jdbcType=VARCHAR},            TRAN_NOTE = #{tranNote,jdbcType=VARCHAR},            CASH_ITEM = #{cashItem,jdbcType=VARCHAR},            NARRATIVE = #{narrative,jdbcType=VARCHAR},            COMMISSION_CLIENT_NAME = #{commissionClientName,jdbcType=VARCHAR},            COMMISSION_CLIENT_TEL = #{commissionClientTel,jdbcType=VARCHAR},            PAY_UNIT = #{payUnit,jdbcType=VARCHAR},            CANCEL_REASON = #{cancelReason,jdbcType=VARCHAR},            TERMINAL_ID = #{terminalId,jdbcType=VARCHAR},            TRACK2 = #{track2,jdbcType=VARCHAR},            TRACK3 = #{track3,jdbcType=VARCHAR},            AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            USER_ID = #{userId,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            SUB_SEQ_NO = #{subSeqNo,jdbcType=VARCHAR},            INNER_BASE_ACCT_NO = #{innerBaseAcctNo,jdbcType=VARCHAR},            INNER_PROD_TYPE = #{innerProdType,jdbcType=VARCHAR},            INNER_ACCT_SEQ_NO = #{innerAcctSeqNo,jdbcType=VARCHAR},            INNER_ACCT_CCY = #{innerAcctCcy,jdbcType=VARCHAR},            INNER_INTERNAL_KEY = #{innerInternalKey,jdbcType=INTEGER},            INNER_ACCT_NAME = #{innerAcctName,jdbcType=VARCHAR},            INNER_CLIENT_NO = #{innerClientNo,jdbcType=VARCHAR},            HANG_SEQ_NO = #{hangSeqNo,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            LAST_CHANGE_DATE = #{lastChangeDate,jdbcType=TIMESTAMP},            OTH_CLIENT_NO = #{othClientNo,jdbcType=VARCHAR},            BANK_IN_OUT = #{bankInOut,jdbcType=VARCHAR}        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and CLIENT_NO = #{clientNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </update>
+</mapper>
