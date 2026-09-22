@@ -1,0 +1,30 @@
+package com.dcits.deposit.enums;
+
+/** 到账方式 */
+public enum TranMethod {
+    /** 次日到账 */
+    VALUE_02("02"),
+    /** 实时到账 */
+    VALUE_01("01"),
+    /** 普通到账 */
+    VALUE_03("03");
+
+    private String value;
+
+    private TranMethod(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public static TranMethod byValue(String value) {
+        for (TranMethod item : values()) {
+            if (item.getValue().equals(value)) {
+                return item;
+            }
+        }
+        return null;
+    }
+}

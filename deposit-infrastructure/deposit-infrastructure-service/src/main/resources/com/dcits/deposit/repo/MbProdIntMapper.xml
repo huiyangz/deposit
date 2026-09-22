@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.MbProdIntMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.MbProdInt">
+        <id column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+        <id column="EVENT_TYPE" property="eventType" jdbcType="VARCHAR" />
+        <id column="INT_CLASS" property="intClass" jdbcType="VARCHAR" />
+        <id column="INT_TYPE" property="intType" jdbcType="VARCHAR" />
+        <id column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TAX_TYPE" property="taxType" jdbcType="VARCHAR" />
+        <result column="ACCT_RATE_FLAG" property="acctRateFlag" jdbcType="VARCHAR" />
+        <result column="INT_CALC_METHOD" property="intCalcMethod" jdbcType="VARCHAR" />
+        <result column="RATE_LAYER_RULE" property="rateLayerRule" jdbcType="VARCHAR" />
+        <result column="RATE_GEAR_AMT_TYPE" property="rateGearAmtType" jdbcType="VARCHAR" />
+        <result column="GEAR_AMT_IND" property="gearAmtInd" jdbcType="VARCHAR" />
+        <result column="GEAR_AMT_METHOD" property="gearAmtMethod" jdbcType="VARCHAR" />
+        <result column="GEAR_DAYS_IND" property="gearDaysInd" jdbcType="VARCHAR" />
+        <result column="GEAR_DAYS_METHOD" property="gearDaysMethod" jdbcType="VARCHAR" />
+        <result column="INT_CALC_AMT_TYPE" property="intCalcAmtType" jdbcType="VARCHAR" />
+        <result column="EFFECT_DATE_CALC_METHOD" property="effectDateCalcMethod" jdbcType="VARCHAR" />
+        <result column="DAYS_GEAR_TYPE" property="daysGearType" jdbcType="VARCHAR" />
+        <result column="INT_APPL_TYPE" property="intApplType" jdbcType="VARCHAR" />
+        <result column="MONTH_BASIS" property="monthBasis" jdbcType="VARCHAR" />
+        <result column="GROUP_RULE_TYPE" property="groupRuleType" jdbcType="VARCHAR" />
+        <result column="INT_MATCH_RULE" property="intMatchRule" jdbcType="VARCHAR" />
+        <result column="INT_RECALC_METHOD" property="intRecalcMethod" jdbcType="VARCHAR" />
+        <result column="MIN_RATE" property="minRate" jdbcType="DECIMAL" />
+        <result column="MAX_RATE" property="maxRate" jdbcType="DECIMAL" />
+        <result column="ROLL_DAY" property="rollDay" jdbcType="VARCHAR" />
+        <result column="ROLL_FREQ" property="rollFreq" jdbcType="VARCHAR" />
+        <result column="ROUND_DOWN_FLAG" property="roundDownFlag" jdbcType="VARCHAR" />
+        <result column="INT_TYPE_EXP" property="intTypeExp" jdbcType="VARCHAR" />
+        <result column="MONTH_BASIS_EXP" property="monthBasisExp" jdbcType="VARCHAR" />
+        <result column="GROUP_RULE_TYPE_EXP" property="groupRuleTypeExp" jdbcType="VARCHAR" />
+        <result column="MIN_RATE_EXP" property="minRateExp" jdbcType="VARCHAR" />
+        <result column="MAX_RATE_EXP" property="maxRateExp" jdbcType="VARCHAR" />
+        <result column="INT_CALC_METHOD_EXP" property="intCalcMethodExp" jdbcType="VARCHAR" />
+        <result column="INT_CALC_AMT_TYPE_EXP" property="intCalcAmtTypeExp" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="SPREAD_PERCENT" property="spreadPercent" jdbcType="DECIMAL" />
+        <result column="SPREAD_RATE" property="spreadRate" jdbcType="DECIMAL" />
+        <result column="CALC_BY_INT" property="calcByInt" jdbcType="VARCHAR" />
+        <result column="YEAR_BASIS" property="yearBasis" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        PROD_TYPE,        EVENT_TYPE,        INT_CLASS,        INT_TYPE,        TAX_TYPE,        ACCT_RATE_FLAG,        INT_CALC_METHOD,        RATE_LAYER_RULE,        RATE_GEAR_AMT_TYPE,        GEAR_AMT_IND,        GEAR_AMT_METHOD,        GEAR_DAYS_IND,        GEAR_DAYS_METHOD,        INT_CALC_AMT_TYPE,        EFFECT_DATE_CALC_METHOD,        DAYS_GEAR_TYPE,        INT_APPL_TYPE,        MONTH_BASIS,        GROUP_RULE_TYPE,        INT_MATCH_RULE,        INT_RECALC_METHOD,        MIN_RATE,        MAX_RATE,        ROLL_DAY,        ROLL_FREQ,        ROUND_DOWN_FLAG,        INT_TYPE_EXP,        MONTH_BASIS_EXP,        GROUP_RULE_TYPE_EXP,        MIN_RATE_EXP,        MAX_RATE_EXP,        INT_CALC_METHOD_EXP,        INT_CALC_AMT_TYPE_EXP,        COMPANY,        TRAN_TIMESTAMP,        SPREAD_PERCENT,        SPREAD_RATE,        CALC_BY_INT,        YEAR_BASIS    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.MbProdIntExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from MB_PROD_INT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MB_PROD_INT
+        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and EVENT_TYPE = #{eventType,jdbcType=VARCHAR}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and INT_TYPE = #{intType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from MB_PROD_INT
+        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and EVENT_TYPE = #{eventType,jdbcType=VARCHAR}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and INT_TYPE = #{intType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.MbProdIntExample">
+        delete from MB_PROD_INT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.MbProdInt">
+        insert into MB_PROD_INT
+        (
+            PROD_TYPE,            EVENT_TYPE,            INT_CLASS,            INT_TYPE,            TAX_TYPE,            ACCT_RATE_FLAG,            INT_CALC_METHOD,            RATE_LAYER_RULE,            RATE_GEAR_AMT_TYPE,            GEAR_AMT_IND,            GEAR_AMT_METHOD,            GEAR_DAYS_IND,            GEAR_DAYS_METHOD,            INT_CALC_AMT_TYPE,            EFFECT_DATE_CALC_METHOD,            DAYS_GEAR_TYPE,            INT_APPL_TYPE,            MONTH_BASIS,            GROUP_RULE_TYPE,            INT_MATCH_RULE,            INT_RECALC_METHOD,            MIN_RATE,            MAX_RATE,            ROLL_DAY,            ROLL_FREQ,            ROUND_DOWN_FLAG,            INT_TYPE_EXP,            MONTH_BASIS_EXP,            GROUP_RULE_TYPE_EXP,            MIN_RATE_EXP,            MAX_RATE_EXP,            INT_CALC_METHOD_EXP,            INT_CALC_AMT_TYPE_EXP,            COMPANY,            TRAN_TIMESTAMP,            SPREAD_PERCENT,            SPREAD_RATE,            CALC_BY_INT,            YEAR_BASIS        )
+        values
+        (
+            #{prodType,jdbcType=VARCHAR},            #{eventType,jdbcType=VARCHAR},            #{intClass,jdbcType=VARCHAR},            #{intType,jdbcType=VARCHAR},            #{taxType,jdbcType=VARCHAR},            #{acctRateFlag,jdbcType=VARCHAR},            #{intCalcMethod,jdbcType=VARCHAR},            #{rateLayerRule,jdbcType=VARCHAR},            #{rateGearAmtType,jdbcType=VARCHAR},            #{gearAmtInd,jdbcType=VARCHAR},            #{gearAmtMethod,jdbcType=VARCHAR},            #{gearDaysInd,jdbcType=VARCHAR},            #{gearDaysMethod,jdbcType=VARCHAR},            #{intCalcAmtType,jdbcType=VARCHAR},            #{effectDateCalcMethod,jdbcType=VARCHAR},            #{daysGearType,jdbcType=VARCHAR},            #{intApplType,jdbcType=VARCHAR},            #{monthBasis,jdbcType=VARCHAR},            #{groupRuleType,jdbcType=VARCHAR},            #{intMatchRule,jdbcType=VARCHAR},            #{intRecalcMethod,jdbcType=VARCHAR},            #{minRate,jdbcType=DECIMAL},            #{maxRate,jdbcType=DECIMAL},            #{rollDay,jdbcType=VARCHAR},            #{rollFreq,jdbcType=VARCHAR},            #{roundDownFlag,jdbcType=VARCHAR},            #{intTypeExp,jdbcType=VARCHAR},            #{monthBasisExp,jdbcType=VARCHAR},            #{groupRuleTypeExp,jdbcType=VARCHAR},            #{minRateExp,jdbcType=VARCHAR},            #{maxRateExp,jdbcType=VARCHAR},            #{intCalcMethodExp,jdbcType=VARCHAR},            #{intCalcAmtTypeExp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{spreadPercent,jdbcType=DECIMAL},            #{spreadRate,jdbcType=DECIMAL},            #{calcByInt,jdbcType=VARCHAR},            #{yearBasis,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.MbProdInt">
+        insert into MB_PROD_INT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="eventType != null">
+                EVENT_TYPE,
+            </if>
+            <if test="intClass != null">
+                INT_CLASS,
+            </if>
+            <if test="intType != null">
+                INT_TYPE,
+            </if>
+            <if test="taxType != null">
+                TAX_TYPE,
+            </if>
+            <if test="acctRateFlag != null">
+                ACCT_RATE_FLAG,
+            </if>
+            <if test="intCalcMethod != null">
+                INT_CALC_METHOD,
+            </if>
+            <if test="rateLayerRule != null">
+                RATE_LAYER_RULE,
+            </if>
+            <if test="rateGearAmtType != null">
+                RATE_GEAR_AMT_TYPE,
+            </if>
+            <if test="gearAmtInd != null">
+                GEAR_AMT_IND,
+            </if>
+            <if test="gearAmtMethod != null">
+                GEAR_AMT_METHOD,
+            </if>
+            <if test="gearDaysInd != null">
+                GEAR_DAYS_IND,
+            </if>
+            <if test="gearDaysMethod != null">
+                GEAR_DAYS_METHOD,
+            </if>
+            <if test="intCalcAmtType != null">
+                INT_CALC_AMT_TYPE,
+            </if>
+            <if test="effectDateCalcMethod != null">
+                EFFECT_DATE_CALC_METHOD,
+            </if>
+            <if test="daysGearType != null">
+                DAYS_GEAR_TYPE,
+            </if>
+            <if test="intApplType != null">
+                INT_APPL_TYPE,
+            </if>
+            <if test="monthBasis != null">
+                MONTH_BASIS,
+            </if>
+            <if test="groupRuleType != null">
+                GROUP_RULE_TYPE,
+            </if>
+            <if test="intMatchRule != null">
+                INT_MATCH_RULE,
+            </if>
+            <if test="intRecalcMethod != null">
+                INT_RECALC_METHOD,
+            </if>
+            <if test="minRate != null">
+                MIN_RATE,
+            </if>
+            <if test="maxRate != null">
+                MAX_RATE,
+            </if>
+            <if test="rollDay != null">
+                ROLL_DAY,
+            </if>
+            <if test="rollFreq != null">
+                ROLL_FREQ,
+            </if>
+            <if test="roundDownFlag != null">
+                ROUND_DOWN_FLAG,
+            </if>
+            <if test="intTypeExp != null">
+                INT_TYPE_EXP,
+            </if>
+            <if test="monthBasisExp != null">
+                MONTH_BASIS_EXP,
+            </if>
+            <if test="groupRuleTypeExp != null">
+                GROUP_RULE_TYPE_EXP,
+            </if>
+            <if test="minRateExp != null">
+                MIN_RATE_EXP,
+            </if>
+            <if test="maxRateExp != null">
+                MAX_RATE_EXP,
+            </if>
+            <if test="intCalcMethodExp != null">
+                INT_CALC_METHOD_EXP,
+            </if>
+            <if test="intCalcAmtTypeExp != null">
+                INT_CALC_AMT_TYPE_EXP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="spreadPercent != null">
+                SPREAD_PERCENT,
+            </if>
+            <if test="spreadRate != null">
+                SPREAD_RATE,
+            </if>
+            <if test="calcByInt != null">
+                CALC_BY_INT,
+            </if>
+            <if test="yearBasis != null">
+                YEAR_BASIS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventType != null">
+                #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="intClass != null">
+                #{intClass,jdbcType=VARCHAR},
+            </if>
+            <if test="intType != null">
+                #{intType,jdbcType=VARCHAR},
+            </if>
+            <if test="taxType != null">
+                #{taxType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctRateFlag != null">
+                #{acctRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcMethod != null">
+                #{intCalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="rateLayerRule != null">
+                #{rateLayerRule,jdbcType=VARCHAR},
+            </if>
+            <if test="rateGearAmtType != null">
+                #{rateGearAmtType,jdbcType=VARCHAR},
+            </if>
+            <if test="gearAmtInd != null">
+                #{gearAmtInd,jdbcType=VARCHAR},
+            </if>
+            <if test="gearAmtMethod != null">
+                #{gearAmtMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="gearDaysInd != null">
+                #{gearDaysInd,jdbcType=VARCHAR},
+            </if>
+            <if test="gearDaysMethod != null">
+                #{gearDaysMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcAmtType != null">
+                #{intCalcAmtType,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDateCalcMethod != null">
+                #{effectDateCalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="daysGearType != null">
+                #{daysGearType,jdbcType=VARCHAR},
+            </if>
+            <if test="intApplType != null">
+                #{intApplType,jdbcType=VARCHAR},
+            </if>
+            <if test="monthBasis != null">
+                #{monthBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="groupRuleType != null">
+                #{groupRuleType,jdbcType=VARCHAR},
+            </if>
+            <if test="intMatchRule != null">
+                #{intMatchRule,jdbcType=VARCHAR},
+            </if>
+            <if test="intRecalcMethod != null">
+                #{intRecalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="minRate != null">
+                #{minRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxRate != null">
+                #{maxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="rollDay != null">
+                #{rollDay,jdbcType=VARCHAR},
+            </if>
+            <if test="rollFreq != null">
+                #{rollFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="roundDownFlag != null">
+                #{roundDownFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intTypeExp != null">
+                #{intTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="monthBasisExp != null">
+                #{monthBasisExp,jdbcType=VARCHAR},
+            </if>
+            <if test="groupRuleTypeExp != null">
+                #{groupRuleTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="minRateExp != null">
+                #{minRateExp,jdbcType=VARCHAR},
+            </if>
+            <if test="maxRateExp != null">
+                #{maxRateExp,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcMethodExp != null">
+                #{intCalcMethodExp,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcAmtTypeExp != null">
+                #{intCalcAmtTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="spreadPercent != null">
+                #{spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadRate != null">
+                #{spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="calcByInt != null">
+                #{calcByInt,jdbcType=VARCHAR},
+            </if>
+            <if test="yearBasis != null">
+                #{yearBasis,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.MbProdIntExample" resultType="java.lang.Long">
+        select count(*) from MB_PROD_INT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update MB_PROD_INT
+        <set>
+            <if test="row.prodType != null">
+                PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.eventType != null">
+                EVENT_TYPE = #{row.eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intClass != null">
+                INT_CLASS = #{row.intClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intType != null">
+                INT_TYPE = #{row.intType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.taxType != null">
+                TAX_TYPE = #{row.taxType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctRateFlag != null">
+                ACCT_RATE_FLAG = #{row.acctRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intCalcMethod != null">
+                INT_CALC_METHOD = #{row.intCalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rateLayerRule != null">
+                RATE_LAYER_RULE = #{row.rateLayerRule,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rateGearAmtType != null">
+                RATE_GEAR_AMT_TYPE = #{row.rateGearAmtType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.gearAmtInd != null">
+                GEAR_AMT_IND = #{row.gearAmtInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.gearAmtMethod != null">
+                GEAR_AMT_METHOD = #{row.gearAmtMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.gearDaysInd != null">
+                GEAR_DAYS_IND = #{row.gearDaysInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.gearDaysMethod != null">
+                GEAR_DAYS_METHOD = #{row.gearDaysMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intCalcAmtType != null">
+                INT_CALC_AMT_TYPE = #{row.intCalcAmtType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.effectDateCalcMethod != null">
+                EFFECT_DATE_CALC_METHOD = #{row.effectDateCalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.daysGearType != null">
+                DAYS_GEAR_TYPE = #{row.daysGearType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intApplType != null">
+                INT_APPL_TYPE = #{row.intApplType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.monthBasis != null">
+                MONTH_BASIS = #{row.monthBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="row.groupRuleType != null">
+                GROUP_RULE_TYPE = #{row.groupRuleType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intMatchRule != null">
+                INT_MATCH_RULE = #{row.intMatchRule,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intRecalcMethod != null">
+                INT_RECALC_METHOD = #{row.intRecalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.minRate != null">
+                MIN_RATE = #{row.minRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.maxRate != null">
+                MAX_RATE = #{row.maxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.rollDay != null">
+                ROLL_DAY = #{row.rollDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rollFreq != null">
+                ROLL_FREQ = #{row.rollFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.roundDownFlag != null">
+                ROUND_DOWN_FLAG = #{row.roundDownFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intTypeExp != null">
+                INT_TYPE_EXP = #{row.intTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.monthBasisExp != null">
+                MONTH_BASIS_EXP = #{row.monthBasisExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.groupRuleTypeExp != null">
+                GROUP_RULE_TYPE_EXP = #{row.groupRuleTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.minRateExp != null">
+                MIN_RATE_EXP = #{row.minRateExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.maxRateExp != null">
+                MAX_RATE_EXP = #{row.maxRateExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intCalcMethodExp != null">
+                INT_CALC_METHOD_EXP = #{row.intCalcMethodExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.intCalcAmtTypeExp != null">
+                INT_CALC_AMT_TYPE_EXP = #{row.intCalcAmtTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.spreadPercent != null">
+                SPREAD_PERCENT = #{row.spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="row.spreadRate != null">
+                SPREAD_RATE = #{row.spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.calcByInt != null">
+                CALC_BY_INT = #{row.calcByInt,jdbcType=VARCHAR},
+            </if>
+            <if test="row.yearBasis != null">
+                YEAR_BASIS = #{row.yearBasis,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update MB_PROD_INT
+        set
+            PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},            EVENT_TYPE = #{row.eventType,jdbcType=VARCHAR},            INT_CLASS = #{row.intClass,jdbcType=VARCHAR},            INT_TYPE = #{row.intType,jdbcType=VARCHAR},            TAX_TYPE = #{row.taxType,jdbcType=VARCHAR},            ACCT_RATE_FLAG = #{row.acctRateFlag,jdbcType=VARCHAR},            INT_CALC_METHOD = #{row.intCalcMethod,jdbcType=VARCHAR},            RATE_LAYER_RULE = #{row.rateLayerRule,jdbcType=VARCHAR},            RATE_GEAR_AMT_TYPE = #{row.rateGearAmtType,jdbcType=VARCHAR},            GEAR_AMT_IND = #{row.gearAmtInd,jdbcType=VARCHAR},            GEAR_AMT_METHOD = #{row.gearAmtMethod,jdbcType=VARCHAR},            GEAR_DAYS_IND = #{row.gearDaysInd,jdbcType=VARCHAR},            GEAR_DAYS_METHOD = #{row.gearDaysMethod,jdbcType=VARCHAR},            INT_CALC_AMT_TYPE = #{row.intCalcAmtType,jdbcType=VARCHAR},            EFFECT_DATE_CALC_METHOD = #{row.effectDateCalcMethod,jdbcType=VARCHAR},            DAYS_GEAR_TYPE = #{row.daysGearType,jdbcType=VARCHAR},            INT_APPL_TYPE = #{row.intApplType,jdbcType=VARCHAR},            MONTH_BASIS = #{row.monthBasis,jdbcType=VARCHAR},            GROUP_RULE_TYPE = #{row.groupRuleType,jdbcType=VARCHAR},            INT_MATCH_RULE = #{row.intMatchRule,jdbcType=VARCHAR},            INT_RECALC_METHOD = #{row.intRecalcMethod,jdbcType=VARCHAR},            MIN_RATE = #{row.minRate,jdbcType=DECIMAL},            MAX_RATE = #{row.maxRate,jdbcType=DECIMAL},            ROLL_DAY = #{row.rollDay,jdbcType=VARCHAR},            ROLL_FREQ = #{row.rollFreq,jdbcType=VARCHAR},            ROUND_DOWN_FLAG = #{row.roundDownFlag,jdbcType=VARCHAR},            INT_TYPE_EXP = #{row.intTypeExp,jdbcType=VARCHAR},            MONTH_BASIS_EXP = #{row.monthBasisExp,jdbcType=VARCHAR},            GROUP_RULE_TYPE_EXP = #{row.groupRuleTypeExp,jdbcType=VARCHAR},            MIN_RATE_EXP = #{row.minRateExp,jdbcType=VARCHAR},            MAX_RATE_EXP = #{row.maxRateExp,jdbcType=VARCHAR},            INT_CALC_METHOD_EXP = #{row.intCalcMethodExp,jdbcType=VARCHAR},            INT_CALC_AMT_TYPE_EXP = #{row.intCalcAmtTypeExp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            SPREAD_PERCENT = #{row.spreadPercent,jdbcType=DECIMAL},            SPREAD_RATE = #{row.spreadRate,jdbcType=DECIMAL},            CALC_BY_INT = #{row.calcByInt,jdbcType=VARCHAR},            YEAR_BASIS = #{row.yearBasis,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.MbProdInt">
+        update MB_PROD_INT
+        <set>
+            <if test="taxType != null">
+                TAX_TYPE = #{taxType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctRateFlag != null">
+                ACCT_RATE_FLAG = #{acctRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcMethod != null">
+                INT_CALC_METHOD = #{intCalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="rateLayerRule != null">
+                RATE_LAYER_RULE = #{rateLayerRule,jdbcType=VARCHAR},
+            </if>
+            <if test="rateGearAmtType != null">
+                RATE_GEAR_AMT_TYPE = #{rateGearAmtType,jdbcType=VARCHAR},
+            </if>
+            <if test="gearAmtInd != null">
+                GEAR_AMT_IND = #{gearAmtInd,jdbcType=VARCHAR},
+            </if>
+            <if test="gearAmtMethod != null">
+                GEAR_AMT_METHOD = #{gearAmtMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="gearDaysInd != null">
+                GEAR_DAYS_IND = #{gearDaysInd,jdbcType=VARCHAR},
+            </if>
+            <if test="gearDaysMethod != null">
+                GEAR_DAYS_METHOD = #{gearDaysMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcAmtType != null">
+                INT_CALC_AMT_TYPE = #{intCalcAmtType,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDateCalcMethod != null">
+                EFFECT_DATE_CALC_METHOD = #{effectDateCalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="daysGearType != null">
+                DAYS_GEAR_TYPE = #{daysGearType,jdbcType=VARCHAR},
+            </if>
+            <if test="intApplType != null">
+                INT_APPL_TYPE = #{intApplType,jdbcType=VARCHAR},
+            </if>
+            <if test="monthBasis != null">
+                MONTH_BASIS = #{monthBasis,jdbcType=VARCHAR},
+            </if>
+            <if test="groupRuleType != null">
+                GROUP_RULE_TYPE = #{groupRuleType,jdbcType=VARCHAR},
+            </if>
+            <if test="intMatchRule != null">
+                INT_MATCH_RULE = #{intMatchRule,jdbcType=VARCHAR},
+            </if>
+            <if test="intRecalcMethod != null">
+                INT_RECALC_METHOD = #{intRecalcMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="minRate != null">
+                MIN_RATE = #{minRate,jdbcType=DECIMAL},
+            </if>
+            <if test="maxRate != null">
+                MAX_RATE = #{maxRate,jdbcType=DECIMAL},
+            </if>
+            <if test="rollDay != null">
+                ROLL_DAY = #{rollDay,jdbcType=VARCHAR},
+            </if>
+            <if test="rollFreq != null">
+                ROLL_FREQ = #{rollFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="roundDownFlag != null">
+                ROUND_DOWN_FLAG = #{roundDownFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="intTypeExp != null">
+                INT_TYPE_EXP = #{intTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="monthBasisExp != null">
+                MONTH_BASIS_EXP = #{monthBasisExp,jdbcType=VARCHAR},
+            </if>
+            <if test="groupRuleTypeExp != null">
+                GROUP_RULE_TYPE_EXP = #{groupRuleTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="minRateExp != null">
+                MIN_RATE_EXP = #{minRateExp,jdbcType=VARCHAR},
+            </if>
+            <if test="maxRateExp != null">
+                MAX_RATE_EXP = #{maxRateExp,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcMethodExp != null">
+                INT_CALC_METHOD_EXP = #{intCalcMethodExp,jdbcType=VARCHAR},
+            </if>
+            <if test="intCalcAmtTypeExp != null">
+                INT_CALC_AMT_TYPE_EXP = #{intCalcAmtTypeExp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="spreadPercent != null">
+                SPREAD_PERCENT = #{spreadPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="spreadRate != null">
+                SPREAD_RATE = #{spreadRate,jdbcType=DECIMAL},
+            </if>
+            <if test="calcByInt != null">
+                CALC_BY_INT = #{calcByInt,jdbcType=VARCHAR},
+            </if>
+            <if test="yearBasis != null">
+                YEAR_BASIS = #{yearBasis,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and EVENT_TYPE = #{eventType,jdbcType=VARCHAR}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and INT_TYPE = #{intType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.MbProdInt">
+        update MB_PROD_INT
+        set
+            TAX_TYPE = #{taxType,jdbcType=VARCHAR},            ACCT_RATE_FLAG = #{acctRateFlag,jdbcType=VARCHAR},            INT_CALC_METHOD = #{intCalcMethod,jdbcType=VARCHAR},            RATE_LAYER_RULE = #{rateLayerRule,jdbcType=VARCHAR},            RATE_GEAR_AMT_TYPE = #{rateGearAmtType,jdbcType=VARCHAR},            GEAR_AMT_IND = #{gearAmtInd,jdbcType=VARCHAR},            GEAR_AMT_METHOD = #{gearAmtMethod,jdbcType=VARCHAR},            GEAR_DAYS_IND = #{gearDaysInd,jdbcType=VARCHAR},            GEAR_DAYS_METHOD = #{gearDaysMethod,jdbcType=VARCHAR},            INT_CALC_AMT_TYPE = #{intCalcAmtType,jdbcType=VARCHAR},            EFFECT_DATE_CALC_METHOD = #{effectDateCalcMethod,jdbcType=VARCHAR},            DAYS_GEAR_TYPE = #{daysGearType,jdbcType=VARCHAR},            INT_APPL_TYPE = #{intApplType,jdbcType=VARCHAR},            MONTH_BASIS = #{monthBasis,jdbcType=VARCHAR},            GROUP_RULE_TYPE = #{groupRuleType,jdbcType=VARCHAR},            INT_MATCH_RULE = #{intMatchRule,jdbcType=VARCHAR},            INT_RECALC_METHOD = #{intRecalcMethod,jdbcType=VARCHAR},            MIN_RATE = #{minRate,jdbcType=DECIMAL},            MAX_RATE = #{maxRate,jdbcType=DECIMAL},            ROLL_DAY = #{rollDay,jdbcType=VARCHAR},            ROLL_FREQ = #{rollFreq,jdbcType=VARCHAR},            ROUND_DOWN_FLAG = #{roundDownFlag,jdbcType=VARCHAR},            INT_TYPE_EXP = #{intTypeExp,jdbcType=VARCHAR},            MONTH_BASIS_EXP = #{monthBasisExp,jdbcType=VARCHAR},            GROUP_RULE_TYPE_EXP = #{groupRuleTypeExp,jdbcType=VARCHAR},            MIN_RATE_EXP = #{minRateExp,jdbcType=VARCHAR},            MAX_RATE_EXP = #{maxRateExp,jdbcType=VARCHAR},            INT_CALC_METHOD_EXP = #{intCalcMethodExp,jdbcType=VARCHAR},            INT_CALC_AMT_TYPE_EXP = #{intCalcAmtTypeExp,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            SPREAD_PERCENT = #{spreadPercent,jdbcType=DECIMAL},            SPREAD_RATE = #{spreadRate,jdbcType=DECIMAL},            CALC_BY_INT = #{calcByInt,jdbcType=VARCHAR},            YEAR_BASIS = #{yearBasis,jdbcType=VARCHAR}        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and EVENT_TYPE = #{eventType,jdbcType=VARCHAR}
+          and INT_CLASS = #{intClass,jdbcType=VARCHAR}
+          and INT_TYPE = #{intType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </update>
+</mapper>
