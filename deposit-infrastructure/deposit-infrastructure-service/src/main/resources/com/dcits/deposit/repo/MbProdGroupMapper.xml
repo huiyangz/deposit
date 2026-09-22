@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.MbProdGroupMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.MbProdGroup">
+        <id column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+        <id column="PROD_SUB_TYPE" property="prodSubType" jdbcType="VARCHAR" />
+        <id column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <result column="DEFAULT_PROD_FLAG" property="defaultProdFlag" jdbcType="VARCHAR" />
+        <result column="ACCT_CLASS" property="acctClass" jdbcType="VARCHAR" />
+        <result column="RATIO" property="ratio" jdbcType="DECIMAL" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        PROD_TYPE,        PROD_SUB_TYPE,        SEQ_NO,        DEFAULT_PROD_FLAG,        ACCT_CLASS,        RATIO,        COMPANY,        TRAN_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.MbProdGroupExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from MB_PROD_GROUP
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MB_PROD_GROUP
+        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and PROD_SUB_TYPE = #{prodSubType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from MB_PROD_GROUP
+        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and PROD_SUB_TYPE = #{prodSubType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.MbProdGroupExample">
+        delete from MB_PROD_GROUP
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.MbProdGroup">
+        insert into MB_PROD_GROUP
+        (
+            PROD_TYPE,            PROD_SUB_TYPE,            SEQ_NO,            DEFAULT_PROD_FLAG,            ACCT_CLASS,            RATIO,            COMPANY,            TRAN_TIMESTAMP        )
+        values
+        (
+            #{prodType,jdbcType=VARCHAR},            #{prodSubType,jdbcType=VARCHAR},            #{seqNo,jdbcType=VARCHAR},            #{defaultProdFlag,jdbcType=VARCHAR},            #{acctClass,jdbcType=VARCHAR},            #{ratio,jdbcType=DECIMAL},            #{company,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.MbProdGroup">
+        insert into MB_PROD_GROUP
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="prodType != null">
+                PROD_TYPE,
+            </if>
+            <if test="prodSubType != null">
+                PROD_SUB_TYPE,
+            </if>
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+            <if test="defaultProdFlag != null">
+                DEFAULT_PROD_FLAG,
+            </if>
+            <if test="acctClass != null">
+                ACCT_CLASS,
+            </if>
+            <if test="ratio != null">
+                RATIO,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="prodType != null">
+                #{prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="prodSubType != null">
+                #{prodSubType,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultProdFlag != null">
+                #{defaultProdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctClass != null">
+                #{acctClass,jdbcType=VARCHAR},
+            </if>
+            <if test="ratio != null">
+                #{ratio,jdbcType=DECIMAL},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.MbProdGroupExample" resultType="java.lang.Long">
+        select count(*) from MB_PROD_GROUP
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update MB_PROD_GROUP
+        <set>
+            <if test="row.prodType != null">
+                PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodSubType != null">
+                PROD_SUB_TYPE = #{row.prodSubType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.defaultProdFlag != null">
+                DEFAULT_PROD_FLAG = #{row.defaultProdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctClass != null">
+                ACCT_CLASS = #{row.acctClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ratio != null">
+                RATIO = #{row.ratio,jdbcType=DECIMAL},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update MB_PROD_GROUP
+        set
+            PROD_TYPE = #{row.prodType,jdbcType=VARCHAR},            PROD_SUB_TYPE = #{row.prodSubType,jdbcType=VARCHAR},            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},            DEFAULT_PROD_FLAG = #{row.defaultProdFlag,jdbcType=VARCHAR},            ACCT_CLASS = #{row.acctClass,jdbcType=VARCHAR},            RATIO = #{row.ratio,jdbcType=DECIMAL},            COMPANY = #{row.company,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.MbProdGroup">
+        update MB_PROD_GROUP
+        <set>
+            <if test="seqNo != null">
+                SEQ_NO = #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultProdFlag != null">
+                DEFAULT_PROD_FLAG = #{defaultProdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctClass != null">
+                ACCT_CLASS = #{acctClass,jdbcType=VARCHAR},
+            </if>
+            <if test="ratio != null">
+                RATIO = #{ratio,jdbcType=DECIMAL},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and PROD_SUB_TYPE = #{prodSubType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.MbProdGroup">
+        update MB_PROD_GROUP
+        set
+            SEQ_NO = #{seqNo,jdbcType=VARCHAR},            DEFAULT_PROD_FLAG = #{defaultProdFlag,jdbcType=VARCHAR},            ACCT_CLASS = #{acctClass,jdbcType=VARCHAR},            RATIO = #{ratio,jdbcType=DECIMAL},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}        where PROD_TYPE = #{prodType,jdbcType=VARCHAR}
+          and PROD_SUB_TYPE = #{prodSubType,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+    </update>
+</mapper>

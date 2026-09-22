@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RcRuleTypeMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RcRuleType">
+        <id column="RULE_ID" property="ruleId" jdbcType="VARCHAR" />
+        <result column="RESTRAINT_TYPE" property="restraintType" jdbcType="VARCHAR" />
+        <result column="RULE_DESC" property="ruleDesc" jdbcType="VARCHAR" />
+        <result column="DEAL_FLOW" property="dealFlow" jdbcType="VARCHAR" />
+        <result column="TERM_TYPE" property="termType" jdbcType="VARCHAR" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="TERM" property="term" jdbcType="VARCHAR" />
+        <result column="RES_ALL_FLAG" property="resAllFlag" jdbcType="VARCHAR" />
+        <result column="OTH_TERM" property="othTerm" jdbcType="VARCHAR" />
+        <result column="OTH_TERM_TYPE" property="othTermType" jdbcType="VARCHAR" />
+        <result column="CARD_MEDIUM" property="cardMedium" jdbcType="VARCHAR" />
+        <result column="RES_OPERATE_FLAG" property="resOperateFlag" jdbcType="VARCHAR" />
+        <result column="LIMIT_REF" property="limitRef" jdbcType="VARCHAR" />
+        <result column="OTH_RESTRAINT_TYPE" property="othRestraintType" jdbcType="VARCHAR" />
+        <result column="RES_BRANCH_RANGE" property="resBranchRange" jdbcType="VARCHAR" />
+        <result column="CONTROL_TYPE" property="controlType" jdbcType="VARCHAR" />
+        <result column="OTH_DELAY_TERM" property="othDelayTerm" jdbcType="VARCHAR" />
+        <result column="OTH_DELAY_TERM_TYPE" property="othDelayTermType" jdbcType="VARCHAR" />
+        <result column="OTH_CONTROL_TYPE" property="othControlType" jdbcType="VARCHAR" />
+        <result column="REL_VERIFY_FLAG" property="relVerifyFlag" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        RULE_ID,        RESTRAINT_TYPE,        RULE_DESC,        DEAL_FLOW,        TERM_TYPE,        TRAN_TIMESTAMP,        COMPANY,        TERM,        RES_ALL_FLAG,        OTH_TERM,        OTH_TERM_TYPE,        CARD_MEDIUM,        RES_OPERATE_FLAG,        LIMIT_REF,        OTH_RESTRAINT_TYPE,        RES_BRANCH_RANGE,        CONTROL_TYPE,        OTH_DELAY_TERM,        OTH_DELAY_TERM_TYPE,        OTH_CONTROL_TYPE,        REL_VERIFY_FLAG    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RcRuleTypeExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RC_RULE_TYPE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RC_RULE_TYPE
+        where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RC_RULE_TYPE
+        where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RcRuleTypeExample">
+        delete from RC_RULE_TYPE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RcRuleType">
+        insert into RC_RULE_TYPE
+        (
+            RULE_ID,            RESTRAINT_TYPE,            RULE_DESC,            DEAL_FLOW,            TERM_TYPE,            TRAN_TIMESTAMP,            COMPANY,            TERM,            RES_ALL_FLAG,            OTH_TERM,            OTH_TERM_TYPE,            CARD_MEDIUM,            RES_OPERATE_FLAG,            LIMIT_REF,            OTH_RESTRAINT_TYPE,            RES_BRANCH_RANGE,            CONTROL_TYPE,            OTH_DELAY_TERM,            OTH_DELAY_TERM_TYPE,            OTH_CONTROL_TYPE,            REL_VERIFY_FLAG        )
+        values
+        (
+            #{ruleId,jdbcType=VARCHAR},            #{restraintType,jdbcType=VARCHAR},            #{ruleDesc,jdbcType=VARCHAR},            #{dealFlow,jdbcType=VARCHAR},            #{termType,jdbcType=VARCHAR},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{term,jdbcType=VARCHAR},            #{resAllFlag,jdbcType=VARCHAR},            #{othTerm,jdbcType=VARCHAR},            #{othTermType,jdbcType=VARCHAR},            #{cardMedium,jdbcType=VARCHAR},            #{resOperateFlag,jdbcType=VARCHAR},            #{limitRef,jdbcType=VARCHAR},            #{othRestraintType,jdbcType=VARCHAR},            #{resBranchRange,jdbcType=VARCHAR},            #{controlType,jdbcType=VARCHAR},            #{othDelayTerm,jdbcType=VARCHAR},            #{othDelayTermType,jdbcType=VARCHAR},            #{othControlType,jdbcType=VARCHAR},            #{relVerifyFlag,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RcRuleType">
+        insert into RC_RULE_TYPE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ruleId != null">
+                RULE_ID,
+            </if>
+            <if test="restraintType != null">
+                RESTRAINT_TYPE,
+            </if>
+            <if test="ruleDesc != null">
+                RULE_DESC,
+            </if>
+            <if test="dealFlow != null">
+                DEAL_FLOW,
+            </if>
+            <if test="termType != null">
+                TERM_TYPE,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="term != null">
+                TERM,
+            </if>
+            <if test="resAllFlag != null">
+                RES_ALL_FLAG,
+            </if>
+            <if test="othTerm != null">
+                OTH_TERM,
+            </if>
+            <if test="othTermType != null">
+                OTH_TERM_TYPE,
+            </if>
+            <if test="cardMedium != null">
+                CARD_MEDIUM,
+            </if>
+            <if test="resOperateFlag != null">
+                RES_OPERATE_FLAG,
+            </if>
+            <if test="limitRef != null">
+                LIMIT_REF,
+            </if>
+            <if test="othRestraintType != null">
+                OTH_RESTRAINT_TYPE,
+            </if>
+            <if test="resBranchRange != null">
+                RES_BRANCH_RANGE,
+            </if>
+            <if test="controlType != null">
+                CONTROL_TYPE,
+            </if>
+            <if test="othDelayTerm != null">
+                OTH_DELAY_TERM,
+            </if>
+            <if test="othDelayTermType != null">
+                OTH_DELAY_TERM_TYPE,
+            </if>
+            <if test="othControlType != null">
+                OTH_CONTROL_TYPE,
+            </if>
+            <if test="relVerifyFlag != null">
+                REL_VERIFY_FLAG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ruleId != null">
+                #{ruleId,jdbcType=VARCHAR},
+            </if>
+            <if test="restraintType != null">
+                #{restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleDesc != null">
+                #{ruleDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="dealFlow != null">
+                #{dealFlow,jdbcType=VARCHAR},
+            </if>
+            <if test="termType != null">
+                #{termType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="term != null">
+                #{term,jdbcType=VARCHAR},
+            </if>
+            <if test="resAllFlag != null">
+                #{resAllFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="othTerm != null">
+                #{othTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="othTermType != null">
+                #{othTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="cardMedium != null">
+                #{cardMedium,jdbcType=VARCHAR},
+            </if>
+            <if test="resOperateFlag != null">
+                #{resOperateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="limitRef != null">
+                #{limitRef,jdbcType=VARCHAR},
+            </if>
+            <if test="othRestraintType != null">
+                #{othRestraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="resBranchRange != null">
+                #{resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="controlType != null">
+                #{controlType,jdbcType=VARCHAR},
+            </if>
+            <if test="othDelayTerm != null">
+                #{othDelayTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="othDelayTermType != null">
+                #{othDelayTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="othControlType != null">
+                #{othControlType,jdbcType=VARCHAR},
+            </if>
+            <if test="relVerifyFlag != null">
+                #{relVerifyFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RcRuleTypeExample" resultType="java.lang.Long">
+        select count(*) from RC_RULE_TYPE
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RC_RULE_TYPE
+        <set>
+            <if test="row.ruleId != null">
+                RULE_ID = #{row.ruleId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.restraintType != null">
+                RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ruleDesc != null">
+                RULE_DESC = #{row.ruleDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.dealFlow != null">
+                DEAL_FLOW = #{row.dealFlow,jdbcType=VARCHAR},
+            </if>
+            <if test="row.termType != null">
+                TERM_TYPE = #{row.termType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.term != null">
+                TERM = #{row.term,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resAllFlag != null">
+                RES_ALL_FLAG = #{row.resAllFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othTerm != null">
+                OTH_TERM = #{row.othTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othTermType != null">
+                OTH_TERM_TYPE = #{row.othTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cardMedium != null">
+                CARD_MEDIUM = #{row.cardMedium,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resOperateFlag != null">
+                RES_OPERATE_FLAG = #{row.resOperateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.limitRef != null">
+                LIMIT_REF = #{row.limitRef,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRestraintType != null">
+                OTH_RESTRAINT_TYPE = #{row.othRestraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.resBranchRange != null">
+                RES_BRANCH_RANGE = #{row.resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="row.controlType != null">
+                CONTROL_TYPE = #{row.controlType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othDelayTerm != null">
+                OTH_DELAY_TERM = #{row.othDelayTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othDelayTermType != null">
+                OTH_DELAY_TERM_TYPE = #{row.othDelayTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othControlType != null">
+                OTH_CONTROL_TYPE = #{row.othControlType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.relVerifyFlag != null">
+                REL_VERIFY_FLAG = #{row.relVerifyFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RC_RULE_TYPE
+        set
+            RULE_ID = #{row.ruleId,jdbcType=VARCHAR},            RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},            RULE_DESC = #{row.ruleDesc,jdbcType=VARCHAR},            DEAL_FLOW = #{row.dealFlow,jdbcType=VARCHAR},            TERM_TYPE = #{row.termType,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            TERM = #{row.term,jdbcType=VARCHAR},            RES_ALL_FLAG = #{row.resAllFlag,jdbcType=VARCHAR},            OTH_TERM = #{row.othTerm,jdbcType=VARCHAR},            OTH_TERM_TYPE = #{row.othTermType,jdbcType=VARCHAR},            CARD_MEDIUM = #{row.cardMedium,jdbcType=VARCHAR},            RES_OPERATE_FLAG = #{row.resOperateFlag,jdbcType=VARCHAR},            LIMIT_REF = #{row.limitRef,jdbcType=VARCHAR},            OTH_RESTRAINT_TYPE = #{row.othRestraintType,jdbcType=VARCHAR},            RES_BRANCH_RANGE = #{row.resBranchRange,jdbcType=VARCHAR},            CONTROL_TYPE = #{row.controlType,jdbcType=VARCHAR},            OTH_DELAY_TERM = #{row.othDelayTerm,jdbcType=VARCHAR},            OTH_DELAY_TERM_TYPE = #{row.othDelayTermType,jdbcType=VARCHAR},            OTH_CONTROL_TYPE = #{row.othControlType,jdbcType=VARCHAR},            REL_VERIFY_FLAG = #{row.relVerifyFlag,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RcRuleType">
+        update RC_RULE_TYPE
+        <set>
+            <if test="restraintType != null">
+                RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleDesc != null">
+                RULE_DESC = #{ruleDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="dealFlow != null">
+                DEAL_FLOW = #{dealFlow,jdbcType=VARCHAR},
+            </if>
+            <if test="termType != null">
+                TERM_TYPE = #{termType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="term != null">
+                TERM = #{term,jdbcType=VARCHAR},
+            </if>
+            <if test="resAllFlag != null">
+                RES_ALL_FLAG = #{resAllFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="othTerm != null">
+                OTH_TERM = #{othTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="othTermType != null">
+                OTH_TERM_TYPE = #{othTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="cardMedium != null">
+                CARD_MEDIUM = #{cardMedium,jdbcType=VARCHAR},
+            </if>
+            <if test="resOperateFlag != null">
+                RES_OPERATE_FLAG = #{resOperateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="limitRef != null">
+                LIMIT_REF = #{limitRef,jdbcType=VARCHAR},
+            </if>
+            <if test="othRestraintType != null">
+                OTH_RESTRAINT_TYPE = #{othRestraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="resBranchRange != null">
+                RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR},
+            </if>
+            <if test="controlType != null">
+                CONTROL_TYPE = #{controlType,jdbcType=VARCHAR},
+            </if>
+            <if test="othDelayTerm != null">
+                OTH_DELAY_TERM = #{othDelayTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="othDelayTermType != null">
+                OTH_DELAY_TERM_TYPE = #{othDelayTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="othControlType != null">
+                OTH_CONTROL_TYPE = #{othControlType,jdbcType=VARCHAR},
+            </if>
+            <if test="relVerifyFlag != null">
+                REL_VERIFY_FLAG = #{relVerifyFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RcRuleType">
+        update RC_RULE_TYPE
+        set
+            RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR},            RULE_DESC = #{ruleDesc,jdbcType=VARCHAR},            DEAL_FLOW = #{dealFlow,jdbcType=VARCHAR},            TERM_TYPE = #{termType,jdbcType=VARCHAR},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            TERM = #{term,jdbcType=VARCHAR},            RES_ALL_FLAG = #{resAllFlag,jdbcType=VARCHAR},            OTH_TERM = #{othTerm,jdbcType=VARCHAR},            OTH_TERM_TYPE = #{othTermType,jdbcType=VARCHAR},            CARD_MEDIUM = #{cardMedium,jdbcType=VARCHAR},            RES_OPERATE_FLAG = #{resOperateFlag,jdbcType=VARCHAR},            LIMIT_REF = #{limitRef,jdbcType=VARCHAR},            OTH_RESTRAINT_TYPE = #{othRestraintType,jdbcType=VARCHAR},            RES_BRANCH_RANGE = #{resBranchRange,jdbcType=VARCHAR},            CONTROL_TYPE = #{controlType,jdbcType=VARCHAR},            OTH_DELAY_TERM = #{othDelayTerm,jdbcType=VARCHAR},            OTH_DELAY_TERM_TYPE = #{othDelayTermType,jdbcType=VARCHAR},            OTH_CONTROL_TYPE = #{othControlType,jdbcType=VARCHAR},            REL_VERIFY_FLAG = #{relVerifyFlag,jdbcType=VARCHAR}        where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+    </update>
+</mapper>
