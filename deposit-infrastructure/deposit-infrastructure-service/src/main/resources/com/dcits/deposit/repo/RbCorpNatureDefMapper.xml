@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbCorpNatureDefMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbCorpNatureDef">
+        <id column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <result column="ACCT_NATURE_NO" property="acctNatureNo" jdbcType="VARCHAR" />
+        <result column="TERM" property="term" jdbcType="VARCHAR" />
+        <result column="NATURE_PROPERTY" property="natureProperty" jdbcType="VARCHAR" />
+        <result column="LAST_UPD_TIMESTAMP" property="lastUpdTimestamp" jdbcType="VARCHAR" />
+        <result column="TERM_TYPE" property="termType" jdbcType="VARCHAR" />
+        <result column="RESTRAINT_TYPE" property="restraintType" jdbcType="VARCHAR" />
+        <result column="CORPORATION" property="corporation" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="INLAND_OFFSHORE" property="inlandOffshore" jdbcType="VARCHAR" />
+        <result column="ACCT_OPERATE_TYPE" property="acctOperateType" jdbcType="VARCHAR" />
+        <result column="RB_BUS_ACCT_PURPOSE" property="rbBusAcctPurpose" jdbcType="VARCHAR" />
+        <result column="ACCT_STATUS" property="acctStatus" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        ACCT_NATURE_NO,        TERM,        NATURE_PROPERTY,        LAST_UPD_TIMESTAMP,        TERM_TYPE,        RESTRAINT_TYPE,        CORPORATION,        CREATE_TIMESTAMP,        INLAND_OFFSHORE,        ACCT_OPERATE_TYPE,        SEQ_NO,        RB_BUS_ACCT_PURPOSE,        ACCT_STATUS    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbCorpNatureDefExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_CORP_NATURE_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_CORP_NATURE_DEF
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_CORP_NATURE_DEF
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbCorpNatureDefExample">
+        delete from RB_CORP_NATURE_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbCorpNatureDef">
+        insert into RB_CORP_NATURE_DEF
+        (
+            ACCT_NATURE_NO,            TERM,            NATURE_PROPERTY,            LAST_UPD_TIMESTAMP,            TERM_TYPE,            RESTRAINT_TYPE,            CORPORATION,            CREATE_TIMESTAMP,            INLAND_OFFSHORE,            ACCT_OPERATE_TYPE,            SEQ_NO,            RB_BUS_ACCT_PURPOSE,            ACCT_STATUS        )
+        values
+        (
+            #{acctNatureNo,jdbcType=VARCHAR},            #{term,jdbcType=VARCHAR},            #{natureProperty,jdbcType=VARCHAR},            #{lastUpdTimestamp,jdbcType=VARCHAR},            #{termType,jdbcType=VARCHAR},            #{restraintType,jdbcType=VARCHAR},            #{corporation,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{inlandOffshore,jdbcType=VARCHAR},            #{acctOperateType,jdbcType=VARCHAR},            #{seqNo,jdbcType=VARCHAR},            #{rbBusAcctPurpose,jdbcType=VARCHAR},            #{acctStatus,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbCorpNatureDef">
+        insert into RB_CORP_NATURE_DEF
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="acctNatureNo != null">
+                ACCT_NATURE_NO,
+            </if>
+            <if test="term != null">
+                TERM,
+            </if>
+            <if test="natureProperty != null">
+                NATURE_PROPERTY,
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP,
+            </if>
+            <if test="termType != null">
+                TERM_TYPE,
+            </if>
+            <if test="restraintType != null">
+                RESTRAINT_TYPE,
+            </if>
+            <if test="corporation != null">
+                CORPORATION,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="inlandOffshore != null">
+                INLAND_OFFSHORE,
+            </if>
+            <if test="acctOperateType != null">
+                ACCT_OPERATE_TYPE,
+            </if>
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+            <if test="rbBusAcctPurpose != null">
+                RB_BUS_ACCT_PURPOSE,
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="acctNatureNo != null">
+                #{acctNatureNo,jdbcType=VARCHAR},
+            </if>
+            <if test="term != null">
+                #{term,jdbcType=VARCHAR},
+            </if>
+            <if test="natureProperty != null">
+                #{natureProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="termType != null">
+                #{termType,jdbcType=VARCHAR},
+            </if>
+            <if test="restraintType != null">
+                #{restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="corporation != null">
+                #{corporation,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="inlandOffshore != null">
+                #{inlandOffshore,jdbcType=VARCHAR},
+            </if>
+            <if test="acctOperateType != null">
+                #{acctOperateType,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="rbBusAcctPurpose != null">
+                #{rbBusAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                #{acctStatus,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbCorpNatureDefExample" resultType="java.lang.Long">
+        select count(*) from RB_CORP_NATURE_DEF
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_CORP_NATURE_DEF
+        <set>
+            <if test="row.acctNatureNo != null">
+                ACCT_NATURE_NO = #{row.acctNatureNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.term != null">
+                TERM = #{row.term,jdbcType=VARCHAR},
+            </if>
+            <if test="row.natureProperty != null">
+                NATURE_PROPERTY = #{row.natureProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.termType != null">
+                TERM_TYPE = #{row.termType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.restraintType != null">
+                RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.corporation != null">
+                CORPORATION = #{row.corporation,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.inlandOffshore != null">
+                INLAND_OFFSHORE = #{row.inlandOffshore,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctOperateType != null">
+                ACCT_OPERATE_TYPE = #{row.acctOperateType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rbBusAcctPurpose != null">
+                RB_BUS_ACCT_PURPOSE = #{row.rbBusAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctStatus != null">
+                ACCT_STATUS = #{row.acctStatus,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_CORP_NATURE_DEF
+        set
+            ACCT_NATURE_NO = #{row.acctNatureNo,jdbcType=VARCHAR},            TERM = #{row.term,jdbcType=VARCHAR},            NATURE_PROPERTY = #{row.natureProperty,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},            TERM_TYPE = #{row.termType,jdbcType=VARCHAR},            RESTRAINT_TYPE = #{row.restraintType,jdbcType=VARCHAR},            CORPORATION = #{row.corporation,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            INLAND_OFFSHORE = #{row.inlandOffshore,jdbcType=VARCHAR},            ACCT_OPERATE_TYPE = #{row.acctOperateType,jdbcType=VARCHAR},            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},            RB_BUS_ACCT_PURPOSE = #{row.rbBusAcctPurpose,jdbcType=VARCHAR},            ACCT_STATUS = #{row.acctStatus,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbCorpNatureDef">
+        update RB_CORP_NATURE_DEF
+        <set>
+            <if test="acctNatureNo != null">
+                ACCT_NATURE_NO = #{acctNatureNo,jdbcType=VARCHAR},
+            </if>
+            <if test="term != null">
+                TERM = #{term,jdbcType=VARCHAR},
+            </if>
+            <if test="natureProperty != null">
+                NATURE_PROPERTY = #{natureProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="termType != null">
+                TERM_TYPE = #{termType,jdbcType=VARCHAR},
+            </if>
+            <if test="restraintType != null">
+                RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR},
+            </if>
+            <if test="corporation != null">
+                CORPORATION = #{corporation,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="inlandOffshore != null">
+                INLAND_OFFSHORE = #{inlandOffshore,jdbcType=VARCHAR},
+            </if>
+            <if test="acctOperateType != null">
+                ACCT_OPERATE_TYPE = #{acctOperateType,jdbcType=VARCHAR},
+            </if>
+            <if test="rbBusAcctPurpose != null">
+                RB_BUS_ACCT_PURPOSE = #{rbBusAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbCorpNatureDef">
+        update RB_CORP_NATURE_DEF
+        set
+            ACCT_NATURE_NO = #{acctNatureNo,jdbcType=VARCHAR},            TERM = #{term,jdbcType=VARCHAR},            NATURE_PROPERTY = #{natureProperty,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},            TERM_TYPE = #{termType,jdbcType=VARCHAR},            RESTRAINT_TYPE = #{restraintType,jdbcType=VARCHAR},            CORPORATION = #{corporation,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            INLAND_OFFSHORE = #{inlandOffshore,jdbcType=VARCHAR},            ACCT_OPERATE_TYPE = #{acctOperateType,jdbcType=VARCHAR},            RB_BUS_ACCT_PURPOSE = #{rbBusAcctPurpose,jdbcType=VARCHAR},            ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR}        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </update>
+</mapper>
