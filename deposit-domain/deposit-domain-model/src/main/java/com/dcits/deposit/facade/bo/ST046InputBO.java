@@ -54,7 +54,7 @@ public class ST046InputBO {
     private String baseAcctNo;
     /**账户币种*/
     private AcctCcy acctCcy;
-    /**产品类型*/
+    /**产品编号*/
     private String prodNo;
     /**交易机构号*/
     private TranBranch tranBranch;
