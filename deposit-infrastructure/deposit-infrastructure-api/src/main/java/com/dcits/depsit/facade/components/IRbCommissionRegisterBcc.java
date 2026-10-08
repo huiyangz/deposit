@@ -1,0 +1,44 @@
+package com.dcits.depsit.facade.components;
+
+import com.dcits.depsit.enums.AcctCcy;
+import com.dcits.depsit.enums.CommissionFlag;
+import com.dcits.depsit.enums.CommissionRelation;
+import com.dcits.depsit.enums.DocType;
+import com.dcits.depsit.enums.IssCountry;
+import com.dcits.depsit.enums.OthTranType;
+import com.dcits.depsit.enums.ThawDocumentType2;
+import com.dcits.depsit.enums.TranBranch;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import com.dcits.depsit.facade.eo.RbCommissionRegisterEO;
+
+/*实体表【代办人登记表(RB_COMMISSION_REGISTER)】数据服务接口*/
+public interface IRbCommissionRegisterBcc {
+    /** count数据库表记录根据入参com.dcits.depsit.facade.eo.RbCommissionRegisterEO中的属性字段组合 **/
+    long countByEo(RbCommissionRegisterEO eo);
+
+    /** remove数据库表记录根据入参com.dcits.depsit.facade.eo.RbCommissionRegisterEO中的属性字段组合 **/
+    int removeByEo(RbCommissionRegisterEO eo);
+
+    /** remove 根据主键: 渠道流水号、客户号 **/
+    int removeByPrimaryKey(String channelSeqNo, String clientNo);
+
+    int create(RbCommissionRegisterEO eo);
+
+    /** create数据库表记录，主键和EO对象中不允许为空的字段必填，其它可为空字段可选填，执行时根据com.dcits.depsit.facade.eo.RbCommissionRegisterEO中不为空的属性写入数据库**/
+    int createSelective(RbCommissionRegisterEO eo);
+
+    /** find数据库表记录根据入参com.dcits.depsit.facade.eo.RbCommissionRegisterEO中的属性字段组合 **/
+    List<RbCommissionRegisterEO> findByEo(RbCommissionRegisterEO eo);
+
+    /** find 根据主键: 渠道流水号、客户号 **/
+    RbCommissionRegisterEO findByPrimaryKey(String channelSeqNo, String clientNo);
+
+    /**  根据主键: 渠道流水号、客户号执行更新记录操作，仅更新入参com.dcits.depsit.facade.eo.RbCommissionRegisterEO中不为空的属性字段 **/
+    int modifyByPrimaryKeySelective(RbCommissionRegisterEO eo);
+
+    /** modify 根据主键: 渠道流水号、客户号 **/
+    int modifyByPrimaryKey(RbCommissionRegisterEO eo);
+}
