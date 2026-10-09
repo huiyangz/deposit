@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0">
+  <mirrors>
+    <mirror>
+      <id>loopmill-maven-mirror</id>
+      <name>Loopmill Maven mirror</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>

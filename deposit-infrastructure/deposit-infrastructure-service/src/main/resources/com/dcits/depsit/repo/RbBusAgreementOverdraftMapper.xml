@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.depsit.repo.RbBusAgreementOverdraftMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.depsit.entity.RbBusAgreementOverdraft">
+        <id column="AGREEMENT_ID" property="agreementId" jdbcType="VARCHAR" />
+        <result column="RB_BUS_AGREEMENT_TYPE" property="rbBusAgreementType" jdbcType="VARCHAR" />
+        <result column="GREEMENT_SIGN_STATUS" property="greementSignStatus" jdbcType="VARCHAR" />
+        <result column="AMORTIZE_DAY" property="amortizeDay" jdbcType="VARCHAR" />
+        <result column="LOAN_INTERNAL_KEY" property="loanInternalKey" jdbcType="INTEGER" />
+        <result column="INT_BASIS_RATE" property="intBasisRate" jdbcType="DECIMAL" />
+        <result column="OD_AMT" property="odAmt" jdbcType="DECIMAL" />
+        <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+        <result column="OD_MODE" property="odMode" jdbcType="VARCHAR" />
+        <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+        <result column="OD_TERM_TYPE" property="odTermType" jdbcType="VARCHAR" />
+        <result column="AMORTIZE_START_DATE" property="amortizeStartDate" jdbcType="TIMESTAMP" />
+        <result column="PROD_NO" property="prodNo" jdbcType="VARCHAR" />
+        <result column="OD_METHOD" property="odMethod" jdbcType="VARCHAR" />
+        <result column="OD_MATURITY_RULE" property="odMaturityRule" jdbcType="VARCHAR" />
+        <result column="AMORTIZE_TIME_TYPE" property="amortizeTimeType" jdbcType="VARCHAR" />
+        <result column="WHITE_CLIENT_NAME" property="whiteClientName" jdbcType="VARCHAR" />
+        <result column="FEE_TYPE" property="feeType" jdbcType="VARCHAR" />
+        <result column="FEE_RATE" property="feeRate" jdbcType="DECIMAL" />
+        <result column="FEE_TAKEN_MODE" property="feeTakenMode" jdbcType="VARCHAR" />
+        <result column="OD_PROD_NO" property="odProdNo" jdbcType="VARCHAR" />
+        <result column="AMORTIZE_MONTH" property="amortizeMonth" jdbcType="VARCHAR" />
+        <result column="AMORTIZE_END_DATE" property="amortizeEndDate" jdbcType="TIMESTAMP" />
+        <result column="CROSS_PERIOD_RATE" property="crossPeriodRate" jdbcType="DECIMAL" />
+        <result column="OD_PAY_METHOD" property="odPayMethod" jdbcType="VARCHAR" />
+        <result column="OD_CCY" property="odCcy" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="PAST_DUE_RATE" property="pastDueRate" jdbcType="DECIMAL" />
+        <result column="OD_TERM" property="odTerm" jdbcType="VARCHAR" />
+        <result column="OD_START_AMT" property="odStartAmt" jdbcType="DECIMAL" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="CHARGE_PERIOD_FREQ" property="chargePeriodFreq" jdbcType="VARCHAR" />
+        <result column="AMORTIZE_PERIOD_FREQ" property="amortizePeriodFreq" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="PROFIT_AMORTIZE_FLAG" property="profitAmortizeFlag" jdbcType="VARCHAR" />
+        <result column="OD_GRACE_PERIOD" property="odGracePeriod" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_SIGN_EFFECT_STATUS" property="agreementSignEffectStatus" jdbcType="VARCHAR" />
+        <result column="FEE_CHARGE_TYPE" property="feeChargeType" jdbcType="VARCHAR" />
+        <result column="IS_OVER_MONTH_SEASON_OD" property="isOverMonthSeasonOd" jdbcType="VARCHAR" />
+        <result column="REAL_RATE" property="realRate" jdbcType="DECIMAL" />
+        <result column="LAST_UPD_TIMESTAMP" property="lastUpdTimestamp" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        RB_BUS_AGREEMENT_TYPE,        GREEMENT_SIGN_STATUS,        AMORTIZE_DAY,        LOAN_INTERNAL_KEY,        INT_BASIS_RATE,        OD_AMT,        END_DATE,        OD_MODE,        START_DATE,        OD_TERM_TYPE,        AMORTIZE_START_DATE,        PROD_NO,        OD_METHOD,        OD_MATURITY_RULE,        AMORTIZE_TIME_TYPE,        WHITE_CLIENT_NAME,        FEE_TYPE,        FEE_RATE,        FEE_TAKEN_MODE,        OD_PROD_NO,        AMORTIZE_MONTH,        AMORTIZE_END_DATE,        CROSS_PERIOD_RATE,        OD_PAY_METHOD,        OD_CCY,        ACCT_SEQ_NO,        AGREEMENT_ID,        PAST_DUE_RATE,        OD_TERM,        OD_START_AMT,        ACCT_CCY,        CHARGE_PERIOD_FREQ,        AMORTIZE_PERIOD_FREQ,        BASE_ACCT_NO,        PROFIT_AMORTIZE_FLAG,        OD_GRACE_PERIOD,        CREATE_TIMESTAMP,        AGREEMENT_SIGN_EFFECT_STATUS,        FEE_CHARGE_TYPE,        IS_OVER_MONTH_SEASON_OD,        REAL_RATE,        LAST_UPD_TIMESTAMP    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraftExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BUS_AGREEMENT_OVERDRAFT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BUS_AGREEMENT_OVERDRAFT
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BUS_AGREEMENT_OVERDRAFT
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraftExample">
+        delete from RB_BUS_AGREEMENT_OVERDRAFT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraft">
+        insert into RB_BUS_AGREEMENT_OVERDRAFT
+        (
+            RB_BUS_AGREEMENT_TYPE,            GREEMENT_SIGN_STATUS,            AMORTIZE_DAY,            LOAN_INTERNAL_KEY,            INT_BASIS_RATE,            OD_AMT,            END_DATE,            OD_MODE,            START_DATE,            OD_TERM_TYPE,            AMORTIZE_START_DATE,            PROD_NO,            OD_METHOD,            OD_MATURITY_RULE,            AMORTIZE_TIME_TYPE,            WHITE_CLIENT_NAME,            FEE_TYPE,            FEE_RATE,            FEE_TAKEN_MODE,            OD_PROD_NO,            AMORTIZE_MONTH,            AMORTIZE_END_DATE,            CROSS_PERIOD_RATE,            OD_PAY_METHOD,            OD_CCY,            ACCT_SEQ_NO,            AGREEMENT_ID,            PAST_DUE_RATE,            OD_TERM,            OD_START_AMT,            ACCT_CCY,            CHARGE_PERIOD_FREQ,            AMORTIZE_PERIOD_FREQ,            BASE_ACCT_NO,            PROFIT_AMORTIZE_FLAG,            OD_GRACE_PERIOD,            CREATE_TIMESTAMP,            AGREEMENT_SIGN_EFFECT_STATUS,            FEE_CHARGE_TYPE,            IS_OVER_MONTH_SEASON_OD,            REAL_RATE,            LAST_UPD_TIMESTAMP        )
+        values
+        (
+            #{rbBusAgreementType,jdbcType=VARCHAR},            #{greementSignStatus,jdbcType=VARCHAR},            #{amortizeDay,jdbcType=VARCHAR},            #{loanInternalKey,jdbcType=INTEGER},            #{intBasisRate,jdbcType=DECIMAL},            #{odAmt,jdbcType=DECIMAL},            #{endDate,jdbcType=TIMESTAMP},            #{odMode,jdbcType=VARCHAR},            #{startDate,jdbcType=TIMESTAMP},            #{odTermType,jdbcType=VARCHAR},            #{amortizeStartDate,jdbcType=TIMESTAMP},            #{prodNo,jdbcType=VARCHAR},            #{odMethod,jdbcType=VARCHAR},            #{odMaturityRule,jdbcType=VARCHAR},            #{amortizeTimeType,jdbcType=VARCHAR},            #{whiteClientName,jdbcType=VARCHAR},            #{feeType,jdbcType=VARCHAR},            #{feeRate,jdbcType=DECIMAL},            #{feeTakenMode,jdbcType=VARCHAR},            #{odProdNo,jdbcType=VARCHAR},            #{amortizeMonth,jdbcType=VARCHAR},            #{amortizeEndDate,jdbcType=TIMESTAMP},            #{crossPeriodRate,jdbcType=DECIMAL},            #{odPayMethod,jdbcType=VARCHAR},            #{odCcy,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{agreementId,jdbcType=VARCHAR},            #{pastDueRate,jdbcType=DECIMAL},            #{odTerm,jdbcType=VARCHAR},            #{odStartAmt,jdbcType=DECIMAL},            #{acctCcy,jdbcType=VARCHAR},            #{chargePeriodFreq,jdbcType=VARCHAR},            #{amortizePeriodFreq,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{profitAmortizeFlag,jdbcType=VARCHAR},            #{odGracePeriod,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{agreementSignEffectStatus,jdbcType=VARCHAR},            #{feeChargeType,jdbcType=VARCHAR},            #{isOverMonthSeasonOd,jdbcType=VARCHAR},            #{realRate,jdbcType=DECIMAL},            #{lastUpdTimestamp,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraft">
+        insert into RB_BUS_AGREEMENT_OVERDRAFT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rbBusAgreementType != null">
+                RB_BUS_AGREEMENT_TYPE,
+            </if>
+            <if test="greementSignStatus != null">
+                GREEMENT_SIGN_STATUS,
+            </if>
+            <if test="amortizeDay != null">
+                AMORTIZE_DAY,
+            </if>
+            <if test="loanInternalKey != null">
+                LOAN_INTERNAL_KEY,
+            </if>
+            <if test="intBasisRate != null">
+                INT_BASIS_RATE,
+            </if>
+            <if test="odAmt != null">
+                OD_AMT,
+            </if>
+            <if test="endDate != null">
+                END_DATE,
+            </if>
+            <if test="odMode != null">
+                OD_MODE,
+            </if>
+            <if test="startDate != null">
+                START_DATE,
+            </if>
+            <if test="odTermType != null">
+                OD_TERM_TYPE,
+            </if>
+            <if test="amortizeStartDate != null">
+                AMORTIZE_START_DATE,
+            </if>
+            <if test="prodNo != null">
+                PROD_NO,
+            </if>
+            <if test="odMethod != null">
+                OD_METHOD,
+            </if>
+            <if test="odMaturityRule != null">
+                OD_MATURITY_RULE,
+            </if>
+            <if test="amortizeTimeType != null">
+                AMORTIZE_TIME_TYPE,
+            </if>
+            <if test="whiteClientName != null">
+                WHITE_CLIENT_NAME,
+            </if>
+            <if test="feeType != null">
+                FEE_TYPE,
+            </if>
+            <if test="feeRate != null">
+                FEE_RATE,
+            </if>
+            <if test="feeTakenMode != null">
+                FEE_TAKEN_MODE,
+            </if>
+            <if test="odProdNo != null">
+                OD_PROD_NO,
+            </if>
+            <if test="amortizeMonth != null">
+                AMORTIZE_MONTH,
+            </if>
+            <if test="amortizeEndDate != null">
+                AMORTIZE_END_DATE,
+            </if>
+            <if test="crossPeriodRate != null">
+                CROSS_PERIOD_RATE,
+            </if>
+            <if test="odPayMethod != null">
+                OD_PAY_METHOD,
+            </if>
+            <if test="odCcy != null">
+                OD_CCY,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="agreementId != null">
+                AGREEMENT_ID,
+            </if>
+            <if test="pastDueRate != null">
+                PAST_DUE_RATE,
+            </if>
+            <if test="odTerm != null">
+                OD_TERM,
+            </if>
+            <if test="odStartAmt != null">
+                OD_START_AMT,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="chargePeriodFreq != null">
+                CHARGE_PERIOD_FREQ,
+            </if>
+            <if test="amortizePeriodFreq != null">
+                AMORTIZE_PERIOD_FREQ,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="profitAmortizeFlag != null">
+                PROFIT_AMORTIZE_FLAG,
+            </if>
+            <if test="odGracePeriod != null">
+                OD_GRACE_PERIOD,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="agreementSignEffectStatus != null">
+                AGREEMENT_SIGN_EFFECT_STATUS,
+            </if>
+            <if test="feeChargeType != null">
+                FEE_CHARGE_TYPE,
+            </if>
+            <if test="isOverMonthSeasonOd != null">
+                IS_OVER_MONTH_SEASON_OD,
+            </if>
+            <if test="realRate != null">
+                REAL_RATE,
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rbBusAgreementType != null">
+                #{rbBusAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="greementSignStatus != null">
+                #{greementSignStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeDay != null">
+                #{amortizeDay,jdbcType=VARCHAR},
+            </if>
+            <if test="loanInternalKey != null">
+                #{loanInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="intBasisRate != null">
+                #{intBasisRate,jdbcType=DECIMAL},
+            </if>
+            <if test="odAmt != null">
+                #{odAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="odMode != null">
+                #{odMode,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="odTermType != null">
+                #{odTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeStartDate != null">
+                #{amortizeStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="prodNo != null">
+                #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="odMethod != null">
+                #{odMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="odMaturityRule != null">
+                #{odMaturityRule,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeTimeType != null">
+                #{amortizeTimeType,jdbcType=VARCHAR},
+            </if>
+            <if test="whiteClientName != null">
+                #{whiteClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="feeType != null">
+                #{feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="feeRate != null">
+                #{feeRate,jdbcType=DECIMAL},
+            </if>
+            <if test="feeTakenMode != null">
+                #{feeTakenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="odProdNo != null">
+                #{odProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeMonth != null">
+                #{amortizeMonth,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeEndDate != null">
+                #{amortizeEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crossPeriodRate != null">
+                #{crossPeriodRate,jdbcType=DECIMAL},
+            </if>
+            <if test="odPayMethod != null">
+                #{odPayMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="odCcy != null">
+                #{odCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementId != null">
+                #{agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="pastDueRate != null">
+                #{pastDueRate,jdbcType=DECIMAL},
+            </if>
+            <if test="odTerm != null">
+                #{odTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="odStartAmt != null">
+                #{odStartAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="chargePeriodFreq != null">
+                #{chargePeriodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizePeriodFreq != null">
+                #{amortizePeriodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="profitAmortizeFlag != null">
+                #{profitAmortizeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="odGracePeriod != null">
+                #{odGracePeriod,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementSignEffectStatus != null">
+                #{agreementSignEffectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="feeChargeType != null">
+                #{feeChargeType,jdbcType=VARCHAR},
+            </if>
+            <if test="isOverMonthSeasonOd != null">
+                #{isOverMonthSeasonOd,jdbcType=VARCHAR},
+            </if>
+            <if test="realRate != null">
+                #{realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraftExample" resultType="java.lang.Long">
+        select count(*) from RB_BUS_AGREEMENT_OVERDRAFT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BUS_AGREEMENT_OVERDRAFT
+        <set>
+            <if test="row.rbBusAgreementType != null">
+                RB_BUS_AGREEMENT_TYPE = #{row.rbBusAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.greementSignStatus != null">
+                GREEMENT_SIGN_STATUS = #{row.greementSignStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amortizeDay != null">
+                AMORTIZE_DAY = #{row.amortizeDay,jdbcType=VARCHAR},
+            </if>
+            <if test="row.loanInternalKey != null">
+                LOAN_INTERNAL_KEY = #{row.loanInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.intBasisRate != null">
+                INT_BASIS_RATE = #{row.intBasisRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.odAmt != null">
+                OD_AMT = #{row.odAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.endDate != null">
+                END_DATE = #{row.endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.odMode != null">
+                OD_MODE = #{row.odMode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.startDate != null">
+                START_DATE = #{row.startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.odTermType != null">
+                OD_TERM_TYPE = #{row.odTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amortizeStartDate != null">
+                AMORTIZE_START_DATE = #{row.amortizeStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.prodNo != null">
+                PROD_NO = #{row.prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odMethod != null">
+                OD_METHOD = #{row.odMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odMaturityRule != null">
+                OD_MATURITY_RULE = #{row.odMaturityRule,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amortizeTimeType != null">
+                AMORTIZE_TIME_TYPE = #{row.amortizeTimeType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.whiteClientName != null">
+                WHITE_CLIENT_NAME = #{row.whiteClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.feeType != null">
+                FEE_TYPE = #{row.feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.feeRate != null">
+                FEE_RATE = #{row.feeRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.feeTakenMode != null">
+                FEE_TAKEN_MODE = #{row.feeTakenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odProdNo != null">
+                OD_PROD_NO = #{row.odProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amortizeMonth != null">
+                AMORTIZE_MONTH = #{row.amortizeMonth,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amortizeEndDate != null">
+                AMORTIZE_END_DATE = #{row.amortizeEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.crossPeriodRate != null">
+                CROSS_PERIOD_RATE = #{row.crossPeriodRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.odPayMethod != null">
+                OD_PAY_METHOD = #{row.odPayMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odCcy != null">
+                OD_CCY = #{row.odCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementId != null">
+                AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.pastDueRate != null">
+                PAST_DUE_RATE = #{row.pastDueRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.odTerm != null">
+                OD_TERM = #{row.odTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odStartAmt != null">
+                OD_START_AMT = #{row.odStartAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.chargePeriodFreq != null">
+                CHARGE_PERIOD_FREQ = #{row.chargePeriodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amortizePeriodFreq != null">
+                AMORTIZE_PERIOD_FREQ = #{row.amortizePeriodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.profitAmortizeFlag != null">
+                PROFIT_AMORTIZE_FLAG = #{row.profitAmortizeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.odGracePeriod != null">
+                OD_GRACE_PERIOD = #{row.odGracePeriod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementSignEffectStatus != null">
+                AGREEMENT_SIGN_EFFECT_STATUS = #{row.agreementSignEffectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.feeChargeType != null">
+                FEE_CHARGE_TYPE = #{row.feeChargeType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isOverMonthSeasonOd != null">
+                IS_OVER_MONTH_SEASON_OD = #{row.isOverMonthSeasonOd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.realRate != null">
+                REAL_RATE = #{row.realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BUS_AGREEMENT_OVERDRAFT
+        set
+            RB_BUS_AGREEMENT_TYPE = #{row.rbBusAgreementType,jdbcType=VARCHAR},            GREEMENT_SIGN_STATUS = #{row.greementSignStatus,jdbcType=VARCHAR},            AMORTIZE_DAY = #{row.amortizeDay,jdbcType=VARCHAR},            LOAN_INTERNAL_KEY = #{row.loanInternalKey,jdbcType=INTEGER},            INT_BASIS_RATE = #{row.intBasisRate,jdbcType=DECIMAL},            OD_AMT = #{row.odAmt,jdbcType=DECIMAL},            END_DATE = #{row.endDate,jdbcType=TIMESTAMP},            OD_MODE = #{row.odMode,jdbcType=VARCHAR},            START_DATE = #{row.startDate,jdbcType=TIMESTAMP},            OD_TERM_TYPE = #{row.odTermType,jdbcType=VARCHAR},            AMORTIZE_START_DATE = #{row.amortizeStartDate,jdbcType=TIMESTAMP},            PROD_NO = #{row.prodNo,jdbcType=VARCHAR},            OD_METHOD = #{row.odMethod,jdbcType=VARCHAR},            OD_MATURITY_RULE = #{row.odMaturityRule,jdbcType=VARCHAR},            AMORTIZE_TIME_TYPE = #{row.amortizeTimeType,jdbcType=VARCHAR},            WHITE_CLIENT_NAME = #{row.whiteClientName,jdbcType=VARCHAR},            FEE_TYPE = #{row.feeType,jdbcType=VARCHAR},            FEE_RATE = #{row.feeRate,jdbcType=DECIMAL},            FEE_TAKEN_MODE = #{row.feeTakenMode,jdbcType=VARCHAR},            OD_PROD_NO = #{row.odProdNo,jdbcType=VARCHAR},            AMORTIZE_MONTH = #{row.amortizeMonth,jdbcType=VARCHAR},            AMORTIZE_END_DATE = #{row.amortizeEndDate,jdbcType=TIMESTAMP},            CROSS_PERIOD_RATE = #{row.crossPeriodRate,jdbcType=DECIMAL},            OD_PAY_METHOD = #{row.odPayMethod,jdbcType=VARCHAR},            OD_CCY = #{row.odCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},            PAST_DUE_RATE = #{row.pastDueRate,jdbcType=DECIMAL},            OD_TERM = #{row.odTerm,jdbcType=VARCHAR},            OD_START_AMT = #{row.odStartAmt,jdbcType=DECIMAL},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            CHARGE_PERIOD_FREQ = #{row.chargePeriodFreq,jdbcType=VARCHAR},            AMORTIZE_PERIOD_FREQ = #{row.amortizePeriodFreq,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            PROFIT_AMORTIZE_FLAG = #{row.profitAmortizeFlag,jdbcType=VARCHAR},            OD_GRACE_PERIOD = #{row.odGracePeriod,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            AGREEMENT_SIGN_EFFECT_STATUS = #{row.agreementSignEffectStatus,jdbcType=VARCHAR},            FEE_CHARGE_TYPE = #{row.feeChargeType,jdbcType=VARCHAR},            IS_OVER_MONTH_SEASON_OD = #{row.isOverMonthSeasonOd,jdbcType=VARCHAR},            REAL_RATE = #{row.realRate,jdbcType=DECIMAL},            LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraft">
+        update RB_BUS_AGREEMENT_OVERDRAFT
+        <set>
+            <if test="rbBusAgreementType != null">
+                RB_BUS_AGREEMENT_TYPE = #{rbBusAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="greementSignStatus != null">
+                GREEMENT_SIGN_STATUS = #{greementSignStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeDay != null">
+                AMORTIZE_DAY = #{amortizeDay,jdbcType=VARCHAR},
+            </if>
+            <if test="loanInternalKey != null">
+                LOAN_INTERNAL_KEY = #{loanInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="intBasisRate != null">
+                INT_BASIS_RATE = #{intBasisRate,jdbcType=DECIMAL},
+            </if>
+            <if test="odAmt != null">
+                OD_AMT = #{odAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="endDate != null">
+                END_DATE = #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="odMode != null">
+                OD_MODE = #{odMode,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                START_DATE = #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="odTermType != null">
+                OD_TERM_TYPE = #{odTermType,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeStartDate != null">
+                AMORTIZE_START_DATE = #{amortizeStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="prodNo != null">
+                PROD_NO = #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="odMethod != null">
+                OD_METHOD = #{odMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="odMaturityRule != null">
+                OD_MATURITY_RULE = #{odMaturityRule,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeTimeType != null">
+                AMORTIZE_TIME_TYPE = #{amortizeTimeType,jdbcType=VARCHAR},
+            </if>
+            <if test="whiteClientName != null">
+                WHITE_CLIENT_NAME = #{whiteClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="feeType != null">
+                FEE_TYPE = #{feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="feeRate != null">
+                FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+            </if>
+            <if test="feeTakenMode != null">
+                FEE_TAKEN_MODE = #{feeTakenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="odProdNo != null">
+                OD_PROD_NO = #{odProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeMonth != null">
+                AMORTIZE_MONTH = #{amortizeMonth,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizeEndDate != null">
+                AMORTIZE_END_DATE = #{amortizeEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crossPeriodRate != null">
+                CROSS_PERIOD_RATE = #{crossPeriodRate,jdbcType=DECIMAL},
+            </if>
+            <if test="odPayMethod != null">
+                OD_PAY_METHOD = #{odPayMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="odCcy != null">
+                OD_CCY = #{odCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="pastDueRate != null">
+                PAST_DUE_RATE = #{pastDueRate,jdbcType=DECIMAL},
+            </if>
+            <if test="odTerm != null">
+                OD_TERM = #{odTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="odStartAmt != null">
+                OD_START_AMT = #{odStartAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="chargePeriodFreq != null">
+                CHARGE_PERIOD_FREQ = #{chargePeriodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="amortizePeriodFreq != null">
+                AMORTIZE_PERIOD_FREQ = #{amortizePeriodFreq,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="profitAmortizeFlag != null">
+                PROFIT_AMORTIZE_FLAG = #{profitAmortizeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="odGracePeriod != null">
+                OD_GRACE_PERIOD = #{odGracePeriod,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementSignEffectStatus != null">
+                AGREEMENT_SIGN_EFFECT_STATUS = #{agreementSignEffectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="feeChargeType != null">
+                FEE_CHARGE_TYPE = #{feeChargeType,jdbcType=VARCHAR},
+            </if>
+            <if test="isOverMonthSeasonOd != null">
+                IS_OVER_MONTH_SEASON_OD = #{isOverMonthSeasonOd,jdbcType=VARCHAR},
+            </if>
+            <if test="realRate != null">
+                REAL_RATE = #{realRate,jdbcType=DECIMAL},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.depsit.entity.RbBusAgreementOverdraft">
+        update RB_BUS_AGREEMENT_OVERDRAFT
+        set
+            RB_BUS_AGREEMENT_TYPE = #{rbBusAgreementType,jdbcType=VARCHAR},            GREEMENT_SIGN_STATUS = #{greementSignStatus,jdbcType=VARCHAR},            AMORTIZE_DAY = #{amortizeDay,jdbcType=VARCHAR},            LOAN_INTERNAL_KEY = #{loanInternalKey,jdbcType=INTEGER},            INT_BASIS_RATE = #{intBasisRate,jdbcType=DECIMAL},            OD_AMT = #{odAmt,jdbcType=DECIMAL},            END_DATE = #{endDate,jdbcType=TIMESTAMP},            OD_MODE = #{odMode,jdbcType=VARCHAR},            START_DATE = #{startDate,jdbcType=TIMESTAMP},            OD_TERM_TYPE = #{odTermType,jdbcType=VARCHAR},            AMORTIZE_START_DATE = #{amortizeStartDate,jdbcType=TIMESTAMP},            PROD_NO = #{prodNo,jdbcType=VARCHAR},            OD_METHOD = #{odMethod,jdbcType=VARCHAR},            OD_MATURITY_RULE = #{odMaturityRule,jdbcType=VARCHAR},            AMORTIZE_TIME_TYPE = #{amortizeTimeType,jdbcType=VARCHAR},            WHITE_CLIENT_NAME = #{whiteClientName,jdbcType=VARCHAR},            FEE_TYPE = #{feeType,jdbcType=VARCHAR},            FEE_RATE = #{feeRate,jdbcType=DECIMAL},            FEE_TAKEN_MODE = #{feeTakenMode,jdbcType=VARCHAR},            OD_PROD_NO = #{odProdNo,jdbcType=VARCHAR},            AMORTIZE_MONTH = #{amortizeMonth,jdbcType=VARCHAR},            AMORTIZE_END_DATE = #{amortizeEndDate,jdbcType=TIMESTAMP},            CROSS_PERIOD_RATE = #{crossPeriodRate,jdbcType=DECIMAL},            OD_PAY_METHOD = #{odPayMethod,jdbcType=VARCHAR},            OD_CCY = #{odCcy,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            PAST_DUE_RATE = #{pastDueRate,jdbcType=DECIMAL},            OD_TERM = #{odTerm,jdbcType=VARCHAR},            OD_START_AMT = #{odStartAmt,jdbcType=DECIMAL},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            CHARGE_PERIOD_FREQ = #{chargePeriodFreq,jdbcType=VARCHAR},            AMORTIZE_PERIOD_FREQ = #{amortizePeriodFreq,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            PROFIT_AMORTIZE_FLAG = #{profitAmortizeFlag,jdbcType=VARCHAR},            OD_GRACE_PERIOD = #{odGracePeriod,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            AGREEMENT_SIGN_EFFECT_STATUS = #{agreementSignEffectStatus,jdbcType=VARCHAR},            FEE_CHARGE_TYPE = #{feeChargeType,jdbcType=VARCHAR},            IS_OVER_MONTH_SEASON_OD = #{isOverMonthSeasonOd,jdbcType=VARCHAR},            REAL_RATE = #{realRate,jdbcType=DECIMAL},            LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR}        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </update>
+</mapper>

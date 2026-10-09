@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.depsit.repo.RbOdWhiteLimitInfoMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.depsit.entity.RbOdWhiteLimitInfo">
+        <result column="OD_PT_AMT" property="odPtAmt" jdbcType="DECIMAL" />
+        <result column="TRAN_TIMESTAMP" property="tranTimestamp" jdbcType="VARCHAR" />
+        <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+        <result column="SAME_OBJECT_PD_OD_CUMULATIVE" property="sameObjectPdOdCumulative" jdbcType="DECIMAL" />
+        <result column="VBSFLAG" property="vbsflag" jdbcType="VARCHAR" />
+        <result column="IS_CROSS_FLAG" property="isCrossFlag" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        OD_PT_AMT,        TRAN_TIMESTAMP,        COMPANY,        SAME_OBJECT_PD_OD_CUMULATIVE,        VBSFLAG,        IS_CROSS_FLAG    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfoExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_OD_WHITE_LIMIT_INFO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_OD_WHITE_LIMIT_INFO
+        where OD_PT_AMT = #{odPtAmt,jdbcType=DECIMAL}
+          and TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+          and SAME_OBJECT_PD_OD_CUMULATIVE = #{sameObjectPdOdCumulative,jdbcType=DECIMAL}
+          and VBSFLAG = #{vbsflag,jdbcType=VARCHAR}
+          and IS_CROSS_FLAG = #{isCrossFlag,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_OD_WHITE_LIMIT_INFO
+        where OD_PT_AMT = #{odPtAmt,jdbcType=DECIMAL}
+          and TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+          and SAME_OBJECT_PD_OD_CUMULATIVE = #{sameObjectPdOdCumulative,jdbcType=DECIMAL}
+          and VBSFLAG = #{vbsflag,jdbcType=VARCHAR}
+          and IS_CROSS_FLAG = #{isCrossFlag,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfoExample">
+        delete from RB_OD_WHITE_LIMIT_INFO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfo">
+        insert into RB_OD_WHITE_LIMIT_INFO
+        (
+            OD_PT_AMT,            TRAN_TIMESTAMP,            COMPANY,            SAME_OBJECT_PD_OD_CUMULATIVE,            VBSFLAG,            IS_CROSS_FLAG        )
+        values
+        (
+            #{odPtAmt,jdbcType=DECIMAL},            #{tranTimestamp,jdbcType=VARCHAR},            #{company,jdbcType=VARCHAR},            #{sameObjectPdOdCumulative,jdbcType=DECIMAL},            #{vbsflag,jdbcType=VARCHAR},            #{isCrossFlag,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfo">
+        insert into RB_OD_WHITE_LIMIT_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="odPtAmt != null">
+                OD_PT_AMT,
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="sameObjectPdOdCumulative != null">
+                SAME_OBJECT_PD_OD_CUMULATIVE,
+            </if>
+            <if test="vbsflag != null">
+                VBSFLAG,
+            </if>
+            <if test="isCrossFlag != null">
+                IS_CROSS_FLAG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="odPtAmt != null">
+                #{odPtAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tranTimestamp != null">
+                #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="sameObjectPdOdCumulative != null">
+                #{sameObjectPdOdCumulative,jdbcType=DECIMAL},
+            </if>
+            <if test="vbsflag != null">
+                #{vbsflag,jdbcType=VARCHAR},
+            </if>
+            <if test="isCrossFlag != null">
+                #{isCrossFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfoExample" resultType="java.lang.Long">
+        select count(*) from RB_OD_WHITE_LIMIT_INFO
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_OD_WHITE_LIMIT_INFO
+        <set>
+            <if test="row.odPtAmt != null">
+                OD_PT_AMT = #{row.odPtAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tranTimestamp != null">
+                TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.company != null">
+                COMPANY = #{row.company,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sameObjectPdOdCumulative != null">
+                SAME_OBJECT_PD_OD_CUMULATIVE = #{row.sameObjectPdOdCumulative,jdbcType=DECIMAL},
+            </if>
+            <if test="row.vbsflag != null">
+                VBSFLAG = #{row.vbsflag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isCrossFlag != null">
+                IS_CROSS_FLAG = #{row.isCrossFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_OD_WHITE_LIMIT_INFO
+        set
+            OD_PT_AMT = #{row.odPtAmt,jdbcType=DECIMAL},            TRAN_TIMESTAMP = #{row.tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{row.company,jdbcType=VARCHAR},            SAME_OBJECT_PD_OD_CUMULATIVE = #{row.sameObjectPdOdCumulative,jdbcType=DECIMAL},            VBSFLAG = #{row.vbsflag,jdbcType=VARCHAR},            IS_CROSS_FLAG = #{row.isCrossFlag,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfo">
+        update RB_OD_WHITE_LIMIT_INFO
+        <set>
+            <if test="odPtAmt != null">
+                OD_PT_AMT = #{odPtAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tranTimestamp != null">
+                TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="sameObjectPdOdCumulative != null">
+                SAME_OBJECT_PD_OD_CUMULATIVE = #{sameObjectPdOdCumulative,jdbcType=DECIMAL},
+            </if>
+            <if test="vbsflag != null">
+                VBSFLAG = #{vbsflag,jdbcType=VARCHAR},
+            </if>
+            <if test="isCrossFlag != null">
+                IS_CROSS_FLAG = #{isCrossFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where OD_PT_AMT = #{odPtAmt,jdbcType=DECIMAL}
+          and TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+          and SAME_OBJECT_PD_OD_CUMULATIVE = #{sameObjectPdOdCumulative,jdbcType=DECIMAL}
+          and VBSFLAG = #{vbsflag,jdbcType=VARCHAR}
+          and IS_CROSS_FLAG = #{isCrossFlag,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.depsit.entity.RbOdWhiteLimitInfo">
+        update RB_OD_WHITE_LIMIT_INFO
+        set
+            OD_PT_AMT = #{odPtAmt,jdbcType=DECIMAL},            TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR},            COMPANY = #{company,jdbcType=VARCHAR},            SAME_OBJECT_PD_OD_CUMULATIVE = #{sameObjectPdOdCumulative,jdbcType=DECIMAL},            VBSFLAG = #{vbsflag,jdbcType=VARCHAR},            IS_CROSS_FLAG = #{isCrossFlag,jdbcType=VARCHAR}        where OD_PT_AMT = #{odPtAmt,jdbcType=DECIMAL}
+          and TRAN_TIMESTAMP = #{tranTimestamp,jdbcType=VARCHAR}
+          and COMPANY = #{company,jdbcType=VARCHAR}
+          and SAME_OBJECT_PD_OD_CUMULATIVE = #{sameObjectPdOdCumulative,jdbcType=DECIMAL}
+          and VBSFLAG = #{vbsflag,jdbcType=VARCHAR}
+          and IS_CROSS_FLAG = #{isCrossFlag,jdbcType=VARCHAR}
+    </update>
+</mapper>
