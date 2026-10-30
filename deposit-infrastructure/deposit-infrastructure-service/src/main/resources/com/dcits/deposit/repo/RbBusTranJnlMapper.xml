@@ -1,0 +1,2198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbBusTranJnlMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbBusTranJnl">
+        <id column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <id column="TRAN_DATE" property="tranDate" jdbcType="TIMESTAMP" />
+        <result column="COMMISSION_CLIENT_TEL" property="commissionClientTel" jdbcType="VARCHAR" />
+        <result column="REVERSAL_DATE" property="reversalDate" jdbcType="TIMESTAMP" />
+        <result column="REVERSAL_TRAN_TYPE" property="reversalTranType" jdbcType="VARCHAR" />
+        <result column="SOURCE_TYPE" property="sourceType" jdbcType="VARCHAR" />
+        <result column="FH_SEQ_NO" property="fhSeqNo" jdbcType="VARCHAR" />
+        <result column="ORIG_SYSTEM" property="origSystem" jdbcType="VARCHAR" />
+        <result column="OTH_DOCUMENT_ID" property="othDocumentId" jdbcType="VARCHAR" />
+        <result column="PREVIOUS_BAL_AMT" property="previousBalAmt" jdbcType="DECIMAL" />
+        <result column="TRAN_COUNTRY" property="tranCountry" jdbcType="VARCHAR" />
+        <result column="LAST_UPD_TIMESTAMP" property="lastUpdTimestamp" jdbcType="VARCHAR" />
+        <result column="TRAN_NOTE" property="tranNote" jdbcType="VARCHAR" />
+        <result column="CONTRA_ACCT_CCY" property="contraAcctCcy" jdbcType="VARCHAR" />
+        <result column="LIMIT_REF_LIST" property="limitRefList" jdbcType="VARCHAR" />
+        <result column="AUTH_USER_ID" property="authUserId" jdbcType="VARCHAR" />
+        <result column="REVERSAL_FLAG" property="reversalFlag" jdbcType="VARCHAR" />
+        <result column="CASH_FROM_CODE" property="cashFromCode" jdbcType="VARCHAR" />
+        <result column="OTH_REFERENCE" property="othReference" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_BRANCH_REGION_CODE" property="othRealBranchRegionCode" jdbcType="VARCHAR" />
+        <result column="TRAN_TYPE" property="tranType" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_TRAN_NAME" property="othRealTranName" jdbcType="VARCHAR" />
+        <result column="VOUCHER_NO" property="voucherNo" jdbcType="VARCHAR" />
+        <result column="REACCOUNT_CD" property="reaccountCd" jdbcType="VARCHAR" />
+        <result column="PRIMARY_TRAN_SEQ_NO" property="primaryTranSeqNo" jdbcType="VARCHAR" />
+        <result column="BASE_CCY_AMOUNT_ONE" property="baseCcyAmountOne" jdbcType="DECIMAL" />
+        <result column="MEDIUM_FLAG" property="mediumFlag" jdbcType="VARCHAR" />
+        <result column="OV_TO_AMOUNT" property="ovToAmount" jdbcType="DECIMAL" />
+        <result column="FROM_RATE_FLAG" property="fromRateFlag" jdbcType="VARCHAR" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="TO_RATE_FLAG" property="toRateFlag" jdbcType="VARCHAR" />
+        <result column="NARRATIVE" property="narrative" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_BASE_ACCT_NO" property="othRealBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="OTH_ACCT_DESC" property="othAcctDesc" jdbcType="VARCHAR" />
+        <result column="COMMISSION_CLIENT_NAME" property="commissionClientName" jdbcType="VARCHAR" />
+        <result column="PRINT_INDICATOR" property="printIndicator" jdbcType="VARCHAR" />
+        <result column="IS_FIN_SUB_ACCT" property="isFinSubAcct" jdbcType="VARCHAR" />
+        <result column="ACTUAL_BAL" property="actualBal" jdbcType="DECIMAL" />
+        <result column="CROSS_RATE" property="crossRate" jdbcType="DECIMAL" />
+        <result column="EVENT_TYPE" property="eventType" jdbcType="VARCHAR" />
+        <result column="CONTRA_EQUIV_AMT" property="contraEquivAmt" jdbcType="DECIMAL" />
+        <result column="RATE_TYPE" property="rateType" jdbcType="VARCHAR" />
+        <result column="EFFECT_DATE" property="effectDate" jdbcType="TIMESTAMP" />
+        <result column="ACCT_SET_TYPE" property="acctSetType" jdbcType="VARCHAR" />
+        <result column="CHANNEL_SEQ_NO" property="channelSeqNo" jdbcType="VARCHAR" />
+        <result column="APPR_USER_ID" property="apprUserId" jdbcType="VARCHAR" />
+        <result column="TACK_OVER_CCY_RATE_TWO" property="tackOverCcyRateTwo" jdbcType="DECIMAL" />
+        <result column="CHANNEL" property="channel" jdbcType="VARCHAR" />
+        <result column="OTH_DOCUMENT_TYPE" property="othDocumentType" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_DOCUMENT_TYPE" property="othRealDocumentType" jdbcType="VARCHAR" />
+        <result column="LOAN_PROD_NO" property="loanProdNo" jdbcType="VARCHAR" />
+        <result column="TO_ID" property="toId" jdbcType="VARCHAR" />
+        <result column="CUST_RATE" property="custRate" jdbcType="DECIMAL" />
+        <result column="BAL_TYPE" property="balType" jdbcType="VARCHAR" />
+        <result column="SUB_ACCT_NO" property="subAcctNo" jdbcType="VARCHAR" />
+        <result column="BUS_SEQ_NO" property="busSeqNo" jdbcType="VARCHAR" />
+        <result column="ACCT_STATUS" property="acctStatus" jdbcType="VARCHAR" />
+        <result column="RCR_RCD_IND" property="rcrRcdInd" jdbcType="VARCHAR" />
+        <result column="EXCHANGE_TRAN_CODE" property="exchangeTranCode" jdbcType="VARCHAR" />
+        <result column="CLIENT_NAME" property="clientName" jdbcType="VARCHAR" />
+        <result column="SERV_CHARGE" property="servCharge" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="APPR_INDICATOR" property="apprIndicator" jdbcType="VARCHAR" />
+        <result column="DOCUMENT_TYPE" property="documentType" jdbcType="VARCHAR" />
+        <result column="ACCT_BRANCH" property="acctBranch" jdbcType="VARCHAR" />
+        <result column="OTH_TRAN_NAME" property="othTranName" jdbcType="VARCHAR" />
+        <result column="IS_COMM_TRAN" property="isCommTran" jdbcType="VARCHAR" />
+        <result column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="BASE_CCY_AMOUNT_TWO" property="baseCcyAmountTwo" jdbcType="DECIMAL" />
+        <result column="ACCT_REAL_FLAG" property="acctRealFlag" jdbcType="VARCHAR" />
+        <result column="OTH_BRANCH_REGIONALISM_CODE" property="othBranchRegionalismCode" jdbcType="VARCHAR" />
+        <result column="FROM_AMOUNT" property="fromAmount" jdbcType="DECIMAL" />
+        <result column="SOURCE_MODULE" property="sourceModule" jdbcType="VARCHAR" />
+        <result column="TO_XRATE" property="toXrate" jdbcType="DECIMAL" />
+        <result column="PROFIT_CENTER" property="profitCenter" jdbcType="VARCHAR" />
+        <result column="CASH_TO_COUNTRY" property="cashToCountry" jdbcType="VARCHAR" />
+        <result column="BANK_SEQ_NO" property="bankSeqNo" jdbcType="VARCHAR" />
+        <result column="CASH_TO_CODE" property="cashToCode" jdbcType="VARCHAR" />
+        <result column="PRIMARY_EVENT_TYPE" property="primaryEventType" jdbcType="VARCHAR" />
+        <result column="TRAN_METHOD" property="tranMethod" jdbcType="VARCHAR" />
+        <result column="LENDER" property="lender" jdbcType="VARCHAR" />
+        <result column="PROGRAM_ID" property="programId" jdbcType="VARCHAR" />
+        <result column="CASH_FROM_COUNTRY" property="cashFromCountry" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_PROD_NO" property="othRealProdNo" jdbcType="VARCHAR" />
+        <result column="PRINT_CNT" property="printCnt" jdbcType="INTEGER" />
+        <result column="DEAL_CODE" property="dealCode" jdbcType="VARCHAR" />
+        <result column="PROD_NO" property="prodNo" jdbcType="VARCHAR" />
+        <result column="OTH_BANK_CODE" property="othBankCode" jdbcType="VARCHAR" />
+        <result column="OTH_BASE_ACCT_NO" property="othBaseAcctNo" jdbcType="VARCHAR" />
+        <result column="CASH_ITEM" property="cashItem" jdbcType="VARCHAR" />
+        <result column="BATCH_NO" property="batchNo" jdbcType="VARCHAR" />
+        <result column="CHANNEL_DATE" property="channelDate" jdbcType="TIMESTAMP" />
+        <result column="BILL_NO" property="billNo" jdbcType="VARCHAR" />
+        <result column="RECEIPT_NO" property="receiptNo" jdbcType="VARCHAR" />
+        <result column="OV_CROSS_RATE" property="ovCrossRate" jdbcType="DECIMAL" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="OTH_BRANCH" property="othBranch" jdbcType="VARCHAR" />
+        <result column="REFERENCE" property="reference" jdbcType="VARCHAR" />
+        <result column="QUOTE_TYPE" property="quoteType" jdbcType="VARCHAR" />
+        <result column="CASH_SOURCE_COUNTRY" property="cashSourceCountry" jdbcType="VARCHAR" />
+        <result column="AUTO_REVERSAL_FLAG" property="autoReversalFlag" jdbcType="VARCHAR" />
+        <result column="TRAN_AMT" property="tranAmt" jdbcType="DECIMAL" />
+        <result column="GL_POSTED_FLAG" property="glPostedFlag" jdbcType="VARCHAR" />
+        <result column="ACCT_CLASS" property="acctClass" jdbcType="VARCHAR" />
+        <result column="PBK_UPD_FLAG" property="pbkUpdFlag" jdbcType="VARCHAR" />
+        <result column="GL_NO" property="glNo" jdbcType="VARCHAR" />
+        <result column="ACTUAL_BAL_AMT_FIN" property="actualBalAmtFin" jdbcType="DECIMAL" />
+        <result column="TRAN_BRANCH" property="tranBranch" jdbcType="VARCHAR" />
+        <result column="PREFIX" property="prefix" jdbcType="VARCHAR" />
+        <result column="CASH_USE_PLACE_CODE" property="cashUsePlaceCode" jdbcType="VARCHAR" />
+        <result column="SETTLEMENT_DATE" property="settlementDate" jdbcType="TIMESTAMP" />
+        <result column="FROM_XRATE" property="fromXrate" jdbcType="DECIMAL" />
+        <result column="EXCHANGE_TRAN_CODET" property="exchangeTranCodet" jdbcType="VARCHAR" />
+        <result column="TO_CCY" property="toCcy" jdbcType="VARCHAR" />
+        <result column="OTH_BANK_NAME" property="othBankName" jdbcType="VARCHAR" />
+        <result column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <result column="OTH_SEQ_NO" property="othSeqNo" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_TRAN_ADDR" property="othRealTranAddr" jdbcType="VARCHAR" />
+        <result column="AMT_TYPE" property="amtType" jdbcType="VARCHAR" />
+        <result column="CLIENT_TYPE" property="clientType" jdbcType="VARCHAR" />
+        <result column="AUTO_TRADE_FLAG" property="autoTradeFlag" jdbcType="VARCHAR" />
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+        <result column="ACCT_DESC" property="acctDesc" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_DOCUMENT_ID" property="othRealDocumentId" jdbcType="VARCHAR" />
+        <result column="ACCT_TRAN_FLAG" property="acctTranFlag" jdbcType="VARCHAR" />
+        <result column="AMT_CALC_TYPE" property="amtCalcType" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_BANK_CODE" property="othRealBankCode" jdbcType="VARCHAR" />
+        <result column="LCY_TRAN_AMT" property="lcyTranAmt" jdbcType="DECIMAL" />
+        <result column="OTH_ACCT_CCY" property="othAcctCcy" jdbcType="VARCHAR" />
+        <result column="SEND_SYSTEM" property="sendSystem" jdbcType="VARCHAR" />
+        <result column="OTH_PROD_NO" property="othProdNo" jdbcType="VARCHAR" />
+        <result column="TACK_OVER_CCY_RATE_ONE" property="tackOverCcyRateOne" jdbcType="DECIMAL" />
+        <result column="OTH_ACCT_SEQ_NO" property="othAcctSeqNo" jdbcType="VARCHAR" />
+        <result column="ACCOUNTING_STATUS" property="accountingStatus" jdbcType="VARCHAR" />
+        <result column="SUB_SEQ_NO" property="subSeqNo" jdbcType="VARCHAR" />
+        <result column="OTH_TRAN_ADDR" property="othTranAddr" jdbcType="VARCHAR" />
+        <result column="NARRATIVE_CODE" property="narrativeCode" jdbcType="VARCHAR" />
+        <result column="BASE_EQUIV_AMT" property="baseEquivAmt" jdbcType="DECIMAL" />
+        <result column="CCY" property="ccy" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="PAY_UNIT" property="payUnit" jdbcType="VARCHAR" />
+        <result column="OTH_REAL_BANK_NAME" property="othRealBankName" jdbcType="VARCHAR" />
+        <result column="REMAIN_TERM" property="remainTerm" jdbcType="VARCHAR" />
+        <result column="FROM_CCY" property="fromCcy" jdbcType="VARCHAR" />
+        <result column="REVERSAL_SEQ_NO" property="reversalSeqNo" jdbcType="VARCHAR" />
+        <result column="TRAN_DESC" property="tranDesc" jdbcType="VARCHAR" />
+        <result column="MEDIUM_TYPE" property="mediumType" jdbcType="VARCHAR" />
+        <result column="CR_DR_IND" property="crDrInd" jdbcType="VARCHAR" />
+        <result column="TO_AMOUNT" property="toAmount" jdbcType="DECIMAL" />
+        <result column="DOCUMENT_ID" property="documentId" jdbcType="VARCHAR" />
+        <result column="TRAN_STATUS" property="tranStatus" jdbcType="VARCHAR" />
+        <result column="DOC_TYPE" property="docType" jdbcType="VARCHAR" />
+        <result column="WITHDRAWAL_TYPE" property="withdrawalType" jdbcType="VARCHAR" />
+        <result column="OTH_INTERNAL_KEY" property="othInternalKey" jdbcType="INTEGER" />
+        <result column="CONTRA_TRAN_DATE" property="contraTranDate" jdbcType="TIMESTAMP" />
+        <result column="PRIORITY" property="priority" jdbcType="VARCHAR" />
+        <result column="FLAT_RATE" property="flatRate" jdbcType="DECIMAL" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        COMMISSION_CLIENT_TEL,        REVERSAL_DATE,        REVERSAL_TRAN_TYPE,        SOURCE_TYPE,        FH_SEQ_NO,        ORIG_SYSTEM,        OTH_DOCUMENT_ID,        PREVIOUS_BAL_AMT,        TRAN_COUNTRY,        LAST_UPD_TIMESTAMP,        TRAN_NOTE,        CONTRA_ACCT_CCY,        LIMIT_REF_LIST,        AUTH_USER_ID,        REVERSAL_FLAG,        CASH_FROM_CODE,        OTH_REFERENCE,        OTH_REAL_BRANCH_REGION_CODE,        TRAN_TYPE,        OTH_REAL_TRAN_NAME,        VOUCHER_NO,        REACCOUNT_CD,        PRIMARY_TRAN_SEQ_NO,        BASE_CCY_AMOUNT_ONE,        MEDIUM_FLAG,        OV_TO_AMOUNT,        FROM_RATE_FLAG,        ACCT_CCY,        TO_RATE_FLAG,        NARRATIVE,        OTH_REAL_BASE_ACCT_NO,        OTH_ACCT_DESC,        COMMISSION_CLIENT_NAME,        PRINT_INDICATOR,        IS_FIN_SUB_ACCT,        ACTUAL_BAL,        CROSS_RATE,        EVENT_TYPE,        CONTRA_EQUIV_AMT,        RATE_TYPE,        EFFECT_DATE,        ACCT_SET_TYPE,        CHANNEL_SEQ_NO,        APPR_USER_ID,        TACK_OVER_CCY_RATE_TWO,        CHANNEL,        OTH_DOCUMENT_TYPE,        OTH_REAL_DOCUMENT_TYPE,        LOAN_PROD_NO,        TO_ID,        CUST_RATE,        BAL_TYPE,        SUB_ACCT_NO,        BUS_SEQ_NO,        ACCT_STATUS,        RCR_RCD_IND,        EXCHANGE_TRAN_CODE,        CLIENT_NAME,        SERV_CHARGE,        ACCT_SEQ_NO,        APPR_INDICATOR,        DOCUMENT_TYPE,        ACCT_BRANCH,        OTH_TRAN_NAME,        IS_COMM_TRAN,        CLIENT_NO,        BASE_CCY_AMOUNT_TWO,        ACCT_REAL_FLAG,        OTH_BRANCH_REGIONALISM_CODE,        FROM_AMOUNT,        SOURCE_MODULE,        TO_XRATE,        PROFIT_CENTER,        CASH_TO_COUNTRY,        BANK_SEQ_NO,        CASH_TO_CODE,        PRIMARY_EVENT_TYPE,        TRAN_METHOD,        LENDER,        PROGRAM_ID,        CASH_FROM_COUNTRY,        OTH_REAL_PROD_NO,        PRINT_CNT,        DEAL_CODE,        PROD_NO,        OTH_BANK_CODE,        OTH_BASE_ACCT_NO,        CASH_ITEM,        BATCH_NO,        CHANNEL_DATE,        BILL_NO,        SEQ_NO,        RECEIPT_NO,        OV_CROSS_RATE,        CREATE_TIMESTAMP,        OTH_BRANCH,        REFERENCE,        QUOTE_TYPE,        CASH_SOURCE_COUNTRY,        AUTO_REVERSAL_FLAG,        TRAN_AMT,        GL_POSTED_FLAG,        ACCT_CLASS,        PBK_UPD_FLAG,        GL_NO,        ACTUAL_BAL_AMT_FIN,        TRAN_BRANCH,        PREFIX,        CASH_USE_PLACE_CODE,        SETTLEMENT_DATE,        FROM_XRATE,        EXCHANGE_TRAN_CODET,        TO_CCY,        OTH_BANK_NAME,        INTERNAL_KEY,        OTH_SEQ_NO,        OTH_REAL_TRAN_ADDR,        AMT_TYPE,        CLIENT_TYPE,        AUTO_TRADE_FLAG,        USER_ID,        ACCT_DESC,        OTH_REAL_DOCUMENT_ID,        ACCT_TRAN_FLAG,        AMT_CALC_TYPE,        OTH_REAL_BANK_CODE,        LCY_TRAN_AMT,        OTH_ACCT_CCY,        SEND_SYSTEM,        OTH_PROD_NO,        TACK_OVER_CCY_RATE_ONE,        OTH_ACCT_SEQ_NO,        ACCOUNTING_STATUS,        SUB_SEQ_NO,        OTH_TRAN_ADDR,        NARRATIVE_CODE,        TRAN_DATE,        BASE_EQUIV_AMT,        CCY,        BASE_ACCT_NO,        PAY_UNIT,        OTH_REAL_BANK_NAME,        REMAIN_TERM,        FROM_CCY,        REVERSAL_SEQ_NO,        TRAN_DESC,        MEDIUM_TYPE,        CR_DR_IND,        TO_AMOUNT,        DOCUMENT_ID,        TRAN_STATUS,        DOC_TYPE,        WITHDRAWAL_TYPE,        OTH_INTERNAL_KEY,        CONTRA_TRAN_DATE,        PRIORITY,        FLAT_RATE    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbBusTranJnlExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BUS_TRAN_JNL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BUS_TRAN_JNL
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BUS_TRAN_JNL
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbBusTranJnlExample">
+        delete from RB_BUS_TRAN_JNL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbBusTranJnl">
+        insert into RB_BUS_TRAN_JNL
+        (
+            COMMISSION_CLIENT_TEL,            REVERSAL_DATE,            REVERSAL_TRAN_TYPE,            SOURCE_TYPE,            FH_SEQ_NO,            ORIG_SYSTEM,            OTH_DOCUMENT_ID,            PREVIOUS_BAL_AMT,            TRAN_COUNTRY,            LAST_UPD_TIMESTAMP,            TRAN_NOTE,            CONTRA_ACCT_CCY,            LIMIT_REF_LIST,            AUTH_USER_ID,            REVERSAL_FLAG,            CASH_FROM_CODE,            OTH_REFERENCE,            OTH_REAL_BRANCH_REGION_CODE,            TRAN_TYPE,            OTH_REAL_TRAN_NAME,            VOUCHER_NO,            REACCOUNT_CD,            PRIMARY_TRAN_SEQ_NO,            BASE_CCY_AMOUNT_ONE,            MEDIUM_FLAG,            OV_TO_AMOUNT,            FROM_RATE_FLAG,            ACCT_CCY,            TO_RATE_FLAG,            NARRATIVE,            OTH_REAL_BASE_ACCT_NO,            OTH_ACCT_DESC,            COMMISSION_CLIENT_NAME,            PRINT_INDICATOR,            IS_FIN_SUB_ACCT,            ACTUAL_BAL,            CROSS_RATE,            EVENT_TYPE,            CONTRA_EQUIV_AMT,            RATE_TYPE,            EFFECT_DATE,            ACCT_SET_TYPE,            CHANNEL_SEQ_NO,            APPR_USER_ID,            TACK_OVER_CCY_RATE_TWO,            CHANNEL,            OTH_DOCUMENT_TYPE,            OTH_REAL_DOCUMENT_TYPE,            LOAN_PROD_NO,            TO_ID,            CUST_RATE,            BAL_TYPE,            SUB_ACCT_NO,            BUS_SEQ_NO,            ACCT_STATUS,            RCR_RCD_IND,            EXCHANGE_TRAN_CODE,            CLIENT_NAME,            SERV_CHARGE,            ACCT_SEQ_NO,            APPR_INDICATOR,            DOCUMENT_TYPE,            ACCT_BRANCH,            OTH_TRAN_NAME,            IS_COMM_TRAN,            CLIENT_NO,            BASE_CCY_AMOUNT_TWO,            ACCT_REAL_FLAG,            OTH_BRANCH_REGIONALISM_CODE,            FROM_AMOUNT,            SOURCE_MODULE,            TO_XRATE,            PROFIT_CENTER,            CASH_TO_COUNTRY,            BANK_SEQ_NO,            CASH_TO_CODE,            PRIMARY_EVENT_TYPE,            TRAN_METHOD,            LENDER,            PROGRAM_ID,            CASH_FROM_COUNTRY,            OTH_REAL_PROD_NO,            PRINT_CNT,            DEAL_CODE,            PROD_NO,            OTH_BANK_CODE,            OTH_BASE_ACCT_NO,            CASH_ITEM,            BATCH_NO,            CHANNEL_DATE,            BILL_NO,            SEQ_NO,            RECEIPT_NO,            OV_CROSS_RATE,            CREATE_TIMESTAMP,            OTH_BRANCH,            REFERENCE,            QUOTE_TYPE,            CASH_SOURCE_COUNTRY,            AUTO_REVERSAL_FLAG,            TRAN_AMT,            GL_POSTED_FLAG,            ACCT_CLASS,            PBK_UPD_FLAG,            GL_NO,            ACTUAL_BAL_AMT_FIN,            TRAN_BRANCH,            PREFIX,            CASH_USE_PLACE_CODE,            SETTLEMENT_DATE,            FROM_XRATE,            EXCHANGE_TRAN_CODET,            TO_CCY,            OTH_BANK_NAME,            INTERNAL_KEY,            OTH_SEQ_NO,            OTH_REAL_TRAN_ADDR,            AMT_TYPE,            CLIENT_TYPE,            AUTO_TRADE_FLAG,            USER_ID,            ACCT_DESC,            OTH_REAL_DOCUMENT_ID,            ACCT_TRAN_FLAG,            AMT_CALC_TYPE,            OTH_REAL_BANK_CODE,            LCY_TRAN_AMT,            OTH_ACCT_CCY,            SEND_SYSTEM,            OTH_PROD_NO,            TACK_OVER_CCY_RATE_ONE,            OTH_ACCT_SEQ_NO,            ACCOUNTING_STATUS,            SUB_SEQ_NO,            OTH_TRAN_ADDR,            NARRATIVE_CODE,            TRAN_DATE,            BASE_EQUIV_AMT,            CCY,            BASE_ACCT_NO,            PAY_UNIT,            OTH_REAL_BANK_NAME,            REMAIN_TERM,            FROM_CCY,            REVERSAL_SEQ_NO,            TRAN_DESC,            MEDIUM_TYPE,            CR_DR_IND,            TO_AMOUNT,            DOCUMENT_ID,            TRAN_STATUS,            DOC_TYPE,            WITHDRAWAL_TYPE,            OTH_INTERNAL_KEY,            CONTRA_TRAN_DATE,            PRIORITY,            FLAT_RATE        )
+        values
+        (
+            #{commissionClientTel,jdbcType=VARCHAR},            #{reversalDate,jdbcType=TIMESTAMP},            #{reversalTranType,jdbcType=VARCHAR},            #{sourceType,jdbcType=VARCHAR},            #{fhSeqNo,jdbcType=VARCHAR},            #{origSystem,jdbcType=VARCHAR},            #{othDocumentId,jdbcType=VARCHAR},            #{previousBalAmt,jdbcType=DECIMAL},            #{tranCountry,jdbcType=VARCHAR},            #{lastUpdTimestamp,jdbcType=VARCHAR},            #{tranNote,jdbcType=VARCHAR},            #{contraAcctCcy,jdbcType=VARCHAR},            #{limitRefList,jdbcType=VARCHAR},            #{authUserId,jdbcType=VARCHAR},            #{reversalFlag,jdbcType=VARCHAR},            #{cashFromCode,jdbcType=VARCHAR},            #{othReference,jdbcType=VARCHAR},            #{othRealBranchRegionCode,jdbcType=VARCHAR},            #{tranType,jdbcType=VARCHAR},            #{othRealTranName,jdbcType=VARCHAR},            #{voucherNo,jdbcType=VARCHAR},            #{reaccountCd,jdbcType=VARCHAR},            #{primaryTranSeqNo,jdbcType=VARCHAR},            #{baseCcyAmountOne,jdbcType=DECIMAL},            #{mediumFlag,jdbcType=VARCHAR},            #{ovToAmount,jdbcType=DECIMAL},            #{fromRateFlag,jdbcType=VARCHAR},            #{acctCcy,jdbcType=VARCHAR},            #{toRateFlag,jdbcType=VARCHAR},            #{narrative,jdbcType=VARCHAR},            #{othRealBaseAcctNo,jdbcType=VARCHAR},            #{othAcctDesc,jdbcType=VARCHAR},            #{commissionClientName,jdbcType=VARCHAR},            #{printIndicator,jdbcType=VARCHAR},            #{isFinSubAcct,jdbcType=VARCHAR},            #{actualBal,jdbcType=DECIMAL},            #{crossRate,jdbcType=DECIMAL},            #{eventType,jdbcType=VARCHAR},            #{contraEquivAmt,jdbcType=DECIMAL},            #{rateType,jdbcType=VARCHAR},            #{effectDate,jdbcType=TIMESTAMP},            #{acctSetType,jdbcType=VARCHAR},            #{channelSeqNo,jdbcType=VARCHAR},            #{apprUserId,jdbcType=VARCHAR},            #{tackOverCcyRateTwo,jdbcType=DECIMAL},            #{channel,jdbcType=VARCHAR},            #{othDocumentType,jdbcType=VARCHAR},            #{othRealDocumentType,jdbcType=VARCHAR},            #{loanProdNo,jdbcType=VARCHAR},            #{toId,jdbcType=VARCHAR},            #{custRate,jdbcType=DECIMAL},            #{balType,jdbcType=VARCHAR},            #{subAcctNo,jdbcType=VARCHAR},            #{busSeqNo,jdbcType=VARCHAR},            #{acctStatus,jdbcType=VARCHAR},            #{rcrRcdInd,jdbcType=VARCHAR},            #{exchangeTranCode,jdbcType=VARCHAR},            #{clientName,jdbcType=VARCHAR},            #{servCharge,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{apprIndicator,jdbcType=VARCHAR},            #{documentType,jdbcType=VARCHAR},            #{acctBranch,jdbcType=VARCHAR},            #{othTranName,jdbcType=VARCHAR},            #{isCommTran,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{baseCcyAmountTwo,jdbcType=DECIMAL},            #{acctRealFlag,jdbcType=VARCHAR},            #{othBranchRegionalismCode,jdbcType=VARCHAR},            #{fromAmount,jdbcType=DECIMAL},            #{sourceModule,jdbcType=VARCHAR},            #{toXrate,jdbcType=DECIMAL},            #{profitCenter,jdbcType=VARCHAR},            #{cashToCountry,jdbcType=VARCHAR},            #{bankSeqNo,jdbcType=VARCHAR},            #{cashToCode,jdbcType=VARCHAR},            #{primaryEventType,jdbcType=VARCHAR},            #{tranMethod,jdbcType=VARCHAR},            #{lender,jdbcType=VARCHAR},            #{programId,jdbcType=VARCHAR},            #{cashFromCountry,jdbcType=VARCHAR},            #{othRealProdNo,jdbcType=VARCHAR},            #{printCnt,jdbcType=INTEGER},            #{dealCode,jdbcType=VARCHAR},            #{prodNo,jdbcType=VARCHAR},            #{othBankCode,jdbcType=VARCHAR},            #{othBaseAcctNo,jdbcType=VARCHAR},            #{cashItem,jdbcType=VARCHAR},            #{batchNo,jdbcType=VARCHAR},            #{channelDate,jdbcType=TIMESTAMP},            #{billNo,jdbcType=VARCHAR},            #{seqNo,jdbcType=VARCHAR},            #{receiptNo,jdbcType=VARCHAR},            #{ovCrossRate,jdbcType=DECIMAL},            #{createTimestamp,jdbcType=VARCHAR},            #{othBranch,jdbcType=VARCHAR},            #{reference,jdbcType=VARCHAR},            #{quoteType,jdbcType=VARCHAR},            #{cashSourceCountry,jdbcType=VARCHAR},            #{autoReversalFlag,jdbcType=VARCHAR},            #{tranAmt,jdbcType=DECIMAL},            #{glPostedFlag,jdbcType=VARCHAR},            #{acctClass,jdbcType=VARCHAR},            #{pbkUpdFlag,jdbcType=VARCHAR},            #{glNo,jdbcType=VARCHAR},            #{actualBalAmtFin,jdbcType=DECIMAL},            #{tranBranch,jdbcType=VARCHAR},            #{prefix,jdbcType=VARCHAR},            #{cashUsePlaceCode,jdbcType=VARCHAR},            #{settlementDate,jdbcType=TIMESTAMP},            #{fromXrate,jdbcType=DECIMAL},            #{exchangeTranCodet,jdbcType=VARCHAR},            #{toCcy,jdbcType=VARCHAR},            #{othBankName,jdbcType=VARCHAR},            #{internalKey,jdbcType=INTEGER},            #{othSeqNo,jdbcType=VARCHAR},            #{othRealTranAddr,jdbcType=VARCHAR},            #{amtType,jdbcType=VARCHAR},            #{clientType,jdbcType=VARCHAR},            #{autoTradeFlag,jdbcType=VARCHAR},            #{userId,jdbcType=VARCHAR},            #{acctDesc,jdbcType=VARCHAR},            #{othRealDocumentId,jdbcType=VARCHAR},            #{acctTranFlag,jdbcType=VARCHAR},            #{amtCalcType,jdbcType=VARCHAR},            #{othRealBankCode,jdbcType=VARCHAR},            #{lcyTranAmt,jdbcType=DECIMAL},            #{othAcctCcy,jdbcType=VARCHAR},            #{sendSystem,jdbcType=VARCHAR},            #{othProdNo,jdbcType=VARCHAR},            #{tackOverCcyRateOne,jdbcType=DECIMAL},            #{othAcctSeqNo,jdbcType=VARCHAR},            #{accountingStatus,jdbcType=VARCHAR},            #{subSeqNo,jdbcType=VARCHAR},            #{othTranAddr,jdbcType=VARCHAR},            #{narrativeCode,jdbcType=VARCHAR},            #{tranDate,jdbcType=TIMESTAMP},            #{baseEquivAmt,jdbcType=DECIMAL},            #{ccy,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{payUnit,jdbcType=VARCHAR},            #{othRealBankName,jdbcType=VARCHAR},            #{remainTerm,jdbcType=VARCHAR},            #{fromCcy,jdbcType=VARCHAR},            #{reversalSeqNo,jdbcType=VARCHAR},            #{tranDesc,jdbcType=VARCHAR},            #{mediumType,jdbcType=VARCHAR},            #{crDrInd,jdbcType=VARCHAR},            #{toAmount,jdbcType=DECIMAL},            #{documentId,jdbcType=VARCHAR},            #{tranStatus,jdbcType=VARCHAR},            #{docType,jdbcType=VARCHAR},            #{withdrawalType,jdbcType=VARCHAR},            #{othInternalKey,jdbcType=INTEGER},            #{contraTranDate,jdbcType=TIMESTAMP},            #{priority,jdbcType=VARCHAR},            #{flatRate,jdbcType=DECIMAL}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbBusTranJnl">
+        insert into RB_BUS_TRAN_JNL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commissionClientTel != null">
+                COMMISSION_CLIENT_TEL,
+            </if>
+            <if test="reversalDate != null">
+                REVERSAL_DATE,
+            </if>
+            <if test="reversalTranType != null">
+                REVERSAL_TRAN_TYPE,
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE,
+            </if>
+            <if test="fhSeqNo != null">
+                FH_SEQ_NO,
+            </if>
+            <if test="origSystem != null">
+                ORIG_SYSTEM,
+            </if>
+            <if test="othDocumentId != null">
+                OTH_DOCUMENT_ID,
+            </if>
+            <if test="previousBalAmt != null">
+                PREVIOUS_BAL_AMT,
+            </if>
+            <if test="tranCountry != null">
+                TRAN_COUNTRY,
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP,
+            </if>
+            <if test="tranNote != null">
+                TRAN_NOTE,
+            </if>
+            <if test="contraAcctCcy != null">
+                CONTRA_ACCT_CCY,
+            </if>
+            <if test="limitRefList != null">
+                LIMIT_REF_LIST,
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID,
+            </if>
+            <if test="reversalFlag != null">
+                REVERSAL_FLAG,
+            </if>
+            <if test="cashFromCode != null">
+                CASH_FROM_CODE,
+            </if>
+            <if test="othReference != null">
+                OTH_REFERENCE,
+            </if>
+            <if test="othRealBranchRegionCode != null">
+                OTH_REAL_BRANCH_REGION_CODE,
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE,
+            </if>
+            <if test="othRealTranName != null">
+                OTH_REAL_TRAN_NAME,
+            </if>
+            <if test="voucherNo != null">
+                VOUCHER_NO,
+            </if>
+            <if test="reaccountCd != null">
+                REACCOUNT_CD,
+            </if>
+            <if test="primaryTranSeqNo != null">
+                PRIMARY_TRAN_SEQ_NO,
+            </if>
+            <if test="baseCcyAmountOne != null">
+                BASE_CCY_AMOUNT_ONE,
+            </if>
+            <if test="mediumFlag != null">
+                MEDIUM_FLAG,
+            </if>
+            <if test="ovToAmount != null">
+                OV_TO_AMOUNT,
+            </if>
+            <if test="fromRateFlag != null">
+                FROM_RATE_FLAG,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="toRateFlag != null">
+                TO_RATE_FLAG,
+            </if>
+            <if test="narrative != null">
+                NARRATIVE,
+            </if>
+            <if test="othRealBaseAcctNo != null">
+                OTH_REAL_BASE_ACCT_NO,
+            </if>
+            <if test="othAcctDesc != null">
+                OTH_ACCT_DESC,
+            </if>
+            <if test="commissionClientName != null">
+                COMMISSION_CLIENT_NAME,
+            </if>
+            <if test="printIndicator != null">
+                PRINT_INDICATOR,
+            </if>
+            <if test="isFinSubAcct != null">
+                IS_FIN_SUB_ACCT,
+            </if>
+            <if test="actualBal != null">
+                ACTUAL_BAL,
+            </if>
+            <if test="crossRate != null">
+                CROSS_RATE,
+            </if>
+            <if test="eventType != null">
+                EVENT_TYPE,
+            </if>
+            <if test="contraEquivAmt != null">
+                CONTRA_EQUIV_AMT,
+            </if>
+            <if test="rateType != null">
+                RATE_TYPE,
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE,
+            </if>
+            <if test="acctSetType != null">
+                ACCT_SET_TYPE,
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO,
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID,
+            </if>
+            <if test="tackOverCcyRateTwo != null">
+                TACK_OVER_CCY_RATE_TWO,
+            </if>
+            <if test="channel != null">
+                CHANNEL,
+            </if>
+            <if test="othDocumentType != null">
+                OTH_DOCUMENT_TYPE,
+            </if>
+            <if test="othRealDocumentType != null">
+                OTH_REAL_DOCUMENT_TYPE,
+            </if>
+            <if test="loanProdNo != null">
+                LOAN_PROD_NO,
+            </if>
+            <if test="toId != null">
+                TO_ID,
+            </if>
+            <if test="custRate != null">
+                CUST_RATE,
+            </if>
+            <if test="balType != null">
+                BAL_TYPE,
+            </if>
+            <if test="subAcctNo != null">
+                SUB_ACCT_NO,
+            </if>
+            <if test="busSeqNo != null">
+                BUS_SEQ_NO,
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS,
+            </if>
+            <if test="rcrRcdInd != null">
+                RCR_RCD_IND,
+            </if>
+            <if test="exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE,
+            </if>
+            <if test="clientName != null">
+                CLIENT_NAME,
+            </if>
+            <if test="servCharge != null">
+                SERV_CHARGE,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="apprIndicator != null">
+                APPR_INDICATOR,
+            </if>
+            <if test="documentType != null">
+                DOCUMENT_TYPE,
+            </if>
+            <if test="acctBranch != null">
+                ACCT_BRANCH,
+            </if>
+            <if test="othTranName != null">
+                OTH_TRAN_NAME,
+            </if>
+            <if test="isCommTran != null">
+                IS_COMM_TRAN,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="baseCcyAmountTwo != null">
+                BASE_CCY_AMOUNT_TWO,
+            </if>
+            <if test="acctRealFlag != null">
+                ACCT_REAL_FLAG,
+            </if>
+            <if test="othBranchRegionalismCode != null">
+                OTH_BRANCH_REGIONALISM_CODE,
+            </if>
+            <if test="fromAmount != null">
+                FROM_AMOUNT,
+            </if>
+            <if test="sourceModule != null">
+                SOURCE_MODULE,
+            </if>
+            <if test="toXrate != null">
+                TO_XRATE,
+            </if>
+            <if test="profitCenter != null">
+                PROFIT_CENTER,
+            </if>
+            <if test="cashToCountry != null">
+                CASH_TO_COUNTRY,
+            </if>
+            <if test="bankSeqNo != null">
+                BANK_SEQ_NO,
+            </if>
+            <if test="cashToCode != null">
+                CASH_TO_CODE,
+            </if>
+            <if test="primaryEventType != null">
+                PRIMARY_EVENT_TYPE,
+            </if>
+            <if test="tranMethod != null">
+                TRAN_METHOD,
+            </if>
+            <if test="lender != null">
+                LENDER,
+            </if>
+            <if test="programId != null">
+                PROGRAM_ID,
+            </if>
+            <if test="cashFromCountry != null">
+                CASH_FROM_COUNTRY,
+            </if>
+            <if test="othRealProdNo != null">
+                OTH_REAL_PROD_NO,
+            </if>
+            <if test="printCnt != null">
+                PRINT_CNT,
+            </if>
+            <if test="dealCode != null">
+                DEAL_CODE,
+            </if>
+            <if test="prodNo != null">
+                PROD_NO,
+            </if>
+            <if test="othBankCode != null">
+                OTH_BANK_CODE,
+            </if>
+            <if test="othBaseAcctNo != null">
+                OTH_BASE_ACCT_NO,
+            </if>
+            <if test="cashItem != null">
+                CASH_ITEM,
+            </if>
+            <if test="batchNo != null">
+                BATCH_NO,
+            </if>
+            <if test="channelDate != null">
+                CHANNEL_DATE,
+            </if>
+            <if test="billNo != null">
+                BILL_NO,
+            </if>
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+            <if test="receiptNo != null">
+                RECEIPT_NO,
+            </if>
+            <if test="ovCrossRate != null">
+                OV_CROSS_RATE,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="othBranch != null">
+                OTH_BRANCH,
+            </if>
+            <if test="reference != null">
+                REFERENCE,
+            </if>
+            <if test="quoteType != null">
+                QUOTE_TYPE,
+            </if>
+            <if test="cashSourceCountry != null">
+                CASH_SOURCE_COUNTRY,
+            </if>
+            <if test="autoReversalFlag != null">
+                AUTO_REVERSAL_FLAG,
+            </if>
+            <if test="tranAmt != null">
+                TRAN_AMT,
+            </if>
+            <if test="glPostedFlag != null">
+                GL_POSTED_FLAG,
+            </if>
+            <if test="acctClass != null">
+                ACCT_CLASS,
+            </if>
+            <if test="pbkUpdFlag != null">
+                PBK_UPD_FLAG,
+            </if>
+            <if test="glNo != null">
+                GL_NO,
+            </if>
+            <if test="actualBalAmtFin != null">
+                ACTUAL_BAL_AMT_FIN,
+            </if>
+            <if test="tranBranch != null">
+                TRAN_BRANCH,
+            </if>
+            <if test="prefix != null">
+                PREFIX,
+            </if>
+            <if test="cashUsePlaceCode != null">
+                CASH_USE_PLACE_CODE,
+            </if>
+            <if test="settlementDate != null">
+                SETTLEMENT_DATE,
+            </if>
+            <if test="fromXrate != null">
+                FROM_XRATE,
+            </if>
+            <if test="exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET,
+            </if>
+            <if test="toCcy != null">
+                TO_CCY,
+            </if>
+            <if test="othBankName != null">
+                OTH_BANK_NAME,
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="othSeqNo != null">
+                OTH_SEQ_NO,
+            </if>
+            <if test="othRealTranAddr != null">
+                OTH_REAL_TRAN_ADDR,
+            </if>
+            <if test="amtType != null">
+                AMT_TYPE,
+            </if>
+            <if test="clientType != null">
+                CLIENT_TYPE,
+            </if>
+            <if test="autoTradeFlag != null">
+                AUTO_TRADE_FLAG,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="acctDesc != null">
+                ACCT_DESC,
+            </if>
+            <if test="othRealDocumentId != null">
+                OTH_REAL_DOCUMENT_ID,
+            </if>
+            <if test="acctTranFlag != null">
+                ACCT_TRAN_FLAG,
+            </if>
+            <if test="amtCalcType != null">
+                AMT_CALC_TYPE,
+            </if>
+            <if test="othRealBankCode != null">
+                OTH_REAL_BANK_CODE,
+            </if>
+            <if test="lcyTranAmt != null">
+                LCY_TRAN_AMT,
+            </if>
+            <if test="othAcctCcy != null">
+                OTH_ACCT_CCY,
+            </if>
+            <if test="sendSystem != null">
+                SEND_SYSTEM,
+            </if>
+            <if test="othProdNo != null">
+                OTH_PROD_NO,
+            </if>
+            <if test="tackOverCcyRateOne != null">
+                TACK_OVER_CCY_RATE_ONE,
+            </if>
+            <if test="othAcctSeqNo != null">
+                OTH_ACCT_SEQ_NO,
+            </if>
+            <if test="accountingStatus != null">
+                ACCOUNTING_STATUS,
+            </if>
+            <if test="subSeqNo != null">
+                SUB_SEQ_NO,
+            </if>
+            <if test="othTranAddr != null">
+                OTH_TRAN_ADDR,
+            </if>
+            <if test="narrativeCode != null">
+                NARRATIVE_CODE,
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE,
+            </if>
+            <if test="baseEquivAmt != null">
+                BASE_EQUIV_AMT,
+            </if>
+            <if test="ccy != null">
+                CCY,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="payUnit != null">
+                PAY_UNIT,
+            </if>
+            <if test="othRealBankName != null">
+                OTH_REAL_BANK_NAME,
+            </if>
+            <if test="remainTerm != null">
+                REMAIN_TERM,
+            </if>
+            <if test="fromCcy != null">
+                FROM_CCY,
+            </if>
+            <if test="reversalSeqNo != null">
+                REVERSAL_SEQ_NO,
+            </if>
+            <if test="tranDesc != null">
+                TRAN_DESC,
+            </if>
+            <if test="mediumType != null">
+                MEDIUM_TYPE,
+            </if>
+            <if test="crDrInd != null">
+                CR_DR_IND,
+            </if>
+            <if test="toAmount != null">
+                TO_AMOUNT,
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID,
+            </if>
+            <if test="tranStatus != null">
+                TRAN_STATUS,
+            </if>
+            <if test="docType != null">
+                DOC_TYPE,
+            </if>
+            <if test="withdrawalType != null">
+                WITHDRAWAL_TYPE,
+            </if>
+            <if test="othInternalKey != null">
+                OTH_INTERNAL_KEY,
+            </if>
+            <if test="contraTranDate != null">
+                CONTRA_TRAN_DATE,
+            </if>
+            <if test="priority != null">
+                PRIORITY,
+            </if>
+            <if test="flatRate != null">
+                FLAT_RATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commissionClientTel != null">
+                #{commissionClientTel,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalDate != null">
+                #{reversalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="reversalTranType != null">
+                #{reversalTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="fhSeqNo != null">
+                #{fhSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="origSystem != null">
+                #{origSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="othDocumentId != null">
+                #{othDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="previousBalAmt != null">
+                #{previousBalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tranCountry != null">
+                #{tranCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranNote != null">
+                #{tranNote,jdbcType=VARCHAR},
+            </if>
+            <if test="contraAcctCcy != null">
+                #{contraAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="limitRefList != null">
+                #{limitRefList,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalFlag != null">
+                #{reversalFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCode != null">
+                #{cashFromCode,jdbcType=VARCHAR},
+            </if>
+            <if test="othReference != null">
+                #{othReference,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBranchRegionCode != null">
+                #{othRealBranchRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealTranName != null">
+                #{othRealTranName,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherNo != null">
+                #{voucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="reaccountCd != null">
+                #{reaccountCd,jdbcType=VARCHAR},
+            </if>
+            <if test="primaryTranSeqNo != null">
+                #{primaryTranSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseCcyAmountOne != null">
+                #{baseCcyAmountOne,jdbcType=DECIMAL},
+            </if>
+            <if test="mediumFlag != null">
+                #{mediumFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ovToAmount != null">
+                #{ovToAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="fromRateFlag != null">
+                #{fromRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="toRateFlag != null">
+                #{toRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="narrative != null">
+                #{narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBaseAcctNo != null">
+                #{othRealBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctDesc != null">
+                #{othAcctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="commissionClientName != null">
+                #{commissionClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="printIndicator != null">
+                #{printIndicator,jdbcType=VARCHAR},
+            </if>
+            <if test="isFinSubAcct != null">
+                #{isFinSubAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="actualBal != null">
+                #{actualBal,jdbcType=DECIMAL},
+            </if>
+            <if test="crossRate != null">
+                #{crossRate,jdbcType=DECIMAL},
+            </if>
+            <if test="eventType != null">
+                #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="contraEquivAmt != null">
+                #{contraEquivAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="rateType != null">
+                #{rateType,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDate != null">
+                #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctSetType != null">
+                #{acctSetType,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="tackOverCcyRateTwo != null">
+                #{tackOverCcyRateTwo,jdbcType=DECIMAL},
+            </if>
+            <if test="channel != null">
+                #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="othDocumentType != null">
+                #{othDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealDocumentType != null">
+                #{othRealDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="loanProdNo != null">
+                #{loanProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="toId != null">
+                #{toId,jdbcType=VARCHAR},
+            </if>
+            <if test="custRate != null">
+                #{custRate,jdbcType=DECIMAL},
+            </if>
+            <if test="balType != null">
+                #{balType,jdbcType=VARCHAR},
+            </if>
+            <if test="subAcctNo != null">
+                #{subAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="busSeqNo != null">
+                #{busSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                #{acctStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="rcrRcdInd != null">
+                #{rcrRcdInd,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCode != null">
+                #{exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="servCharge != null">
+                #{servCharge,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="apprIndicator != null">
+                #{apprIndicator,jdbcType=VARCHAR},
+            </if>
+            <if test="documentType != null">
+                #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctBranch != null">
+                #{acctBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="othTranName != null">
+                #{othTranName,jdbcType=VARCHAR},
+            </if>
+            <if test="isCommTran != null">
+                #{isCommTran,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseCcyAmountTwo != null">
+                #{baseCcyAmountTwo,jdbcType=DECIMAL},
+            </if>
+            <if test="acctRealFlag != null">
+                #{acctRealFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="othBranchRegionalismCode != null">
+                #{othBranchRegionalismCode,jdbcType=VARCHAR},
+            </if>
+            <if test="fromAmount != null">
+                #{fromAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="sourceModule != null">
+                #{sourceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="toXrate != null">
+                #{toXrate,jdbcType=DECIMAL},
+            </if>
+            <if test="profitCenter != null">
+                #{profitCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCountry != null">
+                #{cashToCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="bankSeqNo != null">
+                #{bankSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCode != null">
+                #{cashToCode,jdbcType=VARCHAR},
+            </if>
+            <if test="primaryEventType != null">
+                #{primaryEventType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranMethod != null">
+                #{tranMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="lender != null">
+                #{lender,jdbcType=VARCHAR},
+            </if>
+            <if test="programId != null">
+                #{programId,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCountry != null">
+                #{cashFromCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealProdNo != null">
+                #{othRealProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="printCnt != null">
+                #{printCnt,jdbcType=INTEGER},
+            </if>
+            <if test="dealCode != null">
+                #{dealCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othBankCode != null">
+                #{othBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="othBaseAcctNo != null">
+                #{othBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cashItem != null">
+                #{cashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="batchNo != null">
+                #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelDate != null">
+                #{channelDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billNo != null">
+                #{billNo,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="receiptNo != null">
+                #{receiptNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ovCrossRate != null">
+                #{ovCrossRate,jdbcType=DECIMAL},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="othBranch != null">
+                #{othBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="quoteType != null">
+                #{quoteType,jdbcType=VARCHAR},
+            </if>
+            <if test="cashSourceCountry != null">
+                #{cashSourceCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="autoReversalFlag != null">
+                #{autoReversalFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmt != null">
+                #{tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="glPostedFlag != null">
+                #{glPostedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctClass != null">
+                #{acctClass,jdbcType=VARCHAR},
+            </if>
+            <if test="pbkUpdFlag != null">
+                #{pbkUpdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="glNo != null">
+                #{glNo,jdbcType=VARCHAR},
+            </if>
+            <if test="actualBalAmtFin != null">
+                #{actualBalAmtFin,jdbcType=DECIMAL},
+            </if>
+            <if test="tranBranch != null">
+                #{tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="prefix != null">
+                #{prefix,jdbcType=VARCHAR},
+            </if>
+            <if test="cashUsePlaceCode != null">
+                #{cashUsePlaceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="settlementDate != null">
+                #{settlementDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fromXrate != null">
+                #{fromXrate,jdbcType=DECIMAL},
+            </if>
+            <if test="exchangeTranCodet != null">
+                #{exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="toCcy != null">
+                #{toCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="othBankName != null">
+                #{othBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="othSeqNo != null">
+                #{othSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealTranAddr != null">
+                #{othRealTranAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="amtType != null">
+                #{amtType,jdbcType=VARCHAR},
+            </if>
+            <if test="clientType != null">
+                #{clientType,jdbcType=VARCHAR},
+            </if>
+            <if test="autoTradeFlag != null">
+                #{autoTradeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctDesc != null">
+                #{acctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealDocumentId != null">
+                #{othRealDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctTranFlag != null">
+                #{acctTranFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="amtCalcType != null">
+                #{amtCalcType,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBankCode != null">
+                #{othRealBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="lcyTranAmt != null">
+                #{lcyTranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="othAcctCcy != null">
+                #{othAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="sendSystem != null">
+                #{sendSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="othProdNo != null">
+                #{othProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tackOverCcyRateOne != null">
+                #{tackOverCcyRateOne,jdbcType=DECIMAL},
+            </if>
+            <if test="othAcctSeqNo != null">
+                #{othAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="accountingStatus != null">
+                #{accountingStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="subSeqNo != null">
+                #{subSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othTranAddr != null">
+                #{othTranAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="narrativeCode != null">
+                #{narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDate != null">
+                #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="baseEquivAmt != null">
+                #{baseEquivAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="ccy != null">
+                #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payUnit != null">
+                #{payUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBankName != null">
+                #{othRealBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="remainTerm != null">
+                #{remainTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="fromCcy != null">
+                #{fromCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalSeqNo != null">
+                #{reversalSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDesc != null">
+                #{tranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="mediumType != null">
+                #{mediumType,jdbcType=VARCHAR},
+            </if>
+            <if test="crDrInd != null">
+                #{crDrInd,jdbcType=VARCHAR},
+            </if>
+            <if test="toAmount != null">
+                #{toAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="documentId != null">
+                #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranStatus != null">
+                #{tranStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="docType != null">
+                #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalType != null">
+                #{withdrawalType,jdbcType=VARCHAR},
+            </if>
+            <if test="othInternalKey != null">
+                #{othInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="contraTranDate != null">
+                #{contraTranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="priority != null">
+                #{priority,jdbcType=VARCHAR},
+            </if>
+            <if test="flatRate != null">
+                #{flatRate,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbBusTranJnlExample" resultType="java.lang.Long">
+        select count(*) from RB_BUS_TRAN_JNL
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BUS_TRAN_JNL
+        <set>
+            <if test="row.commissionClientTel != null">
+                COMMISSION_CLIENT_TEL = #{row.commissionClientTel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reversalDate != null">
+                REVERSAL_DATE = #{row.reversalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.reversalTranType != null">
+                REVERSAL_TRAN_TYPE = #{row.reversalTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sourceType != null">
+                SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fhSeqNo != null">
+                FH_SEQ_NO = #{row.fhSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.origSystem != null">
+                ORIG_SYSTEM = #{row.origSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othDocumentId != null">
+                OTH_DOCUMENT_ID = #{row.othDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.previousBalAmt != null">
+                PREVIOUS_BAL_AMT = #{row.previousBalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tranCountry != null">
+                TRAN_COUNTRY = #{row.tranCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranNote != null">
+                TRAN_NOTE = #{row.tranNote,jdbcType=VARCHAR},
+            </if>
+            <if test="row.contraAcctCcy != null">
+                CONTRA_ACCT_CCY = #{row.contraAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.limitRefList != null">
+                LIMIT_REF_LIST = #{row.limitRefList,jdbcType=VARCHAR},
+            </if>
+            <if test="row.authUserId != null">
+                AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reversalFlag != null">
+                REVERSAL_FLAG = #{row.reversalFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashFromCode != null">
+                CASH_FROM_CODE = #{row.cashFromCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othReference != null">
+                OTH_REFERENCE = #{row.othReference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealBranchRegionCode != null">
+                OTH_REAL_BRANCH_REGION_CODE = #{row.othRealBranchRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranType != null">
+                TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealTranName != null">
+                OTH_REAL_TRAN_NAME = #{row.othRealTranName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.voucherNo != null">
+                VOUCHER_NO = #{row.voucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reaccountCd != null">
+                REACCOUNT_CD = #{row.reaccountCd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.primaryTranSeqNo != null">
+                PRIMARY_TRAN_SEQ_NO = #{row.primaryTranSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseCcyAmountOne != null">
+                BASE_CCY_AMOUNT_ONE = #{row.baseCcyAmountOne,jdbcType=DECIMAL},
+            </if>
+            <if test="row.mediumFlag != null">
+                MEDIUM_FLAG = #{row.mediumFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ovToAmount != null">
+                OV_TO_AMOUNT = #{row.ovToAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="row.fromRateFlag != null">
+                FROM_RATE_FLAG = #{row.fromRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toRateFlag != null">
+                TO_RATE_FLAG = #{row.toRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.narrative != null">
+                NARRATIVE = #{row.narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealBaseAcctNo != null">
+                OTH_REAL_BASE_ACCT_NO = #{row.othRealBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othAcctDesc != null">
+                OTH_ACCT_DESC = #{row.othAcctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.commissionClientName != null">
+                COMMISSION_CLIENT_NAME = #{row.commissionClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.printIndicator != null">
+                PRINT_INDICATOR = #{row.printIndicator,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isFinSubAcct != null">
+                IS_FIN_SUB_ACCT = #{row.isFinSubAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="row.actualBal != null">
+                ACTUAL_BAL = #{row.actualBal,jdbcType=DECIMAL},
+            </if>
+            <if test="row.crossRate != null">
+                CROSS_RATE = #{row.crossRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.eventType != null">
+                EVENT_TYPE = #{row.eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.contraEquivAmt != null">
+                CONTRA_EQUIV_AMT = #{row.contraEquivAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.rateType != null">
+                RATE_TYPE = #{row.rateType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.effectDate != null">
+                EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.acctSetType != null">
+                ACCT_SET_TYPE = #{row.acctSetType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.apprUserId != null">
+                APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tackOverCcyRateTwo != null">
+                TACK_OVER_CCY_RATE_TWO = #{row.tackOverCcyRateTwo,jdbcType=DECIMAL},
+            </if>
+            <if test="row.channel != null">
+                CHANNEL = #{row.channel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othDocumentType != null">
+                OTH_DOCUMENT_TYPE = #{row.othDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealDocumentType != null">
+                OTH_REAL_DOCUMENT_TYPE = #{row.othRealDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.loanProdNo != null">
+                LOAN_PROD_NO = #{row.loanProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toId != null">
+                TO_ID = #{row.toId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.custRate != null">
+                CUST_RATE = #{row.custRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.balType != null">
+                BAL_TYPE = #{row.balType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.subAcctNo != null">
+                SUB_ACCT_NO = #{row.subAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.busSeqNo != null">
+                BUS_SEQ_NO = #{row.busSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctStatus != null">
+                ACCT_STATUS = #{row.acctStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.rcrRcdInd != null">
+                RCR_RCD_IND = #{row.rcrRcdInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE = #{row.exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientName != null">
+                CLIENT_NAME = #{row.clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.servCharge != null">
+                SERV_CHARGE = #{row.servCharge,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.apprIndicator != null">
+                APPR_INDICATOR = #{row.apprIndicator,jdbcType=VARCHAR},
+            </if>
+            <if test="row.documentType != null">
+                DOCUMENT_TYPE = #{row.documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctBranch != null">
+                ACCT_BRANCH = #{row.acctBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othTranName != null">
+                OTH_TRAN_NAME = #{row.othTranName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isCommTran != null">
+                IS_COMM_TRAN = #{row.isCommTran,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseCcyAmountTwo != null">
+                BASE_CCY_AMOUNT_TWO = #{row.baseCcyAmountTwo,jdbcType=DECIMAL},
+            </if>
+            <if test="row.acctRealFlag != null">
+                ACCT_REAL_FLAG = #{row.acctRealFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othBranchRegionalismCode != null">
+                OTH_BRANCH_REGIONALISM_CODE = #{row.othBranchRegionalismCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fromAmount != null">
+                FROM_AMOUNT = #{row.fromAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="row.sourceModule != null">
+                SOURCE_MODULE = #{row.sourceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toXrate != null">
+                TO_XRATE = #{row.toXrate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.profitCenter != null">
+                PROFIT_CENTER = #{row.profitCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashToCountry != null">
+                CASH_TO_COUNTRY = #{row.cashToCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.bankSeqNo != null">
+                BANK_SEQ_NO = #{row.bankSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashToCode != null">
+                CASH_TO_CODE = #{row.cashToCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.primaryEventType != null">
+                PRIMARY_EVENT_TYPE = #{row.primaryEventType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranMethod != null">
+                TRAN_METHOD = #{row.tranMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lender != null">
+                LENDER = #{row.lender,jdbcType=VARCHAR},
+            </if>
+            <if test="row.programId != null">
+                PROGRAM_ID = #{row.programId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashFromCountry != null">
+                CASH_FROM_COUNTRY = #{row.cashFromCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealProdNo != null">
+                OTH_REAL_PROD_NO = #{row.othRealProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.printCnt != null">
+                PRINT_CNT = #{row.printCnt,jdbcType=INTEGER},
+            </if>
+            <if test="row.dealCode != null">
+                DEAL_CODE = #{row.dealCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodNo != null">
+                PROD_NO = #{row.prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othBankCode != null">
+                OTH_BANK_CODE = #{row.othBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othBaseAcctNo != null">
+                OTH_BASE_ACCT_NO = #{row.othBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashItem != null">
+                CASH_ITEM = #{row.cashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.batchNo != null">
+                BATCH_NO = #{row.batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.channelDate != null">
+                CHANNEL_DATE = #{row.channelDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.billNo != null">
+                BILL_NO = #{row.billNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.receiptNo != null">
+                RECEIPT_NO = #{row.receiptNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.ovCrossRate != null">
+                OV_CROSS_RATE = #{row.ovCrossRate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othBranch != null">
+                OTH_BRANCH = #{row.othBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reference != null">
+                REFERENCE = #{row.reference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.quoteType != null">
+                QUOTE_TYPE = #{row.quoteType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashSourceCountry != null">
+                CASH_SOURCE_COUNTRY = #{row.cashSourceCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoReversalFlag != null">
+                AUTO_REVERSAL_FLAG = #{row.autoReversalFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranAmt != null">
+                TRAN_AMT = #{row.tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.glPostedFlag != null">
+                GL_POSTED_FLAG = #{row.glPostedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctClass != null">
+                ACCT_CLASS = #{row.acctClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.pbkUpdFlag != null">
+                PBK_UPD_FLAG = #{row.pbkUpdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.glNo != null">
+                GL_NO = #{row.glNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.actualBalAmtFin != null">
+                ACTUAL_BAL_AMT_FIN = #{row.actualBalAmtFin,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tranBranch != null">
+                TRAN_BRANCH = #{row.tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prefix != null">
+                PREFIX = #{row.prefix,jdbcType=VARCHAR},
+            </if>
+            <if test="row.cashUsePlaceCode != null">
+                CASH_USE_PLACE_CODE = #{row.cashUsePlaceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.settlementDate != null">
+                SETTLEMENT_DATE = #{row.settlementDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.fromXrate != null">
+                FROM_XRATE = #{row.fromXrate,jdbcType=DECIMAL},
+            </if>
+            <if test="row.exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET = #{row.exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toCcy != null">
+                TO_CCY = #{row.toCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othBankName != null">
+                OTH_BANK_NAME = #{row.othBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.othSeqNo != null">
+                OTH_SEQ_NO = #{row.othSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealTranAddr != null">
+                OTH_REAL_TRAN_ADDR = #{row.othRealTranAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amtType != null">
+                AMT_TYPE = #{row.amtType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientType != null">
+                CLIENT_TYPE = #{row.clientType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.autoTradeFlag != null">
+                AUTO_TRADE_FLAG = #{row.autoTradeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.userId != null">
+                USER_ID = #{row.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctDesc != null">
+                ACCT_DESC = #{row.acctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealDocumentId != null">
+                OTH_REAL_DOCUMENT_ID = #{row.othRealDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctTranFlag != null">
+                ACCT_TRAN_FLAG = #{row.acctTranFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.amtCalcType != null">
+                AMT_CALC_TYPE = #{row.amtCalcType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealBankCode != null">
+                OTH_REAL_BANK_CODE = #{row.othRealBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lcyTranAmt != null">
+                LCY_TRAN_AMT = #{row.lcyTranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.othAcctCcy != null">
+                OTH_ACCT_CCY = #{row.othAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sendSystem != null">
+                SEND_SYSTEM = #{row.sendSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othProdNo != null">
+                OTH_PROD_NO = #{row.othProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tackOverCcyRateOne != null">
+                TACK_OVER_CCY_RATE_ONE = #{row.tackOverCcyRateOne,jdbcType=DECIMAL},
+            </if>
+            <if test="row.othAcctSeqNo != null">
+                OTH_ACCT_SEQ_NO = #{row.othAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.accountingStatus != null">
+                ACCOUNTING_STATUS = #{row.accountingStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.subSeqNo != null">
+                SUB_SEQ_NO = #{row.subSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othTranAddr != null">
+                OTH_TRAN_ADDR = #{row.othTranAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="row.narrativeCode != null">
+                NARRATIVE_CODE = #{row.narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranDate != null">
+                TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.baseEquivAmt != null">
+                BASE_EQUIV_AMT = #{row.baseEquivAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.ccy != null">
+                CCY = #{row.ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.payUnit != null">
+                PAY_UNIT = #{row.payUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othRealBankName != null">
+                OTH_REAL_BANK_NAME = #{row.othRealBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.remainTerm != null">
+                REMAIN_TERM = #{row.remainTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="row.fromCcy != null">
+                FROM_CCY = #{row.fromCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reversalSeqNo != null">
+                REVERSAL_SEQ_NO = #{row.reversalSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranDesc != null">
+                TRAN_DESC = #{row.tranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.mediumType != null">
+                MEDIUM_TYPE = #{row.mediumType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.crDrInd != null">
+                CR_DR_IND = #{row.crDrInd,jdbcType=VARCHAR},
+            </if>
+            <if test="row.toAmount != null">
+                TO_AMOUNT = #{row.toAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="row.documentId != null">
+                DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranStatus != null">
+                TRAN_STATUS = #{row.tranStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.docType != null">
+                DOC_TYPE = #{row.docType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.withdrawalType != null">
+                WITHDRAWAL_TYPE = #{row.withdrawalType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.othInternalKey != null">
+                OTH_INTERNAL_KEY = #{row.othInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.contraTranDate != null">
+                CONTRA_TRAN_DATE = #{row.contraTranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.priority != null">
+                PRIORITY = #{row.priority,jdbcType=VARCHAR},
+            </if>
+            <if test="row.flatRate != null">
+                FLAT_RATE = #{row.flatRate,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BUS_TRAN_JNL
+        set
+            COMMISSION_CLIENT_TEL = #{row.commissionClientTel,jdbcType=VARCHAR},            REVERSAL_DATE = #{row.reversalDate,jdbcType=TIMESTAMP},            REVERSAL_TRAN_TYPE = #{row.reversalTranType,jdbcType=VARCHAR},            SOURCE_TYPE = #{row.sourceType,jdbcType=VARCHAR},            FH_SEQ_NO = #{row.fhSeqNo,jdbcType=VARCHAR},            ORIG_SYSTEM = #{row.origSystem,jdbcType=VARCHAR},            OTH_DOCUMENT_ID = #{row.othDocumentId,jdbcType=VARCHAR},            PREVIOUS_BAL_AMT = #{row.previousBalAmt,jdbcType=DECIMAL},            TRAN_COUNTRY = #{row.tranCountry,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},            TRAN_NOTE = #{row.tranNote,jdbcType=VARCHAR},            CONTRA_ACCT_CCY = #{row.contraAcctCcy,jdbcType=VARCHAR},            LIMIT_REF_LIST = #{row.limitRefList,jdbcType=VARCHAR},            AUTH_USER_ID = #{row.authUserId,jdbcType=VARCHAR},            REVERSAL_FLAG = #{row.reversalFlag,jdbcType=VARCHAR},            CASH_FROM_CODE = #{row.cashFromCode,jdbcType=VARCHAR},            OTH_REFERENCE = #{row.othReference,jdbcType=VARCHAR},            OTH_REAL_BRANCH_REGION_CODE = #{row.othRealBranchRegionCode,jdbcType=VARCHAR},            TRAN_TYPE = #{row.tranType,jdbcType=VARCHAR},            OTH_REAL_TRAN_NAME = #{row.othRealTranName,jdbcType=VARCHAR},            VOUCHER_NO = #{row.voucherNo,jdbcType=VARCHAR},            REACCOUNT_CD = #{row.reaccountCd,jdbcType=VARCHAR},            PRIMARY_TRAN_SEQ_NO = #{row.primaryTranSeqNo,jdbcType=VARCHAR},            BASE_CCY_AMOUNT_ONE = #{row.baseCcyAmountOne,jdbcType=DECIMAL},            MEDIUM_FLAG = #{row.mediumFlag,jdbcType=VARCHAR},            OV_TO_AMOUNT = #{row.ovToAmount,jdbcType=DECIMAL},            FROM_RATE_FLAG = #{row.fromRateFlag,jdbcType=VARCHAR},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            TO_RATE_FLAG = #{row.toRateFlag,jdbcType=VARCHAR},            NARRATIVE = #{row.narrative,jdbcType=VARCHAR},            OTH_REAL_BASE_ACCT_NO = #{row.othRealBaseAcctNo,jdbcType=VARCHAR},            OTH_ACCT_DESC = #{row.othAcctDesc,jdbcType=VARCHAR},            COMMISSION_CLIENT_NAME = #{row.commissionClientName,jdbcType=VARCHAR},            PRINT_INDICATOR = #{row.printIndicator,jdbcType=VARCHAR},            IS_FIN_SUB_ACCT = #{row.isFinSubAcct,jdbcType=VARCHAR},            ACTUAL_BAL = #{row.actualBal,jdbcType=DECIMAL},            CROSS_RATE = #{row.crossRate,jdbcType=DECIMAL},            EVENT_TYPE = #{row.eventType,jdbcType=VARCHAR},            CONTRA_EQUIV_AMT = #{row.contraEquivAmt,jdbcType=DECIMAL},            RATE_TYPE = #{row.rateType,jdbcType=VARCHAR},            EFFECT_DATE = #{row.effectDate,jdbcType=TIMESTAMP},            ACCT_SET_TYPE = #{row.acctSetType,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},            APPR_USER_ID = #{row.apprUserId,jdbcType=VARCHAR},            TACK_OVER_CCY_RATE_TWO = #{row.tackOverCcyRateTwo,jdbcType=DECIMAL},            CHANNEL = #{row.channel,jdbcType=VARCHAR},            OTH_DOCUMENT_TYPE = #{row.othDocumentType,jdbcType=VARCHAR},            OTH_REAL_DOCUMENT_TYPE = #{row.othRealDocumentType,jdbcType=VARCHAR},            LOAN_PROD_NO = #{row.loanProdNo,jdbcType=VARCHAR},            TO_ID = #{row.toId,jdbcType=VARCHAR},            CUST_RATE = #{row.custRate,jdbcType=DECIMAL},            BAL_TYPE = #{row.balType,jdbcType=VARCHAR},            SUB_ACCT_NO = #{row.subAcctNo,jdbcType=VARCHAR},            BUS_SEQ_NO = #{row.busSeqNo,jdbcType=VARCHAR},            ACCT_STATUS = #{row.acctStatus,jdbcType=VARCHAR},            RCR_RCD_IND = #{row.rcrRcdInd,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODE = #{row.exchangeTranCode,jdbcType=VARCHAR},            CLIENT_NAME = #{row.clientName,jdbcType=VARCHAR},            SERV_CHARGE = #{row.servCharge,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            APPR_INDICATOR = #{row.apprIndicator,jdbcType=VARCHAR},            DOCUMENT_TYPE = #{row.documentType,jdbcType=VARCHAR},            ACCT_BRANCH = #{row.acctBranch,jdbcType=VARCHAR},            OTH_TRAN_NAME = #{row.othTranName,jdbcType=VARCHAR},            IS_COMM_TRAN = #{row.isCommTran,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            BASE_CCY_AMOUNT_TWO = #{row.baseCcyAmountTwo,jdbcType=DECIMAL},            ACCT_REAL_FLAG = #{row.acctRealFlag,jdbcType=VARCHAR},            OTH_BRANCH_REGIONALISM_CODE = #{row.othBranchRegionalismCode,jdbcType=VARCHAR},            FROM_AMOUNT = #{row.fromAmount,jdbcType=DECIMAL},            SOURCE_MODULE = #{row.sourceModule,jdbcType=VARCHAR},            TO_XRATE = #{row.toXrate,jdbcType=DECIMAL},            PROFIT_CENTER = #{row.profitCenter,jdbcType=VARCHAR},            CASH_TO_COUNTRY = #{row.cashToCountry,jdbcType=VARCHAR},            BANK_SEQ_NO = #{row.bankSeqNo,jdbcType=VARCHAR},            CASH_TO_CODE = #{row.cashToCode,jdbcType=VARCHAR},            PRIMARY_EVENT_TYPE = #{row.primaryEventType,jdbcType=VARCHAR},            TRAN_METHOD = #{row.tranMethod,jdbcType=VARCHAR},            LENDER = #{row.lender,jdbcType=VARCHAR},            PROGRAM_ID = #{row.programId,jdbcType=VARCHAR},            CASH_FROM_COUNTRY = #{row.cashFromCountry,jdbcType=VARCHAR},            OTH_REAL_PROD_NO = #{row.othRealProdNo,jdbcType=VARCHAR},            PRINT_CNT = #{row.printCnt,jdbcType=INTEGER},            DEAL_CODE = #{row.dealCode,jdbcType=VARCHAR},            PROD_NO = #{row.prodNo,jdbcType=VARCHAR},            OTH_BANK_CODE = #{row.othBankCode,jdbcType=VARCHAR},            OTH_BASE_ACCT_NO = #{row.othBaseAcctNo,jdbcType=VARCHAR},            CASH_ITEM = #{row.cashItem,jdbcType=VARCHAR},            BATCH_NO = #{row.batchNo,jdbcType=VARCHAR},            CHANNEL_DATE = #{row.channelDate,jdbcType=TIMESTAMP},            BILL_NO = #{row.billNo,jdbcType=VARCHAR},            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},            RECEIPT_NO = #{row.receiptNo,jdbcType=VARCHAR},            OV_CROSS_RATE = #{row.ovCrossRate,jdbcType=DECIMAL},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            OTH_BRANCH = #{row.othBranch,jdbcType=VARCHAR},            REFERENCE = #{row.reference,jdbcType=VARCHAR},            QUOTE_TYPE = #{row.quoteType,jdbcType=VARCHAR},            CASH_SOURCE_COUNTRY = #{row.cashSourceCountry,jdbcType=VARCHAR},            AUTO_REVERSAL_FLAG = #{row.autoReversalFlag,jdbcType=VARCHAR},            TRAN_AMT = #{row.tranAmt,jdbcType=DECIMAL},            GL_POSTED_FLAG = #{row.glPostedFlag,jdbcType=VARCHAR},            ACCT_CLASS = #{row.acctClass,jdbcType=VARCHAR},            PBK_UPD_FLAG = #{row.pbkUpdFlag,jdbcType=VARCHAR},            GL_NO = #{row.glNo,jdbcType=VARCHAR},            ACTUAL_BAL_AMT_FIN = #{row.actualBalAmtFin,jdbcType=DECIMAL},            TRAN_BRANCH = #{row.tranBranch,jdbcType=VARCHAR},            PREFIX = #{row.prefix,jdbcType=VARCHAR},            CASH_USE_PLACE_CODE = #{row.cashUsePlaceCode,jdbcType=VARCHAR},            SETTLEMENT_DATE = #{row.settlementDate,jdbcType=TIMESTAMP},            FROM_XRATE = #{row.fromXrate,jdbcType=DECIMAL},            EXCHANGE_TRAN_CODET = #{row.exchangeTranCodet,jdbcType=VARCHAR},            TO_CCY = #{row.toCcy,jdbcType=VARCHAR},            OTH_BANK_NAME = #{row.othBankName,jdbcType=VARCHAR},            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            OTH_SEQ_NO = #{row.othSeqNo,jdbcType=VARCHAR},            OTH_REAL_TRAN_ADDR = #{row.othRealTranAddr,jdbcType=VARCHAR},            AMT_TYPE = #{row.amtType,jdbcType=VARCHAR},            CLIENT_TYPE = #{row.clientType,jdbcType=VARCHAR},            AUTO_TRADE_FLAG = #{row.autoTradeFlag,jdbcType=VARCHAR},            USER_ID = #{row.userId,jdbcType=VARCHAR},            ACCT_DESC = #{row.acctDesc,jdbcType=VARCHAR},            OTH_REAL_DOCUMENT_ID = #{row.othRealDocumentId,jdbcType=VARCHAR},            ACCT_TRAN_FLAG = #{row.acctTranFlag,jdbcType=VARCHAR},            AMT_CALC_TYPE = #{row.amtCalcType,jdbcType=VARCHAR},            OTH_REAL_BANK_CODE = #{row.othRealBankCode,jdbcType=VARCHAR},            LCY_TRAN_AMT = #{row.lcyTranAmt,jdbcType=DECIMAL},            OTH_ACCT_CCY = #{row.othAcctCcy,jdbcType=VARCHAR},            SEND_SYSTEM = #{row.sendSystem,jdbcType=VARCHAR},            OTH_PROD_NO = #{row.othProdNo,jdbcType=VARCHAR},            TACK_OVER_CCY_RATE_ONE = #{row.tackOverCcyRateOne,jdbcType=DECIMAL},            OTH_ACCT_SEQ_NO = #{row.othAcctSeqNo,jdbcType=VARCHAR},            ACCOUNTING_STATUS = #{row.accountingStatus,jdbcType=VARCHAR},            SUB_SEQ_NO = #{row.subSeqNo,jdbcType=VARCHAR},            OTH_TRAN_ADDR = #{row.othTranAddr,jdbcType=VARCHAR},            NARRATIVE_CODE = #{row.narrativeCode,jdbcType=VARCHAR},            TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},            BASE_EQUIV_AMT = #{row.baseEquivAmt,jdbcType=DECIMAL},            CCY = #{row.ccy,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            PAY_UNIT = #{row.payUnit,jdbcType=VARCHAR},            OTH_REAL_BANK_NAME = #{row.othRealBankName,jdbcType=VARCHAR},            REMAIN_TERM = #{row.remainTerm,jdbcType=VARCHAR},            FROM_CCY = #{row.fromCcy,jdbcType=VARCHAR},            REVERSAL_SEQ_NO = #{row.reversalSeqNo,jdbcType=VARCHAR},            TRAN_DESC = #{row.tranDesc,jdbcType=VARCHAR},            MEDIUM_TYPE = #{row.mediumType,jdbcType=VARCHAR},            CR_DR_IND = #{row.crDrInd,jdbcType=VARCHAR},            TO_AMOUNT = #{row.toAmount,jdbcType=DECIMAL},            DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},            TRAN_STATUS = #{row.tranStatus,jdbcType=VARCHAR},            DOC_TYPE = #{row.docType,jdbcType=VARCHAR},            WITHDRAWAL_TYPE = #{row.withdrawalType,jdbcType=VARCHAR},            OTH_INTERNAL_KEY = #{row.othInternalKey,jdbcType=INTEGER},            CONTRA_TRAN_DATE = #{row.contraTranDate,jdbcType=TIMESTAMP},            PRIORITY = #{row.priority,jdbcType=VARCHAR},            FLAT_RATE = #{row.flatRate,jdbcType=DECIMAL}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbBusTranJnl">
+        update RB_BUS_TRAN_JNL
+        <set>
+            <if test="commissionClientTel != null">
+                COMMISSION_CLIENT_TEL = #{commissionClientTel,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalDate != null">
+                REVERSAL_DATE = #{reversalDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="reversalTranType != null">
+                REVERSAL_TRAN_TYPE = #{reversalTranType,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="fhSeqNo != null">
+                FH_SEQ_NO = #{fhSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="origSystem != null">
+                ORIG_SYSTEM = #{origSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="othDocumentId != null">
+                OTH_DOCUMENT_ID = #{othDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="previousBalAmt != null">
+                PREVIOUS_BAL_AMT = #{previousBalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tranCountry != null">
+                TRAN_COUNTRY = #{tranCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="tranNote != null">
+                TRAN_NOTE = #{tranNote,jdbcType=VARCHAR},
+            </if>
+            <if test="contraAcctCcy != null">
+                CONTRA_ACCT_CCY = #{contraAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="limitRefList != null">
+                LIMIT_REF_LIST = #{limitRefList,jdbcType=VARCHAR},
+            </if>
+            <if test="authUserId != null">
+                AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalFlag != null">
+                REVERSAL_FLAG = #{reversalFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCode != null">
+                CASH_FROM_CODE = #{cashFromCode,jdbcType=VARCHAR},
+            </if>
+            <if test="othReference != null">
+                OTH_REFERENCE = #{othReference,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBranchRegionCode != null">
+                OTH_REAL_BRANCH_REGION_CODE = #{othRealBranchRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE = #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealTranName != null">
+                OTH_REAL_TRAN_NAME = #{othRealTranName,jdbcType=VARCHAR},
+            </if>
+            <if test="voucherNo != null">
+                VOUCHER_NO = #{voucherNo,jdbcType=VARCHAR},
+            </if>
+            <if test="reaccountCd != null">
+                REACCOUNT_CD = #{reaccountCd,jdbcType=VARCHAR},
+            </if>
+            <if test="primaryTranSeqNo != null">
+                PRIMARY_TRAN_SEQ_NO = #{primaryTranSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseCcyAmountOne != null">
+                BASE_CCY_AMOUNT_ONE = #{baseCcyAmountOne,jdbcType=DECIMAL},
+            </if>
+            <if test="mediumFlag != null">
+                MEDIUM_FLAG = #{mediumFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="ovToAmount != null">
+                OV_TO_AMOUNT = #{ovToAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="fromRateFlag != null">
+                FROM_RATE_FLAG = #{fromRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="toRateFlag != null">
+                TO_RATE_FLAG = #{toRateFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="narrative != null">
+                NARRATIVE = #{narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBaseAcctNo != null">
+                OTH_REAL_BASE_ACCT_NO = #{othRealBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othAcctDesc != null">
+                OTH_ACCT_DESC = #{othAcctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="commissionClientName != null">
+                COMMISSION_CLIENT_NAME = #{commissionClientName,jdbcType=VARCHAR},
+            </if>
+            <if test="printIndicator != null">
+                PRINT_INDICATOR = #{printIndicator,jdbcType=VARCHAR},
+            </if>
+            <if test="isFinSubAcct != null">
+                IS_FIN_SUB_ACCT = #{isFinSubAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="actualBal != null">
+                ACTUAL_BAL = #{actualBal,jdbcType=DECIMAL},
+            </if>
+            <if test="crossRate != null">
+                CROSS_RATE = #{crossRate,jdbcType=DECIMAL},
+            </if>
+            <if test="eventType != null">
+                EVENT_TYPE = #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="contraEquivAmt != null">
+                CONTRA_EQUIV_AMT = #{contraEquivAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="rateType != null">
+                RATE_TYPE = #{rateType,jdbcType=VARCHAR},
+            </if>
+            <if test="effectDate != null">
+                EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctSetType != null">
+                ACCT_SET_TYPE = #{acctSetType,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="apprUserId != null">
+                APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="tackOverCcyRateTwo != null">
+                TACK_OVER_CCY_RATE_TWO = #{tackOverCcyRateTwo,jdbcType=DECIMAL},
+            </if>
+            <if test="channel != null">
+                CHANNEL = #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="othDocumentType != null">
+                OTH_DOCUMENT_TYPE = #{othDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealDocumentType != null">
+                OTH_REAL_DOCUMENT_TYPE = #{othRealDocumentType,jdbcType=VARCHAR},
+            </if>
+            <if test="loanProdNo != null">
+                LOAN_PROD_NO = #{loanProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="toId != null">
+                TO_ID = #{toId,jdbcType=VARCHAR},
+            </if>
+            <if test="custRate != null">
+                CUST_RATE = #{custRate,jdbcType=DECIMAL},
+            </if>
+            <if test="balType != null">
+                BAL_TYPE = #{balType,jdbcType=VARCHAR},
+            </if>
+            <if test="subAcctNo != null">
+                SUB_ACCT_NO = #{subAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="busSeqNo != null">
+                BUS_SEQ_NO = #{busSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="rcrRcdInd != null">
+                RCR_RCD_IND = #{rcrRcdInd,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeTranCode != null">
+                EXCHANGE_TRAN_CODE = #{exchangeTranCode,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                CLIENT_NAME = #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="servCharge != null">
+                SERV_CHARGE = #{servCharge,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="apprIndicator != null">
+                APPR_INDICATOR = #{apprIndicator,jdbcType=VARCHAR},
+            </if>
+            <if test="documentType != null">
+                DOCUMENT_TYPE = #{documentType,jdbcType=VARCHAR},
+            </if>
+            <if test="acctBranch != null">
+                ACCT_BRANCH = #{acctBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="othTranName != null">
+                OTH_TRAN_NAME = #{othTranName,jdbcType=VARCHAR},
+            </if>
+            <if test="isCommTran != null">
+                IS_COMM_TRAN = #{isCommTran,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO = #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="baseCcyAmountTwo != null">
+                BASE_CCY_AMOUNT_TWO = #{baseCcyAmountTwo,jdbcType=DECIMAL},
+            </if>
+            <if test="acctRealFlag != null">
+                ACCT_REAL_FLAG = #{acctRealFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="othBranchRegionalismCode != null">
+                OTH_BRANCH_REGIONALISM_CODE = #{othBranchRegionalismCode,jdbcType=VARCHAR},
+            </if>
+            <if test="fromAmount != null">
+                FROM_AMOUNT = #{fromAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="sourceModule != null">
+                SOURCE_MODULE = #{sourceModule,jdbcType=VARCHAR},
+            </if>
+            <if test="toXrate != null">
+                TO_XRATE = #{toXrate,jdbcType=DECIMAL},
+            </if>
+            <if test="profitCenter != null">
+                PROFIT_CENTER = #{profitCenter,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCountry != null">
+                CASH_TO_COUNTRY = #{cashToCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="bankSeqNo != null">
+                BANK_SEQ_NO = #{bankSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cashToCode != null">
+                CASH_TO_CODE = #{cashToCode,jdbcType=VARCHAR},
+            </if>
+            <if test="primaryEventType != null">
+                PRIMARY_EVENT_TYPE = #{primaryEventType,jdbcType=VARCHAR},
+            </if>
+            <if test="tranMethod != null">
+                TRAN_METHOD = #{tranMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="lender != null">
+                LENDER = #{lender,jdbcType=VARCHAR},
+            </if>
+            <if test="programId != null">
+                PROGRAM_ID = #{programId,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFromCountry != null">
+                CASH_FROM_COUNTRY = #{cashFromCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealProdNo != null">
+                OTH_REAL_PROD_NO = #{othRealProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="printCnt != null">
+                PRINT_CNT = #{printCnt,jdbcType=INTEGER},
+            </if>
+            <if test="dealCode != null">
+                DEAL_CODE = #{dealCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                PROD_NO = #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othBankCode != null">
+                OTH_BANK_CODE = #{othBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="othBaseAcctNo != null">
+                OTH_BASE_ACCT_NO = #{othBaseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cashItem != null">
+                CASH_ITEM = #{cashItem,jdbcType=VARCHAR},
+            </if>
+            <if test="batchNo != null">
+                BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelDate != null">
+                CHANNEL_DATE = #{channelDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billNo != null">
+                BILL_NO = #{billNo,jdbcType=VARCHAR},
+            </if>
+            <if test="receiptNo != null">
+                RECEIPT_NO = #{receiptNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ovCrossRate != null">
+                OV_CROSS_RATE = #{ovCrossRate,jdbcType=DECIMAL},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="othBranch != null">
+                OTH_BRANCH = #{othBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                REFERENCE = #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="quoteType != null">
+                QUOTE_TYPE = #{quoteType,jdbcType=VARCHAR},
+            </if>
+            <if test="cashSourceCountry != null">
+                CASH_SOURCE_COUNTRY = #{cashSourceCountry,jdbcType=VARCHAR},
+            </if>
+            <if test="autoReversalFlag != null">
+                AUTO_REVERSAL_FLAG = #{autoReversalFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmt != null">
+                TRAN_AMT = #{tranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="glPostedFlag != null">
+                GL_POSTED_FLAG = #{glPostedFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="acctClass != null">
+                ACCT_CLASS = #{acctClass,jdbcType=VARCHAR},
+            </if>
+            <if test="pbkUpdFlag != null">
+                PBK_UPD_FLAG = #{pbkUpdFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="glNo != null">
+                GL_NO = #{glNo,jdbcType=VARCHAR},
+            </if>
+            <if test="actualBalAmtFin != null">
+                ACTUAL_BAL_AMT_FIN = #{actualBalAmtFin,jdbcType=DECIMAL},
+            </if>
+            <if test="tranBranch != null">
+                TRAN_BRANCH = #{tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="prefix != null">
+                PREFIX = #{prefix,jdbcType=VARCHAR},
+            </if>
+            <if test="cashUsePlaceCode != null">
+                CASH_USE_PLACE_CODE = #{cashUsePlaceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="settlementDate != null">
+                SETTLEMENT_DATE = #{settlementDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fromXrate != null">
+                FROM_XRATE = #{fromXrate,jdbcType=DECIMAL},
+            </if>
+            <if test="exchangeTranCodet != null">
+                EXCHANGE_TRAN_CODET = #{exchangeTranCodet,jdbcType=VARCHAR},
+            </if>
+            <if test="toCcy != null">
+                TO_CCY = #{toCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="othBankName != null">
+                OTH_BANK_NAME = #{othBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="othSeqNo != null">
+                OTH_SEQ_NO = #{othSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealTranAddr != null">
+                OTH_REAL_TRAN_ADDR = #{othRealTranAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="amtType != null">
+                AMT_TYPE = #{amtType,jdbcType=VARCHAR},
+            </if>
+            <if test="clientType != null">
+                CLIENT_TYPE = #{clientType,jdbcType=VARCHAR},
+            </if>
+            <if test="autoTradeFlag != null">
+                AUTO_TRADE_FLAG = #{autoTradeFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                USER_ID = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctDesc != null">
+                ACCT_DESC = #{acctDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealDocumentId != null">
+                OTH_REAL_DOCUMENT_ID = #{othRealDocumentId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctTranFlag != null">
+                ACCT_TRAN_FLAG = #{acctTranFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="amtCalcType != null">
+                AMT_CALC_TYPE = #{amtCalcType,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBankCode != null">
+                OTH_REAL_BANK_CODE = #{othRealBankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="lcyTranAmt != null">
+                LCY_TRAN_AMT = #{lcyTranAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="othAcctCcy != null">
+                OTH_ACCT_CCY = #{othAcctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="sendSystem != null">
+                SEND_SYSTEM = #{sendSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="othProdNo != null">
+                OTH_PROD_NO = #{othProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tackOverCcyRateOne != null">
+                TACK_OVER_CCY_RATE_ONE = #{tackOverCcyRateOne,jdbcType=DECIMAL},
+            </if>
+            <if test="othAcctSeqNo != null">
+                OTH_ACCT_SEQ_NO = #{othAcctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="accountingStatus != null">
+                ACCOUNTING_STATUS = #{accountingStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="subSeqNo != null">
+                SUB_SEQ_NO = #{subSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="othTranAddr != null">
+                OTH_TRAN_ADDR = #{othTranAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="narrativeCode != null">
+                NARRATIVE_CODE = #{narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="baseEquivAmt != null">
+                BASE_EQUIV_AMT = #{baseEquivAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payUnit != null">
+                PAY_UNIT = #{payUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="othRealBankName != null">
+                OTH_REAL_BANK_NAME = #{othRealBankName,jdbcType=VARCHAR},
+            </if>
+            <if test="remainTerm != null">
+                REMAIN_TERM = #{remainTerm,jdbcType=VARCHAR},
+            </if>
+            <if test="fromCcy != null">
+                FROM_CCY = #{fromCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="reversalSeqNo != null">
+                REVERSAL_SEQ_NO = #{reversalSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tranDesc != null">
+                TRAN_DESC = #{tranDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="mediumType != null">
+                MEDIUM_TYPE = #{mediumType,jdbcType=VARCHAR},
+            </if>
+            <if test="crDrInd != null">
+                CR_DR_IND = #{crDrInd,jdbcType=VARCHAR},
+            </if>
+            <if test="toAmount != null">
+                TO_AMOUNT = #{toAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranStatus != null">
+                TRAN_STATUS = #{tranStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="docType != null">
+                DOC_TYPE = #{docType,jdbcType=VARCHAR},
+            </if>
+            <if test="withdrawalType != null">
+                WITHDRAWAL_TYPE = #{withdrawalType,jdbcType=VARCHAR},
+            </if>
+            <if test="othInternalKey != null">
+                OTH_INTERNAL_KEY = #{othInternalKey,jdbcType=INTEGER},
+            </if>
+            <if test="contraTranDate != null">
+                CONTRA_TRAN_DATE = #{contraTranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="priority != null">
+                PRIORITY = #{priority,jdbcType=VARCHAR},
+            </if>
+            <if test="flatRate != null">
+                FLAT_RATE = #{flatRate,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbBusTranJnl">
+        update RB_BUS_TRAN_JNL
+        set
+            COMMISSION_CLIENT_TEL = #{commissionClientTel,jdbcType=VARCHAR},            REVERSAL_DATE = #{reversalDate,jdbcType=TIMESTAMP},            REVERSAL_TRAN_TYPE = #{reversalTranType,jdbcType=VARCHAR},            SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},            FH_SEQ_NO = #{fhSeqNo,jdbcType=VARCHAR},            ORIG_SYSTEM = #{origSystem,jdbcType=VARCHAR},            OTH_DOCUMENT_ID = #{othDocumentId,jdbcType=VARCHAR},            PREVIOUS_BAL_AMT = #{previousBalAmt,jdbcType=DECIMAL},            TRAN_COUNTRY = #{tranCountry,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},            TRAN_NOTE = #{tranNote,jdbcType=VARCHAR},            CONTRA_ACCT_CCY = #{contraAcctCcy,jdbcType=VARCHAR},            LIMIT_REF_LIST = #{limitRefList,jdbcType=VARCHAR},            AUTH_USER_ID = #{authUserId,jdbcType=VARCHAR},            REVERSAL_FLAG = #{reversalFlag,jdbcType=VARCHAR},            CASH_FROM_CODE = #{cashFromCode,jdbcType=VARCHAR},            OTH_REFERENCE = #{othReference,jdbcType=VARCHAR},            OTH_REAL_BRANCH_REGION_CODE = #{othRealBranchRegionCode,jdbcType=VARCHAR},            TRAN_TYPE = #{tranType,jdbcType=VARCHAR},            OTH_REAL_TRAN_NAME = #{othRealTranName,jdbcType=VARCHAR},            VOUCHER_NO = #{voucherNo,jdbcType=VARCHAR},            REACCOUNT_CD = #{reaccountCd,jdbcType=VARCHAR},            PRIMARY_TRAN_SEQ_NO = #{primaryTranSeqNo,jdbcType=VARCHAR},            BASE_CCY_AMOUNT_ONE = #{baseCcyAmountOne,jdbcType=DECIMAL},            MEDIUM_FLAG = #{mediumFlag,jdbcType=VARCHAR},            OV_TO_AMOUNT = #{ovToAmount,jdbcType=DECIMAL},            FROM_RATE_FLAG = #{fromRateFlag,jdbcType=VARCHAR},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            TO_RATE_FLAG = #{toRateFlag,jdbcType=VARCHAR},            NARRATIVE = #{narrative,jdbcType=VARCHAR},            OTH_REAL_BASE_ACCT_NO = #{othRealBaseAcctNo,jdbcType=VARCHAR},            OTH_ACCT_DESC = #{othAcctDesc,jdbcType=VARCHAR},            COMMISSION_CLIENT_NAME = #{commissionClientName,jdbcType=VARCHAR},            PRINT_INDICATOR = #{printIndicator,jdbcType=VARCHAR},            IS_FIN_SUB_ACCT = #{isFinSubAcct,jdbcType=VARCHAR},            ACTUAL_BAL = #{actualBal,jdbcType=DECIMAL},            CROSS_RATE = #{crossRate,jdbcType=DECIMAL},            EVENT_TYPE = #{eventType,jdbcType=VARCHAR},            CONTRA_EQUIV_AMT = #{contraEquivAmt,jdbcType=DECIMAL},            RATE_TYPE = #{rateType,jdbcType=VARCHAR},            EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},            ACCT_SET_TYPE = #{acctSetType,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},            APPR_USER_ID = #{apprUserId,jdbcType=VARCHAR},            TACK_OVER_CCY_RATE_TWO = #{tackOverCcyRateTwo,jdbcType=DECIMAL},            CHANNEL = #{channel,jdbcType=VARCHAR},            OTH_DOCUMENT_TYPE = #{othDocumentType,jdbcType=VARCHAR},            OTH_REAL_DOCUMENT_TYPE = #{othRealDocumentType,jdbcType=VARCHAR},            LOAN_PROD_NO = #{loanProdNo,jdbcType=VARCHAR},            TO_ID = #{toId,jdbcType=VARCHAR},            CUST_RATE = #{custRate,jdbcType=DECIMAL},            BAL_TYPE = #{balType,jdbcType=VARCHAR},            SUB_ACCT_NO = #{subAcctNo,jdbcType=VARCHAR},            BUS_SEQ_NO = #{busSeqNo,jdbcType=VARCHAR},            ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},            RCR_RCD_IND = #{rcrRcdInd,jdbcType=VARCHAR},            EXCHANGE_TRAN_CODE = #{exchangeTranCode,jdbcType=VARCHAR},            CLIENT_NAME = #{clientName,jdbcType=VARCHAR},            SERV_CHARGE = #{servCharge,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            APPR_INDICATOR = #{apprIndicator,jdbcType=VARCHAR},            DOCUMENT_TYPE = #{documentType,jdbcType=VARCHAR},            ACCT_BRANCH = #{acctBranch,jdbcType=VARCHAR},            OTH_TRAN_NAME = #{othTranName,jdbcType=VARCHAR},            IS_COMM_TRAN = #{isCommTran,jdbcType=VARCHAR},            CLIENT_NO = #{clientNo,jdbcType=VARCHAR},            BASE_CCY_AMOUNT_TWO = #{baseCcyAmountTwo,jdbcType=DECIMAL},            ACCT_REAL_FLAG = #{acctRealFlag,jdbcType=VARCHAR},            OTH_BRANCH_REGIONALISM_CODE = #{othBranchRegionalismCode,jdbcType=VARCHAR},            FROM_AMOUNT = #{fromAmount,jdbcType=DECIMAL},            SOURCE_MODULE = #{sourceModule,jdbcType=VARCHAR},            TO_XRATE = #{toXrate,jdbcType=DECIMAL},            PROFIT_CENTER = #{profitCenter,jdbcType=VARCHAR},            CASH_TO_COUNTRY = #{cashToCountry,jdbcType=VARCHAR},            BANK_SEQ_NO = #{bankSeqNo,jdbcType=VARCHAR},            CASH_TO_CODE = #{cashToCode,jdbcType=VARCHAR},            PRIMARY_EVENT_TYPE = #{primaryEventType,jdbcType=VARCHAR},            TRAN_METHOD = #{tranMethod,jdbcType=VARCHAR},            LENDER = #{lender,jdbcType=VARCHAR},            PROGRAM_ID = #{programId,jdbcType=VARCHAR},            CASH_FROM_COUNTRY = #{cashFromCountry,jdbcType=VARCHAR},            OTH_REAL_PROD_NO = #{othRealProdNo,jdbcType=VARCHAR},            PRINT_CNT = #{printCnt,jdbcType=INTEGER},            DEAL_CODE = #{dealCode,jdbcType=VARCHAR},            PROD_NO = #{prodNo,jdbcType=VARCHAR},            OTH_BANK_CODE = #{othBankCode,jdbcType=VARCHAR},            OTH_BASE_ACCT_NO = #{othBaseAcctNo,jdbcType=VARCHAR},            CASH_ITEM = #{cashItem,jdbcType=VARCHAR},            BATCH_NO = #{batchNo,jdbcType=VARCHAR},            CHANNEL_DATE = #{channelDate,jdbcType=TIMESTAMP},            BILL_NO = #{billNo,jdbcType=VARCHAR},            RECEIPT_NO = #{receiptNo,jdbcType=VARCHAR},            OV_CROSS_RATE = #{ovCrossRate,jdbcType=DECIMAL},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            OTH_BRANCH = #{othBranch,jdbcType=VARCHAR},            REFERENCE = #{reference,jdbcType=VARCHAR},            QUOTE_TYPE = #{quoteType,jdbcType=VARCHAR},            CASH_SOURCE_COUNTRY = #{cashSourceCountry,jdbcType=VARCHAR},            AUTO_REVERSAL_FLAG = #{autoReversalFlag,jdbcType=VARCHAR},            TRAN_AMT = #{tranAmt,jdbcType=DECIMAL},            GL_POSTED_FLAG = #{glPostedFlag,jdbcType=VARCHAR},            ACCT_CLASS = #{acctClass,jdbcType=VARCHAR},            PBK_UPD_FLAG = #{pbkUpdFlag,jdbcType=VARCHAR},            GL_NO = #{glNo,jdbcType=VARCHAR},            ACTUAL_BAL_AMT_FIN = #{actualBalAmtFin,jdbcType=DECIMAL},            TRAN_BRANCH = #{tranBranch,jdbcType=VARCHAR},            PREFIX = #{prefix,jdbcType=VARCHAR},            CASH_USE_PLACE_CODE = #{cashUsePlaceCode,jdbcType=VARCHAR},            SETTLEMENT_DATE = #{settlementDate,jdbcType=TIMESTAMP},            FROM_XRATE = #{fromXrate,jdbcType=DECIMAL},            EXCHANGE_TRAN_CODET = #{exchangeTranCodet,jdbcType=VARCHAR},            TO_CCY = #{toCcy,jdbcType=VARCHAR},            OTH_BANK_NAME = #{othBankName,jdbcType=VARCHAR},            INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},            OTH_SEQ_NO = #{othSeqNo,jdbcType=VARCHAR},            OTH_REAL_TRAN_ADDR = #{othRealTranAddr,jdbcType=VARCHAR},            AMT_TYPE = #{amtType,jdbcType=VARCHAR},            CLIENT_TYPE = #{clientType,jdbcType=VARCHAR},            AUTO_TRADE_FLAG = #{autoTradeFlag,jdbcType=VARCHAR},            USER_ID = #{userId,jdbcType=VARCHAR},            ACCT_DESC = #{acctDesc,jdbcType=VARCHAR},            OTH_REAL_DOCUMENT_ID = #{othRealDocumentId,jdbcType=VARCHAR},            ACCT_TRAN_FLAG = #{acctTranFlag,jdbcType=VARCHAR},            AMT_CALC_TYPE = #{amtCalcType,jdbcType=VARCHAR},            OTH_REAL_BANK_CODE = #{othRealBankCode,jdbcType=VARCHAR},            LCY_TRAN_AMT = #{lcyTranAmt,jdbcType=DECIMAL},            OTH_ACCT_CCY = #{othAcctCcy,jdbcType=VARCHAR},            SEND_SYSTEM = #{sendSystem,jdbcType=VARCHAR},            OTH_PROD_NO = #{othProdNo,jdbcType=VARCHAR},            TACK_OVER_CCY_RATE_ONE = #{tackOverCcyRateOne,jdbcType=DECIMAL},            OTH_ACCT_SEQ_NO = #{othAcctSeqNo,jdbcType=VARCHAR},            ACCOUNTING_STATUS = #{accountingStatus,jdbcType=VARCHAR},            SUB_SEQ_NO = #{subSeqNo,jdbcType=VARCHAR},            OTH_TRAN_ADDR = #{othTranAddr,jdbcType=VARCHAR},            NARRATIVE_CODE = #{narrativeCode,jdbcType=VARCHAR},            BASE_EQUIV_AMT = #{baseEquivAmt,jdbcType=DECIMAL},            CCY = #{ccy,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            PAY_UNIT = #{payUnit,jdbcType=VARCHAR},            OTH_REAL_BANK_NAME = #{othRealBankName,jdbcType=VARCHAR},            REMAIN_TERM = #{remainTerm,jdbcType=VARCHAR},            FROM_CCY = #{fromCcy,jdbcType=VARCHAR},            REVERSAL_SEQ_NO = #{reversalSeqNo,jdbcType=VARCHAR},            TRAN_DESC = #{tranDesc,jdbcType=VARCHAR},            MEDIUM_TYPE = #{mediumType,jdbcType=VARCHAR},            CR_DR_IND = #{crDrInd,jdbcType=VARCHAR},            TO_AMOUNT = #{toAmount,jdbcType=DECIMAL},            DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},            TRAN_STATUS = #{tranStatus,jdbcType=VARCHAR},            DOC_TYPE = #{docType,jdbcType=VARCHAR},            WITHDRAWAL_TYPE = #{withdrawalType,jdbcType=VARCHAR},            OTH_INTERNAL_KEY = #{othInternalKey,jdbcType=INTEGER},            CONTRA_TRAN_DATE = #{contraTranDate,jdbcType=TIMESTAMP},            PRIORITY = #{priority,jdbcType=VARCHAR},            FLAT_RATE = #{flatRate,jdbcType=DECIMAL}        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+          and TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP}
+    </update>
+</mapper>

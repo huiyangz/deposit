@@ -1,0 +1,221 @@
+package com.dcits.deposit.service.utils;
+
+import com.dcits.deposit.entity.RbBusDelayTransferDtl;
+import com.dcits.deposit.entity.RbBusDelayTransferDtlExample;
+import com.dcits.deposit.facade.eo.RbBusDelayTransferDtlEO;
+import com.dcits.deposit.enums.CashItem;
+import com.dcits.deposit.enums.BankInOut;
+import com.dcits.deposit.enums.Ccy;
+import com.dcits.deposit.enums.DocType;
+import com.dcits.deposit.enums.TranMethod;
+import com.dcits.deposit.enums.TranBranch;
+import com.dcits.deposit.enums.ArrivalStatus;
+import com.dcits.deposit.enums.AcctCcy;
+import com.dcits.deposit.enums.SourceType;
+import com.dcits.deposit.enums.AcctCcy;
+import com.dcits.deposit.enums.AcctCcy;
+import com.dcits.deposit.enums.TranType;
+
+public final class RbBusDelayTransferDtlValueUtil {
+    private RbBusDelayTransferDtlValueUtil() {
+    }
+
+    public static RbBusDelayTransferDtlEO entityToEo(RbBusDelayTransferDtl entity) {
+        if (entity == null) {
+            return null;
+        }
+        RbBusDelayTransferDtlEO eo = new RbBusDelayTransferDtlEO();
+        eo.setInnerAcctSeqNo(entity.getInnerAcctSeqNo());
+        eo.setResSeqNo(entity.getResSeqNo());
+        eo.setCashItem(CashItem.byValue(entity.getCashItem()));
+        eo.setNarrative(entity.getNarrative());
+        eo.setInnerBaseAcctNo(entity.getInnerBaseAcctNo());
+        eo.setChannelSeqNo(entity.getChannelSeqNo());
+        eo.setExchangeTranCode(entity.getExchangeTranCode());
+        eo.setTranAmt(entity.getTranAmt());
+        eo.setBankInOut(BankInOut.byValue(entity.getBankInOut()));
+        eo.setCcy(Ccy.byValue(entity.getCcy()));
+        eo.setPayUnit(entity.getPayUnit());
+        eo.setProdNo(entity.getProdNo());
+        eo.setOthAcctName(entity.getOthAcctName());
+        eo.setClientName(entity.getClientName());
+        eo.setOthInternalKey(entity.getOthInternalKey());
+        eo.setDocType(DocType.byValue(entity.getDocType()));
+        eo.setBaseAcctNo(entity.getBaseAcctNo());
+        eo.setTranMethod(TranMethod.byValue(entity.getTranMethod()));
+        eo.setInnerClientNo(entity.getInnerClientNo());
+        eo.setCommissionClientTel(entity.getCommissionClientTel());
+        eo.setSubSeqNo(entity.getSubSeqNo());
+        eo.setSeqNo(entity.getSeqNo());
+        eo.setVoucherNo(entity.getVoucherNo());
+        eo.setTranNote(entity.getTranNote());
+        eo.setPrefix(entity.getPrefix());
+        eo.setTrack2(entity.getTrack2());
+        eo.setTranBranch(TranBranch.byValue(entity.getTranBranch()));
+        eo.setOthClientNo(entity.getOthClientNo());
+        eo.setArrivalStatus(ArrivalStatus.byValue(entity.getArrivalStatus()));
+        eo.setOthAcctDesc(entity.getOthAcctDesc());
+        eo.setOthProdNo(entity.getOthProdNo());
+        eo.setInnerInternalKey(entity.getInnerInternalKey());
+        eo.setTrack3(entity.getTrack3());
+        eo.setInnerProdNo(entity.getInnerProdNo());
+        eo.setSignTimestamp(entity.getSignTimestamp());
+        eo.setReference(entity.getReference());
+        eo.setInnerAcctName(entity.getInnerAcctName());
+        eo.setOthAcctSeqNo(entity.getOthAcctSeqNo());
+        eo.setCardNo(entity.getCardNo());
+        eo.setOthCardNo(entity.getOthCardNo());
+        eo.setCancelReason(entity.getCancelReason());
+        eo.setTerminalId(entity.getTerminalId());
+        eo.setOthBaseAcctNo(entity.getOthBaseAcctNo());
+        eo.setOthAcctCcy(AcctCcy.byValue(entity.getOthAcctCcy()));
+        eo.setInternalKey(entity.getInternalKey());
+        eo.setHangSeqNo(entity.getHangSeqNo());
+        eo.setSettleCardFlag(entity.getSettleCardFlag());
+        eo.setTranDesc(entity.getTranDesc());
+        eo.setAcctSeqNo(entity.getAcctSeqNo());
+        eo.setSourceType(SourceType.byValue(entity.getSourceType()));
+        eo.setInnerAcctCcy(AcctCcy.byValue(entity.getInnerAcctCcy()));
+        eo.setCreateTimestamp(entity.getCreateTimestamp());
+        eo.setCommissionClientName(entity.getCommissionClientName());
+        eo.setExchangeTranCodet(entity.getExchangeTranCodet());
+        eo.setTranDate(entity.getTranDate());
+        eo.setAcctCcy(AcctCcy.byValue(entity.getAcctCcy()));
+        eo.setLastUpdTimestamp(entity.getLastUpdTimestamp());
+        eo.setTranType(TranType.byValue(entity.getTranType()));
+        return eo;
+    }
+
+    public static RbBusDelayTransferDtl eoToEntity(RbBusDelayTransferDtlEO eo) {
+        if (eo == null) {
+            return null;
+        }
+        RbBusDelayTransferDtl entity = new RbBusDelayTransferDtl();
+        entity.setInnerAcctSeqNo(eo.getInnerAcctSeqNo());
+        entity.setResSeqNo(eo.getResSeqNo());
+        entity.setCashItem(eo.getCashItem() == null ? null : eo.getCashItem().getValue());
+        entity.setNarrative(eo.getNarrative());
+        entity.setInnerBaseAcctNo(eo.getInnerBaseAcctNo());
+        entity.setChannelSeqNo(eo.getChannelSeqNo());
+        entity.setExchangeTranCode(eo.getExchangeTranCode());
+        entity.setTranAmt(eo.getTranAmt());
+        entity.setBankInOut(eo.getBankInOut() == null ? null : eo.getBankInOut().getValue());
+        entity.setCcy(eo.getCcy() == null ? null : eo.getCcy().getValue());
+        entity.setPayUnit(eo.getPayUnit());
+        entity.setProdNo(eo.getProdNo());
+        entity.setOthAcctName(eo.getOthAcctName());
+        entity.setClientName(eo.getClientName());
+        entity.setOthInternalKey(eo.getOthInternalKey());
+        entity.setDocType(eo.getDocType() == null ? null : eo.getDocType().getValue());
+        entity.setBaseAcctNo(eo.getBaseAcctNo());
+        entity.setTranMethod(eo.getTranMethod() == null ? null : eo.getTranMethod().getValue());
+        entity.setInnerClientNo(eo.getInnerClientNo());
+        entity.setCommissionClientTel(eo.getCommissionClientTel());
+        entity.setSubSeqNo(eo.getSubSeqNo());
+        entity.setSeqNo(eo.getSeqNo());
+        entity.setVoucherNo(eo.getVoucherNo());
+        entity.setTranNote(eo.getTranNote());
+        entity.setPrefix(eo.getPrefix());
+        entity.setTrack2(eo.getTrack2());
+        entity.setTranBranch(eo.getTranBranch() == null ? null : eo.getTranBranch().getValue());
+        entity.setOthClientNo(eo.getOthClientNo());
+        entity.setArrivalStatus(eo.getArrivalStatus() == null ? null : eo.getArrivalStatus().getValue());
+        entity.setOthAcctDesc(eo.getOthAcctDesc());
+        entity.setOthProdNo(eo.getOthProdNo());
+        entity.setInnerInternalKey(eo.getInnerInternalKey());
+        entity.setTrack3(eo.getTrack3());
+        entity.setInnerProdNo(eo.getInnerProdNo());
+        entity.setSignTimestamp(eo.getSignTimestamp());
+        entity.setReference(eo.getReference());
+        entity.setInnerAcctName(eo.getInnerAcctName());
+        entity.setOthAcctSeqNo(eo.getOthAcctSeqNo());
+        entity.setCardNo(eo.getCardNo());
+        entity.setOthCardNo(eo.getOthCardNo());
+        entity.setCancelReason(eo.getCancelReason());
+        entity.setTerminalId(eo.getTerminalId());
+        entity.setOthBaseAcctNo(eo.getOthBaseAcctNo());
+        entity.setOthAcctCcy(eo.getOthAcctCcy() == null ? null : eo.getOthAcctCcy().getValue());
+        entity.setInternalKey(eo.getInternalKey());
+        entity.setHangSeqNo(eo.getHangSeqNo());
+        entity.setSettleCardFlag(eo.getSettleCardFlag());
+        entity.setTranDesc(eo.getTranDesc());
+        entity.setAcctSeqNo(eo.getAcctSeqNo());
+        entity.setSourceType(eo.getSourceType() == null ? null : eo.getSourceType().getValue());
+        entity.setInnerAcctCcy(eo.getInnerAcctCcy() == null ? null : eo.getInnerAcctCcy().getValue());
+        entity.setCreateTimestamp(eo.getCreateTimestamp());
+        entity.setCommissionClientName(eo.getCommissionClientName());
+        entity.setExchangeTranCodet(eo.getExchangeTranCodet());
+        entity.setTranDate(eo.getTranDate());
+        entity.setAcctCcy(eo.getAcctCcy() == null ? null : eo.getAcctCcy().getValue());
+        entity.setLastUpdTimestamp(eo.getLastUpdTimestamp());
+        entity.setTranType(eo.getTranType() == null ? null : eo.getTranType().getValue());
+        return entity;
+    }
+
+    public static RbBusDelayTransferDtlExample eoToEntityExample(RbBusDelayTransferDtlEO eo) {
+        if (eo == null) {
+            return null;
+        }
+        RbBusDelayTransferDtlExample example = new RbBusDelayTransferDtlExample();
+        RbBusDelayTransferDtlExample.Criteria criteria = example.createCriteria();
+        if (eo.getInnerAcctSeqNo() != null) criteria.andInnerAcctSeqNoEqualTo(eo.getInnerAcctSeqNo());
+        if (eo.getResSeqNo() != null) criteria.andResSeqNoEqualTo(eo.getResSeqNo());
+        if (eo.getCashItem() != null) criteria.andCashItemEqualTo(eo.getCashItem().getValue());
+        if (eo.getNarrative() != null) criteria.andNarrativeEqualTo(eo.getNarrative());
+        if (eo.getInnerBaseAcctNo() != null) criteria.andInnerBaseAcctNoEqualTo(eo.getInnerBaseAcctNo());
+        if (eo.getChannelSeqNo() != null) criteria.andChannelSeqNoEqualTo(eo.getChannelSeqNo());
+        if (eo.getExchangeTranCode() != null) criteria.andExchangeTranCodeEqualTo(eo.getExchangeTranCode());
+        if (eo.getTranAmt() != null) criteria.andTranAmtEqualTo(eo.getTranAmt());
+        if (eo.getBankInOut() != null) criteria.andBankInOutEqualTo(eo.getBankInOut().getValue());
+        if (eo.getCcy() != null) criteria.andCcyEqualTo(eo.getCcy().getValue());
+        if (eo.getPayUnit() != null) criteria.andPayUnitEqualTo(eo.getPayUnit());
+        if (eo.getProdNo() != null) criteria.andProdNoEqualTo(eo.getProdNo());
+        if (eo.getOthAcctName() != null) criteria.andOthAcctNameEqualTo(eo.getOthAcctName());
+        if (eo.getClientName() != null) criteria.andClientNameEqualTo(eo.getClientName());
+        if (eo.getOthInternalKey() != null) criteria.andOthInternalKeyEqualTo(eo.getOthInternalKey());
+        if (eo.getDocType() != null) criteria.andDocTypeEqualTo(eo.getDocType().getValue());
+        if (eo.getBaseAcctNo() != null) criteria.andBaseAcctNoEqualTo(eo.getBaseAcctNo());
+        if (eo.getTranMethod() != null) criteria.andTranMethodEqualTo(eo.getTranMethod().getValue());
+        if (eo.getInnerClientNo() != null) criteria.andInnerClientNoEqualTo(eo.getInnerClientNo());
+        if (eo.getCommissionClientTel() != null) criteria.andCommissionClientTelEqualTo(eo.getCommissionClientTel());
+        if (eo.getSubSeqNo() != null) criteria.andSubSeqNoEqualTo(eo.getSubSeqNo());
+        if (eo.getSeqNo() != null) criteria.andSeqNoEqualTo(eo.getSeqNo());
+        if (eo.getVoucherNo() != null) criteria.andVoucherNoEqualTo(eo.getVoucherNo());
+        if (eo.getTranNote() != null) criteria.andTranNoteEqualTo(eo.getTranNote());
+        if (eo.getPrefix() != null) criteria.andPrefixEqualTo(eo.getPrefix());
+        if (eo.getTrack2() != null) criteria.andTrack2EqualTo(eo.getTrack2());
+        if (eo.getTranBranch() != null) criteria.andTranBranchEqualTo(eo.getTranBranch().getValue());
+        if (eo.getOthClientNo() != null) criteria.andOthClientNoEqualTo(eo.getOthClientNo());
+        if (eo.getArrivalStatus() != null) criteria.andArrivalStatusEqualTo(eo.getArrivalStatus().getValue());
+        if (eo.getOthAcctDesc() != null) criteria.andOthAcctDescEqualTo(eo.getOthAcctDesc());
+        if (eo.getOthProdNo() != null) criteria.andOthProdNoEqualTo(eo.getOthProdNo());
+        if (eo.getInnerInternalKey() != null) criteria.andInnerInternalKeyEqualTo(eo.getInnerInternalKey());
+        if (eo.getTrack3() != null) criteria.andTrack3EqualTo(eo.getTrack3());
+        if (eo.getInnerProdNo() != null) criteria.andInnerProdNoEqualTo(eo.getInnerProdNo());
+        if (eo.getSignTimestamp() != null) criteria.andSignTimestampEqualTo(eo.getSignTimestamp());
+        if (eo.getReference() != null) criteria.andReferenceEqualTo(eo.getReference());
+        if (eo.getInnerAcctName() != null) criteria.andInnerAcctNameEqualTo(eo.getInnerAcctName());
+        if (eo.getOthAcctSeqNo() != null) criteria.andOthAcctSeqNoEqualTo(eo.getOthAcctSeqNo());
+        if (eo.getCardNo() != null) criteria.andCardNoEqualTo(eo.getCardNo());
+        if (eo.getOthCardNo() != null) criteria.andOthCardNoEqualTo(eo.getOthCardNo());
+        if (eo.getCancelReason() != null) criteria.andCancelReasonEqualTo(eo.getCancelReason());
+        if (eo.getTerminalId() != null) criteria.andTerminalIdEqualTo(eo.getTerminalId());
+        if (eo.getOthBaseAcctNo() != null) criteria.andOthBaseAcctNoEqualTo(eo.getOthBaseAcctNo());
+        if (eo.getOthAcctCcy() != null) criteria.andOthAcctCcyEqualTo(eo.getOthAcctCcy().getValue());
+        if (eo.getInternalKey() != null) criteria.andInternalKeyEqualTo(eo.getInternalKey());
+        if (eo.getHangSeqNo() != null) criteria.andHangSeqNoEqualTo(eo.getHangSeqNo());
+        if (eo.getSettleCardFlag() != null) criteria.andSettleCardFlagEqualTo(eo.getSettleCardFlag());
+        if (eo.getTranDesc() != null) criteria.andTranDescEqualTo(eo.getTranDesc());
+        if (eo.getAcctSeqNo() != null) criteria.andAcctSeqNoEqualTo(eo.getAcctSeqNo());
+        if (eo.getSourceType() != null) criteria.andSourceTypeEqualTo(eo.getSourceType().getValue());
+        if (eo.getInnerAcctCcy() != null) criteria.andInnerAcctCcyEqualTo(eo.getInnerAcctCcy().getValue());
+        if (eo.getCreateTimestamp() != null) criteria.andCreateTimestampEqualTo(eo.getCreateTimestamp());
+        if (eo.getCommissionClientName() != null) criteria.andCommissionClientNameEqualTo(eo.getCommissionClientName());
+        if (eo.getExchangeTranCodet() != null) criteria.andExchangeTranCodetEqualTo(eo.getExchangeTranCodet());
+        if (eo.getTranDate() != null) criteria.andTranDateEqualTo(eo.getTranDate());
+        if (eo.getAcctCcy() != null) criteria.andAcctCcyEqualTo(eo.getAcctCcy().getValue());
+        if (eo.getLastUpdTimestamp() != null) criteria.andLastUpdTimestampEqualTo(eo.getLastUpdTimestamp());
+        if (eo.getTranType() != null) criteria.andTranTypeEqualTo(eo.getTranType().getValue());
+        return example;
+    }
+}
