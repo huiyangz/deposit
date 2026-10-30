@@ -1,0 +1,38 @@
+package com.dcits.deposit.facade.components;
+
+import com.dcits.deposit.enums.Ccy;
+import com.dcits.deposit.enums.CheckObjType;
+import com.dcits.deposit.enums.LimitConvert;
+import com.dcits.deposit.enums.LimitMainType;
+import java.util.List;
+
+import com.dcits.deposit.facade.eo.RbLimitSceneDefEO;
+
+/*实体表【限额场景定义(RB_LIMIT_SCENE_DEF)】数据服务接口*/
+public interface IRbLimitSceneDefBcc {
+    /** count数据库表记录根据入参com.dcits.deposit.facade.eo.RbLimitSceneDefEO中的属性字段组合 **/
+    long countByEo(RbLimitSceneDefEO eo);
+
+    /** remove数据库表记录根据入参com.dcits.deposit.facade.eo.RbLimitSceneDefEO中的属性字段组合 **/
+    int removeByEo(RbLimitSceneDefEO eo);
+
+    /** remove 根据主键: 限制币种、检查对象类型、最后修改时间戳、限额场景描述、创建时间戳、启用标志、限额折算方式、限额大类 **/
+    int removeByPrimaryKey(String limitCcy, String checkObjType, String lastUpdTimestamp, String limitSceneDesc, String createTimestamp, String validFlag, String limitConvert, String limitMainType);
+
+    int create(RbLimitSceneDefEO eo);
+
+    /** create数据库表记录，主键和EO对象中不允许为空的字段必填，其它可为空字段可选填，执行时根据com.dcits.deposit.facade.eo.RbLimitSceneDefEO中不为空的属性写入数据库**/
+    int createSelective(RbLimitSceneDefEO eo);
+
+    /** find数据库表记录根据入参com.dcits.deposit.facade.eo.RbLimitSceneDefEO中的属性字段组合 **/
+    List<RbLimitSceneDefEO> findByEo(RbLimitSceneDefEO eo);
+
+    /** find 根据主键: 限制币种、检查对象类型、最后修改时间戳、限额场景描述、创建时间戳、启用标志、限额折算方式、限额大类 **/
+    RbLimitSceneDefEO findByPrimaryKey(String limitCcy, String checkObjType, String lastUpdTimestamp, String limitSceneDesc, String createTimestamp, String validFlag, String limitConvert, String limitMainType);
+
+    /**  根据主键: 限制币种、检查对象类型、最后修改时间戳、限额场景描述、创建时间戳、启用标志、限额折算方式、限额大类执行更新记录操作，仅更新入参com.dcits.deposit.facade.eo.RbLimitSceneDefEO中不为空的属性字段 **/
+    int modifyByPrimaryKeySelective(RbLimitSceneDefEO eo);
+
+    /** modify 根据主键: 限制币种、检查对象类型、最后修改时间戳、限额场景描述、创建时间戳、启用标志、限额折算方式、限额大类 **/
+    int modifyByPrimaryKey(RbLimitSceneDefEO eo);
+}
