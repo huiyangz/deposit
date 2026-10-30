@@ -1,0 +1,1 @@
+create table FM_BRANCH_CCY (CREATE_TIMESTAMP VARCHAR(26) not null  ,LAST_UPD_TIMESTAMP VARCHAR(26) not null  ,BRANCH VARCHAR(30) not null  ,CCY VARCHAR(3) not null  , primary key(BRANCH,CCY));

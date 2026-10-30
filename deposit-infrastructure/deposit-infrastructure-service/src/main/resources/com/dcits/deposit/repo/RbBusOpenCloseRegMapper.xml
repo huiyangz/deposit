@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbBusOpenCloseRegMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbBusOpenCloseReg">
+        <id column="SEQ_NO" property="seqNo" jdbcType="VARCHAR" />
+        <result column="RB_BUS_ACCT_PURPOSE" property="rbBusAcctPurpose" jdbcType="VARCHAR" />
+        <result column="OPEN_BRANCH" property="openBranch" jdbcType="VARCHAR" />
+        <result column="INTERNAL_KEY" property="internalKey" jdbcType="INTEGER" />
+        <result column="ACCT_NATURE_NO" property="acctNatureNo" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="ACCT_OPEN_MODE" property="acctOpenMode" jdbcType="VARCHAR" />
+        <result column="REG_TYPE" property="regType" jdbcType="VARCHAR" />
+        <result column="ACTIVE_DATE" property="activeDate" jdbcType="TIMESTAMP" />
+        <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR" />
+        <result column="CHANNEL_SEQ_NO" property="channelSeqNo" jdbcType="VARCHAR" />
+        <result column="OPEN_AMOUNT" property="openAmount" jdbcType="DECIMAL" />
+        <result column="TRAN_DATE" property="tranDate" jdbcType="TIMESTAMP" />
+        <result column="RB_ACCT_TYPE" property="rbAcctType" jdbcType="VARCHAR" />
+        <result column="IS_SELF" property="isSelf" jdbcType="VARCHAR" />
+        <result column="NARRATIVE" property="narrative" jdbcType="VARCHAR" />
+        <result column="ACCT_PURPOSE_DESC" property="acctPurposeDesc" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="LAST_UPD_TIMESTAMP" property="lastUpdTimestamp" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="ACCT_BRANCH" property="acctBranch" jdbcType="VARCHAR" />
+        <result column="INFORM_BANK_FLAG" property="informBankFlag" jdbcType="VARCHAR" />
+        <result column="APPROVAL_NO" property="approvalNo" jdbcType="VARCHAR" />
+        <result column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="DOCUMENT_ID" property="documentId" jdbcType="VARCHAR" />
+        <result column="ACCT_STATUS" property="acctStatus" jdbcType="VARCHAR" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="REFERENCE" property="reference" jdbcType="VARCHAR" />
+        <result column="NARRATIVE_CODE" property="narrativeCode" jdbcType="VARCHAR" />
+        <result column="PROD_NO" property="prodNo" jdbcType="VARCHAR" />
+        <result column="SUC_FLAG" property="sucFlag" jdbcType="VARCHAR" />
+        <result column="OP_METHOD" property="opMethod" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        RB_BUS_ACCT_PURPOSE,        OPEN_BRANCH,        INTERNAL_KEY,        ACCT_NATURE_NO,        CREATE_TIMESTAMP,        ACCT_OPEN_MODE,        REG_TYPE,        ACTIVE_DATE,        CARD_NO,        CHANNEL_SEQ_NO,        OPEN_AMOUNT,        TRAN_DATE,        RB_ACCT_TYPE,        IS_SELF,        NARRATIVE,        ACCT_PURPOSE_DESC,        ACCT_SEQ_NO,        LAST_UPD_TIMESTAMP,        BASE_ACCT_NO,        ACCT_BRANCH,        INFORM_BANK_FLAG,        APPROVAL_NO,        CLIENT_NO,        DOCUMENT_ID,        ACCT_STATUS,        ACCT_CCY,        REFERENCE,        NARRATIVE_CODE,        PROD_NO,        SUC_FLAG,        OP_METHOD,        SEQ_NO    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbBusOpenCloseRegExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BUS_OPEN_CLOSE_REG
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BUS_OPEN_CLOSE_REG
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BUS_OPEN_CLOSE_REG
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbBusOpenCloseRegExample">
+        delete from RB_BUS_OPEN_CLOSE_REG
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbBusOpenCloseReg">
+        insert into RB_BUS_OPEN_CLOSE_REG
+        (
+            RB_BUS_ACCT_PURPOSE,            OPEN_BRANCH,            INTERNAL_KEY,            ACCT_NATURE_NO,            CREATE_TIMESTAMP,            ACCT_OPEN_MODE,            REG_TYPE,            ACTIVE_DATE,            CARD_NO,            CHANNEL_SEQ_NO,            OPEN_AMOUNT,            TRAN_DATE,            RB_ACCT_TYPE,            IS_SELF,            NARRATIVE,            ACCT_PURPOSE_DESC,            ACCT_SEQ_NO,            LAST_UPD_TIMESTAMP,            BASE_ACCT_NO,            ACCT_BRANCH,            INFORM_BANK_FLAG,            APPROVAL_NO,            CLIENT_NO,            DOCUMENT_ID,            ACCT_STATUS,            ACCT_CCY,            REFERENCE,            NARRATIVE_CODE,            PROD_NO,            SUC_FLAG,            OP_METHOD,            SEQ_NO        )
+        values
+        (
+            #{rbBusAcctPurpose,jdbcType=VARCHAR},            #{openBranch,jdbcType=VARCHAR},            #{internalKey,jdbcType=INTEGER},            #{acctNatureNo,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{acctOpenMode,jdbcType=VARCHAR},            #{regType,jdbcType=VARCHAR},            #{activeDate,jdbcType=TIMESTAMP},            #{cardNo,jdbcType=VARCHAR},            #{channelSeqNo,jdbcType=VARCHAR},            #{openAmount,jdbcType=DECIMAL},            #{tranDate,jdbcType=TIMESTAMP},            #{rbAcctType,jdbcType=VARCHAR},            #{isSelf,jdbcType=VARCHAR},            #{narrative,jdbcType=VARCHAR},            #{acctPurposeDesc,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{lastUpdTimestamp,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{acctBranch,jdbcType=VARCHAR},            #{informBankFlag,jdbcType=VARCHAR},            #{approvalNo,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{documentId,jdbcType=VARCHAR},            #{acctStatus,jdbcType=VARCHAR},            #{acctCcy,jdbcType=VARCHAR},            #{reference,jdbcType=VARCHAR},            #{narrativeCode,jdbcType=VARCHAR},            #{prodNo,jdbcType=VARCHAR},            #{sucFlag,jdbcType=VARCHAR},            #{opMethod,jdbcType=VARCHAR},            #{seqNo,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbBusOpenCloseReg">
+        insert into RB_BUS_OPEN_CLOSE_REG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rbBusAcctPurpose != null">
+                RB_BUS_ACCT_PURPOSE,
+            </if>
+            <if test="openBranch != null">
+                OPEN_BRANCH,
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY,
+            </if>
+            <if test="acctNatureNo != null">
+                ACCT_NATURE_NO,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="acctOpenMode != null">
+                ACCT_OPEN_MODE,
+            </if>
+            <if test="regType != null">
+                REG_TYPE,
+            </if>
+            <if test="activeDate != null">
+                ACTIVE_DATE,
+            </if>
+            <if test="cardNo != null">
+                CARD_NO,
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO,
+            </if>
+            <if test="openAmount != null">
+                OPEN_AMOUNT,
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE,
+            </if>
+            <if test="rbAcctType != null">
+                RB_ACCT_TYPE,
+            </if>
+            <if test="isSelf != null">
+                IS_SELF,
+            </if>
+            <if test="narrative != null">
+                NARRATIVE,
+            </if>
+            <if test="acctPurposeDesc != null">
+                ACCT_PURPOSE_DESC,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="acctBranch != null">
+                ACCT_BRANCH,
+            </if>
+            <if test="informBankFlag != null">
+                INFORM_BANK_FLAG,
+            </if>
+            <if test="approvalNo != null">
+                APPROVAL_NO,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID,
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="reference != null">
+                REFERENCE,
+            </if>
+            <if test="narrativeCode != null">
+                NARRATIVE_CODE,
+            </if>
+            <if test="prodNo != null">
+                PROD_NO,
+            </if>
+            <if test="sucFlag != null">
+                SUC_FLAG,
+            </if>
+            <if test="opMethod != null">
+                OP_METHOD,
+            </if>
+            <if test="seqNo != null">
+                SEQ_NO,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rbBusAcctPurpose != null">
+                #{rbBusAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="openBranch != null">
+                #{openBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="acctNatureNo != null">
+                #{acctNatureNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="acctOpenMode != null">
+                #{acctOpenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="regType != null">
+                #{regType,jdbcType=VARCHAR},
+            </if>
+            <if test="activeDate != null">
+                #{activeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cardNo != null">
+                #{cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="openAmount != null">
+                #{openAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="tranDate != null">
+                #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rbAcctType != null">
+                #{rbAcctType,jdbcType=VARCHAR},
+            </if>
+            <if test="isSelf != null">
+                #{isSelf,jdbcType=VARCHAR},
+            </if>
+            <if test="narrative != null">
+                #{narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="acctPurposeDesc != null">
+                #{acctPurposeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctBranch != null">
+                #{acctBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="informBankFlag != null">
+                #{informBankFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalNo != null">
+                #{approvalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="documentId != null">
+                #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                #{acctStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="narrativeCode != null">
+                #{narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="sucFlag != null">
+                #{sucFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="opMethod != null">
+                #{opMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbBusOpenCloseRegExample" resultType="java.lang.Long">
+        select count(*) from RB_BUS_OPEN_CLOSE_REG
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BUS_OPEN_CLOSE_REG
+        <set>
+            <if test="row.rbBusAcctPurpose != null">
+                RB_BUS_ACCT_PURPOSE = #{row.rbBusAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="row.openBranch != null">
+                OPEN_BRANCH = #{row.openBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.internalKey != null">
+                INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="row.acctNatureNo != null">
+                ACCT_NATURE_NO = #{row.acctNatureNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctOpenMode != null">
+                ACCT_OPEN_MODE = #{row.acctOpenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.regType != null">
+                REG_TYPE = #{row.regType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.activeDate != null">
+                ACTIVE_DATE = #{row.activeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.cardNo != null">
+                CARD_NO = #{row.cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.openAmount != null">
+                OPEN_AMOUNT = #{row.openAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="row.tranDate != null">
+                TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.rbAcctType != null">
+                RB_ACCT_TYPE = #{row.rbAcctType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.isSelf != null">
+                IS_SELF = #{row.isSelf,jdbcType=VARCHAR},
+            </if>
+            <if test="row.narrative != null">
+                NARRATIVE = #{row.narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctPurposeDesc != null">
+                ACCT_PURPOSE_DESC = #{row.acctPurposeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctBranch != null">
+                ACCT_BRANCH = #{row.acctBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.informBankFlag != null">
+                INFORM_BANK_FLAG = #{row.informBankFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.approvalNo != null">
+                APPROVAL_NO = #{row.approvalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.documentId != null">
+                DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctStatus != null">
+                ACCT_STATUS = #{row.acctStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.reference != null">
+                REFERENCE = #{row.reference,jdbcType=VARCHAR},
+            </if>
+            <if test="row.narrativeCode != null">
+                NARRATIVE_CODE = #{row.narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodNo != null">
+                PROD_NO = #{row.prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.sucFlag != null">
+                SUC_FLAG = #{row.sucFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.opMethod != null">
+                OP_METHOD = #{row.opMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="row.seqNo != null">
+                SEQ_NO = #{row.seqNo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BUS_OPEN_CLOSE_REG
+        set
+            RB_BUS_ACCT_PURPOSE = #{row.rbBusAcctPurpose,jdbcType=VARCHAR},            OPEN_BRANCH = #{row.openBranch,jdbcType=VARCHAR},            INTERNAL_KEY = #{row.internalKey,jdbcType=INTEGER},            ACCT_NATURE_NO = #{row.acctNatureNo,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            ACCT_OPEN_MODE = #{row.acctOpenMode,jdbcType=VARCHAR},            REG_TYPE = #{row.regType,jdbcType=VARCHAR},            ACTIVE_DATE = #{row.activeDate,jdbcType=TIMESTAMP},            CARD_NO = #{row.cardNo,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{row.channelSeqNo,jdbcType=VARCHAR},            OPEN_AMOUNT = #{row.openAmount,jdbcType=DECIMAL},            TRAN_DATE = #{row.tranDate,jdbcType=TIMESTAMP},            RB_ACCT_TYPE = #{row.rbAcctType,jdbcType=VARCHAR},            IS_SELF = #{row.isSelf,jdbcType=VARCHAR},            NARRATIVE = #{row.narrative,jdbcType=VARCHAR},            ACCT_PURPOSE_DESC = #{row.acctPurposeDesc,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            ACCT_BRANCH = #{row.acctBranch,jdbcType=VARCHAR},            INFORM_BANK_FLAG = #{row.informBankFlag,jdbcType=VARCHAR},            APPROVAL_NO = #{row.approvalNo,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            DOCUMENT_ID = #{row.documentId,jdbcType=VARCHAR},            ACCT_STATUS = #{row.acctStatus,jdbcType=VARCHAR},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            REFERENCE = #{row.reference,jdbcType=VARCHAR},            NARRATIVE_CODE = #{row.narrativeCode,jdbcType=VARCHAR},            PROD_NO = #{row.prodNo,jdbcType=VARCHAR},            SUC_FLAG = #{row.sucFlag,jdbcType=VARCHAR},            OP_METHOD = #{row.opMethod,jdbcType=VARCHAR},            SEQ_NO = #{row.seqNo,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbBusOpenCloseReg">
+        update RB_BUS_OPEN_CLOSE_REG
+        <set>
+            <if test="rbBusAcctPurpose != null">
+                RB_BUS_ACCT_PURPOSE = #{rbBusAcctPurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="openBranch != null">
+                OPEN_BRANCH = #{openBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="internalKey != null">
+                INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},
+            </if>
+            <if test="acctNatureNo != null">
+                ACCT_NATURE_NO = #{acctNatureNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="acctOpenMode != null">
+                ACCT_OPEN_MODE = #{acctOpenMode,jdbcType=VARCHAR},
+            </if>
+            <if test="regType != null">
+                REG_TYPE = #{regType,jdbcType=VARCHAR},
+            </if>
+            <if test="activeDate != null">
+                ACTIVE_DATE = #{activeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cardNo != null">
+                CARD_NO = #{cardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelSeqNo != null">
+                CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="openAmount != null">
+                OPEN_AMOUNT = #{openAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="tranDate != null">
+                TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rbAcctType != null">
+                RB_ACCT_TYPE = #{rbAcctType,jdbcType=VARCHAR},
+            </if>
+            <if test="isSelf != null">
+                IS_SELF = #{isSelf,jdbcType=VARCHAR},
+            </if>
+            <if test="narrative != null">
+                NARRATIVE = #{narrative,jdbcType=VARCHAR},
+            </if>
+            <if test="acctPurposeDesc != null">
+                ACCT_PURPOSE_DESC = #{acctPurposeDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="acctBranch != null">
+                ACCT_BRANCH = #{acctBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="informBankFlag != null">
+                INFORM_BANK_FLAG = #{informBankFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalNo != null">
+                APPROVAL_NO = #{approvalNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO = #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="documentId != null">
+                DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctStatus != null">
+                ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                REFERENCE = #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="narrativeCode != null">
+                NARRATIVE_CODE = #{narrativeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                PROD_NO = #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="sucFlag != null">
+                SUC_FLAG = #{sucFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="opMethod != null">
+                OP_METHOD = #{opMethod,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbBusOpenCloseReg">
+        update RB_BUS_OPEN_CLOSE_REG
+        set
+            RB_BUS_ACCT_PURPOSE = #{rbBusAcctPurpose,jdbcType=VARCHAR},            OPEN_BRANCH = #{openBranch,jdbcType=VARCHAR},            INTERNAL_KEY = #{internalKey,jdbcType=INTEGER},            ACCT_NATURE_NO = #{acctNatureNo,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            ACCT_OPEN_MODE = #{acctOpenMode,jdbcType=VARCHAR},            REG_TYPE = #{regType,jdbcType=VARCHAR},            ACTIVE_DATE = #{activeDate,jdbcType=TIMESTAMP},            CARD_NO = #{cardNo,jdbcType=VARCHAR},            CHANNEL_SEQ_NO = #{channelSeqNo,jdbcType=VARCHAR},            OPEN_AMOUNT = #{openAmount,jdbcType=DECIMAL},            TRAN_DATE = #{tranDate,jdbcType=TIMESTAMP},            RB_ACCT_TYPE = #{rbAcctType,jdbcType=VARCHAR},            IS_SELF = #{isSelf,jdbcType=VARCHAR},            NARRATIVE = #{narrative,jdbcType=VARCHAR},            ACCT_PURPOSE_DESC = #{acctPurposeDesc,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            ACCT_BRANCH = #{acctBranch,jdbcType=VARCHAR},            INFORM_BANK_FLAG = #{informBankFlag,jdbcType=VARCHAR},            APPROVAL_NO = #{approvalNo,jdbcType=VARCHAR},            CLIENT_NO = #{clientNo,jdbcType=VARCHAR},            DOCUMENT_ID = #{documentId,jdbcType=VARCHAR},            ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            REFERENCE = #{reference,jdbcType=VARCHAR},            NARRATIVE_CODE = #{narrativeCode,jdbcType=VARCHAR},            PROD_NO = #{prodNo,jdbcType=VARCHAR},            SUC_FLAG = #{sucFlag,jdbcType=VARCHAR},            OP_METHOD = #{opMethod,jdbcType=VARCHAR}        where SEQ_NO = #{seqNo,jdbcType=VARCHAR}
+    </update>
+</mapper>
