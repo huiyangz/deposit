@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.deposit.repo.RbBusAgreementMapper">
+    <resultMap id="BaseResultMap" type="com.dcits.deposit.entity.RbBusAgreement">
+        <id column="AGREEMENT_ID" property="agreementId" jdbcType="VARCHAR" />
+        <result column="RB_BUS_AGREEMENT_TYPE" property="rbBusAgreementType" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_CLASS" property="agreementClass" jdbcType="VARCHAR" />
+        <result column="PROD_NO" property="prodNo" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_KEY_TYPE" property="agreementKeyType" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_AMT" property="agreementAmt" jdbcType="DECIMAL" />
+        <result column="AGREEMENT_KEY" property="agreementKey" jdbcType="VARCHAR" />
+        <result column="CLIENT_NO" property="clientNo" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_OPEN_DATE" property="agreementOpenDate" jdbcType="TIMESTAMP" />
+        <result column="LAST_UPD_TIMESTAMP" property="lastUpdTimestamp" jdbcType="VARCHAR" />
+        <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+        <result column="ACCT_CCY" property="acctCcy" jdbcType="VARCHAR" />
+        <result column="SIGN_DATE" property="signDate" jdbcType="TIMESTAMP" />
+        <result column="OUT_SIGN_DATE" property="outSignDate" jdbcType="TIMESTAMP" />
+        <result column="AGRE_PROD_NO" property="agreProdNo" jdbcType="VARCHAR" />
+        <result column="CLIENT_SHORT" property="clientShort" jdbcType="VARCHAR" />
+        <result column="OUT_SIGN_USER_ID" property="outSignUserId" jdbcType="VARCHAR" />
+        <result column="SIGN_CHANNEL" property="signChannel" jdbcType="VARCHAR" />
+        <result column="CREATE_TIMESTAMP" property="createTimestamp" jdbcType="VARCHAR" />
+        <result column="BASE_ACCT_NO" property="baseAcctNo" jdbcType="VARCHAR" />
+        <result column="OUT_SIGN_CHANNEL" property="outSignChannel" jdbcType="VARCHAR" />
+        <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+        <result column="SIGN_BRANCH" property="signBranch" jdbcType="VARCHAR" />
+        <result column="OUT_SIGN_BRANCH" property="outSignBranch" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_SIGN_EFFECT_STATUS" property="agreementSignEffectStatus" jdbcType="VARCHAR" />
+        <result column="TRAN_BRANCH" property="tranBranch" jdbcType="VARCHAR" />
+        <result column="AGREEMENT_CLOSE_ACCT_FLAG" property="agreementCloseAcctFlag" jdbcType="VARCHAR" />
+        <result column="GREEMENT_SIGN_STATUS" property="greementSignStatus" jdbcType="VARCHAR" />
+        <result column="ACCT_NAME" property="acctName" jdbcType="VARCHAR" />
+        <result column="ACCT_SEQ_NO" property="acctSeqNo" jdbcType="VARCHAR" />
+        <result column="SIGN_USER_ID" property="signUserId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List">
+        RB_BUS_AGREEMENT_TYPE,        AGREEMENT_CLASS,        PROD_NO,        AGREEMENT_KEY_TYPE,        AGREEMENT_AMT,        AGREEMENT_KEY,        CLIENT_NO,        AGREEMENT_OPEN_DATE,        LAST_UPD_TIMESTAMP,        END_DATE,        ACCT_CCY,        SIGN_DATE,        OUT_SIGN_DATE,        AGREEMENT_ID,        AGRE_PROD_NO,        CLIENT_SHORT,        OUT_SIGN_USER_ID,        SIGN_CHANNEL,        CREATE_TIMESTAMP,        BASE_ACCT_NO,        OUT_SIGN_CHANNEL,        START_DATE,        SIGN_BRANCH,        OUT_SIGN_BRANCH,        AGREEMENT_SIGN_EFFECT_STATUS,        TRAN_BRANCH,        AGREEMENT_CLOSE_ACCT_FLAG,        GREEMENT_SIGN_STATUS,        ACCT_NAME,        ACCT_SEQ_NO,        SIGN_USER_ID    </sql>
+
+    <select id="selectByExample" parameterType="com.dcits.deposit.entity.RbBusAgreementExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from RB_BUS_AGREEMENT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from RB_BUS_AGREEMENT
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from RB_BUS_AGREEMENT
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.dcits.deposit.entity.RbBusAgreementExample">
+        delete from RB_BUS_AGREEMENT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.dcits.deposit.entity.RbBusAgreement">
+        insert into RB_BUS_AGREEMENT
+        (
+            RB_BUS_AGREEMENT_TYPE,            AGREEMENT_CLASS,            PROD_NO,            AGREEMENT_KEY_TYPE,            AGREEMENT_AMT,            AGREEMENT_KEY,            CLIENT_NO,            AGREEMENT_OPEN_DATE,            LAST_UPD_TIMESTAMP,            END_DATE,            ACCT_CCY,            SIGN_DATE,            OUT_SIGN_DATE,            AGREEMENT_ID,            AGRE_PROD_NO,            CLIENT_SHORT,            OUT_SIGN_USER_ID,            SIGN_CHANNEL,            CREATE_TIMESTAMP,            BASE_ACCT_NO,            OUT_SIGN_CHANNEL,            START_DATE,            SIGN_BRANCH,            OUT_SIGN_BRANCH,            AGREEMENT_SIGN_EFFECT_STATUS,            TRAN_BRANCH,            AGREEMENT_CLOSE_ACCT_FLAG,            GREEMENT_SIGN_STATUS,            ACCT_NAME,            ACCT_SEQ_NO,            SIGN_USER_ID        )
+        values
+        (
+            #{rbBusAgreementType,jdbcType=VARCHAR},            #{agreementClass,jdbcType=VARCHAR},            #{prodNo,jdbcType=VARCHAR},            #{agreementKeyType,jdbcType=VARCHAR},            #{agreementAmt,jdbcType=DECIMAL},            #{agreementKey,jdbcType=VARCHAR},            #{clientNo,jdbcType=VARCHAR},            #{agreementOpenDate,jdbcType=TIMESTAMP},            #{lastUpdTimestamp,jdbcType=VARCHAR},            #{endDate,jdbcType=TIMESTAMP},            #{acctCcy,jdbcType=VARCHAR},            #{signDate,jdbcType=TIMESTAMP},            #{outSignDate,jdbcType=TIMESTAMP},            #{agreementId,jdbcType=VARCHAR},            #{agreProdNo,jdbcType=VARCHAR},            #{clientShort,jdbcType=VARCHAR},            #{outSignUserId,jdbcType=VARCHAR},            #{signChannel,jdbcType=VARCHAR},            #{createTimestamp,jdbcType=VARCHAR},            #{baseAcctNo,jdbcType=VARCHAR},            #{outSignChannel,jdbcType=VARCHAR},            #{startDate,jdbcType=TIMESTAMP},            #{signBranch,jdbcType=VARCHAR},            #{outSignBranch,jdbcType=VARCHAR},            #{agreementSignEffectStatus,jdbcType=VARCHAR},            #{tranBranch,jdbcType=VARCHAR},            #{agreementCloseAcctFlag,jdbcType=VARCHAR},            #{greementSignStatus,jdbcType=VARCHAR},            #{acctName,jdbcType=VARCHAR},            #{acctSeqNo,jdbcType=VARCHAR},            #{signUserId,jdbcType=VARCHAR}        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.dcits.deposit.entity.RbBusAgreement">
+        insert into RB_BUS_AGREEMENT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rbBusAgreementType != null">
+                RB_BUS_AGREEMENT_TYPE,
+            </if>
+            <if test="agreementClass != null">
+                AGREEMENT_CLASS,
+            </if>
+            <if test="prodNo != null">
+                PROD_NO,
+            </if>
+            <if test="agreementKeyType != null">
+                AGREEMENT_KEY_TYPE,
+            </if>
+            <if test="agreementAmt != null">
+                AGREEMENT_AMT,
+            </if>
+            <if test="agreementKey != null">
+                AGREEMENT_KEY,
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO,
+            </if>
+            <if test="agreementOpenDate != null">
+                AGREEMENT_OPEN_DATE,
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP,
+            </if>
+            <if test="endDate != null">
+                END_DATE,
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY,
+            </if>
+            <if test="signDate != null">
+                SIGN_DATE,
+            </if>
+            <if test="outSignDate != null">
+                OUT_SIGN_DATE,
+            </if>
+            <if test="agreementId != null">
+                AGREEMENT_ID,
+            </if>
+            <if test="agreProdNo != null">
+                AGRE_PROD_NO,
+            </if>
+            <if test="clientShort != null">
+                CLIENT_SHORT,
+            </if>
+            <if test="outSignUserId != null">
+                OUT_SIGN_USER_ID,
+            </if>
+            <if test="signChannel != null">
+                SIGN_CHANNEL,
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP,
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO,
+            </if>
+            <if test="outSignChannel != null">
+                OUT_SIGN_CHANNEL,
+            </if>
+            <if test="startDate != null">
+                START_DATE,
+            </if>
+            <if test="signBranch != null">
+                SIGN_BRANCH,
+            </if>
+            <if test="outSignBranch != null">
+                OUT_SIGN_BRANCH,
+            </if>
+            <if test="agreementSignEffectStatus != null">
+                AGREEMENT_SIGN_EFFECT_STATUS,
+            </if>
+            <if test="tranBranch != null">
+                TRAN_BRANCH,
+            </if>
+            <if test="agreementCloseAcctFlag != null">
+                AGREEMENT_CLOSE_ACCT_FLAG,
+            </if>
+            <if test="greementSignStatus != null">
+                GREEMENT_SIGN_STATUS,
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME,
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO,
+            </if>
+            <if test="signUserId != null">
+                SIGN_USER_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rbBusAgreementType != null">
+                #{rbBusAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementClass != null">
+                #{agreementClass,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementKeyType != null">
+                #{agreementKeyType,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementAmt != null">
+                #{agreementAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="agreementKey != null">
+                #{agreementKey,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementOpenDate != null">
+                #{agreementOpenDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctCcy != null">
+                #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="signDate != null">
+                #{signDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="outSignDate != null">
+                #{outSignDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agreementId != null">
+                #{agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="agreProdNo != null">
+                #{agreProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientShort != null">
+                #{clientShort,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignUserId != null">
+                #{outSignUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="signChannel != null">
+                #{signChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignChannel != null">
+                #{outSignChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="signBranch != null">
+                #{signBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignBranch != null">
+                #{outSignBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementSignEffectStatus != null">
+                #{agreementSignEffectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tranBranch != null">
+                #{tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementCloseAcctFlag != null">
+                #{agreementCloseAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="greementSignStatus != null">
+                #{greementSignStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="signUserId != null">
+                #{signUserId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.dcits.deposit.entity.RbBusAgreementExample" resultType="java.lang.Long">
+        select count(*) from RB_BUS_AGREEMENT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update RB_BUS_AGREEMENT
+        <set>
+            <if test="row.rbBusAgreementType != null">
+                RB_BUS_AGREEMENT_TYPE = #{row.rbBusAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementClass != null">
+                AGREEMENT_CLASS = #{row.agreementClass,jdbcType=VARCHAR},
+            </if>
+            <if test="row.prodNo != null">
+                PROD_NO = #{row.prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementKeyType != null">
+                AGREEMENT_KEY_TYPE = #{row.agreementKeyType,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementAmt != null">
+                AGREEMENT_AMT = #{row.agreementAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="row.agreementKey != null">
+                AGREEMENT_KEY = #{row.agreementKey,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientNo != null">
+                CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementOpenDate != null">
+                AGREEMENT_OPEN_DATE = #{row.agreementOpenDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.endDate != null">
+                END_DATE = #{row.endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.acctCcy != null">
+                ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="row.signDate != null">
+                SIGN_DATE = #{row.signDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.outSignDate != null">
+                OUT_SIGN_DATE = #{row.outSignDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.agreementId != null">
+                AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreProdNo != null">
+                AGRE_PROD_NO = #{row.agreProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.clientShort != null">
+                CLIENT_SHORT = #{row.clientShort,jdbcType=VARCHAR},
+            </if>
+            <if test="row.outSignUserId != null">
+                OUT_SIGN_USER_ID = #{row.outSignUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="row.signChannel != null">
+                SIGN_CHANNEL = #{row.signChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.createTimestamp != null">
+                CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="row.baseAcctNo != null">
+                BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.outSignChannel != null">
+                OUT_SIGN_CHANNEL = #{row.outSignChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="row.startDate != null">
+                START_DATE = #{row.startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="row.signBranch != null">
+                SIGN_BRANCH = #{row.signBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.outSignBranch != null">
+                OUT_SIGN_BRANCH = #{row.outSignBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementSignEffectStatus != null">
+                AGREEMENT_SIGN_EFFECT_STATUS = #{row.agreementSignEffectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.tranBranch != null">
+                TRAN_BRANCH = #{row.tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="row.agreementCloseAcctFlag != null">
+                AGREEMENT_CLOSE_ACCT_FLAG = #{row.agreementCloseAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="row.greementSignStatus != null">
+                GREEMENT_SIGN_STATUS = #{row.greementSignStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctName != null">
+                ACCT_NAME = #{row.acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="row.acctSeqNo != null">
+                ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="row.signUserId != null">
+                SIGN_USER_ID = #{row.signUserId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update RB_BUS_AGREEMENT
+        set
+            RB_BUS_AGREEMENT_TYPE = #{row.rbBusAgreementType,jdbcType=VARCHAR},            AGREEMENT_CLASS = #{row.agreementClass,jdbcType=VARCHAR},            PROD_NO = #{row.prodNo,jdbcType=VARCHAR},            AGREEMENT_KEY_TYPE = #{row.agreementKeyType,jdbcType=VARCHAR},            AGREEMENT_AMT = #{row.agreementAmt,jdbcType=DECIMAL},            AGREEMENT_KEY = #{row.agreementKey,jdbcType=VARCHAR},            CLIENT_NO = #{row.clientNo,jdbcType=VARCHAR},            AGREEMENT_OPEN_DATE = #{row.agreementOpenDate,jdbcType=TIMESTAMP},            LAST_UPD_TIMESTAMP = #{row.lastUpdTimestamp,jdbcType=VARCHAR},            END_DATE = #{row.endDate,jdbcType=TIMESTAMP},            ACCT_CCY = #{row.acctCcy,jdbcType=VARCHAR},            SIGN_DATE = #{row.signDate,jdbcType=TIMESTAMP},            OUT_SIGN_DATE = #{row.outSignDate,jdbcType=TIMESTAMP},            AGREEMENT_ID = #{row.agreementId,jdbcType=VARCHAR},            AGRE_PROD_NO = #{row.agreProdNo,jdbcType=VARCHAR},            CLIENT_SHORT = #{row.clientShort,jdbcType=VARCHAR},            OUT_SIGN_USER_ID = #{row.outSignUserId,jdbcType=VARCHAR},            SIGN_CHANNEL = #{row.signChannel,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{row.createTimestamp,jdbcType=VARCHAR},            BASE_ACCT_NO = #{row.baseAcctNo,jdbcType=VARCHAR},            OUT_SIGN_CHANNEL = #{row.outSignChannel,jdbcType=VARCHAR},            START_DATE = #{row.startDate,jdbcType=TIMESTAMP},            SIGN_BRANCH = #{row.signBranch,jdbcType=VARCHAR},            OUT_SIGN_BRANCH = #{row.outSignBranch,jdbcType=VARCHAR},            AGREEMENT_SIGN_EFFECT_STATUS = #{row.agreementSignEffectStatus,jdbcType=VARCHAR},            TRAN_BRANCH = #{row.tranBranch,jdbcType=VARCHAR},            AGREEMENT_CLOSE_ACCT_FLAG = #{row.agreementCloseAcctFlag,jdbcType=VARCHAR},            GREEMENT_SIGN_STATUS = #{row.greementSignStatus,jdbcType=VARCHAR},            ACCT_NAME = #{row.acctName,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{row.acctSeqNo,jdbcType=VARCHAR},            SIGN_USER_ID = #{row.signUserId,jdbcType=VARCHAR}        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dcits.deposit.entity.RbBusAgreement">
+        update RB_BUS_AGREEMENT
+        <set>
+            <if test="rbBusAgreementType != null">
+                RB_BUS_AGREEMENT_TYPE = #{rbBusAgreementType,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementClass != null">
+                AGREEMENT_CLASS = #{agreementClass,jdbcType=VARCHAR},
+            </if>
+            <if test="prodNo != null">
+                PROD_NO = #{prodNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementKeyType != null">
+                AGREEMENT_KEY_TYPE = #{agreementKeyType,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementAmt != null">
+                AGREEMENT_AMT = #{agreementAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="agreementKey != null">
+                AGREEMENT_KEY = #{agreementKey,jdbcType=VARCHAR},
+            </if>
+            <if test="clientNo != null">
+                CLIENT_NO = #{clientNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementOpenDate != null">
+                AGREEMENT_OPEN_DATE = #{agreementOpenDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdTimestamp != null">
+                LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="endDate != null">
+                END_DATE = #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="acctCcy != null">
+                ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},
+            </if>
+            <if test="signDate != null">
+                SIGN_DATE = #{signDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="outSignDate != null">
+                OUT_SIGN_DATE = #{outSignDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agreProdNo != null">
+                AGRE_PROD_NO = #{agreProdNo,jdbcType=VARCHAR},
+            </if>
+            <if test="clientShort != null">
+                CLIENT_SHORT = #{clientShort,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignUserId != null">
+                OUT_SIGN_USER_ID = #{outSignUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="signChannel != null">
+                SIGN_CHANNEL = #{signChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimestamp != null">
+                CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},
+            </if>
+            <if test="baseAcctNo != null">
+                BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignChannel != null">
+                OUT_SIGN_CHANNEL = #{outSignChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                START_DATE = #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="signBranch != null">
+                SIGN_BRANCH = #{signBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="outSignBranch != null">
+                OUT_SIGN_BRANCH = #{outSignBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementSignEffectStatus != null">
+                AGREEMENT_SIGN_EFFECT_STATUS = #{agreementSignEffectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tranBranch != null">
+                TRAN_BRANCH = #{tranBranch,jdbcType=VARCHAR},
+            </if>
+            <if test="agreementCloseAcctFlag != null">
+                AGREEMENT_CLOSE_ACCT_FLAG = #{agreementCloseAcctFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="greementSignStatus != null">
+                GREEMENT_SIGN_STATUS = #{greementSignStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="acctName != null">
+                ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="acctSeqNo != null">
+                ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="signUserId != null">
+                SIGN_USER_ID = #{signUserId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.dcits.deposit.entity.RbBusAgreement">
+        update RB_BUS_AGREEMENT
+        set
+            RB_BUS_AGREEMENT_TYPE = #{rbBusAgreementType,jdbcType=VARCHAR},            AGREEMENT_CLASS = #{agreementClass,jdbcType=VARCHAR},            PROD_NO = #{prodNo,jdbcType=VARCHAR},            AGREEMENT_KEY_TYPE = #{agreementKeyType,jdbcType=VARCHAR},            AGREEMENT_AMT = #{agreementAmt,jdbcType=DECIMAL},            AGREEMENT_KEY = #{agreementKey,jdbcType=VARCHAR},            CLIENT_NO = #{clientNo,jdbcType=VARCHAR},            AGREEMENT_OPEN_DATE = #{agreementOpenDate,jdbcType=TIMESTAMP},            LAST_UPD_TIMESTAMP = #{lastUpdTimestamp,jdbcType=VARCHAR},            END_DATE = #{endDate,jdbcType=TIMESTAMP},            ACCT_CCY = #{acctCcy,jdbcType=VARCHAR},            SIGN_DATE = #{signDate,jdbcType=TIMESTAMP},            OUT_SIGN_DATE = #{outSignDate,jdbcType=TIMESTAMP},            AGRE_PROD_NO = #{agreProdNo,jdbcType=VARCHAR},            CLIENT_SHORT = #{clientShort,jdbcType=VARCHAR},            OUT_SIGN_USER_ID = #{outSignUserId,jdbcType=VARCHAR},            SIGN_CHANNEL = #{signChannel,jdbcType=VARCHAR},            CREATE_TIMESTAMP = #{createTimestamp,jdbcType=VARCHAR},            BASE_ACCT_NO = #{baseAcctNo,jdbcType=VARCHAR},            OUT_SIGN_CHANNEL = #{outSignChannel,jdbcType=VARCHAR},            START_DATE = #{startDate,jdbcType=TIMESTAMP},            SIGN_BRANCH = #{signBranch,jdbcType=VARCHAR},            OUT_SIGN_BRANCH = #{outSignBranch,jdbcType=VARCHAR},            AGREEMENT_SIGN_EFFECT_STATUS = #{agreementSignEffectStatus,jdbcType=VARCHAR},            TRAN_BRANCH = #{tranBranch,jdbcType=VARCHAR},            AGREEMENT_CLOSE_ACCT_FLAG = #{agreementCloseAcctFlag,jdbcType=VARCHAR},            GREEMENT_SIGN_STATUS = #{greementSignStatus,jdbcType=VARCHAR},            ACCT_NAME = #{acctName,jdbcType=VARCHAR},            ACCT_SEQ_NO = #{acctSeqNo,jdbcType=VARCHAR},            SIGN_USER_ID = #{signUserId,jdbcType=VARCHAR}        where AGREEMENT_ID = #{agreementId,jdbcType=VARCHAR}
+    </update>
+</mapper>
