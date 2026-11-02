@@ -48,11 +48,10 @@ public class ST062Pbc implements IST062 {
     @Override
     public ST062OutputBO execute(ST062InputBO input) {
         ST062OutputBO output = new ST062OutputBO();
-                                                                                                                                                                                                                              
 
         // REQ-001：按（账号、限制状态「A-生效」RestraintsStatus.A）查询对公存款账户限制表，获取账户限制信息集合
-                                                           
         RbBusRestraintsEO busRestraintsQuery = new RbBusRestraintsEO();
+                                                           
         busRestraintsQuery.setBaseAcctNo(input.getBaseAcctNo());
         busRestraintsQuery.setRestraintsStatus(RestraintsStatus.A);
         List<RbBusRestraintsEO> accountRestraints = rbBusRestraintsBcc.findByEo(busRestraintsQuery);
@@ -66,27 +65,25 @@ public class ST062Pbc implements IST062 {
 
         // REQ-002：遍历账户限制信息集合，按（账户限制类型、状态「A-生效」Status.A）查询限制类型配置
         for (RbBusRestraintsEO accountRestraint : accountRestraints) {
-            // 中间输出字段（restraintType/resSeqNo/restraintsStatus）取自当前处理记录，归属见 FIXME
+            // 中间输出字段（restraintType/resSeqNo/restraintsStatus）取自当前处理记录（多记录取数归属未定义）
+                                                               
             output.setRestraintType(accountRestraint.getRestraintType());
             output.setResSeqNo(accountRestraint.getResSeqNo());
             output.setRestraintsStatus(accountRestraint.getRestraintsStatus());
-                                                                                                                                                                                                                                                                                                                     
 
-                                                               
             RbRestraintTypeEO restraintTypeQuery = new RbRestraintTypeEO();
             restraintTypeQuery.setRestraintType(accountRestraint.getRestraintType());
             restraintTypeQuery.setStatus(Status.A);
             List<RbRestraintTypeEO> restraintTypeConfigs = rbRestraintTypeBcc.findByEo(restraintTypeQuery);
 
-            // 面向单条结果的限制类型配置查询：多条统一取结果集第一条，先判空再取值；查无记录按未命中继续遍历（见 FIXME）
+            // 面向单条结果的限制类型配置查询：多条统一取结果集第一条，先判空再取值；查无记录按未命中继续遍历
+                                                               
             if (!restraintTypeConfigs.isEmpty()) {
                 RbRestraintTypeEO restraintTypeConfig = restraintTypeConfigs.get(0);
                 output.setDrCrCtlFlag(restraintTypeConfig.getDrCrCtlFlag());
                 output.setCashFlag(restraintTypeConfig.getCashFlag());
-                                                                                                                                                                                                                                                    
 
                 // REQ-003：借贷方控制标志为「D-禁止借方」（DrCrCtlFlag.D）且现金标志为「N-不允许现金」时返回「是」并结束遍历
-                                                                   
                 if (DrCrCtlFlag.D == restraintTypeConfig.getDrCrCtlFlag()
                         && CASH_FLAG_NO.equals(restraintTypeConfig.getCashFlag())) {
                     output.setCashStopFlag(CASH_STOP_FLAG_YES);

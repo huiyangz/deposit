@@ -16,6 +16,7 @@ import com.dcits.deposit.enums.RestraintType;
 public class ST062OutputBO extends StepResult {
 
     /** 现金止付标志：本步骤业务结果，取值「是」/「否」（需求字面表述） */
+                                                       
     private String cashStopFlag;
 
     /** 现金标志：来源存款限制类型表（RB_RESTRAINT_TYPE），命中判定条件值「N」为不允许现金 */
