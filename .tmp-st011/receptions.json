@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "id": "25e7fa19c4be4a118b2f256c5c2c5d43",
+      "reportIssueId": "ISSUE-001",
+      "reason": "本轮正式 Spec 待确认事项 TBD-4 仍明确必填输入缺失时的校验、报错及错误码未定义；当前实现直接以输入构造查询、无必填校验，定义缺口仍在，已在 ISSUE-001 说明并建议 business。"
+    },
+    {
+      "id": "562a3b1e62894b9b9207b970470635c2",
+      "reportIssueId": "ISSUE-002",
+      "reason": "本轮正式 Spec 待确认事项 TBD-1 仍明确「支取密码」对应的 PwdType 枚举取值未确认（现有取值仅 MA/QY/WD，无字面「支取密码」），定义缺口仍在，已在 ISSUE-002 说明并建议 business。"
+    },
+    {
+      "id": "8613c82af7ab4283ade5ae1b08f7fb48",
+      "reportIssueId": "ISSUE-003",
+      "reason": "本轮正式 Spec 待确认事项 TBD-2 仍明确由 baseAcctNo 取得账户内部键值及密码键值来源未定义，当前查询 EO 仅设置 pwdType 无法按账号定位，定义缺口仍在，已在 ISSUE-003 说明并建议 business。"
+    },
+    {
+      "id": "03bf50cd4920432e99c6be6914316698",
+      "reportIssueId": "ISSUE-004",
+      "reason": "本轮正式 Spec 待确认事项 TBD-3 仍明确查询无记录/多条记录时的行为未定义，当前实现无记录按成功返回、多条取第一条均无正式定义依据，已在 ISSUE-004 说明并建议 business。"
+    },
+    {
+      "id": "1ac6286a43b84699b2a787ae85cf896b",
+      "reportIssueId": "ISSUE-005",
+      "reason": "本轮正式 Spec 待确认事项 TBD-5 仍明确错误码 ER0079 的业务说明文本未提供，当前锁定失败路径仅设置 errorCode、未设置 errorMessage，已在 ISSUE-005 说明并建议 business。"
+    }
+  ]
+}
