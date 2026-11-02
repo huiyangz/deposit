@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "registry": {
+    "path": "outputs/business-issues.json",
+    "sha256": "760a0653047ae61d8f5993085b5fb2ad33845bc250d4abb606497ab89895f7db"
+  },
+  "files": [
+    {
+      "path": "deposit-domain/deposit-domain-model/src/main/java/com/dcits/deposit/facade/bo/ST011InputBO.java",
+      "sha256": "777d9a65dc3a3125ff6a4c6152a7f9475d893cd3bd5ba14b2f0fa1c1dceaef80",
+      "comments": []
+    },
+    {
+      "path": "deposit-domain/deposit-domain-model/src/main/java/com/dcits/deposit/facade/bo/ST011OutputBO.java",
+      "sha256": "bb4422db4cba4de6bb79597873552b18013708ccff00f1fc84f26a44ed4b54ed",
+      "comments": []
+    },
+    {
+      "path": "deposit-domain/deposit-domain-outbound/src/main/java/com/dcits/deposit/step/IST011.java",
+      "sha256": "521b1b344942961e67746e58467eb06a09725d522928cad8ed3654c58696ed96",
+      "comments": []
+    },
+    {
+      "path": "deposit-domain/deposit-domain-service/src/main/java/com/dcits/deposit/step/ST011Pbc.java",
+      "sha256": "8d46c19e012676e0c7b442d604cf3ef9a8521bf633ba336ec061d4d203c80b36",
+      "comments": [
+        {
+          "id": "25e7fa19c4be4a118b2f256c5c2c5d43",
+          "start": 1440,
+          "end": 1491,
+          "startLine": 38,
+          "endLine": 38,
+          "text": "// LOOPMILL-ISSUE: 25e7fa19c4be4a118b2f256c5c2c5d43"
+        },
+        {
+          "id": "562a3b1e62894b9b9207b970470635c2",
+          "start": 2222,
+          "end": 2273,
+          "startLine": 44,
+          "endLine": 44,
+          "text": "// LOOPMILL-ISSUE: 562a3b1e62894b9b9207b970470635c2"
+        },
+        {
+          "id": "8613c82af7ab4283ade5ae1b08f7fb48",
+          "start": 2282,
+          "end": 2333,
+          "startLine": 45,
+          "endLine": 45,
+          "text": "// LOOPMILL-ISSUE: 8613c82af7ab4283ade5ae1b08f7fb48"
+        },
+        {
+          "id": "03bf50cd4920432e99c6be6914316698",
+          "start": 2691,
+          "end": 2742,
+          "startLine": 49,
+          "endLine": 49,
+          "text": "// LOOPMILL-ISSUE: 03bf50cd4920432e99c6be6914316698"
+        },
+        {
+          "id": "1ac6286a43b84699b2a787ae85cf896b",
+          "start": 3246,
+          "end": 3297,
+          "startLine": 61,
+          "endLine": 61,
+          "text": "// LOOPMILL-ISSUE: 1ac6286a43b84699b2a787ae85cf896b"
+        }
+      ]
+    }
+  ]
+}
